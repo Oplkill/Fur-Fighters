@@ -267,7 +267,7 @@ namespace language
 		Babies_to_enter,
 		Tokens_to_enter,
 		Cheat_discovered,
-		Fluffs_
+		Fluffs_,
 		FLUFFS,
 		YOU_FLUFFED,
 		You_got_fluffed_press_J,

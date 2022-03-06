@@ -3,17 +3,17 @@
 //----- (0048692B) --------------------------------------------------------
 void loadGUISettings()
 {
-	maybe_LoadSettingsValue(aHealthPosX, &dword_5CED60, 2, 20);
-	maybe_LoadSettingsValue(aHealthPosY, &dword_5CED64, 2, 30);
-	maybe_LoadSettingsValue(aAmmoPosX, &dword_5CED68, 2, 10);
-	maybe_LoadSettingsValue(aAmmoPosY, &dword_5CED6C, 2, 440);
-	maybe_LoadSettingsValue(aTempPosX, byte_5CED70, 2, 10);
-	maybe_LoadSettingsValue(aTempPosY, byte_5CED74, 2, 10);
-	maybe_LoadSettingsValue(aOverlaySelecto, byte_5CED78, 2, 10);
-	maybe_LoadSettingsValue(aDialogX, &dword_5CED7C, 2, 160);
-	maybe_LoadSettingsValue(aDialogY, &dword_5CED80, 2, 400);
-	maybe_LoadSettingsValue(aDialogWidth, &dword_5CED84, 2, 320);
-	maybe_LoadSettingsValue(aDialogHeight, &dword_5CED88, 2, 64);
+	maybe_LoadSettingsValue(aHealthPosX, &dword_5CED60, settings::tDWrord, 20);
+	maybe_LoadSettingsValue(aHealthPosY, &dword_5CED64, settings::tDWrord, 30);
+	maybe_LoadSettingsValue(aAmmoPosX, &dword_5CED68, settings::tDWrord, 10);
+	maybe_LoadSettingsValue(aAmmoPosY, &dword_5CED6C, settings::tDWrord, 440);
+	maybe_LoadSettingsValue(aTempPosX, byte_5CED70, settings::tDWrord, 10);
+	maybe_LoadSettingsValue(aTempPosY, byte_5CED74, settings::tDWrord, 10);
+	maybe_LoadSettingsValue(aOverlaySelecto, byte_5CED78, settings::tDWrord, 10);
+	maybe_LoadSettingsValue(aDialogX, &dword_5CED7C, settings::tDWrord, 160);
+	maybe_LoadSettingsValue(aDialogY, &dword_5CED80, settings::tDWrord, 400);
+	maybe_LoadSettingsValue(aDialogWidth, &dword_5CED84, settings::tDWrord, 320);
+	maybe_LoadSettingsValue(aDialogHeight, &dword_5CED88, settings::tDWrord, 64);
 	emptyFunction33();
 }
 // 5CED60: using guessed type int dword_5CED60;

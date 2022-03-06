@@ -1,5 +1,7 @@
 #pragma once
 
+#include "defs.h"
+
 int __cdecl loadSettings(char* FileName);
 int __cdecl initSettings(HINSTANCE hInstance); // idb
 int __cdecl anotherLoadSettings(char* FileName); // idb
@@ -9,3 +11,15 @@ int loadBearSettings();
 int loadCrocodyleSettings();
 int loadPeacockSettings();
 int loadWeaponSettings();
+
+namespace settings
+{
+	enum variableType
+	{
+		tInt,
+		tWord,
+		tDWrord,
+		tFloat1,
+		tFloat2,
+	};
+}

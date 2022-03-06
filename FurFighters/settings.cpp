@@ -338,7 +338,7 @@ int __cdecl getSettingsValue(const char* settingsName, int defValue)
 // 668C20: using guessed type int dword_668C20[];
 
 //----- (0053F82D) --------------------------------------------------------
-int __cdecl maybe_LoadSettingsValue(const char* a1, _BYTE* a2, int a3, int a4)
+int __cdecl maybe_LoadSettingsValue(const char* settingsName, _BYTE* a2, int variableType, int defaultValue)
 {
     float v5; // [esp+0h] [ebp-28h]
     float v6; // [esp+8h] [ebp-20h]
@@ -346,11 +346,11 @@ int __cdecl maybe_LoadSettingsValue(const char* a1, _BYTE* a2, int a3, int a4)
 
     for (i = 0; i < dword_6673A0; ++i)
     {
-        if (!strcmp(a1, (const char*)&unk_668C00 + 48 * i))
+        if (!strcmp(settingsName, (const char*)&unk_668C00 + 48 * i))
         {
             dword_668C28[12 * i] = (int)a2;
-            dword_668C2C[12 * i] = a3;
-            switch (a3)
+            dword_668C2C[12 * i] = variableType;
+            switch (variableType)
             {
             case 0:
                 *a2 = dword_668C20[12 * i];
@@ -374,28 +374,28 @@ int __cdecl maybe_LoadSettingsValue(const char* a1, _BYTE* a2, int a3, int a4)
             return dword_668C20[12 * i];
         }
     }
-    switch (a3)
+    switch (variableType)
     {
     case 0:
-        *a2 = a4;
+        *a2 = defaultValue;
         break;
     case 1:
-        *(_WORD*)a2 = a4;
+        *(_WORD*)a2 = defaultValue;
         break;
     case 2:
-        *(_DWORD*)a2 = a4;
+        *(_DWORD*)a2 = defaultValue;
         break;
     case 3:
-        v5 = (float)a4;
+        v5 = (float)defaultValue;
         *(float*)a2 = v5 * 0.0099999998;
         break;
     case 4:
-        *(float*)a2 = (float)a4;
+        *(float*)a2 = (float)defaultValue;
         break;
     default:
-        return a4;
+        return defaultValue;
     }
-    return a4;
+    return defaultValue;
 }
 // 6673A0: using guessed type int dword_6673A0;
 // 668C20: using guessed type int dword_668C20[];
@@ -404,12 +404,12 @@ int __cdecl maybe_LoadSettingsValue(const char* a1, _BYTE* a2, int a3, int a4)
 //----- (00411E50) --------------------------------------------------------
 int loadBearSettings()
 {
-    maybe_LoadSettingsValue(aBearSpeed, dword_607080, 3, 10);
-    maybe_LoadSettingsValue(aBearShotDamage, &dword_607094, 2, 15);
-    maybe_LoadSettingsValue(aBearHitDamage, &dword_607098, 2, 10);
-    maybe_LoadSettingsValue(aBearEnergy, &dword_60709C, 2, 30);
-    maybe_LoadSettingsValue(aBearScore, byte_6070A0, 2, 50);
-    return maybe_LoadSettingsValue(aBearTime, byte_6070A4, 2, 10);
+    maybe_LoadSettingsValue(aBearSpeed, dword_607080, settings::tFloat1, 10);
+    maybe_LoadSettingsValue(aBearShotDamage, &dword_607094, settings::tDWrord, 15);
+    maybe_LoadSettingsValue(aBearHitDamage, &dword_607098, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aBearEnergy, &dword_60709C, settings::tDWrord, 30);
+    maybe_LoadSettingsValue(aBearScore, byte_6070A0, settings::tDWrord, 50);
+    return maybe_LoadSettingsValue(aBearTime, byte_6070A4, settings::tDWrord, 10);
 }
 // 607094: using guessed type int dword_607094;
 // 607098: using guessed type int dword_607098;
@@ -418,12 +418,12 @@ int loadBearSettings()
 //----- (0042A970) --------------------------------------------------------
 int loadCrocodyleSettings()
 {
-    maybe_LoadSettingsValue(aCrocSpeed, &dword_606860, 3, 30);
+    maybe_LoadSettingsValue(aCrocSpeed, &dword_606860, settings::tFloat1, 30);
     dword_606864 = 1048576000;
-    maybe_LoadSettingsValue(aCrocEnergy, &dword_60686C, 2, 30);
-    maybe_LoadSettingsValue(aCrocDamage, &dword_606870, 2, 15);
-    maybe_LoadSettingsValue(aCrocScore, byte_606868, 2, 50);
-    return maybe_LoadSettingsValue(aCrocTime, byte_606874, 2, 20);
+    maybe_LoadSettingsValue(aCrocEnergy, &dword_60686C, settings::tDWrord, 30);
+    maybe_LoadSettingsValue(aCrocDamage, &dword_606870, settings::tDWrord, 15);
+    maybe_LoadSettingsValue(aCrocScore, byte_606868, settings::tDWrord, 50);
+    return maybe_LoadSettingsValue(aCrocTime, byte_606874, settings::tDWrord, 20);
 }
 // 606860: using guessed type int dword_606860;
 // 606864: using guessed type int dword_606864;
@@ -433,13 +433,13 @@ int loadCrocodyleSettings()
 //----- (0048C7B0) --------------------------------------------------------
 int loadPeacockSettings()
 {
-    maybe_LoadSettingsValue(aPeacockSpeed, &dword_5CDCA0, 3, 10);
-    maybe_LoadSettingsValue(aPeacockRocketS, byte_5CDCA8, 3, 200);
-    maybe_LoadSettingsValue(aPeacockDamage, &dword_5CDCA4, 2, 20);
-    maybe_LoadSettingsValue(aPeacockDamageR, &dword_5CDCAC, 3, 600);
-    maybe_LoadSettingsValue(aPeacockEnergy, &dword_5CDCB0, 2, 30);
-    maybe_LoadSettingsValue(aPeacockScore, byte_5CDCB4, 2, 50);
-    return maybe_LoadSettingsValue(aPeacockTime, byte_5CDCB8, 2, 20);
+    maybe_LoadSettingsValue(aPeacockSpeed, &dword_5CDCA0, settings::tFloat1, 10);
+    maybe_LoadSettingsValue(aPeacockRocketS, byte_5CDCA8, settings::tFloat1, 200);
+    maybe_LoadSettingsValue(aPeacockDamage, &dword_5CDCA4, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aPeacockDamageR, &dword_5CDCAC, settings::tFloat1, 600);
+    maybe_LoadSettingsValue(aPeacockEnergy, &dword_5CDCB0, settings::tDWrord, 30);
+    maybe_LoadSettingsValue(aPeacockScore, byte_5CDCB4, settings::tDWrord, 50);
+    return maybe_LoadSettingsValue(aPeacockTime, byte_5CDCB8, settings::tDWrord, 20);
 }
 // 5CDCA0: using guessed type int dword_5CDCA0;
 // 5CDCA4: using guessed type int dword_5CDCA4;
@@ -451,37 +451,37 @@ int loadWeaponSettings()
 {
     int result; // eax
 
-    maybe_LoadSettingsValue(aPistolAmmo, &word_5CDBC0, 2, 20);
-    maybe_LoadSettingsValue(aShotgunAmmo, &word_5CDBC4, 2, 10);
-    maybe_LoadSettingsValue(aMachgunAmmo, &word_5CDBC8, 2, 20);
-    maybe_LoadSettingsValue(aGlauncherAmmo, &word_5CDBD8, 2, 2);
-    maybe_LoadSettingsValue(aRlauncherAmmo, &word_5CDBCC, 2, 2);
-    maybe_LoadSettingsValue(aLaserAmmo, &word_5CDBD0, 2, 20);
-    maybe_LoadSettingsValue(aNeutronGunAmmo, &word_5CDBD4, 2, 40);
-    maybe_LoadSettingsValue(aFreezeGunAmmo, &word_5CDBDC, 2, 40);
-    maybe_LoadSettingsValue(aBullets, &word_5CDBE0, 2, 20);
-    maybe_LoadSettingsValue(aShells, &word_5CDBE4, 2, 10);
-    maybe_LoadSettingsValue(aGrenades, &word_5CDBE8, 2, 10);
-    maybe_LoadSettingsValue(aRockets, &word_5CDBEC, 2, 1);
-    maybe_LoadSettingsValue(aEnergy, &word_5CDBF0, 2, 20);
-    maybe_LoadSettingsValue(aSmartAmmo, &word_5CDBF4, 2, 1);
-    maybe_LoadSettingsValue(aFreezeAmmo, &word_5CDBF8, 2, 1);
-    maybe_LoadSettingsValue(aBulletBox, &word_5CDBFC, 2, 100);
-    maybe_LoadSettingsValue(aShellBox, &word_5CDC00, 2, 20);
-    maybe_LoadSettingsValue(aGrenadeBox, &word_5CDC04, 2, 20);
-    maybe_LoadSettingsValue(aRocketBox, &word_5CDC08, 2, 10);
-    maybe_LoadSettingsValue(aEnergyBox, &word_5CDC0C, 2, 100);
-    maybe_LoadSettingsValue(aSmartAmmoBox, &word_5CDC10, 2, 5);
-    maybe_LoadSettingsValue(aFreezeAmmoBox, &word_5CDC14, 2, 5);
-    maybe_LoadSettingsValue(aHealthAmount, &dword_5CDC34, 2, 2);
-    maybe_LoadSettingsValue(aBigHealthAmoun, &dword_5CDC38, 2, 25);
-    maybe_LoadSettingsValue(aMaxBullets, &dword_5CDC18, 2, 200);
-    maybe_LoadSettingsValue(aMaxShells, &dword_5CDC1C, 2, 100);
-    maybe_LoadSettingsValue(aMaxGrenades, &dword_5CDC20, 2, 50);
-    maybe_LoadSettingsValue(aMaxRockets, &dword_5CDC24, 2, 20);
-    maybe_LoadSettingsValue(aMaxEnergy, &dword_5CDC28, 2, 200);
-    maybe_LoadSettingsValue(aMaxSmartAmmo, &dword_5CDC2C, 2, 10);
-    result = maybe_LoadSettingsValue(aMaxFreezeAmmo, &dword_5CDC30, 2, 10);
+    maybe_LoadSettingsValue(aPistolAmmo, &word_5CDBC0, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aShotgunAmmo, &word_5CDBC4, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aMachgunAmmo, &word_5CDBC8, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aGlauncherAmmo, &word_5CDBD8, settings::tDWrord, 2);
+    maybe_LoadSettingsValue(aRlauncherAmmo, &word_5CDBCC, settings::tDWrord, 2);
+    maybe_LoadSettingsValue(aLaserAmmo, &word_5CDBD0, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aNeutronGunAmmo, &word_5CDBD4, settings::tDWrord, 40);
+    maybe_LoadSettingsValue(aFreezeGunAmmo, &word_5CDBDC, settings::tDWrord, 40);
+    maybe_LoadSettingsValue(aBullets, &word_5CDBE0, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aShells, &word_5CDBE4, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aGrenades, &word_5CDBE8, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aRockets, &word_5CDBEC, settings::tDWrord, 1);
+    maybe_LoadSettingsValue(aEnergy, &word_5CDBF0, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aSmartAmmo, &word_5CDBF4, settings::tDWrord, 1);
+    maybe_LoadSettingsValue(aFreezeAmmo, &word_5CDBF8, settings::tDWrord, 1);
+    maybe_LoadSettingsValue(aBulletBox, &word_5CDBFC, settings::tDWrord, 100);
+    maybe_LoadSettingsValue(aShellBox, &word_5CDC00, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aGrenadeBox, &word_5CDC04, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aRocketBox, &word_5CDC08, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aEnergyBox, &word_5CDC0C, settings::tDWrord, 100);
+    maybe_LoadSettingsValue(aSmartAmmoBox, &word_5CDC10, settings::tDWrord, 5);
+    maybe_LoadSettingsValue(aFreezeAmmoBox, &word_5CDC14, settings::tDWrord, 5);
+    maybe_LoadSettingsValue(aHealthAmount, &dword_5CDC34, settings::tDWrord, 2);
+    maybe_LoadSettingsValue(aBigHealthAmoun, &dword_5CDC38, settings::tDWrord, 25);
+    maybe_LoadSettingsValue(aMaxBullets, &dword_5CDC18, settings::tDWrord, 200);
+    maybe_LoadSettingsValue(aMaxShells, &dword_5CDC1C, settings::tDWrord, 100);
+    maybe_LoadSettingsValue(aMaxGrenades, &dword_5CDC20, settings::tDWrord, 50);
+    maybe_LoadSettingsValue(aMaxRockets, &dword_5CDC24, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aMaxEnergy, &dword_5CDC28, settings::tDWrord, 200);
+    maybe_LoadSettingsValue(aMaxSmartAmmo, &dword_5CDC2C, settings::tDWrord, 10);
+    result = maybe_LoadSettingsValue(aMaxFreezeAmmo, &dword_5CDC30, settings::tDWrord, 10);
     dword_5CDC3C = 900;
     dword_5CDC40 = 900;
     dword_5CDC44 = 50;
