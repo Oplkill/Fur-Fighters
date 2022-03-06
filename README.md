@@ -9,6 +9,7 @@ Fully reverse engineered source code from game Fur Fighters.
 # Future goals (when previous goals achieved)
 * Replace all old libraries by new one
 * Make game plays with newest DirectX and OpenGL
+* Make game works on Linux
 
 # Info
 * Code will be C++ with C parts of code
