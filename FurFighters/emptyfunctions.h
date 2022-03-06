@@ -1,6 +1,6 @@
 #pragma once
 
-void emptyFunction0();
+void emptyFunction0(const char text[] = " ");
 void emptyFunction1();
 void emptyFunction2();
 void emptyFunction4();

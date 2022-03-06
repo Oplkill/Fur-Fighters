@@ -5,6 +5,8 @@ int dword_604730; // weak
 int dword_604738; // weak
 int dword_604734; // weak
 
+char textUseless1[16];
+
 //----- (004CF807) --------------------------------------------------------
 int __cdecl sub_4CF807(int* a1)
 {

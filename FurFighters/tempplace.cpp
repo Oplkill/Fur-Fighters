@@ -369,3 +369,13 @@ char* getFormattedString(char* Format, ...)
     vsprintf(getFormattedStringBuffer, Format, va);
     return getFormattedStringBuffer;
 }
+
+//----- (0043FC90) --------------------------------------------------------
+void __noreturn sub_43FC90()
+{
+    sub_523838();
+    sub_52354B();
+    CoUninitialize();
+    ClipCursor(0);
+    exit(0);
+}

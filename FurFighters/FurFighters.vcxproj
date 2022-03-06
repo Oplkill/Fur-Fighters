@@ -145,6 +145,7 @@
     <ClCompile Include="emptyfunctions.cpp" />
     <ClCompile Include="files.cpp" />
     <ClCompile Include="furfighters.exe.c" />
+    <ClCompile Include="globalVariables.cpp" />
     <ClCompile Include="gui.cpp" />
     <ClCompile Include="languages.cpp" />
     <ClCompile Include="main.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="minigame_lander.cpp" />
     <ClCompile Include="minigame_snake.cpp" />
     <ClCompile Include="models.cpp" />
+    <ClCompile Include="multiplayer.cpp" />
     <ClCompile Include="pakdata.cpp" />
     <ClCompile Include="save.cpp" />
     <ClCompile Include="settings.cpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="files.h" />
     <ClInclude Include="furfighters.exe.h" />
     <ClInclude Include="globalVariables.h" />
+    <ClInclude Include="globalVariablesDirty.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="languages.h" />
     <ClInclude Include="maybe.h" />
@@ -181,6 +184,7 @@
     <ClInclude Include="minigame_lander.h" />
     <ClInclude Include="minigame_snake.h" />
     <ClInclude Include="models.h" />
+    <ClInclude Include="multiplayer.h" />
     <ClInclude Include="pakdata.h" />
     <ClInclude Include="save.h" />
     <ClInclude Include="settings.h" />

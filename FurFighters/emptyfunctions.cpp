@@ -1,7 +1,7 @@
 #include "emptyfunctions.h"
 
 //----- (005227D0) --------------------------------------------------------
-void emptyFunction0()
+void emptyFunction0(const char text[])
 {
 	;
 }

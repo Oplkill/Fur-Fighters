@@ -3,7 +3,6 @@
 
 using namespace std;
 
-#include "furfighters.exe.h"
 #include "globalVariables.h"
 #include "models.h"
 

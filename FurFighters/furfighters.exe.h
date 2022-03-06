@@ -400,7 +400,6 @@ _DWORD* __cdecl sub_43F202(unsigned __int16* a1);
 void __cdecl sub_43F62C(int a1, int a2, int a3, float* a4);
 int __cdecl sub_43F831(_DWORD* a1);
 _DWORD* __cdecl sub_43F8BF(int* a1);
-void __noreturn sub_43FC90();
 BOOL sub_43FCB4();
 int sub_43FCCE();
 int __cdecl sub_43FD27(int); // weak
@@ -462,7 +461,6 @@ __int16 sub_448A0E();
 void __cdecl sub_448A71(int a1);
 int __cdecl sub_448A99(int, int); // weak
 double sub_448C00();
-int sub_4494D3();
 int __cdecl sub_449502(int a1, int a2);
 // const char *__cdecl std::_Get_future_error_what(int); idb
 int __cdecl sub_449533(int a1);
@@ -1684,11 +1682,7 @@ void __cdecl sub_519878(int a1, int a2, int a3, float a4);
 int __cdecl sub_519E7C(_DWORD* a1);
 int __cdecl sub_51A225(int a1);
 BOOL __cdecl sub_51A486(int xLeft, int yTop);
-int __cdecl sub_51A4CE(int a1, int a2, int a3);
-int __stdcall sub_51A85B(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
-int sub_51ADB7();
 BOOL __cdecl sub_51ADC9(char* Str1, char* Str2);
-int __cdecl sub_51AE27(char* a1);
 int initLanguage();
 _DWORD* __cdecl sub_51B3E0(int a1, int a2, int a3);
 void __cdecl sub_51B44E(LPVOID* lpMem);
@@ -1742,7 +1736,6 @@ DWORD sub_51E1E0();
 int sub_51E1FA();
 int sub_51E218();
 INT_PTR __cdecl sub_51E270(HINSTANCE hInstance, int a2);
-int __cdecl sub_51E347(HINSTANCE a1);
 int sub_51E443();
 const void* __cdecl sub_51E4A4(LPCSTR lpString, char* String);
 INT_PTR __stdcall DialogFunc(HWND, UINT, WPARAM, LPARAM); // idb
@@ -1765,7 +1758,6 @@ int __cdecl sub_51FDEE(int a1, int a2);
 INT_PTR __stdcall sub_51FF63(HWND, UINT, WPARAM, LPARAM); // idb
 int sub_520111();
 int __cdecl sub_520169(HWND hWnd); // idb
-HRESULT __cdecl sub_52027C(_DWORD* a1);
 LPARAM sub_52046E();
 INT_PTR __stdcall sub_5205B2(HWND, UINT, WPARAM, LPARAM); // idb
 int sub_52071E();
@@ -1809,18 +1801,14 @@ int sub_52354B();
 int sub_523577();
 DWORD sub_52358F();
 DWORD sub_5235C0();
-int __stdcall sub_523623(HINSTANCE a1, int a2, int a3, int a4);
 int sub_5236FF();
 void sub_523808();
-void sub_523838();
 int (*__cdecl sub_5239B8(int (*a1)()))();
 int (*__cdecl sub_5239C5(int (*a1)()))();
-void __cdecl sub_5239D2(); // idb
 unsigned int __cdecl sub_523A8A(BYTE* a1);
 int __cdecl sub_523AB8(const char* a1);
 unsigned int __cdecl sub_523AFF(BYTE* a1);
 int __cdecl sub_523B2D(const char* a1);
-HRESULT __cdecl sub_523C7A(HINSTANCE a1);
 int sub_523CD4();
 int __cdecl sub_523D5C(int a1);
 int __cdecl sub_523DAD(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, int); // idb
@@ -2222,7 +2210,6 @@ int sub_53EF02();
 int sub_53EF49();
 int sub_53EF58();
 int sub_53F213();
-int __cdecl sub_53FA96(const char* a1, int a2);
 int __cdecl sub_53FC00(float* point3D, int a2, int a3, _DWORD* a4, int a5); // idb
 int __cdecl sub_53FCBB(int* point3D, int a2, int a3, int a4, int a5); // idb
 int __cdecl sub_53FDB2(int* a1, int* a2, int* a3, _DWORD* a4, int a5, int a6);

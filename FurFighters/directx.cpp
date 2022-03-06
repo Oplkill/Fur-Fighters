@@ -6,6 +6,8 @@
 #include "debug.h"
 #include "tempplace.h"
 
+int dword_6673E0; // weak
+
 //----- (0052CE31) --------------------------------------------------------
 void __stdcall getDirectXErrorName(int a1, size_t BufferCount, char* Buffer)
 {
@@ -973,3 +975,244 @@ void __stdcall getDirectXErrorName(int a1, size_t BufferCount, char* Buffer)
     text = getFormattedString("DirectX Error:- %s", Buffer);
     fatalError(text);
 }
+
+//----- (0052027C) --------------------------------------------------------
+HRESULT __cdecl sub_52027C(_DWORD* a1)
+{
+    HRESULT result; // eax
+    size_t Size; // [esp+10h] [ebp-8h] BYREF
+    HRESULT v3; // [esp+14h] [ebp-4h]
+
+    if (!a1)
+        return -2147467259;
+    if (ppv)
+    {
+        (*(void(__stdcall**)(LPVOID))(*(_DWORD*)ppv + 8))(ppv);
+        ppv = 0;
+    }
+    v3 = CoCreateInstance(&rclsid, 0, 1u, &riid, &ppv);
+    if (v3 >= 0)
+    {
+        v3 = (*(int(__stdcall**)(LPVOID, _DWORD, _DWORD, size_t*))(*(_DWORD*)ppv + 32))(ppv, 0, 0, &Size);
+        if (v3 >= 0 || v3 == -2005467106)
+        {
+            if (dword_5BAE84)
+            {
+                sub_585E40((LPVOID)dword_5BAE84);
+                dword_5BAE84 = 0;
+            }
+            dword_5BAE84 = (int)operator new(Size);
+            v3 = (*(int(__stdcall**)(LPVOID, _DWORD, int, size_t*))(*(_DWORD*)ppv + 32))(ppv, 0, dword_5BAE84, &Size);
+            if (v3 >= 0)
+            {
+                *a1 = 1;
+                v3 = sub_52046E();
+                if (v3 >= 0)
+                {
+                    result = 0;
+                }
+                else
+                {
+                    if (dword_5BAE84)
+                    {
+                        sub_585E40((LPVOID)dword_5BAE84);
+                        dword_5BAE84 = 0;
+                    }
+                    if (ppv)
+                    {
+                        (*(void(__stdcall**)(LPVOID))(*(_DWORD*)ppv + 8))(ppv);
+                        ppv = 0;
+                    }
+                    result = v3;
+                }
+            }
+            else
+            {
+                result = v3;
+            }
+        }
+        else if (v3 == -2005466066)
+        {
+            *a1 = 0;
+            if (dword_5BAE84)
+            {
+                sub_585E40((LPVOID)dword_5BAE84);
+                dword_5BAE84 = 0;
+            }
+            if (ppv)
+            {
+                (*(void(__stdcall**)(LPVOID))(*(_DWORD*)ppv + 8))(ppv);
+                ppv = 0;
+            }
+            result = 0;
+        }
+        else
+        {
+            result = v3;
+        }
+    }
+    else
+    {
+        if (v3 == -2147467262)
+            MessageBoxA(0, aThisApplicatio, aFurFight_5, 0x10u);
+        result = v3;
+    }
+    return result;
+}
+// 5BAE84: using guessed type int dword_5BAE84;
+
+//----- (00523C7A) --------------------------------------------------------
+HRESULT __cdecl sub_523C7A(HINSTANCE a1)
+{
+    HRESULT result; // eax
+    HRESULT v2; // [esp+8h] [ebp-Ch]
+    int v3[2]; // [esp+Ch] [ebp-8h] BYREF
+
+    v2 = sub_52027C(v3);
+    if (v2 >= 0)
+    {
+        if (!v3[0])
+        {
+            v3[1] = 0;
+            sub_51E347(a1);
+        }
+        result = 0;
+    }
+    else if (v2 == -2005466856)
+    {
+        result = 0;
+    }
+    else
+    {
+        result = v2;
+    }
+    return result;
+}
+
+//----- (0051A4CE) --------------------------------------------------------
+int __cdecl sub_51A4CE(int a1, int a2, int a3)
+{
+    int result; // eax
+    int v4; // [esp+0h] [ebp-118h]
+    int v5; // [esp+0h] [ebp-118h]
+    int v6; // [esp+0h] [ebp-118h]
+    int v7; // [esp+0h] [ebp-118h]
+    char Buffer[16]; // [esp+4h] [ebp-114h] BYREF
+    char v9[256]; // [esp+14h] [ebp-104h] BYREF
+    char v10[4]; // [esp+114h] [ebp-4h]
+
+    *(_DWORD*)v10 = a3;
+    *(_DWORD*)&g_IsDebug = 1;
+    _strtime(Buffer);
+    writeDebug("HandleActivateApp(): Started at %s", Buffer);
+    writeDebug("HandleActivateApp(): active = %d", *(_DWORD*)v10);
+    if (lpDD && dword_610070 && dword_610074)
+    {
+        if (!*(_DWORD*)v10 || dword_5B91A4)
+        {
+            if (*(_DWORD*)v10 || !dword_5B91A4)
+            {
+                if (*(_DWORD*)v10 && dword_5B91A4)
+                {
+                    writeDebug(aHandleactivate_17);
+                }
+                else if (!*(_DWORD*)v10 && !dword_5B91A4)
+                {
+                    writeDebug(aHandleactivate_18);
+                }
+            }
+            else
+            {
+                dword_5B91A4 = 0;
+                writeDebug(aHandleactivate_10);
+                writeDebug(aHandleactivate_11);
+                dword_6673E0 = a3;
+                if (!dword_60FE2C)
+                {
+                    writeDebug(aHandleactivate_12);
+                    v6 = (*(int(__thiscall**)(LPVOID, LPVOID))(*(_DWORD*)lpDD + 76))(lpDD, lpDD);
+                    if (v6)
+                    {
+                        getDirectXErrorName(v6, 0x100u, v9);
+                        writeDebug("HandleActivateApp(): IDirectDraw7_RestoreDisplayMode() failed with error %s", v9);
+                    }
+                }
+                writeDebug(aHandleactivate_14);
+                v7 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 10);
+                if (v7)
+                {
+                    getDirectXErrorName(v7, 0x100u, v9);
+                    writeDebug("HandleActivateApp(): IDirectDraw7_SetCooperativeLevel() failed with error %s", v9);
+                }
+                writeDebug(aHandleactivate_16);
+                maybe_stopSounds();
+                sub_5836F8();
+                startSoundTimer();
+                sub_582FAA();
+                sub_5830FF();
+                if (!dword_60FE2C)
+                    ShowWindow(dword_60FE48, 6);
+            }
+        }
+        else
+        {
+            dword_5B91A4 = 1;
+            writeDebug(aHandleactivate_2);
+            writeDebug(aHandleactivate_3);
+            writeDebug(aHandleactivate_4);
+            if (dword_60FE2C)
+            {
+                v4 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 8);
+                if (v4)
+                {
+                    getDirectXErrorName(v4, 0x100u, v9);
+                    writeDebug("HandleActivateApp(): IDirectDraw7_SetCooperativeLevel() failed with error %s", v9);
+                }
+            }
+            else
+            {
+                v5 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 2071);
+                if (v5)
+                {
+                    getDirectXErrorName(v5, 0x100u, v9);
+                    writeDebug("HandleActivateApp(): IDirectDraw7_SetCooperativeLevel() failed with error %s", v9);
+                }
+            }
+            writeDebug(aHandleactivate_7);
+            sub_577C00();
+            sub_543461();
+            writeDebug(aHandleactivate_8);
+            writeDebug(aHandleactivate_9);
+            sub_583213();
+            sub_58306B();
+            stopSoundTimer();
+            sub_583776();
+            dword_6673E0 = a3;
+        }
+        _strtime(Buffer);
+        writeDebug("HandleActivateApp(): Finished at %s", Buffer);
+        result = 0;
+    }
+    else
+    {
+        writeDebug(aHandleactivate_1);
+        dword_6673E0 = a3;
+        result = 0;
+    }
+    return result;
+}
+// 543461: using guessed type int sub_543461(void);
+// 577C00: using guessed type int sub_577C00(void);
+// 57FCA6: using guessed type int sub_57FCA6(void);
+// 582D0C: using guessed type int sub_582D0C(void);
+// 582D65: using guessed type int sub_582D65(void);
+// 582FAA: using guessed type int sub_582FAA(void);
+// 58306B: using guessed type int sub_58306B(void);
+// 5830FF: using guessed type int sub_5830FF(void);
+// 583213: using guessed type int sub_583213(void);
+// 5836F8: using guessed type int sub_5836F8(void);
+// 583776: using guessed type int sub_583776(void);
+// 5B91A4: using guessed type int dword_5B91A4;
+// 60FE2C: using guessed type int dword_60FE2C;
+// 610070: using guessed type int dword_610070;
+// 6673E0: using guessed type int dword_6673E0;

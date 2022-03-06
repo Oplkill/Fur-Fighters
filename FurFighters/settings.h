@@ -1,6 +1,7 @@
 #pragma once
 
 #include "defs.h"
+#include <Windows.h>
 
 extern int g_NumLoadedLineSettingsInFile; // weak
 extern int g_SettingsVariableTypes[3061]; // idb
@@ -47,6 +48,8 @@ int loadBearSettings();
 int loadCrocodyleSettings();
 int loadPeacockSettings();
 int loadWeaponSettings();
+int __cdecl sub_53FA96(const char* a1, int a2);
+int __stdcall sub_51A85B(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 
 namespace settings
 {

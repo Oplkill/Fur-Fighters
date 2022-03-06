@@ -683,3 +683,86 @@ int loadWeaponSettings()
 // 5CDC3C: using guessed type int dword_5CDC3C;
 // 5CDC40: using guessed type int dword_5CDC40;
 // 5CDC44: using guessed type int dword_5CDC44;
+
+//----- (0053FA96) --------------------------------------------------------
+int __cdecl sub_53FA96(const char* a1, int a2)
+{
+    float v3; // [esp+0h] [ebp-20h]
+    int i; // [esp+1Ch] [ebp-4h]
+
+    for (i = 0; ; ++i)
+    {
+        if (i >= g_NumLoadedLineSettingsInFile)
+            return 0;
+        if (!strcmp(a1, (const char*)&unk_668C00 + 48 * i))
+            break;
+    }
+    g_SettingsValuesStorage[12 * i] = a2;
+    if (g_SettingsVariableInIntCasts[12 * i])
+    {
+        switch (g_SettingsVariableTypes[12 * i])
+        {
+        case settings::tInt:
+            *(_BYTE*)g_SettingsVariableInIntCasts[12 * i] = a2;
+            break;
+        case settings::tWord:
+            *(_WORD*)g_SettingsVariableInIntCasts[12 * i] = a2;
+            break;
+        case settings::tDWrord:
+            *(_DWORD*)g_SettingsVariableInIntCasts[12 * i] = a2;
+            break;
+        case settings::tFloat1:
+            v3 = (float)a2;
+            *(float*)g_SettingsVariableInIntCasts[12 * i] = v3 * 0.0099999998;
+            break;
+        case settings::tFloat2:
+            *(float*)g_SettingsVariableInIntCasts[12 * i] = (float)a2;
+            break;
+        default:
+            return 1;
+        }
+    }
+    return 1;
+}
+// 6673A0: using guessed type int g_NumLoadedLineSettingsInFile;
+// 668C20: using guessed type int g_SettingsValuesStorage[];
+// 668C28: using guessed type int g_SettingsVariableInIntCasts[];
+
+//----- (0051A85B) --------------------------------------------------------
+int __stdcall sub_51A85B(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
+{
+    int result; // eax
+
+    switch (Msg)
+    {
+    case 1u:
+    case 6u:
+        goto LABEL_9;
+    case 3u:
+        ClipCursor(0);
+        if (dword_6673E0)
+            sub_51A486((__int16)lParam, SHIWORD(lParam));
+        goto LABEL_9;
+    case 7u:
+        writeDebug(aFocusDoctorWho);
+        dword_5AC9F8 = 1;
+        ClipCursor(&Point);
+        return DefWindowProcA(hWnd, Msg, wParam, lParam);
+    case 8u:
+        writeDebug(aFocusDavrossed);
+        dword_5AC9F8 = 0;
+        ClipCursor(0);
+        return DefWindowProcA(hWnd, Msg, wParam, lParam);
+    case 0x1Cu:
+        sub_51A4CE((int)hWnd, Msg, wParam);
+    LABEL_9:
+        result = 0;
+        break;
+    default:
+        result = DefWindowProcA(hWnd, Msg, wParam, lParam);
+        break;
+    }
+    return result;
+}
+// 5AC9F8: using guessed type int dword_5AC9F8;
+// 6673E0: using guessed type int dword_6673E0;

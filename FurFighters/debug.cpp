@@ -5,6 +5,8 @@
 
 CHAR aFatalError[] = "Fatal Error"; // idb
 
+_BYTE g_IsDebug;
+
 //----- (00564760) --------------------------------------------------------
 void __cdecl initDebug(int a1)
 {
