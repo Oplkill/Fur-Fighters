@@ -7,10 +7,13 @@ int __cdecl loadLanguageString(int a1);
 
 namespace language
 {
+	//Enum for loadLanguageString(int) function.
+	//Those numbers must be same as they storing in "english.lng"
 	enum languageStrings
 	{
-		Mono,
+		Mono = 1,
 		Stereo,
+		Port,
 		Player1,
 		Player2,
 		Player3,
@@ -37,7 +40,7 @@ namespace language
 		Back,
 		Cancel,
 		J_select,
-		Select_game_file,
+		Select_game_file,//30
 		Sound_configuration,
 		Visual_options,
 		Sound_options,
@@ -67,7 +70,7 @@ namespace language
 		Jump,
 		Shoot,
 		Look_up,
-		Look_down,
+		Look_down,//60
 		_Shoot,
 		J_jump,
 		Move_rotate,
@@ -97,7 +100,7 @@ namespace language
 		Time_limit,
 		Game_configuration,
 		CHEAT_MENU,
-		Big_head_mode,
+		Big_head_mode,//90
 		Scrawners,
 		Invulnerability,
 		Rotate_cam,
@@ -127,7 +130,7 @@ namespace language
 		Cheat_28,
 		Cheat_29,
 		Cheat_30,
-		Cheat_31,
+		Cheat_31, //120
 		Cheat_32,
 		Cheat_menu,
 		Token,
@@ -148,6 +151,7 @@ namespace language
 		OPTIONS,
 		Exit_game,
 		DISPLAY,
+		PAUSE_MENU,
 		DISPLAY_OPTIONS,
 		CONFIRM_QUIT,
 		DEBUG_MENU,
@@ -156,7 +160,7 @@ namespace language
 		Test_fluffed,
 		YOU_FLUFFED_IT,
 		OUT_OF_TIME,
-		VIBRATION_OFF,
+		VIBRATION_OFF, //150
 		VIBRATION_ON,
 		SAVING_TO_VM,
 		DO_NOT_REMOVE,
@@ -186,7 +190,7 @@ namespace language
 		Your_VM_file_damaged,
 		Incorrect_save_version_number,
 		Press_J_to_continue,
-		Quit,
+		Quit, //180
 		Abandon_saving,
 		NONE,
 		BULLETS,
@@ -196,7 +200,7 @@ namespace language
 		ENERGY,
 		SMART,
 		THERMAL,
-		You_fluffed_it,
+		You_fluffed_it = 191, //191
 		THRUST,
 		SPEED,
 		ENERGY,
@@ -215,7 +219,7 @@ namespace language
 		NOT_ENOUGHT_FREE_BLOCKS,
 		CONTROLLER_HAS_BEEN_REMOVED,
 		INVALID_CONTROLLER_IN_PORT,
-		GAME_PAUSED,
+		GAME_PAUSED_2, //210
 		GAME_PAUSED_BY_PLAYER,
 		CONFIRM_ABORT,
 		You_have_chosen_to_play_without_saves,
@@ -236,6 +240,7 @@ namespace language
 		GOLDEN_TOKENS,
 		BABIES,
 		PRESS_J_TO_CONTINUE,
+		PRESS_J_TO_CONTINUE_2,
 		Enter_initials,
 		ENTERING,
 		ITS_DRAW,
@@ -244,15 +249,15 @@ namespace language
 		_d_FLUFFS,
 		INSERT_VALID_CONTROLLER,
 		No_controller,
-		Invalid_controller,
+		Invalid_controller, //240
 		Restart_hub,
 		DRAW,
 		PRESS_ENTER_BUTTON,
 		Save_coplete,
 		INSERT_VALID_CONTROLLER_INTO_PORT,
 		PLAYER,
-		ROLLING_DEMO_PRESS_ENTER, //maybe 222
-		DEMO_PLAY, //maybe 223
+		ROLLING_DEMO_PRESS_ENTER,
+		DEMO_PLAY,
 		Level_select_2,
 		Check_point,
 		End_of_demo,
@@ -262,6 +267,7 @@ namespace language
 		Babies_to_enter,
 		Tokens_to_enter,
 		Cheat_discovered,
+		Fluffs_
 		FLUFFS,
 		YOU_FLUFFED,
 		You_got_fluffed_press_J,
@@ -273,7 +279,7 @@ namespace language
 		Ammo,
 		Health,
 		TIME_ATTACK,
-		You_got_all_tokens,
+		You_got_all_tokens, //270
 		ITEMS,
 		KEY,
 		KEY_2,
@@ -303,7 +309,7 @@ namespace language
 		TIME,
 		ATTACK,
 		Gold_3,
-		Silver,
+		Silver, //300
 		Bronze,
 		TOTAL_TIME_IN_GAME,
 		TOTAL_TIME,
@@ -320,7 +326,7 @@ namespace language
 		One_hour,
 		Game_will_play_indefinitely,
 		Unlimited,
-		Bear_disguise,
+		Bear_disguise = 335, //335
 		Meerkat_multiple,
 		Beetle_shield,
 		RETURN_TO_HUB,
@@ -335,7 +341,7 @@ namespace language
 		Enter_IP,
 		Search,
 		Allow_join,
-		First_person_2,
+		First_person_2, //250
 		Start_game,
 		Cancel_2,
 		Level,
@@ -360,11 +366,12 @@ namespace language
 		CYCLE_WEAPON_DOWN,
 		E_CNT_ADJ3,
 		E_CNT_ADJ4,
+		E_CNT_ROTX,
 		E_CNT_ROTY,
 		SCORES,
 		CHAT,
 		NO_CONTROLS,
-		Restore_defaults,
+		Restore_defaults, //380
 		Mouse_sensitivity,
 		Invert_mouse,
 		Crosshair,
@@ -381,6 +388,10 @@ namespace language
 		INTERPROGATTING_NETWORK,
 		NO_GAMES_FOUND,
 		Select_game_to_join,
+		Chat_room,
+		Search_menu,
+		Enter_your_name,
+		Start_network_game, //400
 		Enter_game_name,
 		Continue,
 		Enter_name,
@@ -404,6 +415,6 @@ namespace language
 		Waiting_for_players,
 		No_sound_providers_found,
 		Dynamic_lighting,
-		Enter_save_slot_name
-	}; //last one should be ~424
+		Enter_save_slot_name //424
+	};
 }
