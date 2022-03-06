@@ -1212,3 +1212,61 @@ int __cdecl sub_582375(int a1)
 // 59440C: using guessed type int __stdcall AIL_set_3D_speaker_type(_DWORD, _DWORD);
 // 607104: using guessed type char byte_607104;
 // 6ADA44: using guessed type int sound3DProvider;
+
+//----- (00580D10) --------------------------------------------------------
+int sub_580D10()
+{
+    int result; // eax
+
+    if (readSoundSettings_isSoundsDisabled())
+        return 0;
+    AIL_set_redist_directory(aRedist);
+    if (AIL_quick_startup(1, 0, 22050, 16, 2))
+    {
+        AIL_quick_handles(&dword_6ADA20, 0, 0);
+        initSoundTimer();
+        if (loadAudioDevices())
+        {
+            isEAXSoundProviderLoaded = sub_5822AE();
+            if (CanOpenSoundProvider() || sub_581F00())
+            {
+                result = 1;
+            }
+            else
+            {
+                writeDebug(aFailedToSelect);
+                isSoundDisabled = 1;
+                isMusicDisabled = 1;
+                result = 0;
+            }
+        }
+        else
+        {
+            isSoundDisabled = 1;
+            isMusicDisabled = 1;
+            result = 0;
+        }
+    }
+    else
+    {
+        debugFunc1((unsigned __int8)byte_607104, aAwPoopsMilesSt);
+        isSoundDisabled = 1;
+        isMusicDisabled = 1;
+        result = 0;
+    }
+    return result;
+}
+// 581A39: using guessed type int sub_581A39(void);
+// 581F00: using guessed type int sub_581F00(void);
+// 581FB9: using guessed type int sub_581FB9(void);
+// 5822AE: using guessed type int sub_5822AE(void);
+// 582BE1: using guessed type int sub_582BE1(void);
+// 583B2A: using guessed type int sub_583B2A(_DWORD, const char *, ...);
+// 59435C: using guessed type int __stdcall AIL_quick_handles(_DWORD, _DWORD, _DWORD);
+// 594360: using guessed type int __stdcall AIL_quick_startup(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
+// 5943E4: using guessed type int __stdcall AIL_set_redist_directory(_DWORD);
+// 607104: using guessed type char byte_607104;
+// 6ADA20: using guessed type int dword_6ADA20;
+// 6AE818: using guessed type char byte_6AE818;
+// 6AE834: using guessed type int dword_6AE834;
+// 6AE838: using guessed type int dword_6AE838;

@@ -191,3 +191,24 @@ void emptyFunction17()
 {
     ;
 }
+
+//----- (0058216D) --------------------------------------------------------
+int sub_58216D()
+{
+    if (strcmp((const char*)sound3DProviderName, aMilesFast2dPos_1)
+        && strcmp((const char*)sound3DProviderName, aRadGameToolsRs_2)
+        && strcmp((const char*)sound3DProviderName, aDirectsound3dH_2)
+        && strcmp((const char*)sound3DProviderName, aDirectsound3dS_3))
+    {
+        if (!strcmp((const char*)sound3DProviderName, aCreativeLabsEa_4))
+        {
+            debugFunc1();
+            return 1;
+        }
+        strcmp((const char*)sound3DProviderName, aAurealA3dInter_0);
+    }
+    debugFunc1();
+    return 0;
+}
+// 607104: using guessed type char byte_607104;
+// 6ADA48: using guessed type int dword_6ADA48;

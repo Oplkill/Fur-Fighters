@@ -6,6 +6,14 @@
 #include "debug.h"
 #include "tempplace.h"
 
+CHAR aNoDevicesAndOr[] = "No devices and/or modes were enumerated!"; // idb
+CHAR aNoEnumeratedDe[] = "No enumerated devices were accepted!"; // idb
+CHAR aCanTCreateDdra[] = "Can't create DDraw during enumeration!"; // idb
+CHAR aCanTQueryIdire[] = "Can't query IDirect3D7 during enumeration!"; // idb
+char aEnummingTextur[] = "Enumming Textures"; // idb
+char aBeginsceneIdir[] = "BeginScene(): IDirect3DDevice7_BeginScene failed with error DDERR_SURFACELOST !"; // idb
+char aEndsceneIdirec[] = "EndScene(): IDirect3DDevice7_EndScene failed with error DDERR_SURFACELOST !"; // idb
+
 int dword_6673E0; // weak
 
 //----- (0052CE31) --------------------------------------------------------
@@ -1216,3 +1224,367 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
 // 60FE2C: using guessed type int dword_60FE2C;
 // 610070: using guessed type int dword_610070;
 // 6673E0: using guessed type int dword_6673E0;
+
+//----- (00568E33) --------------------------------------------------------
+int __cdecl sub_568E33(int a1)
+{
+    void* v2; // ecx
+    int v4; // [esp+0h] [ebp-4h]
+    int v5; // [esp+0h] [ebp-4h]
+    int v6; // [esp+0h] [ebp-4h]
+
+    v4 = sub_57808E(a1);
+    if (v4 < 0)
+        throwDirectXError(v4);
+    v5 = sub_5786C9(a1);
+    if (v5 < 0)
+        throwDirectXError(v5);
+    v6 = startupDX3D();
+    if (v6)
+        throwDirectXError(v6);
+    writeDebug(aEnummingTextur);
+    sub_57D760(0);
+    dword_60FE70 = 0;
+    dword_6103CC = -1;
+    dword_6103C8 = 0;
+    if (*(_DWORD*)dword_610478 == 16)
+        dword_610434 = 1148846080;
+    else
+        dword_610434 = 1159479296;
+    dword_610430 = 1045220557;
+    *(float*)&dword_610438 = *(float*)&dword_610434 / (*(float*)&dword_610434 - 0.2);
+    dword_6103CC = -1;
+    dword_6103D0 = -1;
+    dword_6103D4 = -1;
+    dword_6103D8 = -1;
+    dword_6103DC = -1;
+    dword_6103E0 = -1;
+    dword_6103E8 = -1;
+    dword_6103EC = -1;
+    dword_6103F0 = -1;
+    dword_6103F4 = -1;
+    dword_6103F8 = -1;
+    return sub_57CEC9(v2);
+}
+// 568F81: variable 'v2' is possibly undefined
+// 57808E: using guessed type _DWORD __cdecl sub_57808E(_DWORD);
+// 5786C9: using guessed type int __cdecl sub_5786C9(_DWORD);
+// 57D760: using guessed type int __cdecl sub_57D760(_DWORD);
+// 60FE70: using guessed type int dword_60FE70;
+// 6103C8: using guessed type int dword_6103C8;
+// 6103CC: using guessed type int dword_6103CC;
+// 6103D0: using guessed type int dword_6103D0;
+// 6103D4: using guessed type int dword_6103D4;
+// 6103D8: using guessed type int dword_6103D8;
+// 6103DC: using guessed type int dword_6103DC;
+// 6103E0: using guessed type int dword_6103E0;
+// 6103E8: using guessed type int dword_6103E8;
+// 6103EC: using guessed type int dword_6103EC;
+// 6103F0: using guessed type int dword_6103F0;
+// 6103F4: using guessed type int dword_6103F4;
+// 6103F8: using guessed type int dword_6103F8;
+// 610430: using guessed type int dword_610430;
+// 610434: using guessed type int dword_610434;
+// 610438: using guessed type int dword_610438;
+
+//----- (0056905F) --------------------------------------------------------
+int sub_56905F()
+{
+    int result; // eax
+    char Buffer[256]; // [esp+4h] [ebp-100h] BYREF
+
+    result = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_610074 + 20))(dword_610074, dword_610074);
+    if (result)
+    {
+        if (result == -2005532222)
+        {
+            result = writeDebug(aBeginsceneIdir);
+        }
+        else
+        {
+            getDirectXErrorName(result, 0x100u, Buffer);
+            result = writeDebug("BeginScene(): IDirect3DDevice7_BeginScene failed with error %s !", Buffer);
+        }
+    }
+    return result;
+}
+
+//----- (005690D3) --------------------------------------------------------
+int sub_5690D3()
+{
+    int result; // eax
+    char Buffer[256]; // [esp+4h] [ebp-100h] BYREF
+
+    result = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_610074 + 24))(dword_610074, dword_610074);
+    if (result)
+    {
+        if (result == -2005532222)
+        {
+            result = writeDebug(aEndsceneIdirec);
+        }
+        else
+        {
+            getDirectXErrorName(result, 0x100u, Buffer);
+            result = writeDebug("EndScene(): IDirect3DDevice7_EndScene failed with error %s !", Buffer);
+        }
+    }
+    return result;
+}
+
+//----- (005752F3) --------------------------------------------------------
+int __cdecl sub_5752F3(int a1, int a2)
+{
+    int result; // eax
+    int v3; // [esp+14h] [ebp-48h]
+    int v4; // [esp+18h] [ebp-44h]
+    char v5[20]; // [esp+1Ch] [ebp-40h] BYREF
+    int v6[11]; // [esp+30h] [ebp-2Ch] BYREF
+
+    word_668736 = 2;
+    word_668738 = 2;
+    word_66873A = 2;
+    word_66873C = 2;
+    word_66875E = 0;
+    DirectInputCreateEx(a1, 1792, &unk_5973D0, &dword_622334, 0);
+    (*(void(__stdcall**)(int, int*, void*, int*, _DWORD))(*(_DWORD*)dword_622334 + 36))(
+        dword_622334,
+        &dword_597360,
+        &unk_5973C0,
+        &dword_622044,
+        0);
+    (*(void(__stdcall**)(int, void*))(*(_DWORD*)dword_622044 + 44))(dword_622044, &unk_597C90);
+    (*(void(__thiscall**)(int, int, int, int))(*(_DWORD*)dword_622044 + 52))(dword_622044, dword_622044, a2, 21);
+    v6[0] = 44;
+    (*(void(__thiscall**)(int, int, int*))(*(_DWORD*)dword_622044 + 12))(dword_622044, dword_622044, v6);
+    v3 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_622044 + 28))(dword_622044, dword_622044);
+    if (v3 != 1 && v3)
+    {
+        dword_622330 = 0;
+        writeDebug(aErrorInAcquiri);
+        if (v3 == -2147024891)
+            writeDebug(aOtherAppHasPri);
+        if (v3 == -2147024875)
+            writeDebug(aNotInitialised);
+        if (v3 == -2147024809)
+            writeDebug(aNoSelectedData);
+    }
+    else
+    {
+        dword_622330 = 1;
+    }
+    memset(&dword_622340, 0, 0x100u);
+    if ((*(int(__thiscall**)(int, int, void*, void*, int*, _DWORD))(*(_DWORD*)dword_622334 + 36))(
+        dword_622334,
+        dword_622334,
+        &unk_597370,
+        &unk_5973C0,
+        &dword_62232C,
+        0))
+    {
+        fatalError(aMouseCreationE);
+    }
+    if ((*(int(__thiscall**)(int, int, void*))(*(_DWORD*)dword_62232C + 44))(dword_62232C, dword_62232C, &unk_597C78))
+        fatalError(aMouseDataForma);
+    if ((*(int(__stdcall**)(int, int, int))(*(_DWORD*)dword_62232C + 52))(dword_62232C, a2, 21))
+        fatalError(aMouseCoOpError);
+    dword_622338 = (int)CreateEventA(0, 0, 0, 0);
+    (*(void(__thiscall**)(int, int, void(__stdcall*)(DWORD, DWORD, DWORD, DWORD, ULONG_PTR)))(*(_DWORD*)dword_62232C
+        + 48))(
+            dword_62232C,
+            dword_62232C,
+            mouse_event);
+    (*(void(__thiscall**)(int, int, int, char*))(*(_DWORD*)dword_62232C + 24))(dword_62232C, dword_62232C, 1, v5);
+    v4 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_62232C + 28))(dword_62232C, dword_62232C);
+    if (v3 != 1 && v3)
+    {
+        dword_622040 = 0;
+        writeDebug(aErrorInAcquiri_0);
+        if (v3 == -2147024891)
+            writeDebug(aOtherAppHasPri_0);
+        if (v3 == -2147024875)
+            writeDebug(aNotInitialised_0);
+        if (v3 == -2147024809)
+            writeDebug(aNoSelectedData_0);
+    }
+    else
+    {
+        dword_622040 = 1;
+    }
+    if (v4)
+        writeDebug("Mouse Acquire Value NOT Ok - %d", v4);
+    _cfltcvt_init_4();
+    result = sub_44D136();
+    word_668762 = 0;
+    return result;
+}
+// 575594: conditional instruction was optimized away because of '%var_48.4>=2u'
+// 575417: conditional instruction was optimized away because of '%var_48.4>=2u'
+// 44D136: using guessed type int sub_44D136(void);
+// 5750F0: using guessed type int _cfltcvt_init_4(void);
+// 593050: using guessed type int __stdcall DirectInputCreateEx(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
+// 597360: using guessed type int dword_597360;
+// 622040: using guessed type int dword_622040;
+// 622044: using guessed type int dword_622044;
+// 62232C: using guessed type int dword_62232C;
+// 622330: using guessed type int dword_622330;
+// 622334: using guessed type int dword_622334;
+// 622338: using guessed type int dword_622338;
+// 622340: using guessed type int dword_622340;
+// 668736: using guessed type __int16 word_668736;
+// 668738: using guessed type __int16 word_668738;
+// 66873A: using guessed type __int16 word_66873A;
+// 66873C: using guessed type __int16 word_66873C;
+// 66875E: using guessed type __int16 word_66875E;
+// 668762: using guessed type __int16 word_668762;
+
+//----- (00577C00) --------------------------------------------------------
+int sub_577C00()
+{
+    int v1; // [esp+0h] [ebp-104h]
+    int v2; // [esp+0h] [ebp-104h]
+    int v3; // [esp+0h] [ebp-104h]
+    int v4; // [esp+0h] [ebp-104h]
+    char Buffer[256]; // [esp+4h] [ebp-100h] BYREF
+
+    if (!lpDD || !dword_610070 || !dword_610074 || !dword_60FE64 || !dword_60FE6C)
+    {
+        writeDebug(aRestoresurface);
+        return 0;
+    }
+    if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 96))(dword_60FE64, dword_60FE64) != -2005532222
+        && (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE6C + 96))(dword_60FE6C, dword_60FE6C) != -2005532222
+        && (!dword_60FE2C
+            || (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 96))(dword_60FE68, dword_60FE68) != -2005532222))
+    {
+        return 0;
+    }
+    writeDebug(aRestoresurface_0);
+    if (!dword_60FE2C)
+    {
+        v1 = (*(int(__thiscall**)(LPVOID, LPVOID, int, int, int, _DWORD, _DWORD))(*(_DWORD*)lpDD + 84))(
+            lpDD,
+            lpDD,
+            nWidth,
+            nHeight,
+            dword_60FE28,
+            0,
+            0);
+        if (v1)
+        {
+            getDirectXErrorName(v1, 0x100u, Buffer);
+            writeDebug("RestoreSurfaces(): IDirectDraw7_SetDisplayMode() failed with error %s", Buffer);
+            return v1;
+        }
+        ShowWindow(dword_60FE48, 3);
+        UpdateWindow(dword_60FE48);
+        SetFocus(dword_60FE48);
+    }
+    if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 96))(dword_60FE64, dword_60FE64) == -2005532222)
+    {
+        writeDebug(aRestoresurface_2);
+        v2 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 108))(dword_60FE64, dword_60FE64);
+        if (v2)
+        {
+            getDirectXErrorName(v2, 0x100u, Buffer);
+            writeDebug("RestoreSurfaces(): front buffer IDirectDrawSurface7_Restore() failed with error %s", Buffer);
+            return v2;
+        }
+    }
+    if (dword_60FE2C)
+    {
+        if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 96))(dword_60FE68, dword_60FE68) == -2005532222)
+        {
+            writeDebug(aRestoresurface_4);
+            v3 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 108))(dword_60FE68, dword_60FE68);
+            if (v3)
+            {
+                getDirectXErrorName(v3, 0x100u, Buffer);
+                writeDebug("RestoreSurfaces(): back buffer IDirectDrawSurface7_Restore() failed with error %s", Buffer);
+                return v3;
+            }
+        }
+    }
+    if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE6C + 96))(dword_60FE6C, dword_60FE6C) != -2005532222)
+        return 0;
+    writeDebug(aRestoresurface_6);
+    v4 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE6C + 108))(dword_60FE6C, dword_60FE6C);
+    if (!v4)
+        return 0;
+    getDirectXErrorName(v4, 0x100u, Buffer);
+    writeDebug("RestoreSurfaces(): z buffer IDirectDrawSurface7_Restore() failed with error %s", Buffer);
+    return v4;
+}
+// 60FE28: using guessed type int dword_60FE28;
+// 60FE2C: using guessed type int dword_60FE2C;
+// 60FE64: using guessed type int dword_60FE64;
+// 60FE68: using guessed type int dword_60FE68;
+// 60FE6C: using guessed type int dword_60FE6C;
+// 610070: using guessed type int dword_610070;
+
+//----- (00578B98) --------------------------------------------------------
+int __cdecl sub_578B98(int a1)
+{
+    dword_5C606C = (int(__cdecl*)(_DWORD, _DWORD))a1;
+    dword_610448 = (int)&unk_5B1DA8;
+    dword_61044C = 0;
+    DirectDrawEnumerateExA(Callback, 0, 7u);
+    if (!numVideoDevicesOrModes)
+        fatalError(aNoDevicesAndOr);
+    if (!numVideoDevices)
+        fatalError(aNoEnumeratedDe);
+    return 0;
+}
+// 5C6064: using guessed type int dword_5C6064;
+// 5C6068: using guessed type int dword_5C6068;
+// 5C606C: using guessed type int (__cdecl *dword_5C606C)(_DWORD, _DWORD);
+// 610448: using guessed type int dword_610448;
+// 61044C: using guessed type int dword_61044C;
+
+//----- (00578C10) --------------------------------------------------------
+BOOL __stdcall Callback(GUID* lpGuid, LPSTR a2, LPSTR a3, LPVOID a4, HMONITOR a5)
+{
+    int v6; // [esp+8h] [ebp-4DCh] BYREF
+    _DWORD String1[309]; // [esp+Ch] [ebp-4D8h] BYREF
+    LPVOID lpDD; // [esp+4E0h] [ebp-4h] BYREF
+
+    if (DirectDrawCreateEx(lpGuid, &lpDD, &iid, 0) < 0)
+        fatalError(aCanTCreateDdra);
+    if ((**(int(__thiscall***)(LPVOID, LPVOID, void*, int*))lpDD)(lpDD, lpDD, &unk_5972C8, &v6) < 0)
+    {
+        (*(void(__thiscall**)(LPVOID, LPVOID))(*(_DWORD*)lpDD + 8))(lpDD, lpDD);
+        fatalError(aCanTQueryIdire);
+    }
+    memset(String1, 0, sizeof(String1));
+    lstrcpynA((LPSTR)String1, a2, 39);
+    String1[72] = 380;
+    String1[167] = 380;
+    (*(void(__thiscall**)(LPVOID, LPVOID, _DWORD*, _DWORD*))(*(_DWORD*)lpDD + 44))(
+        lpDD,
+        lpDD,
+        &String1[72],
+        &String1[167]);
+    if (lpGuid)
+    {
+        *(GUID*)&String1[299] = *lpGuid;
+        String1[71] = &String1[299];
+    }
+    if ((String1[74] & 0x80000) != 0 && !String1[71])
+        String1[306] = 1;
+    (*(void(__thiscall**)(LPVOID, LPVOID, _DWORD, _DWORD, _DWORD*, int(__stdcall*)(int, int)))(*(_DWORD*)lpDD + 32))(
+        lpDD,
+        lpDD,
+        0,
+        0,
+        String1,
+        sub_578DB1);
+    qsort((void*)String1[303], String1[304], 0x7Cu, CompareFunction);
+    (*(void(__thiscall**)(int, int, int(__stdcall*)(int, LPCSTR, int, int), _DWORD*))(*(_DWORD*)v6 + 12))(
+        v6,
+        v6,
+        sub_578EFF,
+        String1);
+    (*(void(__thiscall**)(int, int))(*(_DWORD*)v6 + 8))(v6, v6);
+    (*(void(__thiscall**)(LPVOID, LPVOID))(*(_DWORD*)lpDD + 8))(lpDD, lpDD);
+    return 1;
+}
+// 578DB1: using guessed type int __stdcall sub_578DB1(int, int);

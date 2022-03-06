@@ -1742,9 +1742,7 @@ INT_PTR __stdcall DialogFunc(HWND, UINT, WPARAM, LPARAM); // idb
 int __cdecl sub_51E8EB(HWND hDlg); // idb
 int __stdcall sub_51EA40(int a1, void* a2, size_t Size, int a4, int a5, HWND a6);
 int __stdcall sub_51EB97(_DWORD* a1, void* a2, size_t Size, int a4, int a5, void** a6);
-int __cdecl sub_51ED34(HWND hDlg); // idb
 unsigned int __cdecl sub_51EEEE(HWND hDlg);
-INT_PTR __stdcall sub_51EF7A(HWND, UINT, WPARAM, LPARAM); // idb
 BOOL __cdecl sub_51F32A(HWND hDlg);
 int __cdecl sub_51F3CC(HWND hDlg); // idb
 int sub_51F63F();
@@ -2469,11 +2467,8 @@ int __cdecl sub_568044(int a1, float* a2, float* a3, float* a4, unsigned int a5)
 int __cdecl sub_568100(int a1, int a2, int a3, int a4, char a5);
 int __cdecl sub_56812D(int a1, int a2, int a3);
 int __cdecl sub_568A11(int a1, int a2, int a3, int a4, int a5);
-int __cdecl sub_568E33(int a1);
 int __thiscall sub_568F8A(void* this);
 DWORD sub_568FB1();
-int sub_56905F();
-int sub_5690D3();
 int __cdecl sub_56914C(int a1);
 int __cdecl sub_569193(unsigned __int8 a1, unsigned __int8 a2, unsigned __int8 a3);
 int __cdecl sub_569218(float); // idb
@@ -2588,7 +2583,6 @@ int __cdecl sub_575030(float); // idb
 double __cdecl sub_575050(int a1, float a2);
 // _DWORD __cdecl unknown_libname_5(_DWORD); weak
 // int _cfltcvt_init_4(void); weak
-int __cdecl sub_5752F3(int a1, int a2);
 int sub_575614();
 char sub_575682();
 int __cdecl sub_5758B0(int* a1, char a2);
@@ -2608,13 +2602,10 @@ int __cdecl sub_577890(int a1, int a2);
 int __cdecl sub_5779E0(int a1);
 // int __cdecl unknown_libname_6(_DWORD); weak
 // int __cdecl unknown_libname_7(_DWORD, _DWORD); weak
-int sub_577C00();
 int sub_577F03();
 int __cdecl sub_5786C9(int a1);
 int __stdcall sub_578A63(_DWORD* a1, void* a2);
 int __cdecl CompareFunction(const void*, const void*); // idb
-int __cdecl sub_578B98(int a1);
-BOOL __stdcall Callback(GUID*, LPSTR, LPSTR, LPVOID, HMONITOR); // idb
 int __stdcall sub_578DB1(_DWORD* a1, int a2);
 int __stdcall sub_578EFF(int, LPCSTR, int, int); // idb
 _DWORD* __cdecl sub_5791DC(_DWORD* a1, _DWORD* a2);
@@ -2700,7 +2691,6 @@ int __cdecl sub_580681(__int16 a1, int a2, int a3);
 int __cdecl sub_58079B(__int16 a1);
 BOOL __cdecl sub_58083C(int a1);
 __int16 __cdecl sub_58089A(int a1);
-int sub_580D10();
 void sub_580FB2();
 void sub_581090();
 int sub_581251();

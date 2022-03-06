@@ -5,10 +5,24 @@
 #include <stdio.h>
 #include "debug.h"
 #include "files.h"
+#include "sounds.h"
+#include "globalVariables.h"
 
 char aDemoVersion[13] = "Demo Version"; // weak
 char aDemoVersion_0[13] = "Demo Version"; // weak
 char aDemoVersion_1[13] = "Demo Version"; // weak
+char aSettingUpGamef[] = "Setting Up Gameflow Sections..."; // idb
+char aAllocatingGame[] = "Allocating Game Heap...."; // idb
+char aLegalTga[10] = "legal.tga"; // weak
+char aAllocatingLoad[] = "Allocating Loading Screen..."; // idb
+char aLevelsTxt[] = "levels.txt"; // idb
+char aSettingsTxt[] = "settings.txt"; // idb
+char aAcclaimTga[12] = "ACCLAIM.tga"; // weak
+char aBizarreTga[12] = "bizarre.tga"; // weak
+char aMilesTga[10] = "miles.tga"; // weak
+char aEaxTga[8] = "eax.tga"; // weak
+char aSettingUpLevel[] = "Setting up level defaults"; // idb
+char aSettingUpDefau[] = "Setting Up Default Preferences"; // idb
 
 char getFormattedStringBuffer[256]; // idb
 

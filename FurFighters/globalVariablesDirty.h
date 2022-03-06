@@ -693,18 +693,6 @@ int dword_59F7F4 = 5; // weak
 int dword_59F7FC = 25; // weak
 int dword_59F800 = 20; // weak
 int dword_59F804 = 40; // weak
-char aAllocatingGame[] = "Allocating Game Heap...."; // idb
-char aLegalTga[10] = "legal.tga"; // weak
-char aAllocatingLoad[] = "Allocating Loading Screen..."; // idb
-char aLevelsTxt[] = "levels.txt"; // idb
-char aSettingsTxt[] = "settings.txt"; // idb
-char aSettingUpGamef[] = "Setting Up Gameflow Sections..."; // idb
-char aAcclaimTga[12] = "ACCLAIM.tga"; // weak
-char aBizarreTga[12] = "bizarre.tga"; // weak
-char aMilesTga[10] = "miles.tga"; // weak
-char aEaxTga[8] = "eax.tga"; // weak
-char aSettingUpLevel[] = "Setting up level defaults"; // idb
-char aSettingUpDefau[] = "Setting Up Default Preferences"; // idb
 char aDebugLog_0[10] = "Debug Log"; // weak
 char aAcclaimTga_0[12] = "ACCLAIM.tga"; // weak
 char aBizarreTga_0[12] = "Bizarre.tga"; // weak
@@ -4423,26 +4411,6 @@ char aFinal[] = "\\final\\"; // idb
 char asc_5AD4E8[2] = "€"; // weak
 char aGoodFluffers[14] = "Good Fluffers"; // weak
 int dword_5AD580[] = { 14 }; // weak
-char aWaitForLobbyCo[26] = "Wait for Lobby Connection"; // weak
-char aInternet[9] = "Internet"; // weak
-char Str1[] = "Internet"; // idb
-CHAR aFurFight[] = "Fur Fight"; // idb
-CHAR aYouMustEnterAV[] = "You must enter a valid player name."; // idb
-CHAR aStartSearch[] = "Start Search"; // idb
-CHAR aFurFight_0[] = "Fur Fight"; // idb
-CHAR aErrorEnumerati[] = "Error enumerating DirectPlay games."; // idb
-CHAR aSearching[] = "Searching..."; // idb
-CHAR aFurFight_1[] = "Fur Fight"; // idb
-CHAR aErrorEnumerati_0[] = "Error enumerating DirectPlay games."; // idb
-CHAR aStartSearch_0[] = "Start Search"; // idb
-CHAR aFurFight_2[] = "Fur Fight"; // idb
-CHAR aUnableToJoinGa[] = "Unable to join game."; // idb
-CHAR aFurFight_3[] = "Fur Fight"; // idb
-CHAR aUnableToCreate[] = "Unable to create game."; // idb
-char aLookingForGame[21] = "Looking for games..."; // weak
-char aClickStartSear[78] = "Click Start Search to see a list of games.  Click Create to start a new game."; // weak
-CHAR aFurFight_4[] = "Fur Fight"; // idb
-CHAR aThereAreNoGame[] = "There are no games to join."; // idb
 CHAR aFurFight_5[] = "Fur Fight"; // idb
 CHAR aThisApplicatio[] = "This application requires DirectPlay 6 or later. The sample will now quit."; // idb
 CHAR aWaitingForConn[] = "Waiting for connection..."; // idb
@@ -4986,9 +4954,6 @@ float flt_5B1410 = 1.0; // weak
 float flt_5B1414 = 0.081; // weak
 float flt_5B1418 = 0.2; // weak
 _UNKNOWN unk_5B1420; // weak
-char aEnummingTextur[] = "Enumming Textures"; // idb
-char aBeginsceneIdir[] = "BeginScene(): IDirect3DDevice7_BeginScene failed with error DDERR_SURFACELOST !"; // idb
-char aEndsceneIdirec[] = "EndScene(): IDirect3DDevice7_EndScene failed with error DDERR_SURFACELOST !"; // idb
 CHAR aTooManyTexture[] = "Too Many Textures Allocated"; // idb
 CHAR aTooManyTexture_0[] = "Too Many Textures Allocated"; // idb
 CHAR aFailedToSetVie[] = "Failed to set viewport correctly"; // idb
@@ -5058,10 +5023,6 @@ char aRestoresurface_2[] = "RestoreSurfaces(): front buffer lost, restoring"; //
 char aRestoresurface_4[] = "RestoreSurfaces(): back buffer lost, restoring"; // idb
 char aRestoresurface_6[] = "RestoreSurfaces(): z buffer lost, restoring"; // idb
 char aZBufferDirectD[] = "Z buffer direct draw surface surface descriptor has invalid z buffer bit depth"; // idb
-CHAR aNoDevicesAndOr[] = "No devices and/or modes were enumerated!"; // idb
-CHAR aNoEnumeratedDe[] = "No enumerated devices were accepted!"; // idb
-CHAR aCanTCreateDdra[] = "Can't create DDraw during enumeration!"; // idb
-CHAR aCanTQueryIdire[] = "Can't query IDirect3D7 during enumeration!"; // idb
 CHAR aTooManyTrailsI[] = "Too Many trails in level"; // idb
 CHAR aTooManyTrailVe[] = "Too Many trail vertices"; // idb
 CHAR aMenuNameTooLar[] = "Menu name too large"; // idb
@@ -7147,10 +7108,7 @@ __int16 word_604316; // weak
 __int16 word_604318; // weak
 __int16 word_60431A; // weak
 __int16 word_60431C; // weak
-__int16 g_maybeDemoVersionType; // weak
 __int16 word_604322; // weak
-char g_maybeSomeDemoVersionType; // weak
-char g_maybeAnotherDemoVersionType; // weak
 __int16 word_604326; // weak
 __int16 word_604328; // weak
 __int16 word_60432A; // weak
@@ -7162,7 +7120,6 @@ __int16 word_604334; // weak
 __int16 word_604336; // weak
 __int16 word_604338; // weak
 int dword_60433C; // weak
-__int16 g_maybeDemoVersionMinutesCounter; // weak
 int dword_604344; // weak
 int dword_604348; // weak
 int dword_60434C; // weak
