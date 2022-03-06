@@ -201,65 +201,6 @@ _UNKNOWN unk_59A7DC; // weak
 _UNKNOWN unk_59A7E0; // weak
 _UNKNOWN unk_59A7E4; // weak
 _UNKNOWN unk_59A7E8; // weak
-char aBearSpeed[11] = "Bear Speed"; // weak
-char aBearShotDamage[17] = "Bear Shot Damage"; // weak
-char aBearHitDamage[16] = "Bear Hit Damage"; // weak
-char aBearEnergy[12] = "Bear Energy"; // weak
-char aBearScore[11] = "Bear Score"; // weak
-char aBearTime[10] = "Bear Time"; // weak
-char aWeaponsShotgun[19] = "Weapons\\shotgun.r2"; // weak
-char aBearitemsBrnin[22] = "bearitems\\brninhed.r2"; // weak
-char aBearitemsBrtoy[22] = "bearitems\\brtoyhed.r2"; // weak
-char aBearitemsBearh[22] = "bearitems\\bearhead.r2"; // weak
-char aNone[5] = "none"; // weak
-char aWeaponsSubmach[19] = "Weapons\\submach.r2"; // weak
-char aBearitemsPninh[21] = "bearitems\\pninhed.r2"; // weak
-char aBearitemsPToyh[22] = "bearitems\\p_toyhed.r2"; // weak
-char aBearitemsPbear[22] = "bearitems\\pbearhed.r2"; // weak
-char aBearitemsKaize[20] = "bearitems\\kaizer.r2"; // weak
-char aNone_0[5] = "none"; // weak
-char aWeaponsPistolR[18] = "Weapons\\pistol.r2"; // weak
-char aBearitemsBlhel[22] = "bearitems\\blhelhed.r2"; // weak
-char aBearitemsBlnin[22] = "bearitems\\blninhed.r2"; // weak
-char aBearitemsBltoy[22] = "bearitems\\bltoyhed.r2"; // weak
-char aBearitemsBbear[22] = "bearitems\\bbearhed.r2"; // weak
-char aNone_1[5] = "none"; // weak
-char aEnemiesHellbea[] = "enemies\\hellbear.skl"; // idb
-char aEnemiesIslebea[] = "enemies\\islebear.skl"; // idb
-char aEnemiesHellbea_0[] = "enemies\\hellbear.skl"; // idb
-char aEnemiesIslebea_0[] = "enemies\\islebear.skl"; // idb
-char aEnemiesHellbea_1[] = "enemies\\hellbear.skl"; // idb
-char aEnemiesIslebea_1[] = "enemies\\islebear.skl"; // idb
-char aWeaponsShotgun_0[19] = "Weapons\\shotgun.r2"; // weak
-char aBearitemsBearh_0[22] = "bearitems\\bearhead.r2"; // weak
-char aBearitemsBowle[20] = "bearitems\\bowler.r2"; // weak
-char aHatbearSrf[12] = "hatbear.srf"; // weak
-char aWeaponsSubmach_0[19] = "Weapons\\submach.r2"; // weak
-char aBearitemsPbear_0[22] = "bearitems\\pbearhed.r2"; // weak
-char aUberbearSrf[13] = "uberbear.srf"; // weak
-char aWeaponsSubmach_1[19] = "Weapons\\submach.r2"; // weak
-char aBearitemsPbear_1[22] = "bearitems\\pbearhed.r2"; // weak
-char aBearitemsToppe[20] = "bearitems\\topper.r2"; // weak
-char aVoodoobearSrf[15] = "voodoobear.srf"; // weak
-char aEnemiesBondbea[] = "enemies\\bondbears.skl"; // idb
-char aEnemiesBondbea_0[] = "enemies\\bondbears.skl"; // idb
-char aEnemiesBondbea_1[] = "enemies\\bondbears.skl"; // idb
-char aWeaponsPistolR_0[18] = "Weapons\\pistol.r2"; // weak
-char aBearitemsBbear_0[22] = "bearitems\\bbearhed.r2"; // weak
-char aHappybearsSrf[15] = "happybears.srf"; // weak
-char aEnemiesMrgMraS[] = "enemies\\mrg_mra.skl"; // idb
-CHAR aPatrolSpawnerN[] = "Patrol Spawner needs a link"; // idb
-char aEnemiesHellbea_2[] = "enemies\\hellbear.skl"; // idb
-char aEnemiesIslebea_2[] = "enemies\\islebear.skl"; // idb
-char aEnemiesHellbea_3[] = "enemies\\hellbear.skl"; // idb
-char aEnemiesIslebea_3[] = "enemies\\islebear.skl"; // idb
-char aEnemiesHellbea_4[] = "enemies\\hellbear.skl"; // idb
-char aEnemiesIslebea_4[] = "enemies\\islebear.skl"; // idb
-char aEnemiesHellcro[] = "enemies\\hellcroc.skl"; // idb
-char aEnemiesIslecro[] = "enemies\\islecroc.skl"; // idb
-char aEnemiesHellarm_0[] = "enemies\\hellarma.skl"; // idb
-char aEnemiesArmadil_0[] = "enemies\\armadillo.skl"; // idb
-char aBossesViggoSkl[] = "bosses\\viggo.skl"; // idb
 float flt_59AFD0 = 1.0; // weak
 float flt_59AFD4 = 0.1; // weak
 float flt_59AFD8 = 2.5; // weak
@@ -344,17 +285,6 @@ _UNKNOWN unk_59DAEC; // weak
 _UNKNOWN unk_59DAF0; // weak
 _UNKNOWN unk_59DAF4; // weak
 _UNKNOWN unk_59DAF8; // weak
-char aCrocSpeed[11] = "Croc Speed"; // weak
-char aCrocEnergy[12] = "Croc Energy"; // weak
-char aCrocDamage[12] = "Croc Damage"; // weak
-char aCrocScore[11] = "Croc Score"; // weak
-char aCrocTime[10] = "Croc Time"; // weak
-char aBearitemsBeret[19] = "bearitems\\beret.r2"; // weak
-char aCrocSrf[9] = "croc.srf"; // weak
-char aEnemiesHellcro_0[] = "enemies\\hellcroc.skl"; // idb
-char aEnemiesIslecro_0[] = "enemies\\islecroc.skl"; // idb
-char aPakdataLevelPa[] = "Pakdata\\level.pak"; // idb
-char aLoadingCutscen[] = "Loading Cutscene World File"; // idb
 char aNa[3] = "na"; // weak
 char aNa_0[3] = "na"; // weak
 char aFfightersTga_0[14] = "FFighters.tga"; // weak
@@ -2079,17 +2009,6 @@ int dword_5A5FA0 = 15; // weak
 int dword_5A5FA4 = -3; // weak
 int dword_5A5FA8 = -3; // weak
 int dword_5A5FAC = 1000; // weak
-char aHealthPosX[13] = "Health Pos X"; // weak
-char aHealthPosY[13] = "Health Pos Y"; // weak
-char aAmmoPosX[11] = "Ammo Pos X"; // weak
-char aAmmoPosY[11] = "Ammo Pos Y"; // weak
-char aTempPosX[11] = "Temp Pos X"; // weak
-char aTempPosY[11] = "Temp Pos Y"; // weak
-char aOverlaySelecto[17] = "Overlay Selector"; // weak
-char aDialogX[9] = "Dialog X"; // weak
-char aDialogY[9] = "Dialog Y"; // weak
-char aDialogWidth[13] = "Dialog Width"; // weak
-char aDialogHeight[14] = "Dialog Height"; // weak
 char aPickupsAmmoR2_0[16] = "pickups\\ammo.r2"; // weak
 char aPickupsCartrid_0[21] = "pickups\\cartridge.r2"; // weak
 char aPickupsBombR2_0[16] = "pickups\\bomb.r2"; // weak
@@ -2128,18 +2047,6 @@ _UNKNOWN unk_5A62D0; // weak
 _UNKNOWN unk_5A62D4; // weak
 _UNKNOWN unk_5A62D8; // weak
 _UNKNOWN unk_5A62DC; // weak
-char aPeacockSpeed[14] = "Peacock Speed"; // weak
-char aPeacockRocketS[21] = "Peacock Rocket Speed"; // weak
-char aPeacockDamage[15] = "Peacock Damage"; // weak
-char aPeacockDamageR[22] = "Peacock Damage Radius"; // weak
-char aPeacockEnergy[15] = "Peacock Energy"; // weak
-char aPeacockScore[14] = "Peacock Score"; // weak
-char aPeacockTime[13] = "Peacock Time"; // weak
-char aBearitemsBeret_1[19] = "bearitems\\beret.r2"; // weak
-char aWeaponsRlaunch_1[21] = "Weapons\\rlauncher.r2"; // weak
-char aPcockSrf[10] = "pcock.srf"; // weak
-char aEnemiesHellpco[] = "enemies\\hellpcock.skl"; // idb
-char aEnemiesIslepco[] = "enemies\\islepcock.skl"; // idb
 float flt_5A64A4 = 2.0; // weak
 float flt_5A64A8 = 3.0; // weak
 char byte_5A64B0[64] =
@@ -2230,37 +2137,6 @@ int dword_5A6544[6] = { 0, 1, 4, 5, 2, 3 }; // idb
 wctype_t dword_5A655C = 400u; // idb
 int dword_5A6560 = 100; // weak
 CHAR aTooManyPickups[] = "Too many pickups in level (Matt probably did it)"; // idb
-char aPistolAmmo[12] = "Pistol Ammo"; // weak
-char aShotgunAmmo[13] = "Shotgun Ammo"; // weak
-char aMachgunAmmo[13] = "MachGun Ammo"; // weak
-char aGlauncherAmmo[15] = "GLauncher Ammo"; // weak
-char aRlauncherAmmo[15] = "RLauncher Ammo"; // weak
-char aLaserAmmo[11] = "Laser Ammo"; // weak
-char aNeutronGunAmmo[17] = "Neutron Gun Ammo"; // weak
-char aFreezeGunAmmo[16] = "Freeze Gun Ammo"; // weak
-char aBullets[8] = "Bullets"; // weak
-char aShells[7] = "Shells"; // weak
-char aGrenades[9] = "Grenades"; // weak
-char aRockets[8] = "Rockets"; // weak
-char aEnergy[7] = "Energy"; // weak
-char aSmartAmmo[11] = "Smart Ammo"; // weak
-char aFreezeAmmo[12] = "Freeze Ammo"; // weak
-char aBulletBox[11] = "Bullet Box"; // weak
-char aShellBox[10] = "Shell Box"; // weak
-char aGrenadeBox[12] = "Grenade Box"; // weak
-char aRocketBox[11] = "Rocket Box"; // weak
-char aEnergyBox[11] = "Energy Box"; // weak
-char aSmartAmmoBox[15] = "Smart Ammo Box"; // weak
-char aFreezeAmmoBox[16] = "Freeze Ammo Box"; // weak
-char aHealthAmount[14] = "Health Amount"; // weak
-char aBigHealthAmoun[18] = "Big Health Amount"; // weak
-char aMaxBullets[12] = "Max Bullets"; // weak
-char aMaxShells[11] = "Max Shells"; // weak
-char aMaxGrenades[13] = "Max Grenades"; // weak
-char aMaxRockets[12] = "Max Rockets"; // weak
-char aMaxEnergy[11] = "Max Energy"; // weak
-char aMaxSmartAmmo[15] = "Max Smart Ammo"; // weak
-char aMaxFreezeAmmo[16] = "Max Freeze Ammo"; // weak
 char aPickupsPyumjnr_0[19] = "pickups\\pyumjnr.r2"; // weak
 char aPickupsPyumjnr_1[19] = "pickups\\pyumjnr.r2"; // weak
 char aPickupsPyumreg_0[19] = "pickups\\pyumreg.r2"; // weak
@@ -4505,21 +4381,9 @@ char aHandleactivate_18[] = "HandleActivateApp(): Already deactivated!"; // idb
 char aFocusDavrossed[] = "focus davrossed"; // idb
 char aFocusDoctorWho[] = "focus doctor whoed"; // idb
 char aRt[] = "rt"; // idb
-char aSettingsTxt_0[] = "settings.txt"; // idb
-CHAR aYouNeedTheFurF[] = "You need the Fur Fighters CD in the drive to play."; // idb
-CHAR aPourJouerInsir[] = "Pour jouer, insÈrez le CD Fur Fighters dans le lecteur."; // idb
-CHAR aUmZuSpielenLeg[] = "Um zu spielen, legen Sie bitte die Fur Fighters CD in Ihr Laufwerk ein."; // idb
-CHAR aNecesitasElCdD[] = "Necesitas el CD de Fur Fighters en el lector para jugar."; // idb
-CHAR aYouNeedTheFurF_0[] = "You need the Fur Fighters CD in the drive to play."; // idb
 CHAR SubKey[] = "SOFTWARE\\Bizarre Creations\\Fur Fighters"; // idb
-CHAR aResSettings_0[] = "Res Settings"; // idb
-CHAR aResSettings_1[] = "Res Settings"; // idb
 char aMenu[5] = "Menu"; // weak
 char aWinny[6] = "WINNY"; // weak
-CHAR WindowName[] = "ÃÂıÓ‚˚Â  ÛÎ‡ÍË"; // idb
-CHAR ClassName[] = "WINNY"; // idb
-CHAR Caption[] = "It's an error"; // idb
-CHAR Text[] = "Create Window Failed"; // idb
 char asc_5AD060[] = "-----------------------------------------------------"; // idb
 char aGamespy[] = "gamespy"; // idb
 char aUseGamespy[] = "use Gamespy"; // idb
@@ -5051,7 +4915,6 @@ char aRb_4[] = "rb"; // idb
 char aRb_5[] = "rb"; // idb
 char aWb_0[] = "wb"; // idb
 CHAR aCantLoadCacheB[] = "Cant load cache block from cache file"; // idb
-char aLoadingIniFile[] = "Loading Ini File..."; // idb
 int dword_5B0770 = 1; // weak
 float flt_5B0774 = 1.5; // weak
 char aRaytraceHitNoT[] = "Raytrace hit_no too big (intersected too many nodes)"; // idb
@@ -6884,37 +6747,6 @@ int dword_5CDBA8; // weak
 int dword_5CDBAC; // weak
 int dword_5CDBB0; // weak
 int dword_5CDBB4; // weak
-__int16 word_5CDBC0; // weak
-__int16 word_5CDBC4; // weak
-__int16 word_5CDBC8; // weak
-__int16 word_5CDBCC; // weak
-__int16 word_5CDBD0; // weak
-__int16 word_5CDBD4; // weak
-__int16 word_5CDBD8; // weak
-__int16 word_5CDBDC; // weak
-__int16 word_5CDBE0; // weak
-__int16 word_5CDBE4; // weak
-__int16 word_5CDBE8; // weak
-__int16 word_5CDBEC; // weak
-__int16 word_5CDBF0; // weak
-__int16 word_5CDBF4; // weak
-__int16 word_5CDBF8; // weak
-__int16 word_5CDBFC; // weak
-__int16 word_5CDC00; // weak
-__int16 word_5CDC04; // weak
-__int16 word_5CDC08; // weak
-__int16 word_5CDC0C; // weak
-__int16 word_5CDC10; // weak
-__int16 word_5CDC14; // weak
-int dword_5CDC18; // weak
-int dword_5CDC1C; // weak
-int dword_5CDC20; // weak
-int dword_5CDC24; // weak
-int dword_5CDC28; // weak
-int dword_5CDC2C; // weak
-int dword_5CDC30; // weak
-int dword_5CDC34; // weak
-int dword_5CDC38; // weak
 int dword_5CDC3C; // weak
 int dword_5CDC40; // weak
 int dword_5CDC44; // weak
@@ -7048,17 +6880,6 @@ int dword_5CED50; // weak
 int dword_5CED54; // weak
 int dword_5CED58; // weak
 int dword_5CED5C; // weak
-int dword_5CED60; // weak
-int dword_5CED64; // weak
-int dword_5CED68; // weak
-int dword_5CED6C; // weak
-_BYTE byte_5CED70[4]; // idb
-_BYTE byte_5CED74[4]; // idb
-_BYTE byte_5CED78[4]; // idb
-int dword_5CED7C; // weak
-int dword_5CED80; // weak
-int dword_5CED84; // weak
-int dword_5CED88; // weak
 int dword_5CED8C; // weak
 int dword_5CED90; // weak
 int dword_5CED94; // weak
@@ -8339,7 +8160,6 @@ int junk1; // weak
 _BYTE g_IsDebug;
 int dword_667398; // weak
 _BYTE byte_66739C[4]; // idb
-int dword_6673A0; // weak
 int dword_6673A4; // weak
 MSG Msg; // idb
 int dword_6673E0; // weak
@@ -8395,9 +8215,6 @@ int dword_6687B8; // weak
 __int16 word_6687BC; // weak
 void* dword_6687E0; // idb
 int dword_668BE0; // weak
-int dword_668C20[]; // weak
-int dword_668C28[]; // weak
-int dword_668C2C[3061]; // idb
 LPVOID dword_66D820; // idb
 int dword_66D840[9675]; // idb
 int dword_68D840[8771]; // idb

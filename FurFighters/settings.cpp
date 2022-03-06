@@ -31,6 +31,168 @@ char aReqBabies[] = "req babies"; // idb
 char aReqTokens[] = "req tokens"; // idb
 char byte_5A592E = '\0'; // weak
 __int16 word_5A592C = 24942; // weak
+char aSettingsTxt_0[] = "settings.txt"; // idb
+CHAR aYouNeedTheFurF[] = "You need the Fur Fighters CD in the drive to play."; // idb
+CHAR aPourJouerInsir[] = "Pour jouer, insÈrez le CD Fur Fighters dans le lecteur."; // idb
+CHAR aUmZuSpielenLeg[] = "Um zu spielen, legen Sie bitte die Fur Fighters CD in Ihr Laufwerk ein."; // idb
+CHAR aNecesitasElCdD[] = "Necesitas el CD de Fur Fighters en el lector para jugar."; // idb
+CHAR aYouNeedTheFurF_0[] = "You need the Fur Fighters CD in the drive to play."; // idb
+CHAR aResSettings_0[] = "Res Settings"; // idb
+CHAR aResSettings_1[] = "Res Settings"; // idb
+CHAR WindowName[] = "ÃÂıÓ‚˚Â  ÛÎ‡ÍË"; // idb
+CHAR ClassName[] = "WINNY"; // idb
+CHAR Caption[] = "It's an error"; // idb
+CHAR Text[] = "Create Window Failed"; // idb
+char aLoadingIniFile[] = "Loading Ini File..."; // idb
+char aBearSpeed[11] = "Bear Speed"; // weak
+char aBearShotDamage[17] = "Bear Shot Damage"; // weak
+char aBearHitDamage[16] = "Bear Hit Damage"; // weak
+char aBearEnergy[12] = "Bear Energy"; // weak
+char aBearScore[11] = "Bear Score"; // weak
+char aBearTime[10] = "Bear Time"; // weak
+char aWeaponsShotgun[19] = "Weapons\\shotgun.r2"; // weak
+char aBearitemsBrnin[22] = "bearitems\\brninhed.r2"; // weak
+char aBearitemsBrtoy[22] = "bearitems\\brtoyhed.r2"; // weak
+char aBearitemsBearh[22] = "bearitems\\bearhead.r2"; // weak
+char aNone[5] = "none"; // weak
+char aWeaponsSubmach[19] = "Weapons\\submach.r2"; // weak
+char aBearitemsPninh[21] = "bearitems\\pninhed.r2"; // weak
+char aBearitemsPToyh[22] = "bearitems\\p_toyhed.r2"; // weak
+char aBearitemsPbear[22] = "bearitems\\pbearhed.r2"; // weak
+char aBearitemsKaize[20] = "bearitems\\kaizer.r2"; // weak
+char aNone_0[5] = "none"; // weak
+char aWeaponsPistolR[18] = "Weapons\\pistol.r2"; // weak
+char aBearitemsBlhel[22] = "bearitems\\blhelhed.r2"; // weak
+char aBearitemsBlnin[22] = "bearitems\\blninhed.r2"; // weak
+char aBearitemsBltoy[22] = "bearitems\\bltoyhed.r2"; // weak
+char aBearitemsBbear[22] = "bearitems\\bbearhed.r2"; // weak
+char aNone_1[5] = "none"; // weak
+char aEnemiesHellbea[] = "enemies\\hellbear.skl"; // idb
+char aEnemiesIslebea[] = "enemies\\islebear.skl"; // idb
+char aEnemiesHellbea_0[] = "enemies\\hellbear.skl"; // idb
+char aEnemiesIslebea_0[] = "enemies\\islebear.skl"; // idb
+char aEnemiesHellbea_1[] = "enemies\\hellbear.skl"; // idb
+char aEnemiesIslebea_1[] = "enemies\\islebear.skl"; // idb
+char aWeaponsShotgun_0[19] = "Weapons\\shotgun.r2"; // weak
+char aBearitemsBearh_0[22] = "bearitems\\bearhead.r2"; // weak
+char aBearitemsBowle[20] = "bearitems\\bowler.r2"; // weak
+char aHatbearSrf[12] = "hatbear.srf"; // weak
+char aWeaponsSubmach_0[19] = "Weapons\\submach.r2"; // weak
+char aBearitemsPbear_0[22] = "bearitems\\pbearhed.r2"; // weak
+char aUberbearSrf[13] = "uberbear.srf"; // weak
+char aWeaponsSubmach_1[19] = "Weapons\\submach.r2"; // weak
+char aBearitemsPbear_1[22] = "bearitems\\pbearhed.r2"; // weak
+char aBearitemsToppe[20] = "bearitems\\topper.r2"; // weak
+char aVoodoobearSrf[15] = "voodoobear.srf"; // weak
+char aEnemiesBondbea[] = "enemies\\bondbears.skl"; // idb
+char aEnemiesBondbea_0[] = "enemies\\bondbears.skl"; // idb
+char aEnemiesBondbea_1[] = "enemies\\bondbears.skl"; // idb
+char aWeaponsPistolR_0[18] = "Weapons\\pistol.r2"; // weak
+char aBearitemsBbear_0[22] = "bearitems\\bbearhed.r2"; // weak
+char aHappybearsSrf[15] = "happybears.srf"; // weak
+char aEnemiesMrgMraS[] = "enemies\\mrg_mra.skl"; // idb
+CHAR aPatrolSpawnerN[] = "Patrol Spawner needs a link"; // idb
+char aEnemiesHellbea_2[] = "enemies\\hellbear.skl"; // idb
+char aEnemiesIslebea_2[] = "enemies\\islebear.skl"; // idb
+char aEnemiesHellbea_3[] = "enemies\\hellbear.skl"; // idb
+char aEnemiesIslebea_3[] = "enemies\\islebear.skl"; // idb
+char aEnemiesHellbea_4[] = "enemies\\hellbear.skl"; // idb
+char aEnemiesIslebea_4[] = "enemies\\islebear.skl"; // idb
+char aEnemiesHellcro[] = "enemies\\hellcroc.skl"; // idb
+char aEnemiesIslecro[] = "enemies\\islecroc.skl"; // idb
+char aEnemiesHellarm_0[] = "enemies\\hellarma.skl"; // idb
+char aEnemiesArmadil_0[] = "enemies\\armadillo.skl"; // idb
+char aBossesViggoSkl[] = "bosses\\viggo.skl"; // idb
+char aCrocSpeed[11] = "Croc Speed"; // weak
+char aCrocEnergy[12] = "Croc Energy"; // weak
+char aCrocDamage[12] = "Croc Damage"; // weak
+char aCrocScore[11] = "Croc Score"; // weak
+char aCrocTime[10] = "Croc Time"; // weak
+char aBearitemsBeret[19] = "bearitems\\beret.r2"; // weak
+char aCrocSrf[9] = "croc.srf"; // weak
+char aEnemiesHellcro_0[] = "enemies\\hellcroc.skl"; // idb
+char aEnemiesIslecro_0[] = "enemies\\islecroc.skl"; // idb
+char aPakdataLevelPa[] = "Pakdata\\level.pak"; // idb
+char aLoadingCutscen[] = "Loading Cutscene World File"; // idb
+char aPeacockSpeed[14] = "Peacock Speed"; // weak
+char aPeacockRocketS[21] = "Peacock Rocket Speed"; // weak
+char aPeacockDamage[15] = "Peacock Damage"; // weak
+char aPeacockDamageR[22] = "Peacock Damage Radius"; // weak
+char aPeacockEnergy[15] = "Peacock Energy"; // weak
+char aPeacockScore[14] = "Peacock Score"; // weak
+char aPeacockTime[13] = "Peacock Time"; // weak
+char aBearitemsBeret_1[19] = "bearitems\\beret.r2"; // weak
+char aWeaponsRlaunch_1[21] = "Weapons\\rlauncher.r2"; // weak
+char aPcockSrf[10] = "pcock.srf"; // weak
+char aEnemiesHellpco[] = "enemies\\hellpcock.skl"; // idb
+char aEnemiesIslepco[] = "enemies\\islepcock.skl"; // idb
+char aPistolAmmo[12] = "Pistol Ammo"; // weak
+char aShotgunAmmo[13] = "Shotgun Ammo"; // weak
+char aMachgunAmmo[13] = "MachGun Ammo"; // weak
+char aGlauncherAmmo[15] = "GLauncher Ammo"; // weak
+char aRlauncherAmmo[15] = "RLauncher Ammo"; // weak
+char aLaserAmmo[11] = "Laser Ammo"; // weak
+char aNeutronGunAmmo[17] = "Neutron Gun Ammo"; // weak
+char aFreezeGunAmmo[16] = "Freeze Gun Ammo"; // weak
+char aBullets[8] = "Bullets"; // weak
+char aShells[7] = "Shells"; // weak
+char aGrenades[9] = "Grenades"; // weak
+char aRockets[8] = "Rockets"; // weak
+char aEnergy[7] = "Energy"; // weak
+char aSmartAmmo[11] = "Smart Ammo"; // weak
+char aFreezeAmmo[12] = "Freeze Ammo"; // weak
+char aBulletBox[11] = "Bullet Box"; // weak
+char aShellBox[10] = "Shell Box"; // weak
+char aGrenadeBox[12] = "Grenade Box"; // weak
+char aRocketBox[11] = "Rocket Box"; // weak
+char aEnergyBox[11] = "Energy Box"; // weak
+char aSmartAmmoBox[15] = "Smart Ammo Box"; // weak
+char aFreezeAmmoBox[16] = "Freeze Ammo Box"; // weak
+char aHealthAmount[14] = "Health Amount"; // weak
+char aBigHealthAmoun[18] = "Big Health Amount"; // weak
+char aMaxBullets[12] = "Max Bullets"; // weak
+char aMaxShells[11] = "Max Shells"; // weak
+char aMaxGrenades[13] = "Max Grenades"; // weak
+char aMaxRockets[12] = "Max Rockets"; // weak
+char aMaxEnergy[11] = "Max Energy"; // weak
+char aMaxSmartAmmo[15] = "Max Smart Ammo"; // weak
+char aMaxFreezeAmmo[16] = "Max Freeze Ammo"; // weak
+
+int g_NumLoadedLineSettingsInFile; // weak
+int g_SettingsVariableTypes[3061]; // idb
+int g_SettingsVariableInIntCasts[]; // weak
+int g_SettingsValuesStorage[]; // weak
+__int16 g_PistolAmmo; // weak
+__int16 g_ShotgunAmmo; // weak
+__int16 g_MachinegunAmmo; // weak
+__int16 g_RLauncherAmmo; // weak
+__int16 g_LaserAmmo; // weak
+__int16 g_NeutrongunAmmo; // weak
+__int16 g_GLauncherAmmo; // weak
+__int16 g_FreezegunAmmo; // weak
+__int16 g_BulletsAmmo; // weak
+__int16 g_ShellsAmmo; // weak
+__int16 g_GrenadesAmmo; // weak
+__int16 g_RocketsAmmo; // weak
+__int16 g_EnergyAmmo; // weak
+__int16 g_SmartAmmo; // weak
+__int16 g_FreezeAmmo; // weak
+__int16 g_BulletsBox; // weak
+__int16 g_ShellsBox; // weak
+__int16 g_GrenadesBox; // weak
+__int16 g_RocketBox; // weak
+__int16 g_EnergyBox; // weak
+__int16 g_SmartAmmoBox; // weak
+__int16 g_FreezeAmmoBox; // weak
+int g_MaxBullets; // weak
+int g_MaxShells; // weak
+int g_MaxGrenades; // weak
+int g_MaxRockets; // weak
+int g_MaxEnergy; // weak
+int g_MaxSmartAmmo; // weak
+int g_MaxFreezeAmmo; // weak
+int g_HealthAmmount; // weak
+int g_BigHelathAmmount; // weak
 
 //----- (0047B665) --------------------------------------------------------
 int __cdecl loadSettings(char* FileName)
@@ -289,7 +451,7 @@ int __cdecl anotherLoadSettings(char* FileName)
     v5 = (char*)someLoadFile(FileName, (int)&v6);
     junk1 = (int)FileName;
     dword_6673A4 = -1;
-    dword_6673A0 = 0;
+    g_NumLoadedLineSettingsInFile = 0;
     v4 = v5;
     while (v4 < &v5[v6])
     {
@@ -301,14 +463,14 @@ int __cdecl anotherLoadSettings(char* FileName)
         {
             ++dword_6673A4;
             sscanf(Buffer, "<%[^>]>", (char*)&unk_667400 + 40 * dword_6673A4);
-            dword_667420[10 * dword_6673A4] = dword_6673A0;
+            dword_667420[10 * dword_6673A4] = g_NumLoadedLineSettingsInFile;
             dword_667424[10 * dword_6673A4] = 0;
         }
         if (Buffer[0] == '[')
         {
-            sscanf(Buffer, "[%[^]]]=%d", (char*)&unk_668C00 + 48 * dword_6673A0, &dword_668C20[12 * dword_6673A0]);
-            dword_668C28[12 * dword_6673A0] = 0;
-            dword_668C2C[12 * dword_6673A0++] = 0;
+            sscanf(Buffer, "[%[^]]]=%d", (char*)&unk_668C00 + 48 * g_NumLoadedLineSettingsInFile, &g_SettingsValuesStorage[12 * g_NumLoadedLineSettingsInFile]);
+            g_SettingsVariableInIntCasts[12 * g_NumLoadedLineSettingsInFile] = 0;
+            g_SettingsVariableTypes[12 * g_NumLoadedLineSettingsInFile++] = 0;
             ++dword_667424[10 * dword_6673A4];
         }
     }
@@ -316,90 +478,90 @@ int __cdecl anotherLoadSettings(char* FileName)
 }
 // 53F213: using guessed type int sub_53F213(void);
 // 667388: using guessed type int dword_667388;
-// 6673A0: using guessed type int dword_6673A0;
+// 6673A0: using guessed type int g_NumLoadedLineSettingsInFile;
 // 6673A4: using guessed type int dword_6673A4;
 // 667420: using guessed type int dword_667420[];
-// 668C20: using guessed type int dword_668C20[];
-// 668C28: using guessed type int dword_668C28[];
+// 668C20: using guessed type int g_SettingsValuesStorage[];
+// 668C28: using guessed type int g_SettingsVariableInIntCasts[];
 
 //----- (0053F9F3) --------------------------------------------------------
 int __cdecl getSettingsValue(const char* settingsName, int defValue)
 {
     int i; // [esp+14h] [ebp-4h]
 
-    for (i = 0; i < dword_6673A0; ++i)
+    for (i = 0; i < g_NumLoadedLineSettingsInFile; ++i)
     {
         if (!strcmp(settingsName, (const char*)&unk_668C00 + 48 * i))
-            return dword_668C20[12 * i];
+            return g_SettingsValuesStorage[12 * i];
     }
     return defValue;
 }
-// 6673A0: using guessed type int dword_6673A0;
-// 668C20: using guessed type int dword_668C20[];
+// 6673A0: using guessed type int g_NumLoadedLineSettingsInFile;
+// 668C20: using guessed type int g_SettingsValuesStorage[];
 
 //----- (0053F82D) --------------------------------------------------------
-int __cdecl maybe_LoadSettingsValue(const char* settingsName, _BYTE* a2, int variableType, int defaultValue)
+int __cdecl maybe_LoadSettingsValue(const char* settingsName, void* variable, int variableType, int defaultValue)
 {
     float v5; // [esp+0h] [ebp-28h]
     float v6; // [esp+8h] [ebp-20h]
     int i; // [esp+24h] [ebp-4h]
 
-    for (i = 0; i < dword_6673A0; ++i)
+    for (i = 0; i < g_NumLoadedLineSettingsInFile; ++i)
     {
         if (!strcmp(settingsName, (const char*)&unk_668C00 + 48 * i))
         {
-            dword_668C28[12 * i] = (int)a2;
-            dword_668C2C[12 * i] = variableType;
+            g_SettingsVariableInIntCasts[12 * i] = (int)variable;
+            g_SettingsVariableTypes[12 * i] = variableType;
             switch (variableType)
             {
-            case 0:
-                *a2 = dword_668C20[12 * i];
+            case settings::tInt:
+                *(int*)variable = g_SettingsValuesStorage[12 * i];
                 break;
-            case 1:
-                *(_WORD*)a2 = dword_668C20[12 * i];
+            case settings::tWord:
+                *(_WORD*)variable = g_SettingsValuesStorage[12 * i];
                 break;
-            case 2:
-                *(_DWORD*)a2 = dword_668C20[12 * i];
+            case settings::tDWrord:
+                *(_DWORD*)variable = g_SettingsValuesStorage[12 * i];
                 break;
-            case 3:
-                v6 = (float)dword_668C20[12 * i];
-                *(float*)a2 = v6 * 0.0099999998;
+            case settings::tFloat1:
+                v6 = (float)g_SettingsValuesStorage[12 * i];
+                *(float*)variable = v6 * 0.0099999998;
                 break;
-            case 4:
-                *(float*)a2 = (float)dword_668C20[12 * i];
+            case settings::tFloat2:
+                *(float*)variable = (float)g_SettingsValuesStorage[12 * i];
                 break;
             default:
-                return dword_668C20[12 * i];
+                return g_SettingsValuesStorage[12 * i];
             }
-            return dword_668C20[12 * i];
+            return g_SettingsValuesStorage[12 * i];
         }
     }
     switch (variableType)
     {
-    case 0:
-        *a2 = defaultValue;
+    case settings::tInt:
+        *(int*)variable = defaultValue;
         break;
-    case 1:
-        *(_WORD*)a2 = defaultValue;
+    case settings::tWord:
+        *(_WORD*)variable = defaultValue;
         break;
-    case 2:
-        *(_DWORD*)a2 = defaultValue;
+    case settings::tDWrord:
+        *(_DWORD*)variable = defaultValue;
         break;
-    case 3:
+    case settings::tFloat1:
         v5 = (float)defaultValue;
-        *(float*)a2 = v5 * 0.0099999998;
+        *(float*)variable = v5 * 0.0099999998;
         break;
-    case 4:
-        *(float*)a2 = (float)defaultValue;
+    case settings::tFloat2:
+        *(float*)variable = (float)defaultValue;
         break;
     default:
         return defaultValue;
     }
     return defaultValue;
 }
-// 6673A0: using guessed type int dword_6673A0;
-// 668C20: using guessed type int dword_668C20[];
-// 668C28: using guessed type int dword_668C28[];
+// 6673A0: using guessed type int g_NumLoadedLineSettingsInFile;
+// 668C20: using guessed type int g_SettingsValuesStorage[];
+// 668C28: using guessed type int g_SettingsVariableInIntCasts[];
 
 //----- (00411E50) --------------------------------------------------------
 int loadBearSettings()
@@ -451,73 +613,73 @@ int loadWeaponSettings()
 {
     int result; // eax
 
-    maybe_LoadSettingsValue(aPistolAmmo, &word_5CDBC0, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aShotgunAmmo, &word_5CDBC4, settings::tDWrord, 10);
-    maybe_LoadSettingsValue(aMachgunAmmo, &word_5CDBC8, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aGlauncherAmmo, &word_5CDBD8, settings::tDWrord, 2);
-    maybe_LoadSettingsValue(aRlauncherAmmo, &word_5CDBCC, settings::tDWrord, 2);
-    maybe_LoadSettingsValue(aLaserAmmo, &word_5CDBD0, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aNeutronGunAmmo, &word_5CDBD4, settings::tDWrord, 40);
-    maybe_LoadSettingsValue(aFreezeGunAmmo, &word_5CDBDC, settings::tDWrord, 40);
-    maybe_LoadSettingsValue(aBullets, &word_5CDBE0, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aShells, &word_5CDBE4, settings::tDWrord, 10);
-    maybe_LoadSettingsValue(aGrenades, &word_5CDBE8, settings::tDWrord, 10);
-    maybe_LoadSettingsValue(aRockets, &word_5CDBEC, settings::tDWrord, 1);
-    maybe_LoadSettingsValue(aEnergy, &word_5CDBF0, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aSmartAmmo, &word_5CDBF4, settings::tDWrord, 1);
-    maybe_LoadSettingsValue(aFreezeAmmo, &word_5CDBF8, settings::tDWrord, 1);
-    maybe_LoadSettingsValue(aBulletBox, &word_5CDBFC, settings::tDWrord, 100);
-    maybe_LoadSettingsValue(aShellBox, &word_5CDC00, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aGrenadeBox, &word_5CDC04, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aRocketBox, &word_5CDC08, settings::tDWrord, 10);
-    maybe_LoadSettingsValue(aEnergyBox, &word_5CDC0C, settings::tDWrord, 100);
-    maybe_LoadSettingsValue(aSmartAmmoBox, &word_5CDC10, settings::tDWrord, 5);
-    maybe_LoadSettingsValue(aFreezeAmmoBox, &word_5CDC14, settings::tDWrord, 5);
-    maybe_LoadSettingsValue(aHealthAmount, &dword_5CDC34, settings::tDWrord, 2);
-    maybe_LoadSettingsValue(aBigHealthAmoun, &dword_5CDC38, settings::tDWrord, 25);
-    maybe_LoadSettingsValue(aMaxBullets, &dword_5CDC18, settings::tDWrord, 200);
-    maybe_LoadSettingsValue(aMaxShells, &dword_5CDC1C, settings::tDWrord, 100);
-    maybe_LoadSettingsValue(aMaxGrenades, &dword_5CDC20, settings::tDWrord, 50);
-    maybe_LoadSettingsValue(aMaxRockets, &dword_5CDC24, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aMaxEnergy, &dword_5CDC28, settings::tDWrord, 200);
-    maybe_LoadSettingsValue(aMaxSmartAmmo, &dword_5CDC2C, settings::tDWrord, 10);
-    result = maybe_LoadSettingsValue(aMaxFreezeAmmo, &dword_5CDC30, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aPistolAmmo, &g_PistolAmmo, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aShotgunAmmo, &g_ShotgunAmmo, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aMachgunAmmo, &g_MachinegunAmmo, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aGlauncherAmmo, &g_GLauncherAmmo, settings::tDWrord, 2);
+    maybe_LoadSettingsValue(aRlauncherAmmo, &g_RLauncherAmmo, settings::tDWrord, 2);
+    maybe_LoadSettingsValue(aLaserAmmo, &g_LaserAmmo, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aNeutronGunAmmo, &g_NeutrongunAmmo, settings::tDWrord, 40);
+    maybe_LoadSettingsValue(aFreezeGunAmmo, &g_FreezegunAmmo, settings::tDWrord, 40);
+    maybe_LoadSettingsValue(aBullets, &g_BulletsAmmo, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aShells, &g_ShellsAmmo, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aGrenades, &g_GrenadesAmmo, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aRockets, &g_RocketsAmmo, settings::tDWrord, 1);
+    maybe_LoadSettingsValue(aEnergy, &g_EnergyAmmo, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aSmartAmmo, &g_SmartAmmo, settings::tDWrord, 1);
+    maybe_LoadSettingsValue(aFreezeAmmo, &g_FreezeAmmo, settings::tDWrord, 1);
+    maybe_LoadSettingsValue(aBulletBox, &g_BulletsBox, settings::tDWrord, 100);
+    maybe_LoadSettingsValue(aShellBox, &g_ShellsBox, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aGrenadeBox, &g_GrenadesBox, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aRocketBox, &g_RocketBox, settings::tDWrord, 10);
+    maybe_LoadSettingsValue(aEnergyBox, &g_EnergyBox, settings::tDWrord, 100);
+    maybe_LoadSettingsValue(aSmartAmmoBox, &g_SmartAmmoBox, settings::tDWrord, 5);
+    maybe_LoadSettingsValue(aFreezeAmmoBox, &g_FreezeAmmoBox, settings::tDWrord, 5);
+    maybe_LoadSettingsValue(aHealthAmount, &g_HealthAmmount, settings::tDWrord, 2);
+    maybe_LoadSettingsValue(aBigHealthAmoun, &g_BigHelathAmmount, settings::tDWrord, 25);
+    maybe_LoadSettingsValue(aMaxBullets, &g_MaxBullets, settings::tDWrord, 200);
+    maybe_LoadSettingsValue(aMaxShells, &g_MaxShells, settings::tDWrord, 100);
+    maybe_LoadSettingsValue(aMaxGrenades, &g_MaxGrenades, settings::tDWrord, 50);
+    maybe_LoadSettingsValue(aMaxRockets, &g_MaxRockets, settings::tDWrord, 20);
+    maybe_LoadSettingsValue(aMaxEnergy, &g_MaxEnergy, settings::tDWrord, 200);
+    maybe_LoadSettingsValue(aMaxSmartAmmo, &g_MaxSmartAmmo, settings::tDWrord, 10);
+    result = maybe_LoadSettingsValue(aMaxFreezeAmmo, &g_MaxFreezeAmmo, settings::tDWrord, 10);
     dword_5CDC3C = 900;
     dword_5CDC40 = 900;
     dword_5CDC44 = 50;
     return result;
 }
-// 5CDBC0: using guessed type __int16 word_5CDBC0;
-// 5CDBC4: using guessed type __int16 word_5CDBC4;
-// 5CDBC8: using guessed type __int16 word_5CDBC8;
-// 5CDBCC: using guessed type __int16 word_5CDBCC;
-// 5CDBD0: using guessed type __int16 word_5CDBD0;
-// 5CDBD4: using guessed type __int16 word_5CDBD4;
-// 5CDBD8: using guessed type __int16 word_5CDBD8;
-// 5CDBDC: using guessed type __int16 word_5CDBDC;
-// 5CDBE0: using guessed type __int16 word_5CDBE0;
-// 5CDBE4: using guessed type __int16 word_5CDBE4;
-// 5CDBE8: using guessed type __int16 word_5CDBE8;
-// 5CDBEC: using guessed type __int16 word_5CDBEC;
-// 5CDBF0: using guessed type __int16 word_5CDBF0;
-// 5CDBF4: using guessed type __int16 word_5CDBF4;
-// 5CDBF8: using guessed type __int16 word_5CDBF8;
-// 5CDBFC: using guessed type __int16 word_5CDBFC;
-// 5CDC00: using guessed type __int16 word_5CDC00;
-// 5CDC04: using guessed type __int16 word_5CDC04;
-// 5CDC08: using guessed type __int16 word_5CDC08;
-// 5CDC0C: using guessed type __int16 word_5CDC0C;
-// 5CDC10: using guessed type __int16 word_5CDC10;
-// 5CDC14: using guessed type __int16 word_5CDC14;
-// 5CDC18: using guessed type int dword_5CDC18;
-// 5CDC1C: using guessed type int dword_5CDC1C;
-// 5CDC20: using guessed type int dword_5CDC20;
-// 5CDC24: using guessed type int dword_5CDC24;
-// 5CDC28: using guessed type int dword_5CDC28;
-// 5CDC2C: using guessed type int dword_5CDC2C;
-// 5CDC30: using guessed type int dword_5CDC30;
-// 5CDC34: using guessed type int dword_5CDC34;
-// 5CDC38: using guessed type int dword_5CDC38;
+// 5CDBC0: using guessed type __int16 g_PistolAmmo;
+// 5CDBC4: using guessed type __int16 g_ShotgunAmmo;
+// 5CDBC8: using guessed type __int16 g_MachinegunAmmo;
+// 5CDBCC: using guessed type __int16 g_RLauncherAmmo;
+// 5CDBD0: using guessed type __int16 g_LaserAmmo;
+// 5CDBD4: using guessed type __int16 g_NeutrongunAmmo;
+// 5CDBD8: using guessed type __int16 g_GLauncherAmmo;
+// 5CDBDC: using guessed type __int16 g_FreezegunAmmo;
+// 5CDBE0: using guessed type __int16 g_BulletsAmmo;
+// 5CDBE4: using guessed type __int16 g_ShellsAmmo;
+// 5CDBE8: using guessed type __int16 g_GrenadesAmmo;
+// 5CDBEC: using guessed type __int16 g_RocketsAmmo;
+// 5CDBF0: using guessed type __int16 g_EnergyAmmo;
+// 5CDBF4: using guessed type __int16 g_SmartAmmo;
+// 5CDBF8: using guessed type __int16 g_FreezeAmmo;
+// 5CDBFC: using guessed type __int16 g_BulletsBox;
+// 5CDC00: using guessed type __int16 g_ShellsBox;
+// 5CDC04: using guessed type __int16 g_GrenadesBox;
+// 5CDC08: using guessed type __int16 g_RocketBox;
+// 5CDC0C: using guessed type __int16 g_EnergyBox;
+// 5CDC10: using guessed type __int16 g_SmartAmmoBox;
+// 5CDC14: using guessed type __int16 g_FreezeAmmoBox;
+// 5CDC18: using guessed type int g_MaxBullets;
+// 5CDC1C: using guessed type int g_MaxShells;
+// 5CDC20: using guessed type int g_MaxGrenades;
+// 5CDC24: using guessed type int g_MaxRockets;
+// 5CDC28: using guessed type int g_MaxEnergy;
+// 5CDC2C: using guessed type int g_MaxSmartAmmo;
+// 5CDC30: using guessed type int g_MaxFreezeAmmo;
+// 5CDC34: using guessed type int g_HealthAmmount;
+// 5CDC38: using guessed type int g_BigHelathAmmount;
 // 5CDC3C: using guessed type int dword_5CDC3C;
 // 5CDC40: using guessed type int dword_5CDC40;
 // 5CDC44: using guessed type int dword_5CDC44;
