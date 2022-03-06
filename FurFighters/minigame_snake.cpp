@@ -170,27 +170,27 @@ int* __cdecl sub_4D6089(int* a1)
     {
         switch (languageId)
         {
-        case 0:
+        case language::English:
             loadSprite(v4 + 180, aSnakeOverEnSpr_1);
             loadSprite(v4 + 168, aSnakePressEnSp_1);
             loadSprite(v4 + 192, aSnakeReadyEnSp_1);
             break;
-        case 1:
+        case language::French:
             loadSprite(v4 + 180, aSnakeOverFrSpr_0);
             loadSprite(v4 + 168, aSnakePressFrSp_0);
             loadSprite(v4 + 192, aSnakeReadyFrSp_0);
             break;
-        case 2:
+        case language::German:
             loadSprite(v4 + 180, aSnakeOverGeSpr_0);
             loadSprite(v4 + 168, aSnakePressGeSp_0);
             loadSprite(v4 + 192, aSnakeReadyGeSp_0);
             break;
-        case 3:
+        case language::Spanish:
             loadSprite(v4 + 180, aSnakeOverEnSpr_2);
             loadSprite(v4 + 168, aSnakePressEnSp_2);
             loadSprite(v4 + 192, aSnakeReadyEnSp_2);
             break;
-        case 4:
+        case language::Italy:
             loadSprite(v4 + 180, aSnakeOverSpSpr_0);
             loadSprite(v4 + 168, aSnakePressSpSp_0);
             loadSprite(v4 + 192, aSnakeReadySpSp_0);
@@ -297,27 +297,27 @@ _DWORD* __cdecl sub_4D6781(_DWORD* a1)
     {
         switch (languageId)
         {
-        case 0:
+        case language::English:
             loadSprite(v4 + 180, aSnakeOverEnSpr_5);
             loadSprite(v4 + 168, aSnakePressEnSp_5);
             loadSprite(v4 + 192, aSnakeReadyEnSp_5);
             break;
-        case 1:
+        case language::French:
             loadSprite(v4 + 180, aSnakeOverFrSpr_2);
             loadSprite(v4 + 168, aSnakePressFrSp_2);
             loadSprite(v4 + 192, aSnakeReadyFrSp_2);
             break;
-        case 2:
+        case language::German:
             loadSprite(v4 + 180, aSnakeOverGeSpr_2);
             loadSprite(v4 + 168, aSnakePressGeSp_2);
             loadSprite(v4 + 192, aSnakeReadyGeSp_2);
             break;
-        case 3:
+        case language::Spanish:
             loadSprite(v4 + 180, aSnakeOverEnSpr_6);
             loadSprite(v4 + 168, aSnakePressEnSp_6);
             loadSprite(v4 + 192, aSnakeReadyEnSp_6);
             break;
-        case 4:
+        case language::Italy:
             loadSprite(v4 + 180, aSnakeOverSpSpr_2);
             loadSprite(v4 + 168, aSnakePressSpSp_2);
             loadSprite(v4 + 192, aSnakeReadySpSp_2);

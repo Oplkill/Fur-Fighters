@@ -14,7 +14,7 @@ int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 {
     HRESULT initResult; // [esp+0h] [ebp-4h]
 
-    *(_DWORD*)&dword_667390 = 1;                 // todo
+    *(_DWORD*)&g_IsDebug = 1;                 // todo
     initResult = CoInitialize(0);
     if (initResult < 0)
         return 0;

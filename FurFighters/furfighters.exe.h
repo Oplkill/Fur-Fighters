@@ -1509,7 +1509,7 @@ _DWORD* __cdecl sub_4FD986(int a1);
 int sub_4FDB7E();
 _DWORD* __cdecl sub_4FDC2C(_DWORD* a1, _DWORD* a2, float* a3);
 int sub_4FDC77();
-char* sub_4FDD8A();
+char* init_LoadWeaponSettings();
 __int16 __cdecl sub_4FF537(int a1, FILE* Stream, char a3);
 int __cdecl sub_4FF6CE(int, int, float, int, int, float); // idb
 int __cdecl sub_4FF8C2(int, int, int, float, float, int, int); // idb

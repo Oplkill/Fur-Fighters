@@ -7421,7 +7421,6 @@ char byte_604598[44]; // idb
 int dword_6045C4; // weak
 int dword_6045C8; // weak
 int dword_6045CC; // weak
-int dword_6045D8; // weak
 int dword_6045DC; // weak
 int dword_6045E0; // weak
 int dword_6045E4; // weak
@@ -8239,7 +8238,7 @@ float flt_6585E0[4]; // idb
 float flt_6585F0[4]; // idb
 float flt_658600[4]; // idb
 float dword_658610; // idb
-float dword_658614; // idb
+float g_DrawDistance; // idb
 float dword_658618; // idb
 float flt_65861C; // weak
 float flt_658620; // weak
@@ -8337,7 +8336,7 @@ int dword_658928[14161]; // idb
 int dword_667380; // weak
 int dword_667384; // weak
 int junk1; // weak
-_BYTE dword_667390;
+_BYTE g_IsDebug;
 int dword_667398; // weak
 _BYTE byte_66739C[4]; // idb
 int dword_6673A0; // weak

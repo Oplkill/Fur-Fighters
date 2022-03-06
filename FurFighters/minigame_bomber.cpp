@@ -127,27 +127,27 @@ _DWORD* __cdecl sub_4D9449(_DWORD* a1)
     {
         switch (languageId)
         {
-        case 0:
+        case language::English:
             loadSprite(v5 + 192, aBomberOverEnSp_1);
             loadSprite(v5 + 180, aBomberPressEnS_1);
             loadSprite(v5 + 204, aBomberRoundEnS_1);
             break;
-        case 1:
+        case language::French:
             loadSprite(v5 + 192, aBomberOverFrSp_0);
             loadSprite(v5 + 180, aBomberPressFrS_0);
             loadSprite(v5 + 204, aBomberRoundFrS_0);
             break;
-        case 2:
+        case language::German:
             loadSprite(v5 + 192, aBomberOverGeSp_0);
             loadSprite(v5 + 180, aBomberPressGeS_0);
             loadSprite(v5 + 204, aBomberRoundGeS_0);
             break;
-        case 3:
+        case language::Spanish:
             loadSprite(v5 + 192, aBomberOverEnSp_2);
             loadSprite(v5 + 180, aBomberPressEnS_2);
             loadSprite(v5 + 204, aBomberRoundEnS_2);
             break;
-        case 4:
+        case language::Italy:
             loadSprite(v5 + 192, aBomberOverSpSp_0);
             loadSprite(v5 + 180, aBomberPressSpS_0);
             loadSprite(v5 + 204, aBomberRoundSpS_0);

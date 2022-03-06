@@ -101,19 +101,19 @@ int* __cdecl sub_4D6CFC(int* a1)
     {
         switch (languageId)
         {
-        case 0:
+        case language::English:
             loadSprite(v27 + 792, aBlockPressEnSp_1);
             break;
-        case 1:
+        case language::French:
             loadSprite(v27 + 792, aBlockPressFrSp_0);
             break;
-        case 2:
+        case language::German:
             loadSprite(v27 + 792, aBlockPressGeSp_0);
             break;
-        case 3:
+        case language::Spanish:
             loadSprite(v27 + 792, aBlockPressEnSp_2);
             break;
-        case 4:
+        case language::Italy:
             loadSprite(v27 + 792, aBlockPressSpSp_0);
             break;
         default:

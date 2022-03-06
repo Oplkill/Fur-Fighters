@@ -21,5 +21,13 @@ namespace settings
 		tDWrord,
 		tFloat1,
 		tFloat2,
-	};
+	}; 
+
+	enum weaponStats
+	{
+		shotSpeed = 128,
+		shotTime = 136,
+		spread = 140,
+		damage = 180,
+	}; 
 }

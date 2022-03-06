@@ -29,7 +29,7 @@ int some_init()
     int v11; // [esp+8h] [ebp-4h]
     int v12; // [esp+8h] [ebp-4h]
 
-    *(_DWORD*)&dword_667390 = 1;
+    *(_DWORD*)&g_IsDebug = 1;
     g_maybeDemoVersionType = 0;
     word_60431A = 1;
     word_668766 = 0;
@@ -159,7 +159,7 @@ int some_init()
     dword_6045C4 = 0;
     dword_6045C8 = 0;
     loadLanguageDatas();
-    sub_4FDD8A();
+    init_LoadWeaponSettings();
     v9 = AIL_ms_count();
     showTGAImageTimed(aAcclaimTga, 2);
     while (AIL_ms_count() < (unsigned int)(v9 + 4000))
@@ -269,7 +269,7 @@ int some_init()
 // 48C7B0: using guessed type int loadPeacockSettings(void);
 // 48ED94: using guessed type int loadWeaponSettings(void);
 // 4C37E6: using guessed type int sub_4C37E6(void);
-// 4FDD8A: using guessed type int sub_4FDD8A(void);
+// 4FDD8A: using guessed type int init_LoadWeaponSettings(void);
 // 53EE90: using guessed type int sub_53EE90(void);
 // 53EF02: using guessed type int sub_53EF02(void);
 // 53EF49: using guessed type int sub_53EF49(void);
@@ -349,7 +349,7 @@ int some_init()
 // 6586D8: using guessed type int dword_6586D8;
 // 6586DC: using guessed type int dword_6586DC;
 // 6586E0: using guessed type int dword_6586E0;
-// 667390: using guessed type int dword_667390;
+// 667390: using guessed type int g_IsDebug;
 // 667E88: using guessed type int dword_667E88;
 // 667E90: using guessed type int dword_667E90;
 // 668766: using guessed type __int16 word_668766;

@@ -166,31 +166,31 @@ _DWORD* __cdecl sub_4D82FE(_DWORD* a1)
     {
         switch (languageId)
         {
-        case 0:
+        case language::English:
             loadSprite(v12 + 344, aLanderOverEnSp_1);
             loadSprite(v12 + 380, aLanderPressEnS_1);
             loadSprite(v12 + 356, aLanderRoundEnS_1);
             loadSprite(v12 + 368, aLanderBonusEnS_1);
             break;
-        case 1:
+        case language::French:
             loadSprite(v12 + 344, aLanderOverFrSp_0);
             loadSprite(v12 + 380, aLanderPressFrS_0);
             loadSprite(v12 + 356, aLanderRoundFrS_0);
             loadSprite(v12 + 368, aLanderBonusFrS_0);
             break;
-        case 2:
+        case language::German:
             loadSprite(v12 + 344, aLanderOverGeSp_0);
             loadSprite(v12 + 380, aLanderPressGeS_0);
             loadSprite(v12 + 356, aLanderRoundGeS_0);
             loadSprite(v12 + 368, aLanderBonusGeS_0);
             break;
-        case 3:
+        case language::Spanish:
             loadSprite(v12 + 344, aLanderOverEnSp_2);
             loadSprite(v12 + 380, aLanderPressEnS_2);
             loadSprite(v12 + 356, aLanderRoundEnS_2);
             loadSprite(v12 + 368, aLanderBonusEnS_2);
             break;
-        case 4:
+        case language::Italy:
             loadSprite(v12 + 344, aLanderOverSpSp_0);
             loadSprite(v12 + 380, aLanderPressSpS_0);
             loadSprite(v12 + 356, aLanderRoundSpS_0);

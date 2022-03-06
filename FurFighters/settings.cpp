@@ -196,13 +196,13 @@ int __cdecl initSettings(HINSTANCE hInstance)
     {
         switch (languageId)
         {
-        case 0:
+        case language::English:
             fatalError(aYouNeedTheFurF);
-        case 1:
+        case language::French:
             fatalError(aPourJouerInsir);
-        case 2:
+        case language::German:
             fatalError(aUmZuSpielenLeg);
-        case 4:
+        case language::Italy:
             fatalError(aNecesitasElCdD);
         default:
             fatalError(aYouNeedTheFurF_0);

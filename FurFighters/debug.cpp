@@ -25,14 +25,14 @@ int writeDebug(char* Format, ...)
     va_list va; // [esp+10h] [ebp+Ch] BYREF
 
     va_start(va, Format);
-    if (dword_667390)                           // todo
+    if (g_IsDebug)
     {
         vsprintf(OutputString, Format, va);
         result = writeDebugOutputVariants(OutputString);
     }
     return result;
 }
-// 667390: using guessed type int dword_667390;
+// 667390: using guessed type int g_IsDebug;
 
 //----- (00564828) --------------------------------------------------------
 void __cdecl writeDebugOutputVariants(LPCSTR lpOutputString)

@@ -1,12 +1,26 @@
 #pragma once
 
+#include "defs.h"
+
 extern int languageId; // weak
+extern int g_SomeLanguageVariable; // weak
 
 int loadLanguageDatas();
 int __cdecl loadLanguageString(int a1);
 
 namespace language
 {
+	enum languageType
+	{
+		English,
+		French,
+		German,
+		Spanish,
+		Italy,
+		Japan,
+		Unknown,
+	};
+
 	//Enum for loadLanguageString(int) function.
 	//Those numbers must be same as they storing in "english.lng"
 	enum languageStrings

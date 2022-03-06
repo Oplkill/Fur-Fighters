@@ -117,27 +117,27 @@ int* __cdecl sub_4D7C34(int* a1)
     {
         switch (languageId)
         {
-        case 0:
+        case language::English:
             loadSprite(v3 + 228, aDaleksOverEnSp_1);
             loadSprite(v3 + 216, aDaleksPressEnS_1);
             loadSprite(v3 + 204, aDaleksRoundEnS_1);
             break;
-        case 1:
+        case language::French:
             loadSprite(v3 + 228, aDaleksOverFrSp_0);
             loadSprite(v3 + 216, aDaleksPressFrS_0);
             loadSprite(v3 + 204, aDaleksRoundFrS_0);
             break;
-        case 2:
+        case language::German:
             loadSprite(v3 + 228, aDaleksOverGeSp_0);
             loadSprite(v3 + 216, aDaleksPressGeS_0);
             loadSprite(v3 + 204, aDaleksRoundGeS_0);
             break;
-        case 3:
+        case language::Spanish:
             loadSprite(v3 + 228, aDaleksOverEnSp_2);
             loadSprite(v3 + 216, aDaleksPressEnS_2);
             loadSprite(v3 + 204, aDaleksRoundEnS_2);
             break;
-        case 4:
+        case language::Italy:
             loadSprite(v3 + 228, aDaleksOverSpSp_0);
             loadSprite(v3 + 216, aDaleksPressSpS_0);
             loadSprite(v3 + 204, aDaleksRoundSpS_0);

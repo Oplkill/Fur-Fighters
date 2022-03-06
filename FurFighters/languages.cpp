@@ -19,6 +19,7 @@ char aItemsBearTxt[15] = "items_bear.txt"; // weak
 
 int g_LanguageStringsData; // weak
 int languageId; // weak
+int g_SomeLanguageVariable; // weak
 
 //----- (00466DE0) --------------------------------------------------------
 int loadLanguageDatas()
@@ -38,25 +39,25 @@ int loadLanguageDatas()
     result = sub_53F213();
     switch (languageId)
     {
-    case 0:
+    case language::English:
         result = loadItemsInfo(aItemsEngTxt);
         break;
-    case 1:
+    case language::French:
         result = loadItemsInfo(aItemsFrTxt);
         break;
-    case 2:
+    case language::German:
         result = loadItemsInfo(aItemsGerTxt);
         break;
-    case 3:
+    case language::Spanish:
         result = loadItemsInfo(aItemsItlTxt);
         break;
-    case 4:
+    case language::Italy:
         result = loadItemsInfo(aItemsSpnTxt);
         break;
-    case 5:
+    case language::Japan:
         result = loadItemsInfo(aItemsJpnTxt);
         break;
-    case 6:
+    case language::Unknown:
         result = loadItemsInfo(aItemsBearTxt);
         break;
     default:
