@@ -1,6 +1,9 @@
 # Fur-Fighters
 Fully reverse engineered source code from game Fur Fighters.
 
+# Current state
+* Not compilling, under reverse engineering
+
 # Goals
 * Reverse engineer all code right
 * Make game close to original(except bugs)
