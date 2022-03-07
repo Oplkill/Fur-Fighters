@@ -20,3 +20,6 @@ Fully reverse engineered source code from game Fur Fighters.
 
 # Info
 * Code will be C++ with C parts of code
+
+# Code refference used
+* FakeDP and other things - https://github.com/arves100/ffloader
