@@ -7,6 +7,7 @@ extern int g_SomeLanguageVariable; // weak
 
 int loadLanguageDatas();
 int __cdecl loadLanguageString(int a1);
+int initLanguage();
 
 namespace language
 {

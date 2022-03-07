@@ -369,7 +369,7 @@ template<class T, class U> int8 __CFADD__(T x, U y)
 
 #define _UNKNOWN char
 
-#ifdef _MSC_VER
-#define snprintf _snprintf
-#define vsnprintf _vsnprintf
-#endif
+//#ifdef _MSC_VER
+//#define snprintf _snprintf
+//#define vsnprintf _vsnprintf
+//#endif

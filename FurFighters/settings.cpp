@@ -8,6 +8,11 @@
 #include <cstring>
 #include "debug.h"
 #include "files.h"
+#include "globalVariables.h"
+#include "languages.h"
+#include "tempplace.h"
+#include "utils.h"
+#include "directx.h"
 
 char aLoadingLevelCo[] = "Loading Level Config. File..."; // idb
 char aTitle[] = "title"; // idb
@@ -157,6 +162,23 @@ char aMaxRockets[12] = "Max Rockets"; // weak
 char aMaxEnergy[11] = "Max Energy"; // weak
 char aMaxSmartAmmo[15] = "Max Smart Ammo"; // weak
 char aMaxFreezeAmmo[16] = "Max Freeze Ammo"; // weak
+CHAR aLighting[] = "Lighting"; // idb
+CHAR aBumpMapping[] = "Bump Mapping"; // idb
+CHAR aTrilinear[] = "Trilinear"; // idb
+CHAR aGamma[] = "Gamma"; // idb
+CHAR aTripleBuffer[] = "Triple Buffer"; // idb
+CHAR aPlayerName_0[] = "Player Name"; // idb
+CHAR aSessionName_0[] = "Session Name"; // idb
+CHAR aLighting_0[] = "Lighting"; // idb
+CHAR aBumpMapping_0[] = "Bump Mapping"; // idb
+CHAR aTrilinear_0[] = "Trilinear"; // idb
+CHAR aTripleBuffer_0[] = "Triple Buffer"; // idb
+CHAR aGamma_0[] = "Gamma"; // idb
+char aFocusDavrossed[] = "focus davrossed"; // idb
+char aFocusDoctorWho[] = "focus doctor whoed"; // idb
+CHAR SubKey[] = "SOFTWARE\\Bizarre Creations\\Fur Fighters"; // idb
+char aRt[] = "rt"; // idb
+CHAR aControllerConf_0[] = "Controller Configuration"; // idb
 
 int g_NumLoadedLineSettingsInFile; // weak
 int g_SettingsVariableTypes[3061]; // idb
@@ -193,6 +215,27 @@ int g_MaxSmartAmmo; // weak
 int g_MaxFreezeAmmo; // weak
 int g_HealthAmmount; // weak
 int g_BigHelathAmmount; // weak
+HKEY regKey; // idb
+BYTE g_ControllerSettings; // idb
+int dword_5C6058; // weak
+int dword_5C6060; // idb
+int dword_5BFFC0; // idb
+int dword_5C605C; // idb
+WPARAM dword_5BFFC4; // idb
+BYTE g_Lighting; // idb
+BYTE g_BumpMapping; // idb
+BYTE g_Trilinear; // idb
+BYTE g_Gamma; // idb
+BYTE g_TrippleBuffer; // idb
+BYTE String; // idb
+
+LSTATUS sub_56A4D1();
+int __cdecl showDialogSettingsBox(LPARAM dwInitParam); // idb
+INT_PTR __stdcall dialogGameSettingsCallback(HWND, UINT, WPARAM, LPARAM); // idb
+LRESULT __cdecl sub_57951B(HWND hDlg, int a2, int a3, int a4, WPARAM a5);
+int __cdecl sub_57972A(_DWORD* a1, char a2);
+_DWORD* __cdecl sub_5791DC(_DWORD* a1, _DWORD* a2);
+int __cdecl sub_523E05(HKEY hKey, LPCSTR lpValueName, BYTE* lpData); // idb
 
 //----- (0047B665) --------------------------------------------------------
 int __cdecl loadSettings(char* FileName)
@@ -342,19 +385,19 @@ int __cdecl initSettings(HINSTANCE hInstance)
     CoInitialize(0);
     regKey = 0;
     initLanguage();
-    byte_5C6444 = 0;                              // todo
+    g_IsGameCDInserted = 0;
     for (i = 67; i < 90; ++i)
     {
         settingsFileName = (const char*)getFormattedString(aSettingsTxt_0, i);
         Stream = fopen(settingsFileName, aRt);
         if (Stream)
         {
-            byte_5C6444 = i;
+            g_IsGameCDInserted = i;
             fclose(Stream);
             break;
         }
     }
-    if (!byte_5C6444)
+    if (!g_IsGameCDInserted)
     {
         switch (languageId)
         {
@@ -371,7 +414,7 @@ int __cdecl initSettings(HINSTANCE hInstance)
         }
     }
     RegCreateKeyExA(HKEY_LOCAL_MACHINE, SubKey, 0, 0, 0, 0xF003Fu, 0, &regKey, 0);
-    if ((int)sub_578B98(0) < 0)
+    if ((int)checkAudioVideoDevices(0) < 0)
         return 0;
     v8 = sub_57972A(&dword_5C6448, 0);
     if (v8 < 0)
@@ -383,11 +426,11 @@ int __cdecl initSettings(HINSTANCE hInstance)
         *(_DWORD*)(dword_5C6448 + 1220) = *(_DWORD*)Data;
     }
     sub_56A4D1();
-    *(_DWORD*)(dword_5C6448 + 1176) = *(_DWORD*)&dword_60FE40;
+    *(_DWORD*)(dword_5C6448 + 1176) = *(_DWORD*)&g_TrippleBuffer;
     showDialogSettingsBox((LPARAM)&dword_5C6448);
-    *(_DWORD*)&dword_60FE40 = *(_DWORD*)(dword_5C6448 + 1176);
+    *(_DWORD*)&g_TrippleBuffer = *(_DWORD*)(dword_5C6448 + 1176);
     RegSetValueExA(regKey, aResSettings_1, 0, 1u, (const BYTE*)(dword_5C6448 + 1220), 4u);
-    sub_56A43D();
+    loadVideoSettings();
     dword_60FE4C = *(_DWORD*)(dword_5C6448 + 284);
     dword_60FE50 = *(_DWORD*)(dword_5C6448 + 40);
     dword_60FE44 = *(_DWORD*)(dword_5C6448 + 1172);
@@ -401,7 +444,7 @@ int __cdecl initSettings(HINSTANCE hInstance)
     WndClass.cbWndExtra = 0;
     WndClass.hInstance = hInstance;
     WndClass.hCursor = LoadCursorA(0, (LPCSTR)0x7F00);
-    WndClass.hIcon = LoadIconA(::hInstance, (LPCSTR)0x6C);
+    WndClass.hIcon = LoadIconA(g_hInstance, (LPCSTR)0x6C);
     WndClass.hbrBackground = (HBRUSH)GetStockObject(5);
     WndClass.lpszMenuName = aMenu;
     WndClass.lpszClassName = aWinny;
@@ -425,11 +468,11 @@ int __cdecl initSettings(HINSTANCE hInstance)
     return result;
 }
 // 51B2C4: using guessed type int sub_51B2C4(void);
-// 56A43D: using guessed type int sub_56A43D(void);
+// 56A43D: using guessed type int loadVideoSettings(void);
 // 56A4D1: using guessed type int sub_56A4D1(void);
-// 578B98: using guessed type _DWORD __cdecl sub_578B98(_DWORD);
+// 578B98: using guessed type _DWORD __cdecl checkAudioVideoDevices(_DWORD);
 // 57972A: using guessed type _DWORD __cdecl sub_57972A(_DWORD, _DWORD);
-// 5C6444: using guessed type char byte_5C6444;
+// 5C6444: using guessed type char g_IsGameCDInserted;
 // 5C6448: using guessed type int dword_5C6448;
 // 6045D4: using guessed type int dword_6045D4;
 // 60FE28: using guessed type int dword_60FE28;
@@ -766,3 +809,350 @@ int __stdcall sub_51A85B(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 }
 // 5AC9F8: using guessed type int dword_5AC9F8;
 // 6673E0: using guessed type int dword_6673E0;
+
+//----- (0056A4D1) --------------------------------------------------------
+LSTATUS sub_56A4D1()
+{
+    LSTATUS result; // eax
+    DWORD cbData; // [esp+4h] [ebp-Ch] BYREF
+    DWORD Type; // [esp+8h] [ebp-8h] BYREF
+    BYTE Data[4]; // [esp+Ch] [ebp-4h] BYREF
+
+    cbData = 4;
+    if (RegQueryValueExA(regKey, aLighting_0, 0, &Type, Data, &cbData))
+        *(_DWORD*)&g_Lighting = 1;
+    else
+        *(_DWORD*)&g_Lighting = *(_DWORD*)Data;
+    if (RegQueryValueExA(regKey, aBumpMapping_0, 0, &Type, Data, &cbData))
+        *(_DWORD*)&g_BumpMapping = 0;
+    else
+        *(_DWORD*)&g_BumpMapping = *(_DWORD*)Data;
+    if (RegQueryValueExA(regKey, aTrilinear_0, 0, &Type, Data, &cbData))
+        *(_DWORD*)&g_Trilinear = 0;
+    else
+        *(_DWORD*)&g_Trilinear = *(_DWORD*)Data;
+    if (RegQueryValueExA(regKey, aTripleBuffer_0, 0, &Type, Data, &cbData))
+        *(_DWORD*)&g_TrippleBuffer = 0;
+    else
+        *(_DWORD*)&g_TrippleBuffer = *(_DWORD*)Data;
+    result = RegQueryValueExA(regKey, aGamma_0, 0, &Type, Data, &cbData);
+    if (result)
+    {
+        *(_DWORD*)&g_Gamma = 200;
+    }
+    else
+    {
+        result = *(_DWORD*)Data;
+        *(_DWORD*)&g_Gamma = *(_DWORD*)Data;
+    }
+    return result;
+}
+
+//----- (00523AB8) --------------------------------------------------------
+int __cdecl loadPlayerName(const char* a1)
+{
+    strcpy((char*)&String, a1);
+    return sub_523E05(regKey, aPlayerName_0, &String);
+}
+
+//----- (00523B2D) --------------------------------------------------------
+int __cdecl loadGameSessionName(const char* a1)
+{
+    strcpy((char*)&byte_5BAD14, a1);
+    return sub_523E05(regKey, aSessionName_0, &byte_5BAD14);
+}
+
+//----- (0056A43D) --------------------------------------------------------
+LSTATUS loadVideoSettings()
+{
+    RegSetValueExA(regKey, aLighting, 0, 4u, &g_Lighting, 4u);
+    RegSetValueExA(regKey, aBumpMapping, 0, 4u, &g_BumpMapping, 4u);
+    RegSetValueExA(regKey, aTrilinear, 0, 4u, &g_Trilinear, 4u);
+    RegSetValueExA(regKey, aGamma, 0, 4u, &g_Gamma, 4u);
+    return RegSetValueExA(regKey, aTripleBuffer, 0, 4u, &g_TrippleBuffer, 4u);
+}
+
+//----- (00579201) --------------------------------------------------------
+int __cdecl showDialogSettingsBox(LPARAM dwInitParam)
+{
+    HMODULE v1; // eax
+    int result; // eax
+    HWND v3; // [esp-Ch] [ebp-Ch]
+
+    v3 = GetForegroundWindow();
+    v1 = GetModuleHandleA(0);
+    if (DialogBoxParamA(v1, (LPCSTR)0x90, v3, dialogGameSettingsCallback, dwInitParam) == 1)
+        result = 0;
+    else
+        result = -2147467259;
+    return result;
+}
+
+//----- (00579238) --------------------------------------------------------
+INT_PTR __stdcall dialogGameSettingsCallback(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
+{
+    INT_PTR result; // eax
+    LRESULT v5; // [esp+8h] [ebp-38h]
+    LRESULT v6; // [esp+Ch] [ebp-34h]
+    LRESULT wParam; // [esp+10h] [ebp-30h]
+    WPARAM v8; // [esp+14h] [ebp-2Ch]
+    HWND v9; // [esp+18h] [ebp-28h]
+    LRESULT v10; // [esp+1Ch] [ebp-24h]
+    HWND v11; // [esp+20h] [ebp-20h]
+    _DWORD* v12; // [esp+24h] [ebp-1Ch]
+    int v13; // [esp+28h] [ebp-18h]
+    LRESULT v14; // [esp+2Ch] [ebp-14h]
+    HWND v15; // [esp+30h] [ebp-10h]
+    HWND hWnd; // [esp+34h] [ebp-Ch]
+    int v17; // [esp+38h] [ebp-8h] BYREF
+    int v18; // [esp+3Ch] [ebp-4h] BYREF
+
+    sub_5791DC(&v17, &v18);
+    if (a2 == 272)
+    {
+        dword_5C6058 = a4;
+        if (a4)
+        {
+            dword_5C6060 = *(_DWORD*)dword_5C6058;
+            dword_5BFFC0 = *(_DWORD*)(dword_5C6060 + 1220);
+            dword_5C605C = *(_DWORD*)(dword_5C6060 + 1172);
+            dword_5BFFC4 = *(_DWORD*)(dword_5C6060 + 1176);
+            sub_57951B(hDlg, dword_5C6060, dword_5BFFC0, dword_5C605C, dword_5BFFC4);
+            result = 1;
+        }
+        else
+        {
+            result = 0;
+        }
+    }
+    else if (a2 == 273)
+    {
+        hWnd = GetDlgItem(hDlg, 1018);
+        v15 = GetDlgItem(hDlg, 1038);
+        v9 = GetDlgItem(hDlg, 1035);
+        v11 = GetDlgItem(hDlg, 1034);
+        v14 = SendMessageA(hWnd, 0x147u, 0, 0);
+        wParam = SendMessageA(v15, 0x147u, 0, 0);
+        v10 = SendMessageA(v15, 0x150u, wParam, 0);
+        if (v9)
+            v6 = SendMessageA(v9, 0xF0u, 0, 0);
+        else
+            v6 = 0;
+        v13 = v6;
+        if (v11)
+            v5 = SendMessageA(v11, 0xF0u, 0, 0);
+        else
+            v5 = 0;
+        v8 = v5;
+        v12 = (_DWORD*)(1236 * v14 + v17);
+        if ((unsigned __int16)a3 == 1)
+        {
+            *(_DWORD*)dword_5C6058 = v12;
+            v12[293] = v6;
+            v12[294] = v5;
+            v12[305] = v10;
+            qmemcpy(v12 + 262, (const void*)(124 * v10 + v12[303]), 0x7Cu);
+            EndDialog(hDlg, 1);
+            result = 1;
+        }
+        else
+        {
+            if ((unsigned __int16)a3 == 2)
+            {
+                EndDialog(hDlg, 2);
+                exit(0);
+            }
+            if (HIWORD(a3) == 9 && (unsigned __int16)a3 == 1018)
+            {
+                v10 = *(_DWORD*)(v17 + 1236 * v14 + 1220);
+                v13 = *(_DWORD*)(v17 + 1236 * v14 + 1172);
+                v8 = *(_DWORD*)(v17 + 1236 * v14 + 1176);
+            }
+            sub_57951B(hDlg, 1236 * v14 + v17, v10, v13, v8);
+            result = 1;
+        }
+    }
+    else
+    {
+        result = 0;
+    }
+    return result;
+}
+// 5C6058: using guessed type int dword_5C6058;
+
+//----- (0044D136) --------------------------------------------------------
+LSTATUS loadControllerSettings()
+{
+    LSTATUS result; // eax
+    DWORD cbData; // [esp+Ch] [ebp-D4h] BYREF
+    DWORD Type; // [esp+10h] [ebp-D0h] BYREF
+    BYTE Data[204]; // [esp+14h] [ebp-CCh] BYREF
+
+    cbData = 204;
+    result = RegQueryValueExA(regKey, aControllerConf_0, 0, &Type, Data, &cbData);
+    if (!result)
+        qmemcpy(&g_ControllerSettings, Data, cbData);
+    return result;
+}
+
+//----- (0057951B) --------------------------------------------------------
+LRESULT __cdecl sub_57951B(HWND hDlg, int a2, int a3, int a4, WPARAM a5)
+{
+    LRESULT result; // eax
+    CHAR v6[80]; // [esp+4h] [ebp-80h] BYREF
+    WPARAM v7; // [esp+54h] [ebp-30h]
+    LPARAM lParam; // [esp+58h] [ebp-2Ch]
+    WPARAM wParam; // [esp+5Ch] [ebp-28h]
+    LPARAM j; // [esp+60h] [ebp-24h]
+    HWND v11; // [esp+64h] [ebp-20h]
+    int v12[2]; // [esp+68h] [ebp-1Ch] BYREF
+    HWND v13; // [esp+70h] [ebp-14h]
+    HWND hWnd; // [esp+74h] [ebp-10h]
+    unsigned int v15; // [esp+78h] [ebp-Ch] BYREF
+    unsigned int i; // [esp+7Ch] [ebp-8h]
+    HWND v17; // [esp+80h] [ebp-4h]
+
+    sub_5791DC(v12, &v15);
+    hWnd = GetDlgItem(hDlg, 1018);
+    v13 = GetDlgItem(hDlg, 1038);
+    v17 = GetDlgItem(hDlg, 1035);
+    v11 = GetDlgItem(hDlg, 1034);
+    v12[1] = (int)GetDlgItem(hDlg, 1016);
+    SendMessageA(hWnd, 0x14Bu, 0, 0);
+    result = SendMessageA(v13, 0x14Bu, 0, 0);
+    for (i = 0; i < v15; ++i)
+    {
+        lParam = 1236 * i + v12[0];
+        wParam = SendMessageA(hWnd, 0x143u, 0, lParam);
+        if (lParam == a2)
+        {
+            SendMessageA(hWnd, 0x14Eu, wParam, 0);
+            if (v17)
+                EnableWindow(v17, *(_DWORD*)(lParam + 1232));
+            if (v11)
+            {
+                EnableWindow(v11, *(_DWORD*)(lParam + 1228));
+                SendMessageA(v11, 0xF1u, a5, 0);
+            }
+            for (j = 0; (unsigned int)j < *(_DWORD*)(lParam + 1216); ++j)
+            {
+                wsprintfA(
+                    v6,
+                    "%ld x %ld x %ld",
+                    *(_DWORD*)(124 * j + *(_DWORD*)(lParam + 1212) + 12),
+                    *(_DWORD*)(124 * j + *(_DWORD*)(lParam + 1212) + 8),
+                    *(_DWORD*)(124 * j + *(_DWORD*)(lParam + 1212) + 84));
+                v7 = SendMessageA(v13, 0x143u, 0, (LPARAM)v6);
+                SendMessageA(v13, 0x151u, v7, j);
+                if (j == a3)
+                    SendMessageA(v13, 0x14Eu, v7, 0);
+            }
+        }
+        result = i + 1;
+    }
+    return result;
+}
+
+//----- (0057972A) --------------------------------------------------------
+int __cdecl sub_57972A(_DWORD* a1, char a2)
+{
+    int v3; // [esp+8h] [ebp-1Ch]
+    int v4; // [esp+Ch] [ebp-18h]
+    int v5; // [esp+10h] [ebp-14h] BYREF
+    unsigned int i; // [esp+14h] [ebp-10h]
+    int v7; // [esp+18h] [ebp-Ch]
+    int v8; // [esp+1Ch] [ebp-8h]
+    unsigned int v9; // [esp+20h] [ebp-4h] BYREF
+
+    v3 = 0;
+    v4 = 0;
+    v7 = 0;
+    v8 = 0;
+    if (!a1)
+        return -2147024809;
+    sub_5791DC(&v5, &v9);
+    for (i = 0; i < v9; ++i)
+    {
+        if (*(_DWORD*)(v5 + 1236 * i + 1224))
+        {
+            if (*(_DWORD*)(v5 + 1236 * i + 280))
+            {
+                if (!memcmp(*(const void**)(v5 + 1236 * i + 40), dword_597278, 0x10u))
+                    v8 = 1236 * i + v5;
+                else
+                    v7 = 1236 * i + v5;
+            }
+            else if (!memcmp(*(const void**)(v5 + 1236 * i + 40), &unk_597298, 0x10u))
+            {
+                v3 = 1236 * i + v5;
+            }
+            else
+            {
+                v4 = 1236 * i + v5;
+            }
+        }
+    }
+    if ((a2 & 1) != 0 || !v8)
+    {
+        if ((a2 & 1) != 0 || !v7)
+        {
+            if (v4)
+            {
+                *a1 = v4;
+            }
+            else
+            {
+                if (!v3)
+                    return -2130706428;
+                *a1 = v3;
+            }
+        }
+        else
+        {
+            *a1 = v7;
+        }
+    }
+    else
+    {
+        *a1 = v8;
+    }
+    return 0;
+}
+
+//----- (005791DC) --------------------------------------------------------
+_DWORD* __cdecl sub_5791DC(_DWORD* a1, _DWORD* a2)
+{
+    _DWORD* result; // eax
+
+    if (a1)
+    {
+        result = a1;
+        *a1 = &unk_5BFFC8;
+    }
+    if (a2)
+        *a2 = numVideoDevices;
+    return result;
+}
+// 5C6068: using guessed type int dword_5C6068;
+
+//----- (00523E05) --------------------------------------------------------
+int __cdecl sub_523E05(HKEY hKey, LPCSTR lpValueName, BYTE* lpData)
+{
+    int result; // eax
+
+    if (RegSetValueExA(hKey, lpValueName, 0, 1u, lpData, strlen((const char*)lpData) + 1))
+        result = -2147467259;
+    else
+        result = 0;
+    return result;
+}
+
+//----- (00523DAD) --------------------------------------------------------
+int __cdecl loadRegisterSetting(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, int a5)
+{
+    DWORD Type; // [esp+Ch] [ebp-4h] BYREF
+
+    if (RegQueryValueExA(hKey, lpValueName, 0, &Type, lpData, &cbData))
+        strcpy((char*)lpData, (const char*)a5);
+    return 0;
+}

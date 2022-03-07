@@ -29,15 +29,22 @@ extern __int16 g_RocketBox; // weak
 extern __int16 g_EnergyBox; // weak
 extern __int16 g_SmartAmmoBox; // weak
 extern __int16 g_FreezeAmmoBox; // weak
-int g_MaxBullets; // weak
-int g_MaxShells; // weak
-int g_MaxGrenades; // weak
-int g_MaxRockets; // weak
-int g_MaxEnergy; // weak
-int g_MaxSmartAmmo; // weak
-int g_MaxFreezeAmmo; // weak
-int g_HealthAmmount; // weak
-int g_BigHelathAmmount; // weak
+extern int g_MaxBullets; // weak
+extern int g_MaxShells; // weak
+extern int g_MaxGrenades; // weak
+extern int g_MaxRockets; // weak
+extern int g_MaxEnergy; // weak
+extern int g_MaxSmartAmmo; // weak
+extern int g_MaxFreezeAmmo; // weak
+extern int g_HealthAmmount; // weak
+extern int g_BigHelathAmmount; // weak
+extern HKEY regKey; // idb
+extern BYTE g_ControllerSettings; // idb
+extern BYTE g_Lighting; // idb
+extern BYTE g_BumpMapping; // idb
+extern BYTE g_Trilinear; // idb
+extern BYTE g_Gamma; // idb
+extern BYTE g_TrippleBuffer; // idb
 
 int __cdecl loadSettings(char* FileName);
 int __cdecl initSettings(HINSTANCE hInstance); // idb
@@ -50,6 +57,11 @@ int loadPeacockSettings();
 int loadWeaponSettings();
 int __cdecl sub_53FA96(const char* a1, int a2);
 int __stdcall sub_51A85B(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+int __cdecl loadPlayerName(const char* a1);
+int __cdecl loadGameSessionName(const char* a1);
+LSTATUS loadVideoSettings();
+LSTATUS loadControllerSettings();
+int __cdecl loadRegisterSetting(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, int); // idb
 
 namespace settings
 {

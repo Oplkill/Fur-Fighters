@@ -1,11 +1,17 @@
 #include "debug.h"
 
+#include "defs.h"
 #include <cstdlib>
 #include <windows.h>
+#include <cstdio>
 
 CHAR aFatalError[] = "Fatal Error"; // idb
 
 _BYTE g_IsDebug;
+char OutputString[512]; // idb
+int debugOutputVariant = 3; // weak
+int debugOutputBufferCurrentOffset; // weak
+char debugOutputBuffer[5120]; // idb
 
 //----- (00564760) --------------------------------------------------------
 void __cdecl initDebug(int a1)
@@ -21,7 +27,7 @@ void __cdecl initDebug(int a1)
 // 5BEB84: using guessed type int debugOutputBufferCurrentOffset;
 
 //----- (005647E8) --------------------------------------------------------
-int writeDebug(char* Format, ...)
+int writeDebug(const char* Format, ...)
 {
     int result; // eax
     va_list va; // [esp+10h] [ebp+Ch] BYREF

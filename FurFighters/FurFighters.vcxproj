@@ -163,6 +163,7 @@
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="sounds.cpp" />
     <ClCompile Include="tempplace.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dead_code.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="settings.h" />
     <ClInclude Include="sounds.h" />
     <ClInclude Include="tempplace.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

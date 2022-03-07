@@ -24,8 +24,6 @@ char aEaxTga[8] = "eax.tga"; // weak
 char aSettingUpLevel[] = "Setting up level defaults"; // idb
 char aSettingUpDefau[] = "Setting Up Default Preferences"; // idb
 
-char getFormattedStringBuffer[256]; // idb
-
 //----- (00448C20) --------------------------------------------------------
 int some_init()
 {
@@ -101,7 +99,7 @@ int some_init()
     sub_55429D(23, 0, 1);
     sub_55429D(24, 0, 1);
     sub_55429D(25, 0, 1);
-    v0 = (int)getFormattedString(aLevelsTxt, byte_5C6444);
+    v0 = (int)getFormattedString(aLevelsTxt, g_IsGameCDInserted);
     loadSettings(v0);
     v2 = getFormattedString(aSettingsTxt, v1);
     anotherLoadSettings(v2);
@@ -294,7 +292,7 @@ int some_init()
 // 56ED8D: using guessed type _DWORD __cdecl sub_56ED8D(_DWORD, _DWORD);
 // 582028: using guessed type int sub_582028(void);
 // 59434C: using guessed type _DWORD __stdcall AIL_ms_count();
-// 5C6444: using guessed type char byte_5C6444;
+// 5C6444: using guessed type char g_IsGameCDInserted;
 // 601646: using guessed type __int16 word_601646;
 // 6016C6: using guessed type __int16 word_6016C6;
 // 601DD8: using guessed type int dword_601DD8[];
@@ -373,16 +371,6 @@ int some_init()
 // 6AD864: using guessed type int dword_6AD864;
 // 6AD86C: using guessed type int dword_6AD86C;
 // 6AE818: using guessed type char byte_6AE818;
-
-//----- (005648D7) --------------------------------------------------------
-char* getFormattedString(char* Format, ...)
-{
-    va_list va; // [esp+10h] [ebp+Ch] BYREF
-
-    va_start(va, Format);
-    vsprintf(getFormattedStringBuffer, Format, va);
-    return getFormattedStringBuffer;
-}
 
 //----- (0043FC90) --------------------------------------------------------
 void __noreturn sub_43FC90()

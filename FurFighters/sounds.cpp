@@ -1,5 +1,7 @@
 #include "sounds.h"
 
+#include "tempplace.h"
+
 char aAurealA3dInter[28] = "Aureal A3D Interactive (TM)"; // weak
 char aAurealA3dTm[14] = "Aureal A3D tm"; // weak
 char aAurealA3d20Tm[20] = "Aureal A3D 2.0 (TM)"; // weak

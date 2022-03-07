@@ -212,3 +212,9 @@ int sub_58216D()
 }
 // 607104: using guessed type char byte_607104;
 // 6ADA48: using guessed type int dword_6ADA48;
+
+//----- (0044D112) --------------------------------------------------------
+LSTATUS sub_44D112()
+{
+    return RegSetValueExA(regKey, aControllerConf, 0, 3u, &g_ControllerSettings, 0xCCu);
+}

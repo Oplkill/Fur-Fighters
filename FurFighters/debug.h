@@ -3,7 +3,7 @@
 extern _BYTE g_IsDebug;
 
 void __cdecl initDebug(int a1);
-int writeDebug(char* Format, ...);
+int writeDebug(const char* Format, ...);
 void __cdecl writeDebugOutputVariants(LPCSTR lpOutputString);
 [[ noreturn ]] void fatalError(LPCSTR lpText); // idb
 

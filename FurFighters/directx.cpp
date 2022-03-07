@@ -5,6 +5,8 @@
 #include <windows.h>
 #include "debug.h"
 #include "tempplace.h"
+#include "utils.h"
+#include "settings.h"
 
 CHAR aNoDevicesAndOr[] = "No devices and/or modes were enumerated!"; // idb
 CHAR aNoEnumeratedDe[] = "No enumerated devices were accepted!"; // idb
@@ -13,8 +15,11 @@ CHAR aCanTQueryIdire[] = "Can't query IDirect3D7 during enumeration!"; // idb
 char aEnummingTextur[] = "Enumming Textures"; // idb
 char aBeginsceneIdir[] = "BeginScene(): IDirect3DDevice7_BeginScene failed with error DDERR_SURFACELOST !"; // idb
 char aEndsceneIdirec[] = "EndScene(): IDirect3DDevice7_EndScene failed with error DDERR_SURFACELOST !"; // idb
+CHAR aControllerConf[] = "Controller Configuration"; // idb
 
 int dword_6673E0; // weak
+int numVideoDevicesOrModes; // weak
+int numVideoDevices; // weak
 
 //----- (0052CE31) --------------------------------------------------------
 void __stdcall getDirectXErrorName(int a1, size_t BufferCount, char* Buffer)
@@ -1413,13 +1418,13 @@ int __cdecl sub_5752F3(int a1, int a2)
     if (v4)
         writeDebug("Mouse Acquire Value NOT Ok - %d", v4);
     _cfltcvt_init_4();
-    result = sub_44D136();
+    result = loadControllerSettings();
     word_668762 = 0;
     return result;
 }
 // 575594: conditional instruction was optimized away because of '%var_48.4>=2u'
 // 575417: conditional instruction was optimized away because of '%var_48.4>=2u'
-// 44D136: using guessed type int sub_44D136(void);
+// 44D136: using guessed type int loadControllerSettings(void);
 // 5750F0: using guessed type int _cfltcvt_init_4(void);
 // 593050: using guessed type int __stdcall DirectInputCreateEx(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
 // 597360: using guessed type int dword_597360;
@@ -1522,7 +1527,7 @@ int sub_577C00()
 // 610070: using guessed type int dword_610070;
 
 //----- (00578B98) --------------------------------------------------------
-int __cdecl sub_578B98(int a1)
+int __cdecl checkAudioVideoDevices(int a1)
 {
     dword_5C606C = (int(__cdecl*)(_DWORD, _DWORD))a1;
     dword_610448 = (int)&unk_5B1DA8;

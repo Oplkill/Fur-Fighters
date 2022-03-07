@@ -492,8 +492,6 @@ int sub_44CB3F();
 __int16 __cdecl sub_44CE08(int a1);
 void sub_44CFA6();
 int __cdecl sub_44D054(int); // weak
-LSTATUS sub_44D112();
-LSTATUS sub_44D136();
 int __cdecl sub_44D1A0(int a1, int a2, int a3);
 int __cdecl sub_44D255(int a1, int a2, int a3);
 int __cdecl sub_44D35A(int a1, int a2, int a3, int a4, int a5, int a6, unsigned __int8 a7, int a8);
@@ -1682,8 +1680,6 @@ void __cdecl sub_519878(int a1, int a2, int a3, float a4);
 int __cdecl sub_519E7C(_DWORD* a1);
 int __cdecl sub_51A225(int a1);
 BOOL __cdecl sub_51A486(int xLeft, int yTop);
-BOOL __cdecl sub_51ADC9(char* Str1, char* Str2);
-int initLanguage();
 _DWORD* __cdecl sub_51B3E0(int a1, int a2, int a3);
 void __cdecl sub_51B44E(LPVOID* lpMem);
 int __cdecl sub_51B49F(int a1, int a2);
@@ -1804,13 +1800,9 @@ void sub_523808();
 int (*__cdecl sub_5239B8(int (*a1)()))();
 int (*__cdecl sub_5239C5(int (*a1)()))();
 unsigned int __cdecl sub_523A8A(BYTE* a1);
-int __cdecl sub_523AB8(const char* a1);
 unsigned int __cdecl sub_523AFF(BYTE* a1);
-int __cdecl sub_523B2D(const char* a1);
 int sub_523CD4();
 int __cdecl sub_523D5C(int a1);
-int __cdecl sub_523DAD(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, int); // idb
-int __cdecl sub_523E05(HKEY hKey, LPCSTR lpValueName, BYTE* lpData); // idb
 void sub_523E44();
 unsigned int sub_524062();
 void sub_524091();
@@ -2509,8 +2501,6 @@ int sub_56A14F();
 int __cdecl sub_56A159(int a1, int a2, int a3, int a4);
 int __cdecl sub_56A2F7(int a1);
 int __cdecl sub_56A31D(int a1);
-LSTATUS sub_56A43D();
-LSTATUS sub_56A4D1();
 int __cdecl sub_56A614(int a1);
 int __cdecl sub_56A66E(int a1);
 int __cdecl sub_56A68B(int a1);
@@ -2608,11 +2598,6 @@ int __stdcall sub_578A63(_DWORD* a1, void* a2);
 int __cdecl CompareFunction(const void*, const void*); // idb
 int __stdcall sub_578DB1(_DWORD* a1, int a2);
 int __stdcall sub_578EFF(int, LPCSTR, int, int); // idb
-_DWORD* __cdecl sub_5791DC(_DWORD* a1, _DWORD* a2);
-int __cdecl showDialogSettingsBox(LPARAM dwInitParam); // idb
-INT_PTR __stdcall sub_579238(HWND, UINT, WPARAM, LPARAM); // idb
-LRESULT __cdecl sub_57951B(HWND hDlg, int a2, int a3, int a4, WPARAM a5);
-int __cdecl sub_57972A(_DWORD* a1, char a2);
 int sub_5798B0();
 DWORD __cdecl sub_5798F2(char a1, char a2, char a3);
 char __cdecl sub_5799C0(char a1, char a2, char a3);

@@ -12,6 +12,14 @@
 #include "multiplayer.h"
 
 char aNetworkDebug[14] = "Network Debug"; // weak
+CHAR aPlayerName[] = "Player Name"; // idb
+CHAR aSessionName[] = "Session Name"; // idb
+CHAR aPreferredProvi[] = "Preferred Provider"; // idb
+
+int dword_60FED4; // weak
+int dword_60FED0; // weak
+int dword_60FECC; // weak
+int dword_60FE74; // weak
 
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);
 int sub_45C710(HRESULT initResult);
@@ -30,7 +38,7 @@ int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
     initResult = CoInitialize(0);
     if (initResult < 0)
         return 0;
-    //::hInstance = hInstance;                      // todo
+    g_hInstance = hInstance;
     strcpy(textUseless1, "HomeW_HB");
     g_UseGameSpy = 0;
     initDebug(3);
@@ -271,9 +279,9 @@ int __stdcall sub_523623(HINSTANCE a1, HINSTANCE a2, LPSTR a3, int a4)
     atexit(sub_5239D2);
     g_hInstanceInt = (int)a1;
     ShowCursor(1);
-    sub_523DAD(regKey, aPlayerName, &String, 0x20u, (int)&unk_5BAEA4);
-    sub_523DAD(regKey, aSessionName, &byte_5BAD14, 0x100u, (int)&unk_5BAEA8);
-    sub_523DAD(regKey, aPreferredProvi, &byte_5BABF4, 0x100u, (int)&unk_5BAEAC);
+    loadRegisterSetting(regKey, aPlayerName, &String, 0x20u, (int)&unk_5BAEA4);
+    loadRegisterSetting(regKey, aSessionName, &byte_5BAD14, 0x100u, (int)&unk_5BAEA8);
+    loadRegisterSetting(regKey, aPreferredProvi, &byte_5BABF4, 0x100u, (int)&unk_5BAEAC);
     pHandles = CreateEventA(0, 0, 0, 0);
     if (CoInitialize(0) < 0)
         emptyFunction0();
@@ -311,81 +319,81 @@ int __cdecl parseArguments(LPSTR a1)
         v1 = *Buffer++;
         if (v1 == 45)
         {
-            if (sub_51ADC9(Buffer, aGamespy))
+            if (isStringsEquals(Buffer, aGamespy))
             {
                 g_UseGameSpy = 1;
                 writeDebug(aUseGamespy);
             }
-            else if (sub_51ADC9(Buffer, aConnect))
+            else if (isStringsEquals(Buffer, aConnect))
             {
                 sscanf(Buffer, "connect %[^:]:%s", Source, &v8[32]);
                 v9 = 1;
                 writeDebug("Connect : [%s]", Source);
                 strncpy(Destination, Source, 0x20u);
             }
-            else if (sub_51ADC9(Buffer, aName))
+            else if (isStringsEquals(Buffer, aName))
             {
                 sscanf(Buffer, "name \"%[^\"]\"", v8);
                 if (strlen(v8) > 0x14)
                     v8[21] = 0;
-                sub_523AB8(v8);
+                loadPlayerName(v8);
                 writeDebug("Player Name : [%s]", v8);
             }
-            else if (sub_51ADC9(Buffer, aGamename))
+            else if (isStringsEquals(Buffer, aGamename))
             {
                 sscanf(Buffer, "gamename \"%[^\"]\"", v7);
-                sub_523B2D(v7);
+                loadGameSessionName(v7);
                 writeDebug("Game Name : [%s]", v7);
             }
-            else if (sub_51ADC9(Buffer, aCharacter))
+            else if (isStringsEquals(Buffer, aCharacter))
             {
                 sscanf(Buffer, "character %d", v6);
                 dword_604600 = *(_DWORD*)v6;
                 writeDebug("Character : %d", *(_DWORD*)v6);
             }
-            else if (sub_51ADC9(Buffer, aRoofus))
+            else if (isStringsEquals(Buffer, aRoofus))
             {
                 dword_604600 = 0;
                 writeDebug(aRoofus_0);
             }
-            else if (sub_51ADC9(Buffer, aJuliette))
+            else if (isStringsEquals(Buffer, aJuliette))
             {
                 dword_604600 = 1;
                 writeDebug(aJuliette_0);
             }
-            else if (sub_51ADC9(Buffer, aBungalow))
+            else if (isStringsEquals(Buffer, aBungalow))
             {
                 dword_604600 = 2;
                 writeDebug(aBungalow_0);
             }
-            else if (sub_51ADC9(Buffer, aTweek))
+            else if (isStringsEquals(Buffer, aTweek))
             {
                 dword_604600 = 3;
                 writeDebug(aTweek_0);
             }
-            else if (sub_51ADC9(Buffer, aRico))
+            else if (isStringsEquals(Buffer, aRico))
             {
                 dword_604600 = 4;
                 writeDebug(aRico_0);
             }
-            else if (sub_51ADC9(Buffer, aChang))
+            else if (isStringsEquals(Buffer, aChang))
             {
                 dword_604600 = 5;
                 writeDebug(aChang_0);
             }
-            else if (sub_51ADC9(Buffer, aFirstperson))
+            else if (isStringsEquals(Buffer, aFirstperson))
             {
                 dword_604604 = 1;
                 writeDebug(aFirstPersonOn);
             }
-            else if (sub_51ADC9(Buffer, aHost))
+            else if (isStringsEquals(Buffer, aHost))
             {
                 v12 = 1;
                 writeDebug(aHost_0);
             }
             else
             {
-                if (!sub_51ADC9(Buffer, aMaxplayer))
+                if (!isStringsEquals(Buffer, aMaxplayer))
                 {
                     writeDebug("Unknown option \"-%s\"", Buffer);
                     v2 = getFormattedString("Unknown option \"-%s\"", Buffer);
@@ -417,8 +425,8 @@ int __cdecl parseArguments(LPSTR a1)
     }
     return writeDebug(asc_5AD274);
 }
-// 523AB8: using guessed type _DWORD __cdecl sub_523AB8(_DWORD);
-// 523B2D: using guessed type _DWORD __cdecl sub_523B2D(_DWORD);
+// 523AB8: using guessed type _DWORD __cdecl loadPlayerName(_DWORD);
+// 523B2D: using guessed type _DWORD __cdecl loadGameSessionName(_DWORD);
 // 5B9F50: using guessed type int g_UseGameSpy;
 // 604600: using guessed type int dword_604600;
 // 604604: using guessed type int dword_604604;

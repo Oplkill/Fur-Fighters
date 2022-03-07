@@ -20,7 +20,6 @@ int (*off_5970E0)() = &sub_52F208; // weak
 _UNKNOWN unk_5971D0; // weak
 _UNKNOWN unk_597248; // weak
 _UNKNOWN unk_597258; // weak
-const IID iid = { 367419072u, 15260u, 4562u, { 185u, 47u, 0u, 96u, 151u, 151u, 234u, 91u } }; // idb
 _DWORD dword_597278[4] = { -184246664, 298993761, -1610610780, -1473706295 }; // idb
 _DWORD dword_597288[4] = { -2023235806, 298957516, -1610585719, -1473706295 }; // idb
 _DWORD dword_597298[4] = { 1351837251, 298914793, -1610569079, 692127177 }; // idb
@@ -710,8 +709,6 @@ char aSaveFurFighter_1[] = "SAVE\\FUR_FIGHTERS.SAV"; // idb
 CHAR aCannotOpenOrCr[] = "Cannot open or create the game save file."; // idb
 CHAR aSavedGameFileI[] = "Saved game file is invalid."; // idb
 CHAR ValueName[] = "Res Settings"; // idb
-CHAR aControllerConf[] = "Controller Configuration"; // idb
-CHAR aControllerConf_0[] = "Controller Configuration"; // idb
 char byte_59FBE0 = '\x02'; // weak
 char byte_59FBE1 = '\x01'; // weak
 __int16 word_59FBE4[] = { 123 }; // weak
@@ -4365,10 +4362,6 @@ char aHandleactivate_14[] = "HandleActivateApp(): Setting cooperative level to N
 char aHandleactivate_16[] = "HandleActivateApp(): Stopping sound and music"; // idb
 char aHandleactivate_17[] = "HandleActivateApp(): Already activated!"; // idb
 char aHandleactivate_18[] = "HandleActivateApp(): Already deactivated!"; // idb
-char aFocusDavrossed[] = "focus davrossed"; // idb
-char aFocusDoctorWho[] = "focus doctor whoed"; // idb
-char aRt[] = "rt"; // idb
-CHAR SubKey[] = "SOFTWARE\\Bizarre Creations\\Fur Fighters"; // idb
 char aMenu[5] = "Menu"; // weak
 char aWinny[6] = "WINNY"; // weak
 char asc_5AD060[] = "-----------------------------------------------------"; // idb
@@ -4435,12 +4428,7 @@ char aFurballs[9] = "FurBalls"; // weak
 int dword_5AE710 = 1; // weak
 int(__cdecl* off_5AE714)(_DWORD) = &emptyFunction23; // weak
 int(__cdecl* off_5AE718)(_DWORD, _DWORD) = &emptyFunction24; // weak
-CHAR aPlayerName[] = "Player Name"; // idb
-CHAR aSessionName[] = "Session Name"; // idb
-CHAR aPreferredProvi[] = "Preferred Provider"; // idb
 char aTestL2EngFpp[16] = "test_l2_eng.fpp"; // weak
-CHAR aPlayerName_0[] = "Player Name"; // idb
-CHAR aSessionName_0[] = "Session Name"; // idb
 void* off_5AEAF8 = &unk_5BBF70; // weak
 int dword_5AEAFC = 4096; // weak
 CHAR aGHdpmsgbufferm_0[] = "g_hDPMsgBufferMutex"; // idb
@@ -4948,7 +4936,6 @@ char aCannotFreeTras[] = "Cannot free trash value $%h"; // idb
 CHAR aOutOfMallocSpa_2[] = "OUT OF MALLOC SPACE!"; // idb
 char aCannotReAlloca[] = "Cannot re-allocate Trash Malloc to $%h"; // idb
 char aCannotFreeTras_0[] = "Cannot free trash value $%h"; // idb
-int debugOutputVariant = 3; // weak
 CHAR aCylinderRaytra[] = "Cylinder Raytrace Vertex Overflow"; // idb
 float flt_5B1410 = 1.0; // weak
 float flt_5B1414 = 0.081; // weak
@@ -4957,16 +4944,6 @@ _UNKNOWN unk_5B1420; // weak
 CHAR aTooManyTexture[] = "Too Many Textures Allocated"; // idb
 CHAR aTooManyTexture_0[] = "Too Many Textures Allocated"; // idb
 CHAR aFailedToSetVie[] = "Failed to set viewport correctly"; // idb
-CHAR aLighting[] = "Lighting"; // idb
-CHAR aBumpMapping[] = "Bump Mapping"; // idb
-CHAR aTrilinear[] = "Trilinear"; // idb
-CHAR aGamma[] = "Gamma"; // idb
-CHAR aTripleBuffer[] = "Triple Buffer"; // idb
-CHAR aLighting_0[] = "Lighting"; // idb
-CHAR aBumpMapping_0[] = "Bump Mapping"; // idb
-CHAR aTrilinear_0[] = "Trilinear"; // idb
-CHAR aTripleBuffer_0[] = "Triple Buffer"; // idb
-CHAR aGamma_0[] = "Gamma"; // idb
 __int16 word_5B16A8 = 33; // weak
 char aRb_6[] = "rb"; // idb
 char aFont[5] = "FONT"; // weak
@@ -6202,7 +6179,6 @@ int dword_5B9178; // weak
 int dword_5B917C; // weak
 float flt_5B9180[4]; // idb
 int dword_5B9190; // weak
-HKEY regKey; // idb
 int dword_5B91A4; // weak
 char buf[256]; // idb
 int dword_5B92A8; // weak
@@ -6214,7 +6190,6 @@ char byte_5B94CC; // weak
 char byte_5B94D0; // weak
 char byte_5B94D4; // weak
 char byte_5B94D8; // weak
-HINSTANCE hInstance; // idb
 int dword_5B94E8; // weak
 int dword_5B94EC; // weak
 _UNKNOWN unk_5B94F0; // weak
@@ -6255,11 +6230,9 @@ int dword_5BAD0E; // weak
 BYTE byte_5BAD14; // idb
 int dword_5BAE18; // weak
 int dword_5BAE1C[16]; // idb
-BYTE String; // idb
 int dword_5BAE80; // weak
 int dword_5BAE84; // weak
 LPVOID ppv; // idb
-HANDLE pHandles; // idb
 int dword_5BAE90; // weak
 int dword_5BAE94; // weak
 int dword_5BAE98; // weak
@@ -6337,9 +6310,6 @@ int dword_5BE5B8; // weak
 int dword_5BE5BC; // weak
 char byte_5BE5C4[700]; // idb
 int dword_5BE880; // weak
-char OutputString[512]; // idb
-int debugOutputBufferCurrentOffset; // weak
-char debugOutputBuffer[5120]; // idb
 int dword_5BFF88; // weak
 int dword_5BFF90; // weak
 int dword_5BFF94; // weak
@@ -6348,14 +6318,7 @@ int dword_5BFFB0; // weak
 int dword_5BFFB4; // weak
 char dword_5BFFB8[]; // idb
 int dword_5BFFBC; // weak
-int dword_5BFFC0; // idb
-WPARAM dword_5BFFC4; // idb
 _UNKNOWN unk_5BFFC8; // weak
-int dword_5C6058; // weak
-int dword_5C605C; // idb
-int dword_5C6060; // idb
-int numVideoDevicesOrModes; // weak
-int numVideoDevices; // weak
 int(__cdecl* dword_5C606C)(_DWORD, _DWORD); // weak
 int dword_5C6070; // weak
 int dword_5C6074; // weak
@@ -6374,7 +6337,6 @@ int dword_5C6118; // weak
 int dword_5C61B8; // idb
 int dword_5C61C0; // weak
 LPTOP_LEVEL_EXCEPTION_FILTER lpfn; // idb
-char byte_5C6444; // weak
 int dword_5C6448; // weak
 int dword_5C644C; // weak
 int dword_5C6450; // weak
@@ -7665,26 +7627,16 @@ int nWidth; // idb
 int nHeight; // idb
 int dword_60FE28; // weak
 int dword_60FE2C; // weak
-BYTE dword_60FE30; // idb
-BYTE dword_60FE34; // idb
-BYTE dword_60FE38; // idb
-BYTE dword_60FE3C; // idb
-BYTE dword_60FE40; // idb
 int dword_60FE44; // weak
 HWND dword_60FE48; // idb
 int dword_60FE4C; // weak
 int dword_60FE50; // weak
-LPVOID lpDD; // idb
 int dword_60FE64; // weak
 int dword_60FE68; // weak
 int dword_60FE6C; // weak
 int dword_60FE70; // weak
-int dword_60FE74; // weak
 int dword_60FE7C; // weak
 int dword_60FE80; // weak
-int dword_60FECC; // weak
-int dword_60FED0; // weak
-int dword_60FED4; // weak
 int dword_60FEF0; // weak
 _UNKNOWN unk_60FEF4; // weak
 int dword_610070; // weak
@@ -7773,7 +7725,6 @@ char byte_622178[]; // weak
 char byte_622179; // weak
 char byte_62217A; // weak
 char byte_62217B; // weak
-BYTE dword_622180; // idb
 int dword_622184[]; // weak
 int dword_622188[]; // weak
 int dword_622260[]; // weak
@@ -7914,9 +7865,6 @@ float flt_622CB0; // weak
 int dword_622CB4; // weak
 __int16 word_622CB8; // weak
 __int16 word_622CBA; // weak
-__int16 g_RedBitsShift; // weak
-__int16 g_GreenBitsShift; // weak
-__int16 g_BlueBitsShift; // weak
 __int16 word_622CF8; // weak
 __int16 word_622D00; // weak
 __int16 word_622D02; // weak

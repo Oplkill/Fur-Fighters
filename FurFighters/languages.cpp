@@ -75,3 +75,40 @@ int __cdecl loadLanguageString(int a1)
     return *(_DWORD*)(g_LanguageStringsData + 4 * a1 + 8) + 4 * *(_DWORD*)(g_LanguageStringsData + 4) + 8 + g_LanguageStringsData;
 }
 // 6045D0: using guessed type int g_LanguageStringsData;
+
+//----- (0051B2C4) --------------------------------------------------------
+int initLanguage()
+{
+    char Format[32]; // [esp+8h] [ebp-60h] BYREF
+    CHAR LCData[64]; // [esp+28h] [ebp-40h] BYREF
+
+    GetLocaleInfoA(0x400u, 0x1001u, LCData, 32);
+    sscanf(LCData, "%s", Format);
+    if (!strcmp(Format, aEnglish))
+    {
+        GetLocaleInfoA(0x400u, 2u, LCData, 32);
+        if (!strcmp(LCData, aEnglishUnitedS))
+            languageId = language::Spanish;
+        else
+            languageId = language::English;
+    }
+    else if (!strcmp(Format, aFrench))
+    {
+        languageId = language::French;
+    }
+    else if (!strcmp(Format, aGerman))
+    {
+        languageId = language::German;
+    }
+    else if (!strcmp(Format, aSpanish))
+    {
+        languageId = language::Italy;
+    }
+    else
+    {
+        languageId = language::English;
+    }
+    writeDebug("Language:- %s, %d", LCData, languageId);
+    return writeDebug(Format);
+}
+// 6045D4: using guessed type int languageId;
