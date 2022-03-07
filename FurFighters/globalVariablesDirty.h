@@ -58,84 +58,6 @@ char aDebrisR2_0[10] = "debris.r2"; // weak
 char aPickupsShellR2[17] = "pickups\\shell.r2"; // weak
 char aPickupsShellR2_0[17] = "pickups\\shell.r2"; // weak
 char* off_59A554 = "enemies\\dambear.skl"; // idb
-char* off_59A574[24] =
-{
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\sphelmet.r2",
-  "bearitems\\sphelmet.r2",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "bearitems\\pithhelm.r2",
-  "none",
-  "bearitems\\sailor.r2",
-  "bearitems\\pilot_helm.r2",
-  "bearitems\\sailor.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2"
-}; // weak
-char* off_59A578[23] =
-{
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\sphelmet.r2",
-  "bearitems\\sphelmet.r2",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "bearitems\\pithhelm.r2",
-  "none",
-  "bearitems\\sailor.r2",
-  "bearitems\\pilot_helm.r2",
-  "bearitems\\sailor.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2"
-}; // weak
-char* off_59A57C[22] =
-{
-  "bearitems\\buildhat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\mafia_hat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\sphelmet.r2",
-  "bearitems\\sphelmet.r2",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "bearitems\\pithhelm.r2",
-  "none",
-  "bearitems\\sailor.r2",
-  "bearitems\\pilot_helm.r2",
-  "bearitems\\sailor.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2",
-  "bearitems\\buildhat.r2"
-}; // weak
 float flt_59A5D4[8] = { 1.0,  1.0,  1.2,  1.4,  1.4,  1.8,  2.0,  1.0 }; // idb
 float flt_59A5F4[8] = { 1.0,  1.0,  1.1,  1.2,  1.2,  1.4,  1.0,  1.0 }; // idb
 _UNKNOWN unk_59A614; // weak
@@ -665,7 +587,6 @@ char aCschangSkl[] = "cschang.skl"; // idb
 char aLoadingFronten[] = "Loading Frontend World File"; // idb
 char aLevelsMachineL[] = "levels\\machine.lpc"; // idb
 char aLevelsMachineL_0[] = "levels\\machine.lpc"; // idb
-CHAR aCannotDetermin[] = "Cannot determine screen mode."; // idb
 char aHostEnteredFro[] = "Host entered Frontend"; // idb
 char aCallingDpconne[] = "Calling DPConnect Create Game"; // idb
 char aDoneHostFronte[] = "Done Host Frontend Setup"; // idb
@@ -694,17 +615,6 @@ char aAcclaimTga_0[12] = "ACCLAIM.tga"; // weak
 char aBizarreTga_0[12] = "Bizarre.tga"; // weak
 char aFfightersTga_2[14] = "FFighters.tga"; // weak
 char aFfightersTga_3[14] = "FFighters.tga"; // weak
-char aCreatingGameSa[] = "********************************* Creating game save **************************"; // idb
-char Mode[] = "wb"; // idb
-char FileName[] = "SAVE\\FUR_FIGHTERS.SAV"; // idb
-CHAR aCannotCreateSa[] = "Cannot create save game."; // idb
-CHAR aCannotWriteToF[] = "Cannot write to FF save game."; // idb
-char aRb[] = "rb"; // idb
-char aSaveFurFighter_0[] = "SAVE\\FUR_FIGHTERS.SAV"; // idb
-char aRb_0[] = "rb"; // idb
-char aSaveFurFighter_1[] = "SAVE\\FUR_FIGHTERS.SAV"; // idb
-CHAR aCannotOpenOrCr[] = "Cannot open or create the game save file."; // idb
-CHAR aSavedGameFileI[] = "Saved game file is invalid."; // idb
 CHAR ValueName[] = "Res Settings"; // idb
 char byte_59FBE0 = '\x02'; // weak
 char byte_59FBE1 = '\x01'; // weak
@@ -1357,15 +1267,6 @@ _UNKNOWN unk_5A0D38; // weak
 _UNKNOWN unk_5A0D3C; // weak
 char aGrondaSrf[11] = "gronda.srf"; // weak
 char aEnemiesGrondaS[] = "enemies\\gronda.skl"; // idb
-char* off_5A0D8C[6] =
-{
-  "replays\\NewYk_L1rp.dat",
-  "replays\\Space_L2rp.dat",
-  "replays\\Angkr_L1rp.dat",
-  "replays\\Dam_L1rp.dat",
-  "replays\\Dam_L2rp.dat",
-  "replays\\Dam_L3rp.dat"
-}; // weak
 char aPakdataLevelPa_1[] = "Pakdata\\level.pak"; // idb
 char aLoadingIntroWo[] = "Loading Intro World File"; // idb
 char aLevelsFrontLpc[] = "levels\\front.lpc"; // idb
@@ -6900,7 +6801,6 @@ int dword_5D1D38; // weak
 int dword_5D1D3C; // weak
 int dword_5D1D40; // weak
 char byte_5D1D60[6400]; // idb
-int dword_5D3660; // weak
 _UNKNOWN unk_5D3664; // weak
 __int16 word_5D36A4[]; // weak
 _UNKNOWN unk_5D36A6; // weak
@@ -7109,7 +7009,7 @@ int dword_6046E8; // weak
 int dword_6046EC; // weak
 char dword_6046F0[]; // idb
 int dword_6046F4; // weak
-int dword_6046F8; // weak
+int g_SomeDemoCounter; // weak
 int dword_6046FC; // weak
 double X; // idb
 double dbl_604708; // weak
@@ -7140,7 +7040,7 @@ int dword_6047AC; // weak
 int dword_6047B0; // weak
 int dword_6047B4; // weak
 int dword_6047BC; // weak
-int dword_6048C8; // weak
+int g_SomeDemoVariable; // weak
 int dword_6048CC; // weak
 int dword_6048D0; // weak
 int dword_6048D4; // weak
@@ -7504,7 +7404,6 @@ char byte_607112; // weak
 char byte_607113; // weak
 char byte_607114; // weak
 char byte_607115; // weak
-int dword_607120[385]; // idb
 int dword_607724; // weak
 _UNKNOWN unk_607B6C; // weak
 _UNKNOWN unk_607CD0; // weak
@@ -8066,12 +7965,9 @@ int dword_6ADA24; // weak
 int dword_6ADA28; // weak
 int dword_6ADA2C; // weak
 int dword_6ADA30; // weak
-int ailSoundTimerId; // weak
 int dword_6ADA38; // weak
 int dword_6ADA3C; // weak
 char byte_6ADA40; // weak
-int dword_6ADA90[528]; // idb
-int dword_6AE2D0; // weak
 int dword_6AE2D4; // weak
 int dword_6AE4D8[]; // weak
 int dword_6AE4DC; // weak
@@ -8085,9 +7981,6 @@ int dword_6AE590[]; // weak
 int dword_6AE594[46]; // idb
 float dword_6AE64C[108]; // idb
 int dword_6AE7FC; // weak
-char byte_6AE800; // weak
-int dword_6AE804; // weak
-int dword_6AE810; // weak
 int dword_6AE814; // weak
 int dword_6AE820; // weak
 char byte_6AE824; // weak

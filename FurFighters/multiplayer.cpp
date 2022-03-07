@@ -67,6 +67,7 @@ INT_PTR __stdcall sub_51FF63(HWND, UINT, WPARAM, LPARAM); // idb
 int __cdecl sub_5210FE(int* a1);
 int __cdecl sub_5293FE(int a1, int* a2, unsigned int a3, int a4, unsigned int a5);
 void __cdecl sub_52C6C3(int a1);
+int sub_52C95B();
 
 //----- (0051E347) --------------------------------------------------------
 int __cdecl sub_51E347(HINSTANCE a1)
@@ -3620,3 +3621,15 @@ int __cdecl sub_5218AD(int a1)
 }
 // 5BABF0: using guessed type int dword_5BABF0;
 // 5BAE98: using guessed type int dword_5BAE98;
+
+//----- (0052C95B) --------------------------------------------------------
+int sub_52C95B()
+{
+    if (dword_5BAE98)
+        return dword_5BDCB0[24 * dword_5BACF8];
+    return dword_5BDCB0[24 * dword_5BACF8] && dword_5BDCB0[24 * dword_5BAD06];
+}
+// 5BACF8: using guessed type int dword_5BACF8;
+// 5BAD06: using guessed type int dword_5BAD06;
+// 5BAE98: using guessed type int dword_5BAE98;
+// 5BDCB0: using guessed type int dword_5BDCB0[];

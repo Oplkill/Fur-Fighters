@@ -664,3 +664,40 @@ INT_PTR __stdcall DialogFunc(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
     }
     return 1;
 }
+
+//----- (00447815) --------------------------------------------------------
+__int16 __cdecl sub_447815(int a1)
+{
+    __int16 result; // ax
+
+    result = dword_6234D4 & 0x10;
+    if ((dword_6234D4 & 0x10) != 0 && dword_604728 > 0)
+    {
+        --dword_604728;
+    }
+    else if ((dword_6234D4 & 0x20) != 0 && dword_604728 < 19)
+    {
+        result = ++dword_604728;
+    }
+    *(_DWORD*)(a1 + 24) = dword_604728;
+    if (dword_6234D4 == 4)
+    {
+        sub_45E3F7(118, 255);
+        result = dword_604728;
+        word_6015C0 = dword_604728;
+        if (word_5D36A4[4704 * dword_604728] == 1)
+        {
+            *(_DWORD*)dword_6046F0 = 6;
+        }
+        else
+        {
+            dword_604728 = 0;
+            *(_DWORD*)dword_6046F0 = 5;
+        }
+    }
+    return result;
+}
+// 5D36A4: using guessed type __int16 word_5D36A4[];
+// 6015C0: using guessed type __int16 word_6015C0;
+// 604728: using guessed type int dword_604728;
+// 6234D4: using guessed type int dword_6234D4;

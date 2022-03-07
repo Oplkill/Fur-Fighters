@@ -402,7 +402,6 @@ int __cdecl sub_43F831(_DWORD* a1);
 _DWORD* __cdecl sub_43F8BF(int* a1);
 BOOL sub_43FCB4();
 int sub_43FCCE();
-int __cdecl sub_43FD27(int); // weak
 int sub_4409FA();
 void sub_440AB7();
 int sub_441675(); // weak
@@ -443,7 +442,6 @@ void sub_4477CF();
 void sub_4477FC();
 __int16 sub_447801();
 void sub_44780B();
-__int16 __cdecl sub_447815(int a1);
 int sub_4478D7();
 int __cdecl sub_4479E9(int(__cdecl* a1)(int));
 void __cdecl sub_447A1E(__int16 a1, int a2, int a3, int a4, int a5, int(__cdecl* a6)(int));
@@ -627,7 +625,6 @@ int __cdecl sub_45CF56(int); // weak
 int __cdecl sub_45CF70(int a1);
 int sub_45CF8C();
 void __cdecl sub_45D106(int a1);
-int sub_45D78F();
 int sub_45D7C5();
 void sub_45D7E4();
 int sub_45DDBC();
@@ -1810,7 +1807,6 @@ void __cdecl sub_52C642(int a1);
 int sub_52C68F();
 int __cdecl sub_52C6A2(int a1);
 int __cdecl sub_52C94A(int a1);
-int sub_52C95B();
 int sub_52C9C4();
 // u_short __stdcall ntohs(u_short netshort);
 // int __stdcall getsockname(SOCKET s, struct sockaddr *name, int *namelen);
@@ -2609,8 +2605,6 @@ int sub_582772();
 void sub_5827C4();
 void sub_582915();
 void sub_58295B();
-int __stdcall sub_582A13(int); // weak
-void sub_582C46();
 void sub_582CA9();
 void sub_582FAA();
 void sub_58306B();

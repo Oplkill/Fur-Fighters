@@ -14,6 +14,10 @@ extern BYTE g_SpeakerTypeId; // idb
 extern char isEAXSoundProviderLoaded; // weak
 extern int numSound3DSampleHandles; // weak
 extern char is3DSoundEnabled; // weak
+extern int g_NumAudioProviders; // weak
+extern int g_maybeSoundsPlayBackRates[385]; // idb
+extern int dword_6AE810; // weak
+extern int ailSoundTimerId; // weak
 
 int maybe_shutdownSound2();
 int maybe_stopSounds2();
@@ -70,3 +74,5 @@ int __cdecl sub_581CBF(int a1);
 int __cdecl sub_581D41(const char* a1);
 int sub_581F00();
 int __cdecl sub_5822FE(int a1);
+void sub_582C46();
+int sub_45D78F();

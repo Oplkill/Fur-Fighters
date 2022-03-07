@@ -5,3 +5,4 @@
 
 int some_init();
 void __noreturn sub_43FC90();
+int __cdecl maybe_NewGame(int); // weak

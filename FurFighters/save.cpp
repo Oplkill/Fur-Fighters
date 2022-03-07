@@ -1,5 +1,22 @@
 #include "save.h"
 
+#include <windows.h>
+#include <cstdio>
+#include "settings.h"
+#include "files.h"
+#include "emptyfunctions.h"
+#include "debug.h"
+#include "globalVariables.h"
+#include "dead_code.h"
+#include "tempplace.h"
+#include "directx.h"
+#include "multiplayer.h"
+#include "gamespy.h"
+#include "utils.h"
+
+int dword_5D3660; // weak
+const int g_SaveFileNumElements = 188228;
+
 //----- (0044CC7D) --------------------------------------------------------
 int __cdecl saveGame(int a1, int a2)
 {
@@ -29,12 +46,12 @@ int __cdecl saveGame(int a1, int a2)
         word_5D3760[4704 * a1] = word_601DD0;
         qmemcpy((char*)&unk_5D3764 + 9408 * a1, word_601DD4, 9216u);
     }
-    writeDebug(aCreatingGameSa);
-    Stream = fopen(FileName, Mode);
+    writeDebug("********************************* Creating game save **************************");
+    Stream = fopen("SAVE\\FUR_FIGHTERS.SAV", "wb");
     if (!Stream)
-        fatalError(aCannotCreateSa);
-    if (writeInFile(&dword_5D3660, 1u, 188228u, Stream) != 188228)
-        fatalError(aCannotWriteToF);
+        fatalError("Cannot create save game.");
+    if (writeInFile(&dword_5D3660, 1u, g_SaveFileNumElements, Stream) != g_SaveFileNumElements)
+        fatalError("Cannot write to FF save game.");
     return fclose(Stream);
 }
 // 5D3660: using guessed type int dword_5D3660;
@@ -55,19 +72,19 @@ int loadGameSave()
 {
     FILE* Stream; // [esp+0h] [ebp-8h]
 
-    Stream = fopen(aSaveFurFighter_0, aRb);
+    Stream = fopen("SAVE\\FUR_FIGHTERS.SAV", "rb");
     if (!Stream)
     {
         saveGame(-1, 1);
-        Stream = fopen(aSaveFurFighter_1, aRb_0);
+        Stream = fopen("SAVE\\FUR_FIGHTERS.SAV", "rb");
         if (!Stream)
-            fatalError(aCannotOpenOrCr);
+            fatalError("Cannot open or create the game save file.");
     }
     fseek(Stream, 0, 2);
-    if (ftell(Stream) != 188228)                // 188228 seems constant for saved files size. like size of array
-        fatalError(aSavedGameFileI);
+    if (ftell(Stream) != g_SaveFileNumElements)
+        fatalError("Saved game file is invalid.");
     fseek(Stream, 0, 0);
-    readFromFile(&dword_5D3660, 1u, 188228u, Stream);
+    readFromFile(&dword_5D3660, 1u, g_SaveFileNumElements, Stream);
     fclose(Stream);
     return 1;
 }
