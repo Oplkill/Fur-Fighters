@@ -6,6 +6,9 @@
 
 extern int g_MultiplayerMaxPlayers; // weak
 extern LPCVOID pMem; // idb
+extern int dword_5BAE80; // weak
+extern int dword_5B94E8; // weak
+extern int dword_5B9970; // weak
 
 int __cdecl sub_51E347(HINSTANCE a1);
 void __cdecl unloadGame(); // idb
@@ -56,3 +59,12 @@ int __cdecl sub_52C211(int a1);
 int sub_52C2E3();
 int __cdecl sub_52C36C(__int16 a1);
 int sub_52C3E2();
+int sub_52354B();
+INT_PTR __stdcall sub_5205B2(HWND, UINT, WPARAM, LPARAM); // idb
+BOOL __cdecl sub_51F32A(HWND hDlg);
+int sub_520111();
+int sub_520870();
+int __cdecl online_maybeWriteTextChat(const char* a1);
+void __cdecl online_PlayerFluffedPlayer(int a1, int a2);
+int __cdecl sub_529BB6(int, FILE*); // idb
+int __cdecl sub_5218AD(int a1);

@@ -572,3 +572,95 @@ int __cdecl sub_51FA21(int a1)
 // 5BAE80: using guessed type int dword_5BAE80;
 // 66878C: using guessed type int dword_66878C;
 // 668794: using guessed type int dword_668794;
+
+//----- (0051E270) --------------------------------------------------------
+INT_PTR __cdecl sub_51E270(HINSTANCE hInstance, int a2)
+{
+    int v3; // [esp+8h] [ebp-8h]
+    INT_PTR v4; // [esp+Ch] [ebp-4h]
+
+    memset(&unk_5B94F0, 0, 0x114u);
+    dword_5B9600 = (int)&unk_5B94F0;
+    v3 = a2 != 0;
+    do
+    {
+        if (v3)
+        {
+            if (v3 == 1)
+                v4 = DialogBoxParamA(hInstance, (LPCSTR)0x66, 0, sub_51EF7A, 0);
+        }
+        else
+        {
+            v4 = DialogBoxParamA(hInstance, (LPCSTR)0x65, 0, DialogFunc, 0);
+        }
+        switch (v4)
+        {
+        case 4:
+        case 3:
+            return v4;
+        case 2:
+            --v3;
+            break;
+        case 5:
+            return 5;
+        default:
+            ++v3;
+            break;
+        }
+    } while (v3 != 2);
+    return 1;
+}
+// 51E2FC: variable 'v4' is possibly undefined
+// 5B9600: using guessed type int dword_5B9600;
+
+//----- (0051E75A) --------------------------------------------------------
+INT_PTR __stdcall DialogFunc(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
+{
+    HICON lParam; // [esp+8h] [ebp-10Ch]
+    CHAR String[256]; // [esp+Ch] [ebp-108h] BYREF
+    HINSTANCE hInstance; // [esp+10Ch] [ebp-8h]
+    int v8; // [esp+110h] [ebp-4h]
+
+    switch (a2)
+    {
+    case 2u:
+        sub_51EEEE(hDlg);
+        break;
+    case 0x110u:
+        SetDlgItemTextA(hDlg, 1000, (LPCSTR) & ::String);
+        hInstance = (HINSTANCE)GetWindowLongA(hDlg, -6);
+        lParam = LoadIconA(hInstance, (LPCSTR)0x6B);
+        SendMessageA(hDlg, 0x80u, 1u, (LPARAM)lParam);
+        SendMessageA(hDlg, 0x80u, 0, (LPARAM)lParam);
+        sprintf(String, "%s - Multiplayer Connect", "FurBalls");
+        SetWindowTextA(hDlg, String);
+        v8 = sub_51E8EB(hDlg);
+        if (v8 < 0)
+            EndDialog(hDlg, 4);
+        return 1;
+    case 0x111u:
+        switch ((unsigned __int16)a3)
+        {
+        case 1u:
+            goto LABEL_12;
+        case 2u:
+            EndDialog(hDlg, 3);
+            break;
+        case 0x3ECu:
+            if (HIWORD(a3) == 2)
+            {
+            LABEL_12:
+                if (sub_51ED34(hDlg) < 0)
+                    EndDialog(hDlg, 4);
+                return 1;
+            }
+            break;
+        default:
+            return 0;
+        }
+        break;
+    default:
+        return 0;
+    }
+    return 1;
+}

@@ -14,6 +14,8 @@
 #include "gamespy.h"
 #include "utils.h"
 #include "FakeDP.h"
+#include "maybe.h"
+#include "sounds.h"
 
 CHAR aFurFight[] = "Fur Fight"; // idb
 CHAR aYouMustEnterAV[] = "You must enter a valid player name."; // idb
@@ -38,6 +40,20 @@ CHAR aThereAreNoGame[] = "There are no games to join."; // idb
 
 int g_MultiplayerMaxPlayers; // weak
 LPCVOID pMem; // idb
+void* off_5AEAF8 = &unk_5BBF70; // weak
+_UNKNOWN unk_5BBF70; // weak
+HANDLE hObject; // idb
+int dword_5BAE80; // weak
+int dword_5B94E8; // weak
+int dword_5B9610; // weak
+int dword_5B9970; // weak
+int dword_5B9F08; // weak
+int dword_66878C; // weak
+int dword_594AF0 = 1881618624; // weak
+__int16 word_5BACFC; // weak
+int dword_5AEAFC = 4096; // weak
+int dword_5AD580[] = { 14 }; // weak
+char g_UselessVariableMultiplayerStage[256]; // idb
 
 int __cdecl sub_520169(HWND hWnd); // idb
 int __stdcall sub_51EA40(int a1, void* a2, size_t Size, int a4, int a5, HWND a6);
@@ -46,6 +62,11 @@ int __cdecl sub_51F3CC(HWND hDlg); // idb
 int __cdecl sub_51F809(HWND hDlg); // idb
 int __cdecl sub_51FC21(HWND hWnd); // idb
 int sub_523CD4();
+DWORD sub_5235C0();
+INT_PTR __stdcall sub_51FF63(HWND, UINT, WPARAM, LPARAM); // idb
+int __cdecl sub_5210FE(int* a1);
+int __cdecl sub_5293FE(int a1, int* a2, unsigned int a3, int a4, unsigned int a5);
+void __cdecl sub_52C6C3(int a1);
 
 //----- (0051E347) --------------------------------------------------------
 int __cdecl sub_51E347(HINSTANCE a1)
@@ -291,7 +312,7 @@ INT_PTR __stdcall sub_51EF7A(HWND hWnd, UINT a2, WPARAM a3, LPARAM a4)
         lParam = (LPARAM)LoadIconA(hInstance, (LPCSTR)0x6B);
         SendMessageA(hWnd, 0x80u, 1u, lParam);
         SendMessageA(hWnd, 0x80u, 0, lParam);
-        sprintf(String, "%s - Multiplayer Games", aFurballs);
+        sprintf(String, "%s - Multiplayer Games", "FurBalls");
         SetWindowTextA(hWnd, String);
         dword_5B94E8 = 0;
         SetDlgItemTextA(hWnd, 1014, aStartSearch);
@@ -1264,7 +1285,7 @@ int sub_5236FF()
     }
     sub_523CD4();
     sub_52C6C3(g_hInstanceInt);
-    strcpy((char*)&textUseless1, aTestL2EngFpp);
+    strcpy((char*)&textUseless1, "test_l2_eng.fpp");
     dword_5BAE98 = 1;
     dword_668788 = 1;
     sub_5219C6();
@@ -2898,3 +2919,704 @@ int sub_52C3E2()
 // 5BACF8: using guessed type int dword_5BACF8;
 // 5BAE80: using guessed type int dword_5BAE80;
 // 668794: using guessed type int dword_668794;
+
+//----- (0052354B) --------------------------------------------------------
+int sub_52354B()
+{
+    int result; // eax
+
+    if (dword_5BABEC)
+    {
+        sub_51BCB4(0);
+        result = sub_51BCD5(0);
+        dword_5BABEC = 0;
+    }
+    return result;
+}
+// 5BABEC: using guessed type int dword_5BABEC;
+
+//----- (005235C0) --------------------------------------------------------
+DWORD sub_5235C0()
+{
+    DWORD result; // eax
+    CHAR Buffer[4]; // [esp+0h] [ebp-8h] BYREF
+    DWORD dwMessageId; // [esp+4h] [ebp-4h]
+
+    result = GetLastError();
+    dwMessageId = result;
+    if (result)
+    {
+        FormatMessageA(0x1100u, 0, dwMessageId, 0x400u, Buffer, 0, 0);
+        GetLastError();
+        emptyFunction0();
+        result = (DWORD)LocalFree(*(HLOCAL*)Buffer);
+    }
+    return result;
+}
+
+//----- (005205B2) --------------------------------------------------------
+INT_PTR __stdcall sub_5205B2(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
+{
+    if (a2 > 0x111)
+    {
+        if (a2 != 0x113)
+            return 0;
+        if (dword_5B9610)
+        {
+            *(_DWORD*)dword_5B9618 = sub_52071E();
+            if (!*(_DWORD*)dword_5B9618)
+                EndDialog(hDlg, 0);
+        }
+        else
+        {
+            *(_DWORD*)dword_5B9618 = (*(int(__stdcall**)(LPVOID, int, void*, int*, _DWORD))(*(_DWORD*)ppv + 60))(
+                ppv,
+                128,
+                &unk_597350,
+                &dword_5BAE80,
+                0);
+            if (*(_DWORD*)dword_5B9618 != 0x8877015E)
+                EndDialog(hDlg, 0);
+        }
+    }
+    else
+    {
+        switch (a2)
+        {
+        case 0x111u:
+            if ((unsigned __int16)a3 != 2 && (unsigned __int16)a3 != 1029)
+                return 0;
+            *(_DWORD*)dword_5B9618 = 0x88770118;
+            EndDialog(hDlg, 0);
+            break;
+        case 2u:
+            KillTimer(hDlg, 0);
+            break;
+        case 0x110u:
+            dword_5B9618 = a4;
+            if (dword_5B9610)
+                SetDlgItemTextA(hDlg, 1032, aWaitingForConn);
+            else
+                SetDlgItemTextA(hDlg, 1032, aFindingGame);
+            SetTimer(hDlg, 0, 0xFAu, 0);
+            break;
+        default:
+            return 0;
+        }
+    }
+    return 1;
+}
+// 5B9610: using guessed type int dword_5B9610;
+// 5B9618: using guessed type int dword_5B9618;
+// 5BAE80: using guessed type int dword_5BAE80;
+
+//----- (0051F32A) --------------------------------------------------------
+BOOL __cdecl sub_51F32A(HWND hDlg)
+{
+    HWND v1; // eax
+    HWND hWnd; // [esp+0h] [ebp-4h]
+
+    hWnd = GetDlgItem(hDlg, 1001);
+    SendMessageA(hWnd, 0x184u, 0, 0);
+    if (dword_5B94E8)
+        SendMessageA(hWnd, 0x180u, 0, (LPARAM)aLookingForGame);
+    else
+        SendMessageA(hWnd, 0x180u, 0, (LPARAM)aClickStartSear);
+    SendMessageA(hWnd, 0x19Au, 0, 0);
+    SendMessageA(hWnd, 0x186u, 0, 0);
+    v1 = GetDlgItem(hDlg, 1002);
+    return EnableWindow(v1, 0);
+}
+// 5B94E8: using guessed type int dword_5B94E8;
+
+//----- (00520111) --------------------------------------------------------
+int sub_520111()
+{
+    int result; // eax
+    int v1; // [esp+4h] [ebp-8h]
+    void* v2; // [esp+8h] [ebp-4h]
+
+    result = dword_5B9600;
+    v1 = dword_5B9600;
+    while ((_UNKNOWN*)v1 != &unk_5B94F0)
+    {
+        v2 = (void*)v1;
+        result = *(_DWORD*)(v1 + 272);
+        v1 = result;
+        if (v2)
+            result = sub_585E40(v2);
+    }
+    dword_5B9600 = (int)&unk_5B94F0;
+    return result;
+}
+// 5B9600: using guessed type int dword_5B9600;
+
+//----- (0051FF63) --------------------------------------------------------
+INT_PTR __stdcall sub_51FF63(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
+{
+    INT_PTR result; // eax
+    HWND v5; // [esp+0h] [ebp-1Ch]
+    LRESULT wParam; // [esp+4h] [ebp-18h]
+    BOOL Translated[2]; // [esp+8h] [ebp-14h] BYREF
+    int i; // [esp+10h] [ebp-Ch]
+    HWND hWnd; // [esp+14h] [ebp-8h]
+
+    if (a2 == 272)
+    {
+        SetDlgItemTextA(hDlg, 1007, (LPCSTR)&byte_5BAD14);
+        CheckDlgButton(hDlg, 1017, 1u);
+        SetDlgItemInt(hDlg, 1006, 4u, 0);
+        hWnd = GetDlgItem(hDlg, 1009);
+        for (i = 0; i < 6; ++i)
+        {
+            wParam = SendMessageA(hWnd, 0x143u, 0, (LPARAM)&aGoodFluffers[36 * i]);
+            if (dword_5AD580[9 * i] == 23)
+                SendMessageA(hWnd, 0x14Eu, wParam, 0);
+        }
+        result = 1;
+    }
+    else if (a2 == 273)
+    {
+        if ((unsigned __int16)a3 == 1)
+        {
+            v5 = GetDlgItem(hDlg, 1009);
+            Translated[1] = SendMessageA(v5, 0x147u, 0, 0);
+            if (GetDlgItemTextA(hDlg, 1007, (LPSTR)&byte_5BAD14, 256))
+            {
+                dword_5B9970 = GetDlgItemInt(hDlg, 1006, Translated, 0);
+                dword_5B9F08 = IsDlgButtonChecked(hDlg, 1017) == 1;
+                EndDialog(hDlg, 1);
+            }
+            result = 1;
+        }
+        else
+        {
+            if ((unsigned __int16)a3 == 2)
+                EndDialog(hDlg, 2);
+            result = 1;
+        }
+    }
+    else
+    {
+        result = 0;
+    }
+    return result;
+}
+// 5AD580: using guessed type int dword_5AD580[];
+// 5B9970: using guessed type int dword_5B9970;
+// 5B9F08: using guessed type int dword_5B9F08;
+
+//----- (00520870) --------------------------------------------------------
+int sub_520870()
+{
+    int result; // eax
+    int i; // [esp+8h] [ebp-Ch]
+    int v2; // [esp+Ch] [ebp-8h]
+
+    strcpy(g_UselessVariableMultiplayerStage, "DirectPlay Multiplayer Stage");
+    if (dword_5BABF0)
+    {
+        for (i = 0; i < 16; ++i)
+        {
+            dword_5B9EC8[i] = 0;
+            dword_5B9930[i] = -1;
+        }
+        dword_5BACF8 = 0;
+        dword_5B9EC8[0] = 2;
+        dword_5B9930[0] = dword_668794;
+        strcpy(byte_5B9730, (const char*)&String);
+    }
+    else
+    {
+        dword_5BACF8 = -1;
+    }
+    dword_5B9974 = 0;
+    if (dword_5BABF0 && sub_5215A6() < 0)
+        result = 0;
+    else
+        result = v2;
+    return result;
+}
+// 520975: variable 'v2' is possibly undefined
+// 5B9974: using guessed type int dword_5B9974;
+// 5BABF0: using guessed type int dword_5BABF0;
+// 5BACF8: using guessed type int dword_5BACF8;
+// 668794: using guessed type int dword_668794;
+
+//----- (00521345) --------------------------------------------------------
+int __cdecl online_maybeWriteTextChat(const char* a1)
+{
+    int result; // eax
+
+    emptyFunction0();
+    if ((dword_5B9F24 + 1) % 10 == dword_5B9F20)
+        dword_5B9F20 = (dword_5B9F20 + 1) % 10;
+    else
+        ++dword_5B9F1C;
+    dword_5B9978[34 * dword_5B9F24] = 300;
+    dword_5B997C[34 * dword_5B9F24] = 0;
+    strcpy(&byte_5B9980[136 * dword_5B9F24], a1);
+    result = (dword_5B9F24 + 1) / 10;
+    dword_5B9F24 = (dword_5B9F24 + 1) % 10;
+    return result;
+}
+// 5B9978: using guessed type int dword_5B9978[];
+// 5B997C: using guessed type int dword_5B997C[];
+// 5B9F1C: using guessed type int dword_5B9F1C;
+// 5B9F20: using guessed type int dword_5B9F20;
+// 5B9F24: using guessed type int dword_5B9F24;
+
+//----- (005210FE) --------------------------------------------------------
+int __cdecl sub_5210FE(int* a1)
+{
+    int v2; // [esp+0h] [ebp-18h]
+    int v3; // [esp+14h] [ebp-4h]
+    int v4; // [esp+14h] [ebp-4h]
+
+    v2 = *a1;
+    if ((unsigned int)*a1 > 0x31)
+    {
+        if (v2 == 265)
+            online_maybeWriteTextChat(*(const char**)(a1[5] + 8));
+    }
+    else
+    {
+        switch (v2)
+        {
+        case 49:
+            if (dword_5BABF0)
+                return -2147467259;
+            PostQuitMessage(6);
+            break;
+        case 3:
+            if (a1[1] == 1)
+            {
+                if (dword_5BABF0)
+                {
+                    v3 = sub_5216ED((int)a1);
+                    if (v3 < 0)
+                        return v3;
+                }
+            }
+            break;
+        case 5:
+            if (dword_5BABF0)
+            {
+                v4 = sub_5218AD((int)a1);
+                if (v4 < 0)
+                    return v4;
+            }
+            break;
+        }
+    }
+    return 0;
+}
+// 5BABF0: using guessed type int dword_5BABF0;
+
+//----- (00528CF7) --------------------------------------------------------
+void __cdecl online_PlayerFluffedPlayer(int victim, int attacker)
+{
+    const char* v2; // eax
+    const char* v3; // eax
+    const char* v4; // eax
+    const char* v5; // eax
+    const char* v6; // eax
+    const char* v7; // eax
+    const char* v8; // eax
+    const char* v9; // [esp-4h] [ebp-84h]
+    char Buffer[128]; // [esp+0h] [ebp-80h] BYREF
+
+    if (victim)
+    {
+        if (attacker)
+        {
+            if (attacker == victim)
+            {
+                //Check is victim local player
+                if ((*(_DWORD*)(victim + 120) & 1) != 0)
+                {
+                    //Victim is local player
+                    v4 = (const char*)loadLanguageString(414);
+                    sprintf(Buffer, v4);
+                }
+                else
+                {
+                    //Victim is enemy player
+                    v5 = (const char*)loadLanguageString(415);
+                    sprintf(Buffer, "%s %s", &byte_5B9730[32 * *(_DWORD*)(victim + 128)], v5);
+                }
+            }
+            else if ((*(_DWORD*)(victim + 120) & 1) != 0)
+            {
+                v6 = (const char*)loadLanguageString(416);
+                sprintf(Buffer, "%s %s", &byte_5B9730[32 * *(_DWORD*)(attacker + 128)], v6);
+            }
+            else
+            {
+                v9 = &byte_5B9730[32 * *(_DWORD*)(victim + 128)];
+                if ((*(_DWORD*)(attacker + 120) & 1) != 0)
+                {
+                    v7 = (const char*)loadLanguageString(417);
+                    sprintf(Buffer, "%s %s", v7, v9);
+                }
+                else
+                {
+                    v8 = (const char*)loadLanguageString(418);
+                    sprintf(Buffer, "%s %s %s", &byte_5B9730[32 * *(_DWORD*)(attacker + 128)], v8, v9);
+                }
+            }
+        }
+        else if ((*(_DWORD*)(victim + 120) & 1) != 0)
+        {
+            v2 = (const char*)loadLanguageString(412);
+            sprintf(Buffer, v2);
+        }
+        else
+        {
+            v3 = (const char*)loadLanguageString(413);
+            sprintf(Buffer, "%s %s", &byte_5B9730[32 * *(_DWORD*)(victim + 128)], v3);
+        }
+        online_maybeWriteTextChat(Buffer);
+    }
+}
+
+//----- (00529BB6) --------------------------------------------------------
+int __cdecl sub_529BB6(int a1, FILE* a2)
+{
+    int v3; // [esp+8h] [ebp-Ch]
+    _DWORD* v4; // [esp+10h] [ebp-4h]
+
+    v4 = (_DWORD*)dword_6043C8[*(_DWORD*)a1];
+    switch (*(_DWORD*)(a1 + 12))
+    {
+    case 1:
+        sub_5271BB((int)v4, (__int16)a2[1]._ptr, a2, (int)&a2->_file);
+        break;
+    case 2:
+        sub_5269E0(v4);
+        break;
+    case 3:
+        sub_529D71((int)v4, (__int16)a2->_ptr);
+        break;
+    case 4:
+        sub_4AEA49((int)v4, (int)a2->_ptr, a2->_cnt);
+        break;
+    case 5:
+        *(_WORD*)(v4[106] + 100) = a2->_ptr;
+        emptyFunction0();
+        if (a2->_cnt == -1)
+            v3 = 0;
+        else
+            v3 = dword_6043C8[a2->_cnt];
+        if (a2->_base == (char*)-1)
+            online_PlayerFluffedPlayer(v3, 0);
+        else
+            online_PlayerFluffedPlayer(v3, dword_6043C8[(int)a2->_base]);
+        break;
+    case 6:
+        if (dword_5BABF0)
+            sub_528F60((_DWORD*)dword_6043C8[*(_DWORD*)a1], (int)a2->_ptr);
+        break;
+    case 7:
+        if (!dword_5BABF0)
+        {
+            emptyFunction0();
+            sub_48E3B1((_DWORD*)dword_6043C8[*(_DWORD*)a1], (int)a2->_ptr);
+        }
+        break;
+    default:
+        return 0;
+    }
+    return 0;
+}
+// 5BABF0: using guessed type int dword_5BABF0;
+// 6043C8: using guessed type int dword_6043C8[];
+
+//----- (005293FE) --------------------------------------------------------
+int __cdecl sub_5293FE(int a1, int* a2, unsigned int a3, int a4, unsigned int a5)
+{
+    int v5; // eax
+    const char* v6; // eax
+    int v8; // [esp+8h] [ebp-4Ch]
+    char Buffer[32]; // [esp+Ch] [ebp-48h] BYREF
+    int* v10; // [esp+2Ch] [ebp-28h]
+    int* v11; // [esp+30h] [ebp-24h]
+    int* v12; // [esp+34h] [ebp-20h]
+    int* v13; // [esp+38h] [ebp-1Ch]
+    int v14; // [esp+3Ch] [ebp-18h]
+    int* v15; // [esp+40h] [ebp-14h]
+    int* v16; // [esp+44h] [ebp-10h]
+    int* v17; // [esp+48h] [ebp-Ch]
+    int* v18; // [esp+4Ch] [ebp-8h]
+    int* v19; // [esp+50h] [ebp-4h]
+
+    v14 = 0;
+    v11 = a2;
+    v19 = a2;
+    v10 = a2;
+    v12 = a2;
+    v17 = a2;
+    v18 = a2;
+    v15 = a2;
+    v13 = a2;
+    v16 = a2;
+    if (a4 && !dword_5B9930[a2[1]])
+        dword_5B9930[a2[1]] = a4;
+    if (dword_5BAE98)
+    {
+        if (*a2 == 100)
+        {
+            if (!sub_521DA4(a2[1]) || (*(_DWORD*)(dword_6043C8[a2[1]] + 120) & 8) != 0)
+            {
+                if (!sub_521DA4(a2[1]) && (*(_DWORD*)(dword_6043C8[a2[1]] + 120) & 8) != 0)
+                {
+                    *(_DWORD*)(dword_6043C8[a2[1]] + 120) &= 0xFFFFFFF7;
+                    v8 = *(_DWORD*)(dword_6043C8[a2[1]] + 424);
+                    *(_WORD*)(v8 + 100) = 0;
+                    *(_WORD*)(v8 + 138) = 0;
+                    sub_52A83F(a2[1]);
+                }
+            }
+            else
+            {
+                v5 = *(_DWORD*)(dword_6043C8[a2[1]] + 120);
+                LOBYTE(v5) = v5 | 8;
+                *(_DWORD*)(dword_6043C8[a2[1]] + 120) = v5;
+                sub_52C45C(dword_5BACF8);
+                sub_5242F0();
+                v6 = (const char*)loadLanguageString(408);
+                sprintf(Buffer, "%s %s", &byte_5B9730[32 * a2[1]], v6);
+                online_maybeWriteTextChat(Buffer);
+                sub_52358F();
+            }
+        }
+        switch (*a2)
+        {
+        case 'd':
+            if (sub_52983C(a2, a3))
+            {
+                sub_52A880(a4, a2[1], *a2);
+                sub_52A83F(a2[1]);
+            }
+            break;
+        case 'e':
+            v14 = sub_529B4B(v11 + 2, (int)(v11 + 7));
+            break;
+        case 'f':
+            v14 = sub_529BB6((int)(v11 + 2), (FILE*)(v11 + 7));
+            break;
+        case 'g':
+            v14 = sub_529D92(a2[1], v15 + 2);
+            break;
+        case 'h':
+            sub_528C6B(v19[2]);
+            break;
+        case 'i':
+            v14 = sub_528EB0((int)v12);
+            break;
+        case 'j':
+            emptyFunction0();
+            sub_52A985(a2[1]);
+            break;
+        case 'k':
+            v14 = sub_529EFC(v17 + 2, (int*)((char*)v17 + 30));
+            break;
+        case 'l':
+            v14 = sub_529F89(*((_WORD*)v18 + 4));
+            break;
+        case 'm':
+            v14 = sub_529F9A(v18[1]);
+            break;
+        case 'n':
+            v14 = sub_529FE4((int)v13 + 10);
+            break;
+        case 'o':
+            v14 = sub_52A00A(v16[1]);
+            break;
+        default:
+            v14 = sub_520E43(a2, a3, a4, a5);
+            break;
+        }
+    }
+    else
+    {
+        switch (*a2)
+        {
+        case 'g':
+            v14 = sub_529D92(a2[1], a2 + 2);
+            break;
+        case 'i':
+            v14 = sub_528EB0((int)v12);
+            break;
+        case 'j':
+            emptyFunction0();
+            sub_52A985(a2[1]);
+            break;
+        case 'l':
+            v14 = sub_529F89(*((_WORD*)v18 + 4));
+            break;
+        case 'm':
+            v14 = sub_529F9A(v18[1]);
+            break;
+        default:
+            return v14;
+        }
+    }
+    return v14;
+}
+// 5BACF8: using guessed type int dword_5BACF8;
+// 5BAE98: using guessed type int dword_5BAE98;
+// 6043C8: using guessed type int dword_6043C8[];
+
+//----- (0052C6C3) --------------------------------------------------------
+void __cdecl sub_52C6C3(int a1)
+{
+    int v1; // [esp+0h] [ebp-Ch]
+    unsigned int v2; // [esp+0h] [ebp-Ch]
+    unsigned int v3; // [esp+0h] [ebp-Ch]
+    int j; // [esp+4h] [ebp-8h]
+    int i; // [esp+8h] [ebp-4h]
+
+    v1 = sub_52CA1A();
+    if ((byte_5BDC54 & 1) == 0)
+    {
+        byte_5BDC54 |= 1u;
+        dword_5BDC50 = v1;
+    }
+    if (dword_5BABF0)
+    {
+        dword_5BE258 = sub_52CA1A();
+        emptyFunction0();
+    }
+    if (dword_5BABF0)
+        sub_5243C7(dword_6041E4);
+    emptyFunction0();
+    for (i = 0; i < 16; ++i)
+    {
+        for (j = 0; j < 5; ++j)
+        {
+            dword_5BDC58[24 * i + j] = 0;
+            dword_5BDC6C[24 * i + j] = 0;
+            dword_5BDC80[24 * i + j] = 0;
+            dword_5BDC94[24 * i + j] = 0;
+        }
+        dword_5BDCA8[24 * i] = 0;
+        dword_5BDCAC[24 * i] = 0;
+        dword_5BDCB0[24 * i] = 0;
+        dword_5BDCB4[24 * i] = 0;
+    }
+    dword_5BE25C = 0;
+    emptyFunction0();
+    if (!dword_5BABF0)
+    {
+        while (!sub_52C68F())
+        {
+            v2 = sub_52CA1A();
+            if (v2 >= dword_5BDC50)
+            {
+                sub_52AA53();
+                dword_5BDC50 = v2 + 100;
+            }
+            sub_52C94A(a1);
+        }
+    }
+    emptyFunction0();
+    emptyFunction0();
+    dword_5BDC50 = 0;
+    while (!sub_52C95B() && !dword_5BE25C)
+    {
+        v3 = sub_52CA1A();
+        if (v3 >= dword_5BDC50)
+        {
+            if (dword_5BABF0)
+            {
+                if (sub_52C9C4())
+                {
+                    dword_5BDCB0[24 * dword_5BACF8] = 1;
+                    sub_52BE05();
+                    sub_52BE05();
+                    sub_52BE05();
+                }
+            }
+            else if (dword_5BDCB0[24 * dword_5BACF8])
+            {
+                sub_52BE05();
+            }
+            else
+            {
+                sub_52BCE5();
+            }
+            dword_5BDC50 = v3 + 100;
+        }
+        sub_52C94A(a1);
+    }
+    dword_5BE25C = 1;
+    sub_52C4B0();
+    emptyFunction0();
+}
+// 5243C7: using guessed type _DWORD __cdecl sub_5243C7(_DWORD);
+// 52AA53: using guessed type int sub_52AA53(void);
+// 52BCE5: using guessed type int sub_52BCE5(void);
+// 52BE05: using guessed type int sub_52BE05(void);
+// 52C4B0: using guessed type int sub_52C4B0(void);
+// 52C68F: using guessed type int sub_52C68F(void);
+// 52C94A: using guessed type _DWORD __cdecl sub_52C94A(_DWORD);
+// 52C95B: using guessed type int sub_52C95B(void);
+// 52CA1A: using guessed type int sub_52CA1A(void);
+// 5BABF0: using guessed type int dword_5BABF0;
+// 5BACF8: using guessed type int dword_5BACF8;
+// 5BDC50: using guessed type int dword_5BDC50;
+// 5BDC54: using guessed type char byte_5BDC54;
+// 5BDC58: using guessed type int dword_5BDC58[];
+// 5BDC6C: using guessed type int dword_5BDC6C[];
+// 5BDC80: using guessed type int dword_5BDC80[];
+// 5BDC94: using guessed type int dword_5BDC94[];
+// 5BDCA8: using guessed type int dword_5BDCA8[];
+// 5BDCAC: using guessed type int dword_5BDCAC[];
+// 5BDCB0: using guessed type int dword_5BDCB0[];
+// 5BE258: using guessed type int dword_5BE258;
+// 5BE25C: using guessed type int dword_5BE25C;
+// 6041E4: using guessed type int dword_6041E4;
+
+//----- (005218AD) --------------------------------------------------------
+int __cdecl sub_5218AD(int a1)
+{
+    int result; // eax
+    const char* v2; // eax
+    char Buffer[128]; // [esp+8h] [ebp-88h] BYREF
+    int v4; // [esp+88h] [ebp-8h]
+    _DWORD* v5; // [esp+8Ch] [ebp-4h]
+
+    if (!dword_5BABF0)
+        return -2147467259;
+    emptyFunction0();
+    if (!*(_DWORD*)(a1 + 20))
+        goto LABEL_10;
+    v5 = *(_DWORD**)(a1 + 20);
+    if (!v5)
+        goto LABEL_10;
+    if (!dword_5BAE98)
+    {
+        v2 = (const char*)loadLanguageString(409);
+        sprintf(Buffer, "%s %s", &byte_5B9730[32 * *v5], v2);
+        sub_521286(Buffer);
+        sub_52358F();
+    }
+    if ((dword_5B9EC8[*v5] & 7) == 2
+        && (dword_5B9EC8[*v5] = 0,
+            dword_5B9930[*v5] = -1,
+            strcpy(&byte_5B9730[32 * *v5], byte_5B9F2C),
+            v4 = sub_5215A6(),
+            v4 < 0))
+    {
+        result = v4;
+    }
+    else
+    {
+    LABEL_10:
+        result = 0;
+    }
+    return result;
+}
+// 5BABF0: using guessed type int dword_5BABF0;
+// 5BAE98: using guessed type int dword_5BAE98;

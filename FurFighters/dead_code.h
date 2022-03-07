@@ -14,6 +14,8 @@ void sub_445B65();
 const void* __cdecl sub_51E4A4(LPCSTR lpString, char* String);
 int sub_51F6C5();
 int __cdecl sub_51FA21(int a1);
+INT_PTR __cdecl sub_51E270(HINSTANCE hInstance, int a2);
+INT_PTR __stdcall DialogFunc(HWND, UINT, WPARAM, LPARAM); // idb
 
 int return0_1();
 int return0_8();

@@ -19,3 +19,7 @@ __int16 g_UselessVariable; // weak
 int g_CharacterType; // weak
 int g_IsFirstPerson; // weak
 SIZE_T dwBytes; // idb
+
+//-----dirty variables
+int dword_5BAE84; // weak
+LPVOID ppv; // idb
