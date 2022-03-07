@@ -1732,20 +1732,13 @@ int sub_51E1FA();
 int sub_51E218();
 INT_PTR __cdecl sub_51E270(HINSTANCE hInstance, int a2);
 INT_PTR __stdcall DialogFunc(HWND, UINT, WPARAM, LPARAM); // idb
-int __cdecl sub_51E8EB(HWND hDlg); // idb
-int __stdcall sub_51EA40(int a1, void* a2, size_t Size, int a4, int a5, HWND a6);
-int __stdcall sub_51EB97(_DWORD* a1, void* a2, size_t Size, int a4, int a5, void** a6);
 unsigned int __cdecl sub_51EEEE(HWND hDlg);
 BOOL __cdecl sub_51F32A(HWND hDlg);
-int __cdecl sub_51F3CC(HWND hDlg); // idb
 int sub_51F63F();
 int __cdecl sub_51F649(int a1);
 int __stdcall sub_51F744(int a1, int a2, char a3, int a4);
-int __cdecl sub_51F809(HWND hDlg); // idb
-int __cdecl sub_51FC21(HWND hWnd); // idb
 INT_PTR __stdcall sub_51FF63(HWND, UINT, WPARAM, LPARAM); // idb
 int sub_520111();
-LPARAM sub_52046E();
 INT_PTR __stdcall sub_5205B2(HWND, UINT, WPARAM, LPARAM); // idb
 int sub_52071E();
 FakeDP* __thiscall sub_520820(FakeDP* this, char a2);
@@ -1757,7 +1750,6 @@ int sub_520AD4();
 int __cdecl sub_520E43(_DWORD* a1, int a2, int a3, unsigned int a4);
 int __cdecl sub_5210FE(int* a1);
 int __cdecl sub_5211D8(const char* a1);
-int __cdecl sub_521286(const char* a1);
 int sub_5212DE();
 char* __cdecl sub_521305(int a1);
 int __cdecl online_maybeWriteTextChat(const char* a1);
@@ -1765,9 +1757,7 @@ int sub_52140C();
 int __cdecl sub_5214CA(int a1);
 int __cdecl sub_521552(unsigned int* a1);
 int sub_5215A6();
-int __cdecl sub_5216ED(int a1);
 int __cdecl sub_5218AD(int a1);
-int sub_5219C6();
 int __cdecl sub_521CF3(unsigned int a1);
 int sub_521D56();
 BOOL __cdecl sub_521DA4(int a1);
