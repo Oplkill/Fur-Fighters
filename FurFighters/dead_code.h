@@ -10,6 +10,10 @@ int sub_442EB0();
 int sub_581F8D();
 int sub_58125B();
 LSTATUS sub_44D112();
+void sub_445B65();
+const void* __cdecl sub_51E4A4(LPCSTR lpString, char* String);
+int sub_51F6C5();
+int __cdecl sub_51FA21(int a1);
 
 int return0_1();
 int return0_8();

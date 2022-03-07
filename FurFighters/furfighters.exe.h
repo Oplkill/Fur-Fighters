@@ -427,7 +427,6 @@ void sub_4451E4();
 void sub_445311();
 __int16 sub_4454FA();
 void sub_44584A();
-void sub_445B65();
 void sub_445F00();
 char* __cdecl sub_44623F(int a1);
 void sub_44628E();
@@ -1732,8 +1731,6 @@ DWORD sub_51E1E0();
 int sub_51E1FA();
 int sub_51E218();
 INT_PTR __cdecl sub_51E270(HINSTANCE hInstance, int a2);
-int sub_51E443();
-const void* __cdecl sub_51E4A4(LPCSTR lpString, char* String);
 INT_PTR __stdcall DialogFunc(HWND, UINT, WPARAM, LPARAM); // idb
 int __cdecl sub_51E8EB(HWND hDlg); // idb
 int __stdcall sub_51EA40(int a1, void* a2, size_t Size, int a4, int a5, HWND a6);
@@ -1743,15 +1740,11 @@ BOOL __cdecl sub_51F32A(HWND hDlg);
 int __cdecl sub_51F3CC(HWND hDlg); // idb
 int sub_51F63F();
 int __cdecl sub_51F649(int a1);
-int sub_51F6C5();
 int __stdcall sub_51F744(int a1, int a2, char a3, int a4);
 int __cdecl sub_51F809(HWND hDlg); // idb
-int __cdecl sub_51FA21(int a1);
 int __cdecl sub_51FC21(HWND hWnd); // idb
-int __cdecl sub_51FDEE(int a1, int a2);
 INT_PTR __stdcall sub_51FF63(HWND, UINT, WPARAM, LPARAM); // idb
 int sub_520111();
-int __cdecl sub_520169(HWND hWnd); // idb
 LPARAM sub_52046E();
 INT_PTR __stdcall sub_5205B2(HWND, UINT, WPARAM, LPARAM); // idb
 int sub_52071E();
@@ -1786,11 +1779,6 @@ int __cdecl sub_522BAD(unsigned int a1, int a2, int a3);
 double __cdecl sub_522DEF(int a1, int a2);
 int __cdecl sub_522FD8(int a1, int a2);
 // float __cdecl sqrtf(float X);
-int __cdecl sub_523060(char* Buffer);
-int __cdecl sub_523093(char* a1);
-int __cdecl sub_5232EC(char* a1);
-int __cdecl sub_5233A4(char* a1);
-void sub_52348B();
 int sub_52354B();
 int sub_523577();
 DWORD sub_52358F();
@@ -2459,7 +2447,6 @@ int __cdecl sub_568044(int a1, float* a2, float* a3, float* a4, unsigned int a5)
 int __cdecl sub_568100(int a1, int a2, int a3, int a4, char a5);
 int __cdecl sub_56812D(int a1, int a2, int a3);
 int __cdecl sub_568A11(int a1, int a2, int a3, int a4, int a5);
-int __thiscall sub_568F8A(void* this);
 DWORD sub_568FB1();
 int __cdecl sub_56914C(int a1);
 int __cdecl sub_569193(unsigned __int8 a1, unsigned __int8 a2, unsigned __int8 a3);
@@ -2483,7 +2470,6 @@ int __cdecl sub_5695D9(int a1);
 int __cdecl sub_569660(int a1);
 int __cdecl sub_5696A1(int a1);
 int __cdecl sub_5696FE(int a1);
-int sub_56975B();
 int sub_569765();
 int __cdecl sub_569792(__int16 a1);
 int __cdecl sub_56989C(__int16 a1, __int16 a2, __int16 a3, __int16 a4, __int16 a5);
@@ -2573,7 +2559,6 @@ int __cdecl sub_575030(float); // idb
 double __cdecl sub_575050(int a1, float a2);
 // _DWORD __cdecl unknown_libname_5(_DWORD); weak
 // int _cfltcvt_init_4(void); weak
-int sub_575614();
 char sub_575682();
 int __cdecl sub_5758B0(int* a1, char a2);
 int __cdecl sub_575920(int* a1);
@@ -2679,12 +2664,7 @@ __int16 __cdecl sub_58089A(int a1);
 void sub_580FB2();
 void sub_581090();
 int sub_581251();
-int loadAudioDevices();
-int __cdecl sub_581CBF(int a1);
-int __cdecl sub_581D41(const char* a1);
-int sub_581F00();
 int sub_5822AE();
-int __cdecl sub_5822FE(int a1);
 int sub_58236B();
 int __cdecl sub_5823BE(int a1, const char* fileResource, void* a3); // idb
 int sub_582687();

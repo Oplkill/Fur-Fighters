@@ -65,3 +65,8 @@ void __cdecl maybe_setSound3DOrientation(__int16 a1, float* a2, float* a3);
 int sub_52CA1A();
 int __cdecl sub_582375(int a1);
 int sub_580D10();
+int loadAudioDevices();
+int __cdecl sub_581CBF(int a1);
+int __cdecl sub_581D41(const char* a1);
+int sub_581F00();
+int __cdecl sub_5822FE(int a1);

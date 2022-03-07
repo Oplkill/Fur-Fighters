@@ -7,7 +7,6 @@ extern HWND hWnd; // idb
 extern RECT Point; // idb
 extern MSG Msg; // idb
 extern int g_hInstanceInt; // weak
-extern int g_UseGameSpy; // weak
 extern __int16 g_maybeDemoVersionType; // weak
 extern char g_maybeSomeDemoVersionType; // weak
 extern char g_maybeAnotherDemoVersionType; // weak
@@ -19,5 +18,10 @@ extern __int16 g_RedBitsShift; // weak
 extern __int16 g_GreenBitsShift; // weak
 extern __int16 g_BlueBitsShift; // weak
 extern LPVOID lpDD; // idb
+extern int g_CharacterType; // weak
+extern int g_IsFirstPerson; // weak
+extern SIZE_T dwBytes; // idb
+
+extern __int16 g_UselessVariable; // weak
 
 const IID iid = { 367419072u, 15260u, 4562u, { 185u, 47u, 0u, 96u, 151u, 151u, 234u, 91u } }; // idb

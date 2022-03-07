@@ -1,6 +1,8 @@
 #include "sounds.h"
 
 #include "tempplace.h"
+#include "debug.h"
+#include "globalVariables.h"
 
 char aAurealA3dInter[28] = "Aureal A3D Interactive (TM)"; // weak
 char aAurealA3dTm[14] = "Aureal A3D tm"; // weak
@@ -55,13 +57,6 @@ char aStreaming[10] = "Streaming"; // weak
 char aStreamingWasTu[43] = "Streaming was turned off via settings.txt."; // weak
 char aSound_0[6] = "Sound"; // weak
 char aSoundWasTurned[58] = "Sound was turned off via settings.txt. Sound is disabled."; // weak
-char aMilesFast2dPos_1[31] = "Miles Fast 2D Positional Audio"; // weak
-char aRadGameToolsRs_2[28] = "RAD Game Tools RSX 3D Audio"; // weak
-char aDirectsound3dH_2[31] = "DirectSound3D Hardware Support"; // weak
-char aDirectsound3dS_3[33] = "DirectSound3D Software Emulation"; // weak
-char aCreativeLabsEa_4[23] = "Creative Labs EAX (TM)"; // weak
-char aAurealA3dInter_0[28] = "Aureal A3D Interactive (TM)"; // weak
-char aCreativeLabsEa_5[23] = "Creative Labs EAX (TM)"; // weak
 
 int sound3DProvider; // weak
 int sound3DProviderName; // weak
@@ -75,6 +70,7 @@ BYTE g_SpeakerTypeId; // idb
 char isEAXSoundProviderLoaded; // weak
 int numSound3DSampleHandles; // weak
 char is3DSoundEnabled; // weak
+int dword_6AE808; // weak
 
 //----- (0057E907) --------------------------------------------------------
 int maybe_shutdownSound2()
@@ -1272,3 +1268,157 @@ int sub_580D10()
 // 6AE818: using guessed type char byte_6AE818;
 // 6AE834: using guessed type int dword_6AE834;
 // 6AE838: using guessed type int dword_6AE838;
+
+//----- (00581CBF) --------------------------------------------------------
+int __cdecl sub_581CBF(int a1)
+{
+    int result; // eax
+
+    if (a1 >= 0 && a1 < dword_6AE2D0)
+    {
+        if ((_UNKNOWN*)((char*)&unk_6ADA50 + 68 * a1))
+        {
+            sub_581D41((const char*)&unk_6ADA50 + 68 * a1);
+            *(_DWORD*)&g_SoundProviderId = a1;
+            result = 1;
+        }
+        else
+        {
+            debugFunc1();
+            isSoundDisabled = 1;
+            result = 0;
+        }
+    }
+    else
+    {
+        debugFunc1();
+        result = 0;
+    }
+    return result;
+}
+// 607104: using guessed type char byte_607104;
+// 6AE2D0: using guessed type int dword_6AE2D0;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (00581D41) --------------------------------------------------------
+int __cdecl sub_581D41(const char* a1)
+{
+    int result; // eax
+    int v2; // [esp+0h] [ebp-28h]
+    int v3; // [esp+14h] [ebp-14h] BYREF
+    const char* _sound3DProviderName; // [esp+18h] [ebp-10h] BYREF
+    int _sound3DProvider; // [esp+1Ch] [ebp-Ch] BYREF
+    int isSoundDevsFinded; // [esp+24h] [ebp-4h]
+
+    v3 = 0;
+    isSoundDevsFinded = 0;
+    releaseAllSoundSampleHandles();
+    if (sound3DProvider)
+    {
+        debugFunc1();
+        AIL_close_3D_provider(sound3DProvider);
+    }
+    debugFunc1();
+    while (AIL_enumerate_3D_providers(&v3, &_sound3DProvider, &_sound3DProviderName))
+    {
+        debugFunc1();
+        v2 = strcmp(_sound3DProviderName, a1);
+        if (!v2)
+        {
+            isSoundDevsFinded = 1;
+            break;
+        }
+    }
+    if (isSoundDevsFinded)
+    {
+        if (AIL_open_3D_provider(_sound3DProvider))
+        {
+            debugFunc1();
+            result = 0;
+        }
+        else
+        {
+            debugFunc1();
+            sound3DProvider = _sound3DProvider;
+            sound3DProviderName = (int)_sound3DProviderName;
+            tryInitSoundSampleHandles(v2);
+            is3DSoundEnabled = checkIs3DSoundIsSupported(sound3DProvider);
+            if (is3DSoundEnabled)
+                AIL_set_3D_room_type(sound3DProvider, 0);
+            result = 1;
+        }
+    }
+    else
+    {
+        debugFunc1();
+        isSoundDisabled = 1;
+        result = 0;
+    }
+    return result;
+}
+// 581E82: variable 'v2' is possibly undefined
+// 580E21: using guessed type int __cdecl sub_580E21(_DWORD);
+// 58113B: using guessed type int sub_58113B(void);
+// 58216D: using guessed type int __cdecl sub_58216D(_DWORD);
+// 594350: using guessed type int __stdcall AIL_set_3D_room_type(_DWORD, _DWORD);
+// 594400: using guessed type int __stdcall AIL_close_3D_provider(_DWORD);
+// 594404: using guessed type int __stdcall AIL_open_3D_provider(_DWORD);
+// 594408: using guessed type int __stdcall AIL_enumerate_3D_providers(_DWORD, _DWORD, _DWORD);
+// 607104: using guessed type char byte_607104;
+// 607105: using guessed type char byte_607105;
+// 6ADA44: using guessed type int dword_6ADA44;
+// 6ADA48: using guessed type int dword_6ADA48;
+// 6AE80C: using guessed type char byte_6AE80C;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (00581F00) --------------------------------------------------------
+int sub_581F00()
+{
+    int i; // [esp+0h] [ebp-4h]
+
+    if (isSoundDisabled)
+        return 0;
+    for (i = 0; i < dword_6AE2D0; ++i)
+    {
+        if (sub_581D41((const char*)&unk_6ADA50 + 68 * i))
+        {
+            *(_DWORD*)&g_SoundProviderId = i;
+            return 1;
+        }
+    }
+    debugFunc1();
+    isSoundDisabled = 1;
+    isMusicDisabled = 1;
+    return 0;
+}
+// 607104: using guessed type char byte_607104;
+// 6AE2D0: using guessed type int dword_6AE2D0;
+// 6AE834: using guessed type int isMusicDisabled;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (005822FE) --------------------------------------------------------
+int __cdecl sub_5822FE(int a1)
+{
+    int result; // eax
+
+    switch (a1)
+    {
+    case 0:
+        goto LABEL_6;
+    case 1:
+        result = sub_582375(1);
+        *(_DWORD*)&g_SpeakerTypeId = 1;
+        return result;
+    case 2:
+        result = sub_582375(3);
+        *(_DWORD*)&g_SpeakerTypeId = 2;
+        break;
+    default:
+    LABEL_6:
+        result = sub_582375(0);
+        *(_DWORD*)&g_SpeakerTypeId = 0;
+        break;
+    }
+    return result;
+}
+// 582375: using guessed type _DWORD __cdecl sub_582375(_DWORD);

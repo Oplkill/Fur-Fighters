@@ -2,10 +2,6 @@
 
 #include "defs.h"
 
-extern __int16 g_RedBits; // weak
-extern __int16 g_GreenBits; // weak
-extern __int16 g_BlueBits; // weak
-
 int __cdecl someLoadFile(char* FileName, int); // idb
 int __cdecl readBitmapTga(char* FileName); // idb
 size_t __cdecl loadCHBfile(char* FileName);

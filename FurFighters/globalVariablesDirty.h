@@ -4348,7 +4348,6 @@ _UNKNOWN unk_5AC9A0; // weak
 char aBossesWinnieSk[] = "bosses\\winnie.skl"; // idb
 char aBossesMaiSkl[] = "bosses\\mai.skl"; // idb
 int dword_5AC9F8 = 1; // weak
-char aHandleactivate_1[] = "HandleActivateApp(): DDRAW/D3D not initialised yet"; // idb
 char aHandleactivate_2[] = "HandleActivateApp(): ACTIVATE received"; // idb
 char aHandleactivate_3[] = "HandleActivateApp(): Reacquiring and restoring"; // idb
 char aHandleactivate_4[] = "HandleActivateApp(): Setting cooperative level to EXCLUSIVE"; // idb
@@ -4362,42 +4361,10 @@ char aHandleactivate_14[] = "HandleActivateApp(): Setting cooperative level to N
 char aHandleactivate_16[] = "HandleActivateApp(): Stopping sound and music"; // idb
 char aHandleactivate_17[] = "HandleActivateApp(): Already activated!"; // idb
 char aHandleactivate_18[] = "HandleActivateApp(): Already deactivated!"; // idb
-char aMenu[5] = "Menu"; // weak
-char aWinny[6] = "WINNY"; // weak
-char asc_5AD060[] = "-----------------------------------------------------"; // idb
-char aGamespy[] = "gamespy"; // idb
-char aUseGamespy[] = "use Gamespy"; // idb
-char aConnect[] = "connect"; // idb
-char aName[] = "name"; // idb
-char aGamename[] = "gamename"; // idb
-char aCharacter[] = "character"; // idb
-char aRoofus[] = "roofus"; // idb
-char aRoofus_0[] = "Roofus"; // idb
-char aJuliette[] = "juliette"; // idb
-char aJuliette_0[] = "Juliette"; // idb
-char aBungalow[] = "bungalow"; // idb
-char aBungalow_0[] = "Bungalow"; // idb
-char aTweek[] = "tweek"; // idb
-char aTweek_0[] = "Tweek"; // idb
-char aRico[] = "rico"; // idb
-char aRico_0[] = "Rico"; // idb
-char aChang[] = "chang"; // idb
-char aChang_0[] = "Chang"; // idb
-char aFirstperson[] = "firstperson"; // idb
-char aFirstPersonOn[] = "First Person On"; // idb
-char aHost[] = "host"; // idb
-char aHost_0[] = "Host"; // idb
-char aMaxplayer[] = "maxplayer"; // idb
 char asc_5AD274[] = "-----------------------------------------------------"; // idb
-char aEnglish[8] = "English"; // weak
-char aEnglishUnitedS[24] = "English (United States)"; // weak
-char aFrench[7] = "French"; // weak
-char aGerman[7] = "German"; // weak
-char aSpanish[8] = "Spanish"; // weak
 int off_5AD300 = 6001856; // idb
 _UNKNOWN unk_5AD328; // weak
 void* off_5AD418 = &unk_5AD328; // weak
-char cp[] = "master.gamespy.com"; // idb
 char a255255255255[16] = "255.255.255.255"; // weak
 __int16 word_5AD484 = 92; // weak
 char aFinal[] = "\\final\\"; // idb
@@ -4412,17 +4379,11 @@ int dword_5AD968 = 10; // weak
 char aDirectplayMult[29] = "DirectPlay Multiplayer Stage"; // weak
 CHAR Name[] = "g_hDPMsgBufferMutex"; // idb
 char a02x_0[] = "%02x "; // idb
-char aGamespyBasicCa[] = "GameSpy: Basic Callback"; // idb
 char a001[5] = "0.01"; // weak
 char aFurfighters[12] = "furfighters"; // weak
-char aGamespyInfoCal[] = "GameSpy: Info Callback"; // idb
 char aMapnameLobby[] = "\\mapname\\Lobby"; // idb
 char aOpenplaying[12] = "openplaying"; // weak
-char aGamespyRulesCa[] = "GameSpy: Rules Callback"; // idb
-char aGamespyPlayers[] = "GameSpy: Players Callback"; // idb
 char aFurfighters_0[12] = "furfighters"; // weak
-char aGamespyInitFal[] = "GameSpy: Init FALIED!"; // idb
-char aGamespyInitOk[] = "GameSpy: Init OK!"; // idb
 int dword_5AE60C = 1; // weak
 char aFurballs[9] = "FurBalls"; // weak
 int dword_5AE710 = 1; // weak
@@ -4978,10 +4939,6 @@ CHAR aTextureStackOv_1[] = "Texture Stack Overflow\n"; // idb
 char aRb_7[] = "rb"; // idb
 char aRb_8[] = "rb"; // idb
 char aWb_1[] = "wb"; // idb
-char aErrorInAcquiri[] = "ERROR in acquiring Keyboard DI device"; // idb
-char aOtherAppHasPri[] = "other app has priority"; // idb
-char aNotInitialised[] = "not initialised"; // idb
-char aNoSelectedData[] = "no selected data format"; // idb
 CHAR aMouseCreationE[] = "Mouse Creation Error"; // idb
 CHAR aMouseDataForma[] = "Mouse Data Format Error"; // idb
 CHAR aMouseCoOpError[] = "Mouse Co-op Error"; // idb
@@ -5580,8 +5537,6 @@ char byte_5B8C5C[256] =
   '\0',
   '\0'
 }; // idb
-int dword_5B8D5C = 0; // weak
-int dword_5B8D60 = 0; // weak
 char byte_5B8D64[256] =
 {
   '\0',
@@ -6194,8 +6149,6 @@ int dword_5B94E8; // weak
 int dword_5B94EC; // weak
 _UNKNOWN unk_5B94F0; // weak
 int dword_5B9600; // weak
-SIZE_T dwBytes; // idb
-LPCVOID pMem; // idb
 int dword_5B9610; // weak
 int dword_5B9614; // weak
 int dword_5B9618; // weak
@@ -6238,9 +6191,6 @@ int dword_5BAE94; // weak
 int dword_5BAE98; // weak
 int dword_5BAE9C; // weak
 int dword_5BAEA0; // weak
-_UNKNOWN unk_5BAEA4; // weak
-_UNKNOWN unk_5BAEA8; // weak
-_UNKNOWN unk_5BAEAC; // weak
 _UNKNOWN unk_5BAEB0; // weak
 int dword_5BAEC4[343]; // idb
 int dword_5BB420; // weak
@@ -7068,7 +7018,6 @@ __int16 word_604312; // weak
 __int16 word_604314; // weak
 __int16 word_604316; // weak
 __int16 word_604318; // weak
-__int16 word_60431A; // weak
 __int16 word_60431C; // weak
 __int16 word_604322; // weak
 __int16 word_604326; // weak
@@ -7167,11 +7116,8 @@ int dword_6045F0; // weak
 int dword_6045F4; // weak
 int dword_6045F8; // weak
 int dword_6045FC; // weak
-int dword_604600; // weak
-int dword_604604; // weak
 _UNKNOWN unk_604620; // weak
 int dword_604680[]; // weak
-char Destination[32]; // idb
 int dword_6046C0; // weak
 int dword_6046C4; // weak
 int dword_6046C8; // weak
@@ -7239,7 +7185,6 @@ int dword_604A08; // weak
 int dword_604A0C; // weak
 int dword_604A10; // weak
 int dword_604A14; // weak
-int dword_604A18; // weak
 int dword_604A20[]; // weak
 char Buffer[1536]; // idb
 char byte_605040[]; // weak
@@ -8104,7 +8049,6 @@ int dword_66879C; // weak
 int dword_6687A0; // weak
 int dword_6687A4; // weak
 int dword_6687A8; // weak
-size_t Size; // idb
 int dword_6687B0; // weak
 int dword_6687B4; // weak
 int dword_6687B8; // weak
@@ -8164,7 +8108,6 @@ float dword_6AE64C[108]; // idb
 int dword_6AE7FC; // weak
 char byte_6AE800; // weak
 int dword_6AE804; // weak
-int dword_6AE808; // weak
 int dword_6AE810; // weak
 int dword_6AE814; // weak
 int dword_6AE820; // weak

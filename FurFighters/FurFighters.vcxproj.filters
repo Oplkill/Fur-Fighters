@@ -19,6 +19,12 @@
     <Filter Include="Файлы заголовков\minigames">
       <UniqueIdentifier>{ffe2e933-8c83-40a7-a97b-218f6984515c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\libs">
+      <UniqueIdentifier>{c2b0c176-c902-4596-b26a-c7ccec160e15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\libs">
+      <UniqueIdentifier>{1d25c092-5242-45ca-bc2a-5a5cbc63a053}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="furfighters.exe.c">
@@ -95,6 +101,27 @@
     </ClCompile>
     <ClCompile Include="utils.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="gamespy.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeDP.cpp">
+      <Filter>Исходные файлы\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="DPInstance.cpp">
+      <Filter>Исходные файлы\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Исходные файлы\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="DPMsg.cpp">
+      <Filter>Исходные файлы\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Исходные файлы\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="DPPlayer.cpp">
+      <Filter>Исходные файлы\libs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +202,30 @@
     </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="gamespy.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeDP.h">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="DPInstance.h">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="DPMsg.h">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="DPMsgArena.h">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="DPPlayer.h">
+      <Filter>Файлы заголовков\libs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -142,9 +142,15 @@
     <ClCompile Include="dead_code.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="directx.cpp" />
+    <ClCompile Include="DPInstance.cpp" />
+    <ClCompile Include="DPMsg.cpp" />
+    <ClCompile Include="DPPlayer.cpp" />
     <ClCompile Include="emptyfunctions.cpp" />
+    <ClCompile Include="FakeDP.cpp" />
     <ClCompile Include="files.cpp" />
     <ClCompile Include="furfighters.exe.c" />
+    <ClCompile Include="gamespy.cpp" />
+    <ClCompile Include="Globals.cpp" />
     <ClCompile Include="globalVariables.cpp" />
     <ClCompile Include="gui.cpp" />
     <ClCompile Include="languages.cpp" />
@@ -162,6 +168,7 @@
     <ClCompile Include="save.cpp" />
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="sounds.cpp" />
+    <ClCompile Include="StdAfx.cpp" />
     <ClCompile Include="tempplace.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
@@ -170,9 +177,16 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="defs.h" />
     <ClInclude Include="directx.h" />
+    <ClInclude Include="DPInstance.h" />
+    <ClInclude Include="DPMsg.h" />
+    <ClInclude Include="DPMsgArena.h" />
+    <ClInclude Include="DPPlayer.h" />
     <ClInclude Include="emptyfunctions.h" />
+    <ClInclude Include="FakeDP.h" />
     <ClInclude Include="files.h" />
     <ClInclude Include="furfighters.exe.h" />
+    <ClInclude Include="gamespy.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="globalVariables.h" />
     <ClInclude Include="globalVariablesDirty.h" />
     <ClInclude Include="gui.h" />
@@ -190,6 +204,7 @@
     <ClInclude Include="save.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="sounds.h" />
+    <ClInclude Include="StdAfx.h" />
     <ClInclude Include="tempplace.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>

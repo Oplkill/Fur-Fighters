@@ -3,12 +3,16 @@
 #include <cstdarg>
 #include <cstdlib>
 #include <stdio.h>
+#include <Windows.h>
 #include "debug.h"
 #include "files.h"
 
-char* off_5A30F0 = "english.lng"; // idb
-char aLoadingLanguag[] = "Loading Language data ..."; // idb
-CHAR aCannotSymalloc[] = "Cannot syMalloc for language dependent strings."; // idb
+const char* g_LanguageFiles[] = { "english.lng", "French.lng", "German.lng", "Spanish.lng", "english.lng", "english.lng", "American.lng"};
+char aEnglish[8] = "English"; // weak
+char aEnglishUnitedS[24] = "English (United States)"; // weak
+char aFrench[7] = "French"; // weak
+char aGerman[7] = "German"; // weak
+char aSpanish[8] = "Spanish"; // weak
 char aItemsEngTxt[14] = "items_eng.txt"; // weak
 char aItemsFrTxt[13] = "items_fr.txt"; // weak
 char aItemsGerTxt[14] = "items_ger.txt"; // weak
@@ -29,12 +33,12 @@ int loadLanguageDatas()
     const void* v2; // [esp+10h] [ebp-24h]
     char Buffer[32]; // [esp+14h] [ebp-20h] BYREF
 
-    sprintf(Buffer, (&off_5A30F0)[languageId]);
-    writeDebug(aLoadingLanguag);
+    sprintf(Buffer, g_LanguageFiles[languageId]);
+    writeDebug("Loading Language data ...");
     v2 = (const void*)someLoadFile(Buffer, (int)&Size);
     g_LanguageStringsData = (int)malloc(Size);
     if (!g_LanguageStringsData)
-        fatalError(aCannotSymalloc);
+        fatalError("Cannot syMalloc for language dependent strings.");
     qmemcpy((void*)g_LanguageStringsData, v2, Size);
     result = sub_53F213();
     switch (languageId)

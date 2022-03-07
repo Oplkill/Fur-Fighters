@@ -6,6 +6,9 @@
 extern int dword_6673E0; // weak
 extern int numVideoDevicesOrModes; // weak
 extern int numVideoDevices; // weak
+extern __int16 g_RedBits; // weak
+extern __int16 g_GreenBits; // weak
+extern __int16 g_BlueBits; // weak
 
 void __stdcall getDirectXErrorName(int a1, size_t BufferCount, char* Buffer);
 [[noreturn]] void __cdecl throwDirectXError(int a1);
@@ -19,3 +22,5 @@ int __cdecl sub_5752F3(int a1, int a2);
 int sub_577C00();
 int __cdecl checkAudioVideoDevices(int a1);
 BOOL __stdcall Callback(GUID*, LPSTR, LPSTR, LPVOID, HMONITOR); // idb
+int sub_56975B();
+int __stdcall sub_568F8A(void* voidPrtVar = 0);

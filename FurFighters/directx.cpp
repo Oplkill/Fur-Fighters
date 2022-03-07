@@ -6,7 +6,9 @@
 #include "debug.h"
 #include "tempplace.h"
 #include "utils.h"
+#include "sounds.h"
 #include "settings.h"
+#include "globalVariables.h"
 
 CHAR aNoDevicesAndOr[] = "No devices and/or modes were enumerated!"; // idb
 CHAR aNoEnumeratedDe[] = "No enumerated devices were accepted!"; // idb
@@ -15,11 +17,19 @@ CHAR aCanTQueryIdire[] = "Can't query IDirect3D7 during enumeration!"; // idb
 char aEnummingTextur[] = "Enumming Textures"; // idb
 char aBeginsceneIdir[] = "BeginScene(): IDirect3DDevice7_BeginScene failed with error DDERR_SURFACELOST !"; // idb
 char aEndsceneIdirec[] = "EndScene(): IDirect3DDevice7_EndScene failed with error DDERR_SURFACELOST !"; // idb
-CHAR aControllerConf[] = "Controller Configuration"; // idb
 
 int dword_6673E0; // weak
 int numVideoDevicesOrModes; // weak
 int numVideoDevices; // weak
+__int16 g_RedBits; // weak
+__int16 g_GreenBits; // weak
+__int16 g_BlueBits; // weak
+int dword_60FED4; // weak
+int dword_60FED0; // weak
+int dword_60FECC; // weak
+int dword_60FE74; // weak
+
+int __cdecl sub_57808E(LONG* a1);
 
 //----- (0052CE31) --------------------------------------------------------
 void __stdcall getDirectXErrorName(int a1, size_t BufferCount, char* Buffer)
@@ -1208,7 +1218,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
     }
     else
     {
-        writeDebug(aHandleactivate_1);
+        writeDebug("HandleActivateApp(): DDRAW/D3D not initialised yet");
         dword_6673E0 = a3;
         result = 0;
     }
@@ -1365,13 +1375,13 @@ int __cdecl sub_5752F3(int a1, int a2)
     if (v3 != 1 && v3)
     {
         dword_622330 = 0;
-        writeDebug(aErrorInAcquiri);
+        writeDebug("ERROR in acquiring Keyboard DI device");
         if (v3 == -2147024891)
-            writeDebug(aOtherAppHasPri);
+            writeDebug("other app has priority");
         if (v3 == -2147024875)
-            writeDebug(aNotInitialised);
+            writeDebug("not initialised");
         if (v3 == -2147024809)
-            writeDebug(aNoSelectedData);
+            writeDebug("no selected data format");
     }
     else
     {
@@ -1593,3 +1603,200 @@ BOOL __stdcall Callback(GUID* lpGuid, LPSTR a2, LPSTR a3, LPVOID a4, HMONITOR a5
     return 1;
 }
 // 578DB1: using guessed type int __stdcall sub_578DB1(int, int);
+
+//----- (0057808E) --------------------------------------------------------
+int __cdecl sub_57808E(LONG* a1)
+{
+    unsigned int i; // [esp+4h] [ebp-220h]
+    unsigned int j; // [esp+4h] [ebp-220h]
+    unsigned int k; // [esp+4h] [ebp-220h]
+    __int16 greenBitsShift; // [esp+8h] [ebp-21Ch]
+    __int16 greenBits; // [esp+8h] [ebp-21Ch]
+    __int16 redBitsShift; // [esp+Ch] [ebp-218h]
+    __int16 redBits; // [esp+Ch] [ebp-218h]
+    __int16 blueBitsShift; // [esp+10h] [ebp-214h]
+    __int16 blueBits; // [esp+10h] [ebp-214h]
+    int v11; // [esp+14h] [ebp-210h] BYREF
+    char v12[380]; // [esp+18h] [ebp-20Ch] BYREF
+    HRESULT v13; // [esp+194h] [ebp-90h]
+    int v14[4]; // [esp+198h] [ebp-8Ch] BYREF
+    int v15[31]; // [esp+1A8h] [ebp-7Ch] BYREF
+
+    v13 = DirectDrawCreateEx((GUID*)a1[11], &lpDD, &iid, 0);
+    if (v13 < 0)
+        return v13;
+    dword_610400 = a1[3];
+    dword_6103FC = (HWND)a1[10];
+    if (a1[3])
+        v13 = (*(int(__thiscall**)(LPVOID, LPVOID, LONG, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, a1[10], 8);
+    else
+        v13 = (*(int(__stdcall**)(LPVOID, LONG, int))(*(_DWORD*)lpDD + 80))(lpDD, a1[10], 2071);
+    if (v13 < 0)
+        return v13;
+    if (!a1[3])
+    {
+        v13 = (*(int(__thiscall**)(LPVOID, LPVOID, LONG, LONG, LONG, _DWORD, _DWORD))(*(_DWORD*)lpDD + 84))(
+            lpDD,
+            lpDD,
+            *a1,
+            a1[1],
+            a1[2],
+            0,
+            0);
+        if (v13 < 0)
+            return v13;
+        ShowCursor(0);
+        ShowWindow((HWND)a1[10], 3);
+        UpdateWindow((HWND)a1[10]);
+        SetFocus((HWND)a1[10]);
+    }
+    (*(void(__thiscall**)(LPVOID, LPVOID, void*, char*))(*(_DWORD*)lpDD + 44))(lpDD, lpDD, &unk_60FEF4, v12);
+    memset(v15, 0, sizeof(v15));
+    v15[0] = 124;
+    if (a1[3])
+    {
+        v15[1] = 1;
+        v15[26] = 512;
+    }
+    else
+    {
+        v15[1] = 33;
+        v15[26] = 8728;
+        if (a1[8])
+            v15[5] = 2;
+        else
+            v15[5] = 1;
+    }
+    v13 = (*(int(__thiscall**)(LPVOID, LPVOID, int*, int*, _DWORD))(*(_DWORD*)lpDD + 24))(
+        lpDD,
+        lpDD,
+        v15,
+        &dword_60FE64,
+        0);
+    if (v13 < 0)
+        return v13;
+    if (a1[3])
+    {
+        GetClientRect(dword_6103FC, &Point);
+        GetClientRect(dword_6103FC, &stru_610418);
+        ClientToScreen(dword_6103FC, (LPPOINT)&Point);
+        ClientToScreen(dword_6103FC, (LPPOINT)&Point.right);
+        v15[1] = 7;
+        v15[26] = 8256;
+        v15[3] = Point.right - Point.left;
+        v15[2] = Point.bottom - Point.top;
+        v13 = (*(int(__thiscall**)(LPVOID, LPVOID, int*, int*, _DWORD))(*(_DWORD*)lpDD + 24))(
+            lpDD,
+            lpDD,
+            v15,
+            &dword_60FE68,
+            0);
+        if (v13 < 0)
+            return v13;
+        v13 = (*(int(__thiscall**)(LPVOID, LPVOID, _DWORD, int*, _DWORD))(*(_DWORD*)lpDD + 16))(lpDD, lpDD, 0, &v11, 0);
+        if (v13 < 0)
+            return v13;
+        (*(void(__stdcall**)(int, _DWORD, HWND))(*(_DWORD*)v11 + 32))(v11, 0, dword_6103FC);
+        (*(void(__thiscall**)(int, int, int))(*(_DWORD*)dword_60FE64 + 112))(dword_60FE64, dword_60FE64, v11);
+        (*(void(__thiscall**)(int, int))(*(_DWORD*)v11 + 8))(v11, v11);
+    }
+    else
+    {
+        Point.top = 0;
+        Point.left = 0;
+        Point.right = *a1;
+        Point.top = a1[1];
+        stru_610418.left = 0;
+        stru_610418.top = Point.top;
+        *(struct tagPOINT*)&stru_610418.right = *(struct tagPOINT*)&Point.right;
+        v14[1] = 0;
+        v14[2] = 0;
+        v14[3] = 0;
+        v14[0] = 4;
+        v13 = (*(int(__thiscall**)(int, int, int*, int*))(*(_DWORD*)dword_60FE64 + 48))(
+            dword_60FE64,
+            dword_60FE64,
+            v14,
+            &dword_60FE68);
+        if (v13 < 0)
+            return v13;
+    }
+    dword_60FE74 = 124;
+    (*(void(__thiscall**)(int, int, int*))(*(_DWORD*)dword_60FE68 + 88))(dword_60FE68, dword_60FE68, &dword_60FE74);
+    redBitsShift = 0;
+    for (i = dword_60FECC; (i & 1) == 0; i >>= 1)
+        ++redBitsShift;
+    g_RedBitsShift = redBitsShift;
+    redBits = 0;
+    while ((i & 1) != 0)
+    {
+        ++redBits;
+        i >>= 1;
+    }
+    g_RedBits = redBits;
+    writeDebug("Red Bits - %d, shift %d", redBits, g_RedBitsShift);
+    greenBitsShift = 0;
+    for (j = dword_60FED0; (j & 1) == 0; j >>= 1)
+        ++greenBitsShift;
+    g_GreenBitsShift = greenBitsShift;
+    greenBits = 0;
+    while ((j & 1) != 0)
+    {
+        ++greenBits;
+        j >>= 1;
+    }
+    g_GreenBits = greenBits;
+    writeDebug("Green Bits - %d, shift %d", greenBits, g_GreenBitsShift);
+    blueBitsShift = 0;
+    for (k = dword_60FED4; (k & 1) == 0; k >>= 1)
+        ++blueBitsShift;
+    g_BlueBitsShift = blueBitsShift;
+    blueBits = 0;
+    while ((k & 1) != 0)
+    {
+        ++blueBits;
+        k >>= 1;
+    }
+    g_BlueBits = blueBits;
+    writeDebug("Blue Bits - %d, shift %d", blueBits, g_BlueBitsShift);
+    return (**(int(__thiscall***)(int, int, void*, int*))dword_60FE64)(
+        dword_60FE64,
+        dword_60FE64,
+        &unk_597258,
+        &dword_60FEF0);
+}
+// 60FE64: using guessed type int dword_60FE64;
+// 60FE68: using guessed type int dword_60FE68;
+// 60FE74: using guessed type int dword_60FE74;
+// 60FECC: using guessed type int dword_60FECC;
+// 60FED0: using guessed type int dword_60FED0;
+// 60FED4: using guessed type int dword_60FED4;
+// 60FEF0: using guessed type int dword_60FEF0;
+// 610400: using guessed type int dword_610400;
+// 622CE6: using guessed type __int16 g_RedBits;
+// 622CE8: using guessed type __int16 g_GreenBits;
+// 622CEA: using guessed type __int16 g_BlueBits;
+// 622CEC: using guessed type __int16 g_RedBitsShift;
+// 622CEE: using guessed type __int16 g_GreenBitsShift;
+// 622CF0: using guessed type __int16 g_BlueBitsShift;
+
+//----- (0056975B) --------------------------------------------------------
+int sub_56975B()
+{
+    return sub_56905F();
+}
+
+//----- (00568F8A) --------------------------------------------------------
+int __stdcall sub_568F8A(void* voidPrtVar)
+{
+    int result; // eax
+
+    sub_569A61();
+    result = sub_577F03();
+    if (result < 0)
+        throwDirectXError(result);
+    return result;
+}
+// 568E00: using guessed type void __cdecl __noreturn sub_568E00(_DWORD);
+// 569A61: using guessed type int __cdecl sub_569A61(_DWORD);
+// 577F03: using guessed type int sub_577F03(void);

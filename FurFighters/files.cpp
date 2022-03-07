@@ -16,9 +16,6 @@ int dword_5BFF9C; // weak
 __int16 word_5BFF9A; // weak
 __int16 word_5BFF98; // weak
 int dword_60FEC8; // weak
-__int16 g_RedBits; // weak
-__int16 g_GreenBits; // weak
-__int16 g_BlueBits; // weak
 
 //----- (0053F0B8) --------------------------------------------------------
 int __cdecl someLoadFile(char* FileName, int a2)

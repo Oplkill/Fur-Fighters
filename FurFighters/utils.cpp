@@ -6,7 +6,7 @@
 char getFormattedStringBuffer[256]; // idb
 
 //----- (0051ADC9) --------------------------------------------------------
-BOOL __cdecl isStringsEquals(char* Str1, char* Str2)
+BOOL __cdecl isStringsEquals(const char* Str1, const char* Str2)
 {
 	return strncmp(Str1, Str2, strlen(Str2)) == 0;
 }

@@ -46,8 +46,6 @@ CHAR aResSettings_0[] = "Res Settings"; // idb
 CHAR aResSettings_1[] = "Res Settings"; // idb
 CHAR WindowName[] = "Меховые Кулаки"; // idb
 CHAR ClassName[] = "WINNY"; // idb
-CHAR Caption[] = "It's an error"; // idb
-CHAR Text[] = "Create Window Failed"; // idb
 char aLoadingIniFile[] = "Loading Ini File..."; // idb
 char aBearSpeed[11] = "Bear Speed"; // weak
 char aBearShotDamage[17] = "Bear Shot Damage"; // weak
@@ -446,8 +444,8 @@ int __cdecl initSettings(HINSTANCE hInstance)
     WndClass.hCursor = LoadCursorA(0, (LPCSTR)0x7F00);
     WndClass.hIcon = LoadIconA(g_hInstance, (LPCSTR)0x6C);
     WndClass.hbrBackground = (HBRUSH)GetStockObject(5);
-    WndClass.lpszMenuName = aMenu;
-    WndClass.lpszClassName = aWinny;
+    WndClass.lpszMenuName = "Menu";
+    WndClass.lpszClassName = "WINNY";
     if (!RegisterClassA(&WndClass))
         return 0;
     hWnd = CreateWindowExA(0x40008u, ClassName, WindowName, 0x80CF0000, 0, 0, nWidth, nHeight, 0, 0, hInstance, 0);
@@ -462,7 +460,7 @@ int __cdecl initSettings(HINSTANCE hInstance)
     }
     else
     {
-        MessageBoxA(0, Text, Caption, 0);
+        MessageBoxA(0, "Create Window Failed", "It's an error", 0);
         result = 0;
     }
     return result;

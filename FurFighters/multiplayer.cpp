@@ -1,5 +1,20 @@
 #include "multiplayer.h"
 
+#include <windows.h>
+#include <cstdio>
+#include "settings.h"
+#include "files.h"
+#include "emptyfunctions.h"
+#include "debug.h"
+#include "globalVariables.h"
+#include "dead_code.h"
+#include "tempplace.h"
+#include "directx.h"
+#include "multiplayer.h"
+#include "gamespy.h"
+#include "utils.h"
+#include "FakeDP.h"
+
 CHAR aFurFight[] = "Fur Fight"; // idb
 CHAR aYouMustEnterAV[] = "You must enter a valid player name."; // idb
 CHAR aFurFight_0[] = "Fur Fight"; // idb
@@ -20,6 +35,11 @@ char aLookingForGame[21] = "Looking for games..."; // weak
 char aClickStartSear[78] = "Click Start Search to see a list of games.  Click Create to start a new game."; // weak
 CHAR aFurFight_4[] = "Fur Fight"; // idb
 CHAR aThereAreNoGame[] = "There are no games to join."; // idb
+
+int g_MultiplayerMaxPlayers; // weak
+LPCVOID pMem; // idb
+
+int __cdecl sub_520169(HWND hWnd); // idb
 
 //----- (0051E347) --------------------------------------------------------
 int __cdecl sub_51E347(HINSTANCE a1)
@@ -69,7 +89,7 @@ int __cdecl sub_51E347(HINSTANCE a1)
 // 5B9600: using guessed type int dword_5B9600;
 
 //----- (005239D2) --------------------------------------------------------
-void __cdecl sub_5239D2()
+void __cdecl unloadGame()
 {
     int v0; // [esp+0h] [ebp-10h]
     int v1; // [esp+0h] [ebp-10h]
@@ -354,6 +374,140 @@ int __cdecl sub_51ED34(HWND hDlg)
         result = 0;
     }
     return result;
+}
+// 594230: using guessed type _DWORD __thiscall FakeDP::InitializeConnection(FakeDP *__hidden this, void *, unsigned int);
+// 594238: using guessed type FakeDP *__thiscall FakeDP::FakeDP(FakeDP *__hidden this);
+// 594AE8: using guessed type int (__stdcall *off_594AE8)(int);
+// 5BAE80: using guessed type int dword_5BAE80;
+
+//----- (00520169) --------------------------------------------------------
+int __cdecl sub_520169(HWND hWnd)
+{
+    int result; // eax
+    LPARAM dwInitParam; // [esp+0h] [ebp-8h] BYREF
+    int v3; // [esp+4h] [ebp-4h] BYREF
+
+    if (ppv)
+    {
+        (*(void(__stdcall**)(LPVOID))(*(_DWORD*)ppv + 8))(ppv);
+        ppv = 0;
+    }
+    dwInitParam = CoCreateInstance(&rclsid, 0, 1u, &riid, &ppv);
+    if (dwInitParam < 0)
+        return dwInitParam;
+    dwInitParam = (*(int(__stdcall**)(LPVOID, _DWORD))(*(_DWORD*)ppv + 72))(ppv, 0);
+    if (dwInitParam < 0)
+        return dwInitParam;
+    dword_5B9610 = 1;
+    EnableWindow(hWnd, 0);
+    DialogBoxParamA(0, (LPCSTR)0x72, hWnd, sub_5205B2, (LPARAM)&dwInitParam);
+    EnableWindow(hWnd, 1);
+    if (dwInitParam >= 0)
+    {
+        dwInitParam = sub_52027C(&v3);
+        if (dwInitParam >= 0)
+            result = 0;
+        else
+            result = dwInitParam;
+    }
+    else
+    {
+        (*(void(__stdcall**)(LPVOID, int))(*(_DWORD*)ppv + 72))(ppv, 1);
+        if (ppv)
+        {
+            (*(void(__stdcall**)(LPVOID))(*(_DWORD*)ppv + 8))(ppv);
+            ppv = 0;
+        }
+        result = dwInitParam;
+    }
+    return result;
+}
+// 5B9610: using guessed type int dword_5B9610;
+
+//----- (0051FDEE) --------------------------------------------------------
+int __cdecl sub_51FDEE(int a1, int a2)
+{
+    int v3[20]; // [esp+4h] [ebp-68h] BYREF
+    int v4; // [esp+54h] [ebp-18h]
+    int v5[4]; // [esp+58h] [ebp-14h] BYREF
+    int v6; // [esp+68h] [ebp-4h] BYREF
+
+    v6 = 0;
+    dword_5B9970 = a2;
+    memset(v3, 0, sizeof(v3));
+    v3[0] = 80;
+    v3[6] = 1881618624;
+    v3[7] = 299086062;
+    v3[8] = -2147457396;
+    v3[9] = 1894125741;
+    v3[12] = a1;
+    v3[10] = a2;
+    v3[1] = 40964;
+    v3[17] = dword_5BAE98;
+    dword_5BABF0 = 1;
+    sub_52348B();
+    v4 = FakeDP::Open((FakeDP*)dword_5BAE80, (struct DPSESSIONDESC2*)v3, 2u);
+    if (v4 < 0)
+        return v4;
+    v5[1] = 0;
+    v5[3] = 0;
+    v5[0] = 16;
+    v5[2] = (int)&String;
+    v4 = FakeDP::CreatePlayer(
+        (FakeDP*)dword_5BAE80,
+        (unsigned int*)&dword_668794,
+        (struct DPNAME*)v5,
+        pHandles,
+        0,
+        0,
+        0x100u);
+    if (v4 < 0)
+        return v4;
+    v4 = FakeDP::CreateGroup((FakeDP*)dword_5BAE80, (unsigned int*)&dword_5BACFE, 0, 0, 0, 0);
+    if (v4 < 0)
+        return v4;
+    dword_5B9F08 = 1;
+    sub_5219C6();
+    dword_66878C = 0;
+    v4 = FakeDP::SetPlayerData((FakeDP*)dword_5BAE80, dword_668794, &v6, 4u, 2u);
+    if (v4 < 0)
+        emptyFunction0();
+    sub_520870();
+    return 0;
+}
+// 594210: using guessed type _DWORD __thiscall FakeDP::CreateGroup(FakeDP *__hidden this, unsigned int *, struct DPNAME *, void *, unsigned int, unsigned int);
+// 59421C: using guessed type _DWORD __thiscall FakeDP::CreatePlayer(FakeDP *__hidden this, unsigned int *, struct DPNAME *, void *, void *, unsigned int, unsigned int);
+// 594220: using guessed type _DWORD __thiscall FakeDP::SetPlayerData(FakeDP *__hidden this, unsigned int, void *, unsigned int, unsigned int);
+// 594224: using guessed type _DWORD __thiscall FakeDP::Open(FakeDP *__hidden this, struct DPSESSIONDESC2 *, unsigned int);
+// 594AF0: using guessed type int dword_594AF0;
+// 5B9970: using guessed type int dword_5B9970;
+// 5B9F08: using guessed type int dword_5B9F08;
+// 5BABF0: using guessed type int dword_5BABF0;
+// 5BACFE: using guessed type int dword_5BACFE;
+// 5BAE80: using guessed type int dword_5BAE80;
+// 5BAE98: using guessed type int dword_5BAE98;
+// 66878C: using guessed type int dword_66878C;
+// 668794: using guessed type int dword_668794;
+
+//----- (0051E443) --------------------------------------------------------
+int sub_51E443()
+{
+    FakeDP* v1; // [esp+0h] [ebp-Ch]
+    FakeDP* v2; // [esp+4h] [ebp-8h]
+
+    v2 = (FakeDP*)operator new(0xCu);
+    if (v2)
+    {
+        FakeDP::FakeDP(v2);
+        *(_DWORD*)v2 = &off_594AE8;
+        v1 = v2;
+    }
+    else
+    {
+        v1 = 0;
+    }
+    dword_5BAE80 = (int)v1;
+    return FakeDP::InitializeConnection(v1, (void*)pMem, 0);
 }
 // 594230: using guessed type _DWORD __thiscall FakeDP::InitializeConnection(FakeDP *__hidden this, void *, unsigned int);
 // 594238: using guessed type FakeDP *__thiscall FakeDP::FakeDP(FakeDP *__hidden this);

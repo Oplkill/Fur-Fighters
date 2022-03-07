@@ -1,11 +1,38 @@
 #include "dead_code.h"
 
+#include <windows.h>
+#include <cstdio>
+#include "settings.h"
+#include "files.h"
+#include "emptyfunctions.h"
+#include "debug.h"
+#include "globalVariables.h"
+#include "dead_code.h"
+#include "tempplace.h"
+#include "directx.h"
+#include "multiplayer.h"
+#include "gamespy.h"
+#include "utils.h"
+#include <cmath>
+#include "sounds.h"
+
+char aMilesFast2dPos_1[31] = "Miles Fast 2D Positional Audio"; // weak
+char aRadGameToolsRs_2[28] = "RAD Game Tools RSX 3D Audio"; // weak
+char aDirectsound3dH_2[31] = "DirectSound3D Hardware Support"; // weak
+char aDirectsound3dS_3[33] = "DirectSound3D Software Emulation"; // weak
+char aCreativeLabsEa_4[23] = "Creative Labs EAX (TM)"; // weak
+char aAurealA3dInter_0[28] = "Aureal A3D Interactive (TM)"; // weak
+char aCreativeLabsEa_5[23] = "Creative Labs EAX (TM)"; // weak
+CHAR aControllerConf[] = "Controller Configuration"; // idb
+
 int dword_6049B8; // weak
 int dword_604730; // weak
 int dword_604738; // weak
 int dword_604734; // weak
 
 char textUseless1[16];
+int dword_5B8D5C = 0; // weak
+int dword_5B8D60 = 0; // weak
 
 //----- (004CF807) --------------------------------------------------------
 int __cdecl sub_4CF807(int* a1)
@@ -218,3 +245,330 @@ LSTATUS sub_44D112()
 {
     return RegSetValueExA(regKey, aControllerConf, 0, 3u, &g_ControllerSettings, 0xCCu);
 }
+
+//----- (00445B65) --------------------------------------------------------
+void sub_445B65()
+{
+    switch (*(_DWORD*)dword_6046F0)
+    {
+    case 5:
+        if (g_UseGameSpy)
+            sub_43FC90();
+        if (sub_43FCB4())
+        {
+            dword_6234D4 = 0;
+            dword_604960 = 0;
+            sub_45E3F7(91, 255);
+            *(_DWORD*)dword_6046F0 = 3;
+        }
+        else
+        {
+            dword_604960 = sub_448924((int)byte_6048DC, (int)&Count, 20, a0123456789);
+            if (!dword_604960)
+            {
+                strcpy(byte_60498E, (const char*)byte_6048DC);
+                *(_DWORD*)dword_6046F0 = 7;
+                dword_5B8D5C = 5;
+                dword_5B8D60 = 1;
+            }
+        }
+        break;
+    case 9:
+        dword_5B8D5C = 300;
+        strcpy(byte_60498E, Destination);
+        *(_DWORD*)dword_6046F0 = 7;
+        dword_5B8D60 = 5;
+        break;
+    case 7:
+        if (!--dword_5B8D5C)
+        {
+            dword_6049A4 = 0;
+            emptyFunction0();
+            sub_51E4A4(byte_60498E, byte_5B8F7C);
+            sub_51F6C5();
+            dword_6049A4 = sub_51F63F();
+            if (!--dword_5B8D60 || dword_6049A4)
+            {
+                *(_DWORD*)dword_6046F0 = 6;
+                dword_604728 = 0;
+            }
+            else
+            {
+                dword_5B8D5C = 60;
+            }
+        }
+        break;
+    case 6:
+        if (dword_6234D4 == 16 && dword_604728 > 0)
+        {
+            --dword_604728;
+        }
+        else if (dword_6234D4 == 32 && dword_604728 < dword_6049A4 - 1)
+        {
+            ++dword_604728;
+        }
+        if (sub_43FCB4())
+        {
+            if (g_UseGameSpy)
+                sub_43FC90();
+            dword_6234D4 = 0;
+            sub_45E3F7(91, 255);
+            dword_604718 = sub_439511(dword_604718, 15.0);
+            *(_DWORD*)dword_6046F0 = 5;
+        }
+        if (dword_6234D4 == 4)
+        {
+            if (dword_6049A4)
+            {
+                dword_6049A8 = 5;
+                byte_6048DC[0] = 0;
+                Count = 0;
+                *(_DWORD*)dword_6046F0 = 8;
+                sub_5239B8((int (*)())sub_448A71);
+                sub_5239C5((int (*)())sub_448A99);
+                sub_51FA21(dword_604728);
+                sub_521F00(1, *(int*)dword_604778);
+                sub_521F00(3, *(int*)dword_60477C);
+                sub_521F00(8, dword_60425C);
+                sub_521F00(7, dword_6046F4);
+                sub_45E3F7(118, 255);
+                dword_6234D4 = 0;
+            }
+            else
+            {
+                sub_45E3F7(91, 255);
+            }
+        }
+        break;
+    }
+}
+// 448A99: using guessed type int __cdecl sub_448A99(int, int);
+// 5B8D5C: using guessed type int dword_5B8D5C;
+// 5B8D60: using guessed type int dword_5B8D60;
+// 5B9F50: using guessed type int g_UseGameSpy;
+// 60425C: using guessed type int dword_60425C;
+// 6046F4: using guessed type int dword_6046F4;
+// 60471C: using guessed type float flt_60471C;
+// 604728: using guessed type int dword_604728;
+// 604960: using guessed type int dword_604960;
+// 6049A4: using guessed type int dword_6049A4;
+// 6049A8: using guessed type int dword_6049A8;
+// 6234D4: using guessed type int dword_6234D4;
+
+//----- (0051E4A4) --------------------------------------------------------
+const void* __cdecl sub_51E4A4(LPCSTR lpString, char* String)
+{
+    _DWORD* v2; // edx
+    _DWORD* v3; // eax
+    int v4; // eax
+    _DWORD* v5; // edx
+    const void* result; // eax
+    HGLOBAL v7; // eax
+    HGLOBAL v8; // eax
+    HGLOBAL v9; // eax
+    int v10; // [esp+0h] [ebp-60h]
+    FakeDP* v11; // [esp+4h] [ebp-5Ch]
+    _QWORD v12[9]; // [esp+10h] [ebp-50h] BYREF
+    int v13; // [esp+58h] [ebp-8h] BYREF
+    int v14; // [esp+5Ch] [ebp-4h]
+
+    v14 = 0;
+    v11 = (FakeDP*)operator new(0xCu);
+    if (v11)
+    {
+        FakeDP::FakeDP(v11);
+        *(_DWORD*)v11 = &off_594AE8;
+        v10 = (int)v11;
+    }
+    else
+    {
+        v10 = 0;
+    }
+    dword_5BAE80 = v10;
+    CoCreateInstance(&rclsid, 0, 1u, &riid, &ppv);
+    v2 = &v12[3 * v14];
+    *v2 = 131667648;
+    v2[1] = 298836143;
+    v2[2] = -1610592612;
+    v2[3] = 1581385161;
+    LODWORD(v12[3 * v14 + 2]) = 16;
+    HIDWORD(v12[3 * v14++ + 2]) = &unk_597340;
+    v3 = &v12[3 * v14];
+    *v3 = -995799648;
+    v3[1] = 298836143;
+    v3[2] = -1610592612;
+    v3[3] = 1581385161;
+    v4 = lstrlenA(lpString);
+    LODWORD(v12[3 * v14 + 2]) = v4 + 1;
+    HIDWORD(v12[3 * v14++ + 2]) = lpString;
+    LOWORD(v13) = atoi(String);
+    if ((_WORD)v13)
+    {
+        v5 = &v12[3 * v14];
+        *v5 = -464370367;
+        v5[1] = 298946213;
+        v5[2] = 1610651274;
+        v5[3] = 286568599;
+        LODWORD(v12[3 * v14 + 2]) = 2;
+        HIDWORD(v12[3 * v14++ + 2]) = &v13;
+    }
+    result = (const void*)(*(int(__stdcall**)(LPVOID, _QWORD*, int, _DWORD, SIZE_T*))(*(_DWORD*)ppv + 56))(
+        ppv,
+        v12,
+        v14,
+        0,
+        &dwBytes);
+    if (result == (const void*)-2005467106)
+    {
+        v7 = GlobalAlloc(0x42u, dwBytes);
+        result = GlobalLock(v7);
+        pMem = result;
+        if (result)
+        {
+            if ((*(int(__stdcall**)(LPVOID, _QWORD*, int, LPCVOID, SIZE_T*))(*(_DWORD*)ppv + 56))(
+                ppv,
+                v12,
+                v14,
+                pMem,
+                &dwBytes) >= 0)
+            {
+                result = (const void*)FakeDP::InitializeConnection((FakeDP*)dword_5BAE80, (void*)pMem, 0);
+                if (ppv)
+                {
+                    result = (const void*)(*(int(__stdcall**)(LPVOID))(*(_DWORD*)ppv + 8))(ppv);
+                    ppv = 0;
+                }
+            }
+            else
+            {
+                v8 = GlobalHandle(pMem);
+                GlobalUnlock(v8);
+                v9 = GlobalHandle(pMem);
+                result = GlobalFree(v9);
+            }
+        }
+    }
+    return result;
+}
+// 594230: using guessed type _DWORD __thiscall FakeDP::InitializeConnection(FakeDP *__hidden this, void *, unsigned int);
+// 594238: using guessed type FakeDP *__thiscall FakeDP::FakeDP(FakeDP *__hidden this);
+// 594AE8: using guessed type int (__stdcall *off_594AE8)(int);
+// 5BAE80: using guessed type int dword_5BAE80;
+
+//----- (0051F6C5) --------------------------------------------------------
+int sub_51F6C5()
+{
+    int v1[23]; // [esp+4h] [ebp-5Ch] BYREF
+
+    dword_5B9614 = 0;
+    v1[21] = 0;
+    v1[22] = 1;
+    memset(v1, 0, 0x50u);
+    v1[0] = 80;
+    v1[6] = 1881618624;
+    v1[7] = 299086062;
+    v1[8] = -2147457396;
+    v1[9] = 1894125741;
+    v1[20] = FakeDP::EnumSessions(
+        (FakeDP*)dword_5BAE80,
+        (struct DPSESSIONDESC2*)v1,
+        0,
+        (int(__stdcall*)(const struct DPSESSIONDESC2*, unsigned int*, unsigned int, void*))sub_51F744,
+        0,
+        0x82u);
+    return sub_51F63F();
+}
+// 5941F8: using guessed type _DWORD __thiscall FakeDP::EnumSessions(FakeDP *__hidden this, struct DPSESSIONDESC2 *, unsigned int, int (__stdcall *)(const struct DPSESSIONDESC2 *, unsigned int *, unsigned int, void *), void *, unsigned int);
+// 594AF0: using guessed type int dword_594AF0;
+// 5B9614: using guessed type int dword_5B9614;
+// 5BAE80: using guessed type int dword_5BAE80;
+
+//----- (0051FA21) --------------------------------------------------------
+int __cdecl sub_51FA21(int a1)
+{
+    int v2; // [esp+Ch] [ebp-7Ch]
+    int v3; // [esp+10h] [ebp-78h]
+    size_t Size[2]; // [esp+14h] [ebp-74h] BYREF
+    int v5[20]; // [esp+1Ch] [ebp-6Ch] BYREF
+    int v6; // [esp+6Ch] [ebp-1Ch]
+    int v7[4]; // [esp+70h] [ebp-18h] BYREF
+    void* v8; // [esp+80h] [ebp-8h]
+    int v9; // [esp+84h] [ebp-4h]
+
+    v9 = 0;
+    v8 = 0;
+    memset(v5, 0, sizeof(v5));
+    v5[0] = 80;
+    if ((_UNKNOWN*)dword_5B9600 != &unk_5B94F0)
+    {
+        v3 = 0;
+        v2 = dword_5B9600;
+        while ((_UNKNOWN*)v2 != &unk_5B94F0)
+        {
+            if (v3 == a1)
+            {
+                v5[2] = *(_DWORD*)v2;
+                v5[3] = *(_DWORD*)(v2 + 4);
+                v5[4] = *(_DWORD*)(v2 + 8);
+                v5[5] = *(_DWORD*)(v2 + 12);
+                break;
+            }
+            v2 = *(_DWORD*)(v2 + 272);
+            ++v3;
+        }
+    }
+    v5[6] = 1881618624;
+    v5[7] = 299086062;
+    v5[8] = -2147457396;
+    v5[9] = 1894125741;
+    dword_5BABF0 = 0;
+    v6 = FakeDP::Open((FakeDP*)dword_5BAE80, (struct DPSESSIONDESC2*)v5, 1u);
+    if (v6 < 0)
+        return v6;
+    v7[1] = 0;
+    v7[3] = 0;
+    v7[0] = 16;
+    v7[2] = (int)&String;
+    v6 = FakeDP::CreatePlayer(
+        (FakeDP*)dword_5BAE80,
+        (unsigned int*)&dword_668794,
+        (struct DPNAME*)v7,
+        pHandles,
+        0,
+        0,
+        0);
+    if (v6 < 0)
+        return v6;
+    emptyFunction0();
+    FakeDP::GetSessionDesc((FakeDP*)dword_5BAE80, 0, Size);
+    v8 = operator new(Size[0]);
+    if (!v8)
+        return -2147024882;
+    v6 = FakeDP::GetSessionDesc((FakeDP*)dword_5BAE80, v8, Size);
+    if (v6 < 0)
+        return v6;
+    Size[1] = (size_t)v8;
+    if (*((_DWORD*)v8 + 17))
+    {
+        emptyFunction0();
+        dword_5AE60C = 0;
+    }
+    else
+    {
+        dword_5AE60C = 1;
+    }
+    sub_585E40(v8);
+    dword_66878C = 1;
+    sub_520870();
+    return 0;
+}
+// 59421C: using guessed type _DWORD __thiscall FakeDP::CreatePlayer(FakeDP *__hidden this, unsigned int *, struct DPNAME *, void *, void *, unsigned int, unsigned int);
+// 594224: using guessed type _DWORD __thiscall FakeDP::Open(FakeDP *__hidden this, struct DPSESSIONDESC2 *, unsigned int);
+// 594240: using guessed type _DWORD __thiscall FakeDP::GetSessionDesc(FakeDP *__hidden this, void *, unsigned int *);
+// 594AF0: using guessed type int dword_594AF0;
+// 5AE60C: using guessed type int dword_5AE60C;
+// 5B9600: using guessed type int dword_5B9600;
+// 5BABF0: using guessed type int dword_5BABF0;
+// 5BAE80: using guessed type int dword_5BAE80;
+// 66878C: using guessed type int dword_66878C;
+// 668794: using guessed type int dword_668794;

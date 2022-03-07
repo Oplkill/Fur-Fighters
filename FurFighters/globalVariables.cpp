@@ -4,7 +4,6 @@ HWND hWnd; // idb
 RECT Point; // idb
 MSG Msg; // idb
 int g_hInstanceInt; // weak
-int g_UseGameSpy; // weak
 __int16 g_maybeDemoVersionType; // weak
 char g_maybeSomeDemoVersionType; // weak
 char g_maybeAnotherDemoVersionType; // weak
@@ -16,3 +15,7 @@ __int16 g_RedBitsShift; // weak
 __int16 g_GreenBitsShift; // weak
 __int16 g_BlueBitsShift; // weak
 LPVOID lpDD; // idb
+__int16 g_UselessVariable; // weak
+int g_CharacterType; // weak
+int g_IsFirstPerson; // weak
+SIZE_T dwBytes; // idb

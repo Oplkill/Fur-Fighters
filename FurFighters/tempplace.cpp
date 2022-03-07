@@ -6,6 +6,7 @@
 #include "debug.h"
 #include "files.h"
 #include "sounds.h"
+#include "settings.h"
 #include "globalVariables.h"
 
 char aDemoVersion[13] = "Demo Version"; // weak
@@ -23,6 +24,8 @@ char aMilesTga[10] = "miles.tga"; // weak
 char aEaxTga[8] = "eax.tga"; // weak
 char aSettingUpLevel[] = "Setting up level defaults"; // idb
 char aSettingUpDefau[] = "Setting Up Default Preferences"; // idb
+
+size_t Size; // idb
 
 //----- (00448C20) --------------------------------------------------------
 int some_init()
@@ -43,7 +46,7 @@ int some_init()
 
     *(_DWORD*)&g_IsDebug = 1;
     g_maybeDemoVersionType = 0;
-    word_60431A = 1;
+    g_UselessVariable = 1;
     word_668766 = 0;
     byte_622C50 = 2;
     sub_53EE90();
@@ -317,7 +320,7 @@ int some_init()
 // 60428C: using guessed type int dword_60428C;
 // 604294: using guessed type int dword_604294;
 // 6042B4: using guessed type int dword_6042B4;
-// 60431A: using guessed type __int16 word_60431A;
+// 60431A: using guessed type __int16 g_UselessVariable;
 // 604320: using guessed type __int16 g_maybeDemoVersionType;
 // 604322: using guessed type __int16 word_604322;
 // 604324: using guessed type char g_maybeSomeDemoVersionType;
