@@ -6,6 +6,11 @@ Fully reverse engineered source code from game Fur Fighters.
 * Make game close to original(except bugs)
 * Replace old libraries by new one without regressions in game, if they dont works in new systems(new one shouldn't be worster than original and should be supporting in present time)
 
+# Mini goals
+* Make launchable first game settings window
+* Move away all code to their files from furfighters.exe.c
+* Move repeatable magic numbers into enums
+
 # Future goals (when previous goals achieved)
 * Replace all old libraries by new one
 * Make game plays with newest DirectX and OpenGL
