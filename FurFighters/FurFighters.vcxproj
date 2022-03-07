@@ -154,6 +154,7 @@
     <ClCompile Include="globalVariables.cpp" />
     <ClCompile Include="gui.cpp" />
     <ClCompile Include="languages.cpp" />
+    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="maybe.cpp" />
     <ClCompile Include="minigame_block.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="globalVariablesDirty.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="languages.h" />
+    <ClInclude Include="Loader.h" />
     <ClInclude Include="maybe.h" />
     <ClInclude Include="minigame_block.h" />
     <ClInclude Include="minigame_bomber.h" />

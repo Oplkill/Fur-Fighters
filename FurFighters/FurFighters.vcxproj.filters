@@ -123,6 +123,9 @@
     <ClCompile Include="DPPlayer.cpp">
       <Filter>Исходные файлы\libs</Filter>
     </ClCompile>
+    <ClCompile Include="Loader.cpp">
+      <Filter>Исходные файлы\libs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defs.h">
@@ -225,6 +228,9 @@
       <Filter>Файлы заголовков\libs</Filter>
     </ClInclude>
     <ClInclude Include="DPPlayer.h">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
       <Filter>Файлы заголовков\libs</Filter>
     </ClInclude>
   </ItemGroup>
