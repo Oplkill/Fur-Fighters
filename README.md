@@ -26,3 +26,6 @@ Fully reverse engineered source code from game Fur Fighters.
 
 # Code refference used
 * FakeDP and other things - https://github.com/arves100/ffloader
+
+# Used 3-rd libraries
+* Miles Sound System 6.0f
