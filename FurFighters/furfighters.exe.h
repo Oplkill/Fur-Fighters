@@ -2584,7 +2584,6 @@ int __cdecl sub_57EEDA(__int16 a1, float* a2);
 int __cdecl sub_57EFC8(__int16 a1, unsigned __int16 a2);
 int __cdecl sub_57F07D(__int16 a1, char a2);
 int __cdecl sub_57F130(__int16 a1, int a2);
-int __cdecl sub_57F2B8(int a1, int a2);
 int __cdecl sub_57F55F(int a1, int a2, unsigned __int8 a3, int a4);
 __int16 __cdecl sub_57F848(int a1);
 int __cdecl sub_57FBCF(__int16 a1);

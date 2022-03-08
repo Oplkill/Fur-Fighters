@@ -1,6 +1,7 @@
 #pragma once
 
 #include "defs.h"
+#include "MSS.H"
 
 extern BYTE g_SoundProviderId; // idb
 extern int sound3DProvider; // weak
@@ -76,3 +77,4 @@ int sub_581F00();
 int __cdecl sub_5822FE(int a1);
 void sub_582C46();
 int sub_45D78F();
+int __cdecl sub_57F2B8(int a1, int a2);

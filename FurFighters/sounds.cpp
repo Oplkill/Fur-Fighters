@@ -1541,3 +1541,71 @@ int sub_45D78F()
 // 594350: using guessed type int __stdcall AIL_set_3D_room_type(_DWORD, _DWORD);
 // 6ADA44: using guessed type int dword_6ADA44;
 // 6AE838: using guessed type int isSoundDisabled;
+
+//----- (0057F2B8) --------------------------------------------------------
+int __cdecl sub_57F2B8(int a1, int a2)
+{
+    int result; // eax
+    int v3[9]; // [esp+4h] [ebp-28h] BYREF
+    int v4; // [esp+28h] [ebp-4h]
+
+    if (isSoundDisabled)
+        return 0;
+    if (a1 >= 0
+        && a1 < numSound3DSampleHandles
+        && HIWORD(a2) < 0x11u
+        && (LOWORD(v4) = a2, (unsigned __int16)a2 <= (int)(unsigned __int16)word_6AE568[HIWORD(a2)]))
+    {
+        v3[0] = 1;
+        v3[1] = dword_6AE4D8[HIWORD(a2)] + *(_DWORD*)(dword_6AE520[HIWORD(a2)] + 28 * (unsigned __int16)v4 + 4) + 32;
+        v3[2] = *(_DWORD*)(dword_6AE520[HIWORD(a2)] + 28 * (unsigned __int16)v4 + 8) - 32;
+        v3[3] = 22050;
+        v3[4] = 16;
+        v3[5] = 1;
+        AIL_set_3D_sample_info(sound3DSampleHandle[a1], v3);
+        if ((*(_BYTE*)(dword_6AE520[HIWORD(a2)] + 28 * (unsigned __int16)v4) & 8) != 0)
+            AIL_set_3D_sample_loop_count(sound3DSampleHandle[a1], 0);
+        AIL_set_3D_position(sound3DSampleHandle[a1], 0, 0, 0);
+        AIL_set_3D_orientation(sound3DSampleHandle[a1], 0, 1065353216, 0, 0, 1065353216, 0);
+        AIL_set_3D_sample_distances(sound3DSampleHandle[a1], dword_6AE7FC, dword_5A0118);
+        AIL_set_3D_user_data(sound3DSampleHandle[a1], 0, (__int64)*(float*)&dword_5A011C);
+        if (is3DSoundEnabled)
+        {
+            if (dword_6AE810 == 17)
+                AIL_set_3D_sample_effects_level(sound3DSampleHandle[a1], 0);
+            else
+                AIL_set_3D_sample_effects_level(sound3DSampleHandle[a1], dword_6AE814);
+        }
+        AIL_start_3D_sample(sound3DSampleHandle[a1]);
+        AIL_set_3D_sample_volume(sound3DSampleHandle[a1], (int)(unsigned __int8)byte_6AE840 >> 1);
+        GetSoundMsCountFormatted();
+        debugFunc1();
+        result = sound3DSampleHandle[a1];
+    }
+    else
+    {
+        debugFunc1();
+        result = 0;
+    }
+    return result;
+}
+// 594358: using guessed type int __stdcall AIL_set_3D_sample_volume(_DWORD, _DWORD);
+// 594370: using guessed type int __stdcall AIL_set_3D_user_data(_DWORD, _DWORD, _DWORD);
+// 594378: using guessed type int __stdcall AIL_start_3D_sample(_DWORD);
+// 59437C: using guessed type int __stdcall AIL_set_3D_sample_effects_level(_DWORD, _DWORD);
+// 594380: using guessed type int __stdcall AIL_set_3D_sample_distances(_DWORD, _DWORD, _DWORD);
+// 594384: using guessed type int __stdcall AIL_set_3D_orientation(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
+// 594388: using guessed type int __stdcall AIL_set_3D_position(_DWORD, _DWORD, _DWORD, _DWORD);
+// 59438C: using guessed type int __stdcall AIL_set_3D_sample_loop_count(_DWORD, _DWORD);
+// 594390: using guessed type int __stdcall AIL_set_3D_sample_info(_DWORD, _DWORD);
+// 607108: using guessed type char byte_607108;
+// 607109: using guessed type char byte_607109;
+// 6AE4D8: using guessed type int dword_6AE4D8[];
+// 6AE520: using guessed type int dword_6AE520[];
+// 6AE7FC: using guessed type int dword_6AE7FC;
+// 6AE80C: using guessed type char is3DSoundEnabled;
+// 6AE810: using guessed type int dword_6AE810;
+// 6AE814: using guessed type int dword_6AE814;
+// 6AE81C: using guessed type int numSound3DSampleHandles;
+// 6AE838: using guessed type int isSoundDisabled;
+// 6AE840: using guessed type char byte_6AE840;
