@@ -7960,14 +7960,8 @@ int dword_6AD9C0[]; // weak
 int dword_6AD9C8[]; // weak
 char byte_6AD9D0[]; // weak
 int dword_6AD9D4[19]; // idb
-int dword_6ADA20; // weak
-int dword_6ADA24; // weak
-int dword_6ADA28; // weak
-int dword_6ADA2C; // weak
-int dword_6ADA30; // weak
 int dword_6ADA38; // weak
 int dword_6ADA3C; // weak
-char byte_6ADA40; // weak
 int dword_6AE2D4; // weak
 int dword_6AE4D8[]; // weak
 int dword_6AE4DC; // weak
@@ -7979,7 +7973,6 @@ __int16 word_6AE568[18]; // idb
 int dword_6AE58C[]; // weak
 int dword_6AE590[]; // weak
 int dword_6AE594[46]; // idb
-float dword_6AE64C[108]; // idb
 int dword_6AE7FC; // weak
 int dword_6AE814; // weak
 int dword_6AE820; // weak

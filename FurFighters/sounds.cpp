@@ -80,8 +80,16 @@ int dword_6ADA90[528]; // idb
 char g_MaybeEnableSounds; // weak
 int dword_6AE804; // weak
 int ailSoundTimerId; // weak
+char g_MaybeIsAllSoundDisabled; // weak
+HDIGDRIVER dword_6ADA20; // weak
+int g_IsSoundProviderClosed; // weak
+int g_UselessVariable2; // weak
+float dword_6AE64C[108]; // idb
+int dword_6ADA24; // weak
+int dword_6ADA28; // weak
 
 int __stdcall maybeSoundTimerCallback(int); // weak
+void sub_58295B();
 
 //----- (0057E907) --------------------------------------------------------
 int maybe_shutdownSound2()
@@ -1600,3 +1608,340 @@ int __cdecl sub_57F2B8(int a1, int a2)
 // 6AE81C: using guessed type int numSound3DSampleHandles;
 // 6AE838: using guessed type int isSoundDisabled;
 // 6AE840: using guessed type char byte_6AE840;
+
+//----- (00582FAA) --------------------------------------------------------
+void maybeSoundRelease()
+{
+    if (g_MaybeIsAllSoundDisabled)
+    {
+        if (dword_6AE810)
+            return;
+    }
+    else if (isSoundDisabled)
+    {
+        return;
+    }
+    debugFunc1();
+    if (g_IsSoundProviderClosed)
+    {
+        debugFunc1();
+    }
+    else
+    {
+        debugFunc1();
+        releaseSound3DSamples();
+        debugFunc1();
+        AIL_close_3D_provider(sound3DProvider);
+        debugFunc1();
+        g_IsSoundProviderClosed = 1;
+        g_UselessVariable2 = 0;
+    }
+}
+// 594400: using guessed type int __stdcall AIL_close_3D_provider(_DWORD);
+// 607106: using guessed type char byte_607106;
+// 6ADA2C: using guessed type int g_IsSoundProviderClosed;
+// 6ADA30: using guessed type int g_UselessVariable2;
+// 6ADA40: using guessed type char g_MaybeIsAllSoundDisabled;
+// 6ADA44: using guessed type int sound3DProvider;
+// 6AE810: using guessed type int dword_6AE810;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (0058306B) --------------------------------------------------------
+void maybeSoundInit()
+{
+    if (g_MaybeIsAllSoundDisabled)
+    {
+        if (dword_6AE810)
+            return;
+    }
+    else if (isSoundDisabled)
+    {
+        return;
+    }
+    debugFunc1();
+    if (g_IsSoundProviderClosed)
+    {
+        AIL_open_3D_provider(sound3DProvider);
+        debugFunc1();
+        sub_580FB2();
+        g_UselessVariable2 = 1;
+        g_IsSoundProviderClosed = 0;
+    }
+    else
+    {
+        debugFunc1();
+    }
+}
+// 580FB2: using guessed type int sub_580FB2(void);
+// 594404: using guessed type int __stdcall AIL_open_3D_provider(_DWORD);
+// 607106: using guessed type char byte_607106;
+// 6ADA2C: using guessed type int g_IsSoundProviderClosed;
+// 6ADA30: using guessed type int g_UselessVariable2;
+// 6ADA40: using guessed type char g_MaybeIsAllSoundDisabled;
+// 6ADA44: using guessed type int dword_6ADA44;
+// 6AE810: using guessed type int dword_6AE810;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (005830FF) --------------------------------------------------------
+void maybeSoundRelease2()
+{
+    if (g_MaybeIsAllSoundDisabled)
+    {
+        if (dword_6AE810)
+            return;
+    }
+    else if (isSoundDisabled)
+    {
+        return;
+    }
+    if (!dword_6ADA20 || dword_6ADA24)
+    {
+        debugFunc1();
+    }
+    else
+    {
+        debugFunc1();
+        releaseSoundSamples();
+        debugFunc1();
+        debugFunc1();
+        if (AIL_digital_handle_release(dword_6ADA20))
+        {
+            debugFunc1();
+            dword_6ADA24 = 1;
+            dword_6ADA28 = 0;
+        }
+        else
+        {
+            debugFunc1();
+            dword_6ADA24 = 0;
+        }
+    }
+}
+// 594430: using guessed type int __stdcall AIL_digital_handle_release(_DWORD);
+// 607106: using guessed type char byte_607106;
+// 6ADA20: using guessed type int dword_6ADA20;
+// 6ADA24: using guessed type int dword_6ADA24;
+// 6ADA28: using guessed type int dword_6ADA28;
+// 6ADA40: using guessed type char g_MaybeIsAllSoundDisabled;
+// 6AE810: using guessed type int dword_6AE810;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (00581090) --------------------------------------------------------
+void sub_581090()
+{
+    int i; // [esp+0h] [ebp-4h]
+
+    if (!isSoundDisabled)
+    {
+        if (g_IsSoundProviderClosed)
+        {
+            debugFunc1();
+            for (i = 0; i < 16; ++i)
+            {
+                soundSampleHandle[i] = AIL_allocate_sample_handle(dword_6ADA20);
+                if (!sound3DSampleHandle[i])
+                    break;
+            }
+        }
+        debugFunc1();
+    }
+}
+// 5943F8: using guessed type int __stdcall AIL_allocate_sample_handle(_DWORD);
+// 607104: using guessed type char byte_607104;
+// 6ADA20: using guessed type int dword_6ADA20;
+// 6ADA2C: using guessed type int g_IsSoundProviderClosed;
+// 6AE81C: using guessed type int dword_6AE81C;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (00582915) --------------------------------------------------------
+void sub_582915()
+{
+    if (!isSoundDisabled)
+    {
+        sub_58295B();
+        getSound3dSampleCount();
+        if (dword_6ADA24)
+        {
+            if (!dword_6ADA28)
+            {
+                if (AIL_digital_handle_reacquire(dword_6ADA20))
+                    dword_6ADA28 = 1;
+            }
+        }
+    }
+}
+// 58295B: using guessed type int sub_58295B(void);
+// 582BCB: using guessed type int sub_582BCB(void);
+// 594410: using guessed type int __stdcall AIL_digital_handle_reacquire(_DWORD);
+// 6ADA20: using guessed type int dword_6ADA20;
+// 6ADA24: using guessed type int dword_6ADA24;
+// 6ADA28: using guessed type int dword_6ADA28;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (0057E98F) --------------------------------------------------------
+void sub_57E98F()
+{
+    sub_582915();
+}
+
+//----- (0058295B) --------------------------------------------------------
+void sub_58295B()
+{
+    int i; // [esp+14h] [ebp-8h]
+    float v1; // [esp+18h] [ebp-4h]
+
+    for (i = 0; i < numSound3DSampleHandles; ++i)
+    {
+        if (AIL_3D_sample_status(sound3DSampleHandle[i]) == 4)
+        {
+            v1 = (float)AIL_3D_user_data(sound3DSampleHandle[i], 0);
+            if (dword_6AE64C[i] > (double)v1)
+            {
+                AIL_end_3D_sample(sound3DSampleHandle[i]);
+                debugFunc1();
+            }
+        }
+    }
+}
+// 594368: using guessed type int __stdcall AIL_3D_user_data(_DWORD, _DWORD);
+// 594374: using guessed type int __stdcall AIL_3D_sample_status(_DWORD);
+// 5943B8: using guessed type int __stdcall AIL_end_3D_sample(_DWORD);
+// 607107: using guessed type char byte_607107;
+// 6AE81C: using guessed type int numSound3DSampleHandles;
+
+//----- (0058273D) --------------------------------------------------------
+int sub_58273D()
+{
+    int result; // eax
+    int i; // [esp+0h] [ebp-4h]
+
+    for (i = 0; i < numSound3DSampleHandles; ++i)
+    {
+        dword_6AE64C[i] = 0;
+        result = i + 1;
+    }
+    return result;
+}
+// 6AE81C: using guessed type int numSound3DSampleHandles;
+
+//----- (00583213) --------------------------------------------------------
+void sub_583213()
+{
+    int v0; // [esp+0h] [ebp-4h]
+
+    if (g_MaybeIsAllSoundDisabled)
+    {
+        if (dword_6AE810)
+            return;
+    }
+    else if (isSoundDisabled)
+    {
+        return;
+    }
+    debugFunc1();
+    if (dword_6ADA20 && dword_6ADA24)
+    {
+        v0 = AIL_digital_handle_reacquire(dword_6ADA20);
+        sub_581090();
+        debugFunc1();
+        if (v0)
+        {
+            dword_6ADA28 = 1;
+            dword_6ADA24 = 0;
+        }
+        else
+        {
+            dword_6ADA28 = 0;
+        }
+    }
+    else
+    {
+        debugFunc1();
+    }
+}
+// 594410: using guessed type int __stdcall AIL_digital_handle_reacquire(_DWORD);
+// 607106: using guessed type char byte_607106;
+// 6ADA20: using guessed type int dword_6ADA20;
+// 6ADA24: using guessed type int dword_6ADA24;
+// 6ADA28: using guessed type int dword_6ADA28;
+// 6ADA40: using guessed type char g_MaybeIsAllSoundDisabled;
+// 6AE810: using guessed type int dword_6AE810;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (00583980) --------------------------------------------------------
+int maybeSoundInit2()
+{
+    float v1; // [esp+0h] [ebp-10h]
+    int i; // [esp+8h] [ebp-8h]
+
+    g_UselessVariable3 = 1082130432;
+    g_UselessVariable4 = 1123024896;
+    dword_6AE2D4 = 0;
+    sound3DProvider = 0;
+    sound3DProviderName = 0;
+    isMusicDisabled = 0;
+    isSoundDisabled = 0;
+    dword_6AE848 = LODWORD(flt_5A013C);
+    is3DSoundEnabled = 0;
+    dword_6ADA24 = 0;
+    dword_6ADA28 = 1;
+    g_IsSoundProviderClosed = 0;
+    g_UselessVariable2 = 1;
+    dword_6ADA38 = 0;
+    dword_6ADA3C = 0;
+    dword_6AE7FC = 1176256512;
+    byte_6AE841 = -1;
+    g_MaybeIsAllSoundDisabled = 0;
+    for (i = 0; i < 385; ++i)
+    {
+        v1 = (float)(i + 128);
+        g_maybeSoundsPlayBackRates[i] = (__int64)(v1 / 255.0 * 22050.0);
+    }
+    return 1;
+}
+// 5A013C: using guessed type float flt_5A013C;
+// 6ADA24: using guessed type int dword_6ADA24;
+// 6ADA28: using guessed type int dword_6ADA28;
+// 6ADA2C: using guessed type int g_IsSoundProviderClosed;
+// 6ADA30: using guessed type int g_UselessVariable2;
+// 6ADA38: using guessed type int dword_6ADA38;
+// 6ADA3C: using guessed type int dword_6ADA3C;
+// 6ADA40: using guessed type char g_MaybeIsAllSoundDisabled;
+// 6ADA44: using guessed type int sound3DProvider;
+// 6ADA48: using guessed type int dword_6ADA48;
+// 6AE2D4: using guessed type int dword_6AE2D4;
+// 6AE7FC: using guessed type int dword_6AE7FC;
+// 6AE80C: using guessed type char is3DSoundEnabled;
+// 6AE834: using guessed type int isMusicDisabled;
+// 6AE838: using guessed type int isSoundDisabled;
+// 6AE841: using guessed type char byte_6AE841;
+// 6AE848: using guessed type int dword_6AE848;
+// 6AE84C: using guessed type int g_UselessVariable3;
+// 6AE850: using guessed type int g_UselessVariable4;
+
+//----- (0057E8A0) --------------------------------------------------------
+int sub_57E8A0()
+{
+    int result; // eax
+
+    writeDebug(aEnteredSndInit);
+    maybeSoundInit2();
+    sub_580D10();
+    if (sub_5823BE(0, aFurfightersSrf, 0))
+    {
+        writeDebug(aFinishedSndIni);
+        result = 1;
+    }
+    else
+    {
+        if (!isSoundDisabled)
+            writeDebug(aCouldNotLoadSr);
+        isSoundDisabled = 1;
+        result = 0;
+    }
+    return result;
+}
+// 580D10: using guessed type int sub_580D10(void);
+// 5823BE: using guessed type _DWORD __cdecl sub_5823BE(_DWORD, _DWORD, _DWORD);
+// 583980: using guessed type int maybeSoundInit2(void);
+// 6AE838: using guessed type int dword_6AE838;

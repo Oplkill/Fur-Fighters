@@ -1171,8 +1171,8 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
                 maybe_stopSounds();
                 sub_5836F8();
                 startSoundTimer();
-                sub_582FAA();
-                sub_5830FF();
+                maybeSoundRelease();
+                maybeSoundRelease2();
                 if (!dword_60FE2C)
                     ShowWindow(dword_60FE48, 6);
             }
@@ -1207,7 +1207,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
             writeDebug(aHandleactivate_8);
             writeDebug(aHandleactivate_9);
             sub_583213();
-            sub_58306B();
+            maybeSoundInit();
             stopSoundTimer();
             sub_583776();
             dword_6673E0 = a3;
@@ -1229,9 +1229,9 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
 // 57FCA6: using guessed type int sub_57FCA6(void);
 // 582D0C: using guessed type int sub_582D0C(void);
 // 582D65: using guessed type int sub_582D65(void);
-// 582FAA: using guessed type int sub_582FAA(void);
-// 58306B: using guessed type int sub_58306B(void);
-// 5830FF: using guessed type int sub_5830FF(void);
+// 582FAA: using guessed type int maybeSoundRelease(void);
+// 58306B: using guessed type int maybeSoundInit(void);
+// 5830FF: using guessed type int maybeSoundRelease2(void);
 // 583213: using guessed type int sub_583213(void);
 // 5836F8: using guessed type int sub_5836F8(void);
 // 583776: using guessed type int sub_583776(void);

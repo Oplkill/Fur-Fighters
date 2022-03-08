@@ -19,6 +19,12 @@ extern int g_NumAudioProviders; // weak
 extern int g_maybeSoundsPlayBackRates[385]; // idb
 extern int dword_6AE810; // weak
 extern int ailSoundTimerId; // weak
+extern char g_MaybeIsAllSoundDisabled; // weak
+extern HDIGDRIVER dword_6ADA20; // weak
+extern int g_IsSoundProviderClosed; // weak
+extern int g_UselessVariable2; // weak
+extern int dword_6ADA24; // weak
+extern int dword_6ADA28; // weak
 
 int maybe_shutdownSound2();
 int maybe_stopSounds2();
@@ -78,3 +84,13 @@ int __cdecl sub_5822FE(int a1);
 void sub_582C46();
 int sub_45D78F();
 int __cdecl sub_57F2B8(int a1, int a2);
+void maybeSoundRelease();
+void maybeSoundInit();
+void maybeSoundRelease2();
+void sub_581090();
+void sub_582915();
+void sub_57E98F();
+int sub_58273D();
+void sub_583213();
+int maybeSoundInit2();
+int sub_57E8A0();

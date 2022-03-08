@@ -701,3 +701,10 @@ __int16 __cdecl sub_447815(int a1)
 // 6015C0: using guessed type __int16 word_6015C0;
 // 604728: using guessed type int dword_604728;
 // 6234D4: using guessed type int dword_6234D4;
+
+//----- (00581251) --------------------------------------------------------
+int sub_581251()
+{
+    return g_NumAudioProviders;
+}
+// 6AE2D0: using guessed type int g_NumAudioProviders;

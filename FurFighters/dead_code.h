@@ -17,6 +17,7 @@ int __cdecl sub_51FA21(int a1);
 INT_PTR __cdecl sub_51E270(HINSTANCE hInstance, int a2);
 INT_PTR __stdcall DialogFunc(HWND, UINT, WPARAM, LPARAM); // idb
 __int16 __cdecl sub_447815(int a1);
+int sub_581251();
 
 int return0_1();
 int return0_8();
