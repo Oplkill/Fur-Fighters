@@ -4,19 +4,13 @@
 #include "debug.h"
 
 char cp[] = "master.gamespy.com"; // idb
-char aGamespyBasicCa[] = "GameSpy: Basic Callback"; // idb
-char aGamespyInfoCal[] = "GameSpy: Info Callback"; // idb
-char aGamespyRulesCa[] = "GameSpy: Rules Callback"; // idb
-char aGamespyPlayers[] = "GameSpy: Players Callback"; // idb
-char aGamespyInitFal[] = "GameSpy: Init FALIED!"; // idb
-char aGamespyInitOk[] = "GameSpy: Init OK!"; // idb
 
 int g_UseGameSpy; // weak
 
 //----- (00523060) --------------------------------------------------------
 int __cdecl sub_523060(char* Buffer)
 {
-	writeDebug(aGamespyBasicCa);
+	writeDebug("GameSpy: Basic Callback");
 	return sprintf(Buffer, "\\gamename\\%s\\gamever\\%s\\location\\%d", aFurfighters, a001, dword_5BABCC);
 }
 // 5BABCC: using guessed type int dword_5BABCC;
@@ -31,7 +25,7 @@ int __cdecl sub_523093(char* a1)
     int v5; // [esp+10h] [ebp-CCh]
     char Buffer[200]; // [esp+14h] [ebp-C8h] BYREF
 
-    writeDebug(aGamespyInfoCal);
+    writeDebug("GameSpy: Info Callback");
     sprintf(Buffer, "\\hostname\\%s", &byte_5B9730[32 * dword_5BAD06]);
     strcat(a1, Buffer);
     if (dword_5BAE98)
@@ -73,7 +67,7 @@ int __cdecl sub_5232EC(char* a1)
     int result; // eax
     char Buffer[80]; // [esp+Ch] [ebp-50h] BYREF
 
-    result = writeDebug(aGamespyRulesCa);
+    result = writeDebug("GameSpy: Rules Callback");
     if (dword_5BAE98)
     {
         sprintf(Buffer, "\\timelimit\\%d", dword_6041E4);
@@ -97,7 +91,7 @@ int __cdecl sub_5233A4(char* a1)
     int i; // [esp+B0h] [ebp-8h]
 
     v2 = 0;
-    result = writeDebug(aGamespyPlayers);
+    result = writeDebug("GameSpy: Players Callback");
     if (dword_5BAE98)
     {
         for (i = 0; i < 16; ++i)
@@ -143,11 +137,11 @@ void sub_52348B()
             (int)sub_5233A4,
             0))
         {
-            writeDebug(aGamespyInitFal);
+            writeDebug("GameSpy: Init FALIED!");
         }
         else
         {
-            writeDebug(aGamespyInitOk);
+            writeDebug("GameSpy: Init OK!");
             dword_5BABEC = 1;
         }
     }

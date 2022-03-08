@@ -11,7 +11,6 @@
 #include "gamespy.h"
 #include "maybe.h"
 
-char aSettingUpGamef[] = "Setting Up Gameflow Sections..."; // idb
 char aLegalTga[10] = "legal.tga"; // weak
 char aLevelsTxt[] = "levels.txt"; // idb
 char aSettingsTxt[] = "settings.txt"; // idb
@@ -19,8 +18,6 @@ char aAcclaimTga[12] = "ACCLAIM.tga"; // weak
 char aBizarreTga[12] = "bizarre.tga"; // weak
 char aMilesTga[10] = "miles.tga"; // weak
 char aEaxTga[8] = "eax.tga"; // weak
-char aSettingUpLevel[] = "Setting up level defaults"; // idb
-char aSettingUpDefau[] = "Setting Up Default Preferences"; // idb
 
 size_t Size; // idb
 
@@ -130,7 +127,7 @@ int some_init()
     loadPeacockSettings();
     loadWeaponSettings();
     sub_4260C2();
-    writeDebug(aSettingUpGamef, v6);
+    writeDebug("Setting Up Gameflow Sections...", v6);
     dword_604540 = (int)sub_45CF56;
     dword_604544 = (int)sub_45CF56;
     dword_604548 = (int)sub_462D57;
@@ -215,7 +212,7 @@ int some_init()
     dword_6586E0 = 0;
     dword_667E88 = 0;
     srand(0x3039u);
-    writeDebug(aSettingUpLevel, v7);
+    writeDebug("Setting up level defaults", v7);
     for (i = 0; i < 72; ++i)
     {
         dword_601DD8[32 * i] = 30 * (rand() % 60 + 120);
@@ -228,7 +225,7 @@ int some_init()
     dword_6041EA = 0;
     dword_6041EE = 0;
     dword_6041F2 = 0;
-    result = writeDebug(aSettingUpDefau, i);
+    result = writeDebug("Setting Up Default Preferences", i);
     byte_6041D5 = -1;
     byte_6041D6 = -1;
     byte_6041E8 = -1;
@@ -488,7 +485,7 @@ int __cdecl maybe_NewGame(int a1)
         sub_564220(dword_604448[0], 0, 0, 1142947840, 1139802112);
         sub_5642D8(dword_604448[0], 1065353216, 1065353216);
     }
-    writeDebug(aLoadingFronten);
+    writeDebug("Loading Frontend World File");
     v7 = sub_562845();
     writeDebug("Free Memory - %d", v7);
     if (g_maybeDemoVersionType == 2)
@@ -609,12 +606,12 @@ int __cdecl maybe_NewGame(int a1)
         dword_59F058 = 5;
         break;
     case 4:
-        writeDebug(aHostEnteredFro);
+        writeDebug("Host entered Frontend");
         dword_6049A8 = 3;
         dword_6049B4 = g_MultiplayerMaxPlayers;
         sub_51E443();
         sub_523AFF(byte_604979);
-        writeDebug(aCallingDpconne);
+        writeDebug("Calling DPConnect Create Game");
         sub_51FDEE((int)byte_604979, g_MultiplayerMaxPlayers);
         dword_604728 = 0;
         byte_6048DC[0] = 0;
@@ -634,7 +631,7 @@ int __cdecl maybe_NewGame(int a1)
         dword_604258 = g_IsFirstPerson;
         dword_6046C8 = g_CharacterType;
         dword_6049F8 = 1;
-        writeDebug(aDoneHostFronte);
+        writeDebug("Done Host Frontend Setup");
         break;
     default:
         if (g_UseGameSpy)

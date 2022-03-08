@@ -14,7 +14,6 @@
 #include "utils.h"
 #include "directx.h"
 
-char aLoadingLevelCo[] = "Loading Level Config. File..."; // idb
 char aTitle[] = "title"; // idb
 char aSky[] = "sky="; // idb
 char aSky2[] = "sky2"; // idb
@@ -46,7 +45,6 @@ CHAR aResSettings_0[] = "Res Settings"; // idb
 CHAR aResSettings_1[] = "Res Settings"; // idb
 CHAR WindowName[] = "Меховые Кулаки"; // idb
 CHAR ClassName[] = "WINNY"; // idb
-char aLoadingIniFile[] = "Loading Ini File..."; // idb
 char aBearSpeed[11] = "Bear Speed"; // weak
 char aBearShotDamage[17] = "Bear Shot Damage"; // weak
 char aBearHitDamage[16] = "Bear Hit Damage"; // weak
@@ -116,7 +114,6 @@ char aCrocSrf[9] = "croc.srf"; // weak
 char aEnemiesHellcro_0[] = "enemies\\hellcroc.skl"; // idb
 char aEnemiesIslecro_0[] = "enemies\\islecroc.skl"; // idb
 char aPakdataLevelPa[] = "Pakdata\\level.pak"; // idb
-char aLoadingCutscen[] = "Loading Cutscene World File"; // idb
 char aPeacockSpeed[14] = "Peacock Speed"; // weak
 char aPeacockRocketS[21] = "Peacock Rocket Speed"; // weak
 char aPeacockDamage[15] = "Peacock Damage"; // weak
@@ -172,8 +169,6 @@ CHAR aBumpMapping_0[] = "Bump Mapping"; // idb
 CHAR aTrilinear_0[] = "Trilinear"; // idb
 CHAR aTripleBuffer_0[] = "Triple Buffer"; // idb
 CHAR aGamma_0[] = "Gamma"; // idb
-char aFocusDavrossed[] = "focus davrossed"; // idb
-char aFocusDoctorWho[] = "focus doctor whoed"; // idb
 CHAR SubKey[] = "SOFTWARE\\Bizarre Creations\\Fur Fighters"; // idb
 char aRt[] = "rt"; // idb
 CHAR aControllerConf_0[] = "Controller Configuration"; // idb
@@ -253,7 +248,7 @@ int __cdecl loadSettings(char* FileName)
     int v14; // [esp+13Ch] [ebp-4h] BYREF
 
     v11 = 0;
-    writeDebug(aLoadingLevelCo);
+    writeDebug("Loading Level Config. File...");
     memset(&unk_5CF1A0, 0, 0x2760u);
     v13 = (char*)someLoadFile(FileName, (int)&v14);
     Buffer = v13;
@@ -488,7 +483,7 @@ int __cdecl anotherLoadSettings(char* FileName)
     char* v5; // [esp+108h] [ebp-8h]
     int v6; // [esp+10Ch] [ebp-4h] BYREF
 
-    writeDebug(aLoadingIniFile);
+    writeDebug("Loading Ini File...");
     v5 = (char*)someLoadFile(FileName, (int)&v6);
     junk1 = (int)FileName;
     dword_6673A4 = -1;
@@ -785,12 +780,12 @@ int __stdcall sub_51A85B(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
             sub_51A486((__int16)lParam, SHIWORD(lParam));
         goto LABEL_9;
     case 7u:
-        writeDebug(aFocusDoctorWho);
+        writeDebug("focus doctor whoed");
         dword_5AC9F8 = 1;
         ClipCursor(&Point);
         return DefWindowProcA(hWnd, Msg, wParam, lParam);
     case 8u:
-        writeDebug(aFocusDavrossed);
+        writeDebug("focus davrossed");
         dword_5AC9F8 = 0;
         ClipCursor(0);
         return DefWindowProcA(hWnd, Msg, wParam, lParam);

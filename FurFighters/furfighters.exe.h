@@ -623,7 +623,6 @@ int sub_45CECB();
 int sub_45CF0E();
 int __cdecl sub_45CF56(int); // weak
 int __cdecl sub_45CF70(int a1);
-int sub_45CF8C();
 void __cdecl sub_45D106(int a1);
 int sub_45D7C5();
 void sub_45D7E4();

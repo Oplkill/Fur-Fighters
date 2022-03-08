@@ -34,7 +34,6 @@ CHAR aSoundprovider[] = "SoundProvider"; // idb
 CHAR aSpeakertype[] = "SpeakerType"; // idb
 CHAR aSoundprovider_0[] = "SoundProvider"; // idb
 CHAR aSpeakertype_0[] = "SpeakerType"; // idb
-char aInitialisingSo[] = "Initialising Sound Library..."; // idb
 char aMilesFast2dPos[31] = "Miles Fast 2D Positional Audio"; // weak
 char aRadGameToolsRs[28] = "RAD Game Tools RSX 3D Audio"; // weak
 char aDirectsound3dH[31] = "DirectSound3D Hardware Support"; // weak
@@ -52,7 +51,6 @@ const char* off_5B3798[5] =
 }; // weak
 char aRedist[7] = "redist"; // weak
 char aAwPoopsMilesSt[51] = "Aw poops. Miles Startup failed. Sound is disabled."; // weak
-char aFailedToSelect[] = "Failed to select best sound provider"; // idb
 char aMaximumSupport[26] = "Maximum supported samples"; // weak
 char aNullInvalidInd[47] = "NULL - Invalid Index in GetSoundProviderString"; // weak
 char aStreaming[10] = "Streaming"; // weak
@@ -1242,7 +1240,7 @@ int sub_580D10()
             }
             else
             {
-                writeDebug(aFailedToSelect);
+                writeDebug("Failed to select best sound provider");
                 isSoundDisabled = 1;
                 isMusicDisabled = 1;
                 result = 0;
@@ -1924,18 +1922,18 @@ int sub_57E8A0()
 {
     int result; // eax
 
-    writeDebug(aEnteredSndInit);
+    writeDebug("Entered SND_Initialise.");
     maybeSoundInit2();
     sub_580D10();
     if (sub_5823BE(0, aFurfightersSrf, 0))
     {
-        writeDebug(aFinishedSndIni);
+        writeDebug("Finished SND_Initialise.");
         result = 1;
     }
     else
     {
         if (!isSoundDisabled)
-            writeDebug(aCouldNotLoadSr);
+            writeDebug("Could not load srf file");
         isSoundDisabled = 1;
         result = 0;
     }
@@ -1945,3 +1943,57 @@ int sub_57E8A0()
 // 5823BE: using guessed type _DWORD __cdecl sub_5823BE(_DWORD, _DWORD, _DWORD);
 // 583980: using guessed type int maybeSoundInit2(void);
 // 6AE838: using guessed type int dword_6AE838;
+
+//----- (0045CF8C) --------------------------------------------------------
+int sub_45CF8C()
+{
+    int v1[257]; // [esp+0h] [ebp-47Ch] BYREF
+    char v2[100]; // [esp+404h] [ebp-78h] BYREF
+    HWND v3; // [esp+468h] [ebp-14h]
+    int v4[4]; // [esp+46Ch] [ebp-10h] BYREF
+
+    v4[0] = 5;
+    v4[1] = 6;
+    v4[2] = 7;
+    strcpy(v2, "samples.srf");
+    v2[68] = 32;
+    v3 = hWnd;
+    writeDebug("Initialising Sound Library...", 32);
+    v4[3] = sub_57E8A0(v1);
+    dword_5D1D00 = return0_2(aGeneralAfs);
+    dword_5D1CE0 = return0_2(aHomeAfs);
+    dword_5D1CE4 = return0_2(aNewykAfs);
+    dword_5D1CE8 = return0_2(aDamAfs);
+    dword_5D1CEC = return0_2(aSpaceAfs);
+    dword_5D1CF0 = return0_2(aDinoAfs);
+    dword_5D1CF4 = return0_2(aAngkhorAfs);
+    dword_5D1CFC = dword_5D1CF4;
+    dword_5D1CF8 = return0_2(aFinaleAfs);
+    return0_10();
+    return0_3();
+    return0_3();
+    byte_5D1CCC = 0;
+    byte_5D1CCD = 0;
+    byte_5D1CCE = 0;
+    byte_5D1CCF = 0;
+    emptyFunction8(v4, 3);
+    return sub_583340(3);
+}
+// 57E8A0: using guessed type int __cdecl sub_57E8A0(_DWORD);
+// 57EACA: using guessed type int sub_57EACA(void);
+// 57EB92: using guessed type int __cdecl sub_57EB92(_DWORD);
+// 57EBD4: using guessed type int __cdecl sub_57EBD4(_DWORD, _DWORD);
+// 583340: using guessed type _DWORD __cdecl sub_583340(_DWORD);
+// 5D1CCC: using guessed type char byte_5D1CCC;
+// 5D1CCD: using guessed type char byte_5D1CCD;
+// 5D1CCE: using guessed type char byte_5D1CCE;
+// 5D1CCF: using guessed type char byte_5D1CCF;
+// 5D1CE0: using guessed type int dword_5D1CE0;
+// 5D1CE4: using guessed type int dword_5D1CE4;
+// 5D1CE8: using guessed type int dword_5D1CE8;
+// 5D1CEC: using guessed type int dword_5D1CEC;
+// 5D1CF0: using guessed type int dword_5D1CF0;
+// 5D1CF4: using guessed type int dword_5D1CF4;
+// 5D1CF8: using guessed type int dword_5D1CF8;
+// 5D1CFC: using guessed type int dword_5D1CFC;
+// 5D1D00: using guessed type int dword_5D1D00;

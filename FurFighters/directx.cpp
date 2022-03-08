@@ -14,9 +14,6 @@ CHAR aNoDevicesAndOr[] = "No devices and/or modes were enumerated!"; // idb
 CHAR aNoEnumeratedDe[] = "No enumerated devices were accepted!"; // idb
 CHAR aCanTCreateDdra[] = "Can't create DDraw during enumeration!"; // idb
 CHAR aCanTQueryIdire[] = "Can't query IDirect3D7 during enumeration!"; // idb
-char aEnummingTextur[] = "Enumming Textures"; // idb
-char aBeginsceneIdir[] = "BeginScene(): IDirect3DDevice7_BeginScene failed with error DDERR_SURFACELOST !"; // idb
-char aEndsceneIdirec[] = "EndScene(): IDirect3DDevice7_EndScene failed with error DDERR_SURFACELOST !"; // idb
 
 int dword_6673E0; // weak
 int numVideoDevicesOrModes; // weak
@@ -1137,22 +1134,22 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
             {
                 if (*(_DWORD*)v10 && dword_5B91A4)
                 {
-                    writeDebug(aHandleactivate_17);
+                    writeDebug("HandleActivateApp(): Already activated!");
                 }
                 else if (!*(_DWORD*)v10 && !dword_5B91A4)
                 {
-                    writeDebug(aHandleactivate_18);
+                    writeDebug("HandleActivateApp(): Already deactivated!");
                 }
             }
             else
             {
                 dword_5B91A4 = 0;
-                writeDebug(aHandleactivate_10);
-                writeDebug(aHandleactivate_11);
+                writeDebug("HandleActivateApp(): DEACTIVATE received");
+                writeDebug("HandleActivateApp(): Suspending and releasing");
                 dword_6673E0 = a3;
                 if (!dword_60FE2C)
                 {
-                    writeDebug(aHandleactivate_12);
+                    writeDebug("HandleActivateApp(): Restoring display mode");
                     v6 = (*(int(__thiscall**)(LPVOID, LPVOID))(*(_DWORD*)lpDD + 76))(lpDD, lpDD);
                     if (v6)
                     {
@@ -1160,14 +1157,14 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
                         writeDebug("HandleActivateApp(): IDirectDraw7_RestoreDisplayMode() failed with error %s", v9);
                     }
                 }
-                writeDebug(aHandleactivate_14);
+                writeDebug("HandleActivateApp(): Setting cooperative level to NORMAL");
                 v7 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 10);
                 if (v7)
                 {
                     getDirectXErrorName(v7, 0x100u, v9);
                     writeDebug("HandleActivateApp(): IDirectDraw7_SetCooperativeLevel() failed with error %s", v9);
                 }
-                writeDebug(aHandleactivate_16);
+                writeDebug("HandleActivateApp(): Stopping sound and music");
                 maybe_stopSounds();
                 sub_5836F8();
                 startSoundTimer();
@@ -1180,9 +1177,9 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
         else
         {
             dword_5B91A4 = 1;
-            writeDebug(aHandleactivate_2);
-            writeDebug(aHandleactivate_3);
-            writeDebug(aHandleactivate_4);
+            writeDebug("HandleActivateApp(): ACTIVATE received");
+            writeDebug("HandleActivateApp(): Reacquiring and restoring");
+            writeDebug("HandleActivateApp(): Setting cooperative level to EXCLUSIVE");
             if (dword_60FE2C)
             {
                 v4 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 8);
@@ -1201,11 +1198,11 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
                     writeDebug("HandleActivateApp(): IDirectDraw7_SetCooperativeLevel() failed with error %s", v9);
                 }
             }
-            writeDebug(aHandleactivate_7);
+            writeDebug("HandleActivateApp(): Restoring vertex buffers and surfaces");
             sub_577C00();
             sub_543461();
-            writeDebug(aHandleactivate_8);
-            writeDebug(aHandleactivate_9);
+            writeDebug("HandleActivateApp(): Reacquiring devices");
+            writeDebug("HandleActivate(): Restarting sound and music");
             sub_583213();
             maybeSoundInit();
             stopSoundTimer();
@@ -1257,7 +1254,7 @@ int __cdecl sub_568E33(int a1)
     v6 = startupDX3D();
     if (v6)
         throwDirectXError(v6);
-    writeDebug(aEnummingTextur);
+    writeDebug("Enumming Textures");
     sub_57D760(0);
     dword_60FE70 = 0;
     dword_6103CC = -1;
@@ -1313,7 +1310,7 @@ int sub_56905F()
     {
         if (result == -2005532222)
         {
-            result = writeDebug(aBeginsceneIdir);
+            result = writeDebug("BeginScene(): IDirect3DDevice7_BeginScene failed with error DDERR_SURFACELOST !");
         }
         else
         {
@@ -1335,7 +1332,7 @@ int sub_5690D3()
     {
         if (result == -2005532222)
         {
-            result = writeDebug(aEndsceneIdirec);
+            result = writeDebug("EndScene(): IDirect3DDevice7_EndScene failed with error DDERR_SURFACELOST !");
         }
         else
         {
@@ -1413,13 +1410,13 @@ int __cdecl sub_5752F3(int a1, int a2)
     if (v3 != 1 && v3)
     {
         dword_622040 = 0;
-        writeDebug(aErrorInAcquiri_0);
+        writeDebug("ERROR in acquiring Mouse DI device");
         if (v3 == -2147024891)
-            writeDebug(aOtherAppHasPri_0);
+            writeDebug("other app has priority");
         if (v3 == -2147024875)
-            writeDebug(aNotInitialised_0);
+            writeDebug("not initialised");
         if (v3 == -2147024809)
-            writeDebug(aNoSelectedData_0);
+            writeDebug("no selected data format");
     }
     else
     {
@@ -1463,7 +1460,7 @@ int sub_577C00()
 
     if (!lpDD || !dword_610070 || !dword_610074 || !dword_60FE64 || !dword_60FE6C)
     {
-        writeDebug(aRestoresurface);
+        writeDebug("RestoreSurfaces(): DDRAW/D3D not initialised yet");
         return 0;
     }
     if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 96))(dword_60FE64, dword_60FE64) != -2005532222
@@ -1473,7 +1470,7 @@ int sub_577C00()
     {
         return 0;
     }
-    writeDebug(aRestoresurface_0);
+    writeDebug("RestoreSurfaces(): Restoring display mode and the front, back and z buffers");
     if (!dword_60FE2C)
     {
         v1 = (*(int(__thiscall**)(LPVOID, LPVOID, int, int, int, _DWORD, _DWORD))(*(_DWORD*)lpDD + 84))(
@@ -1496,7 +1493,7 @@ int sub_577C00()
     }
     if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 96))(dword_60FE64, dword_60FE64) == -2005532222)
     {
-        writeDebug(aRestoresurface_2);
+        writeDebug("RestoreSurfaces(): front buffer lost, restoring");
         v2 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 108))(dword_60FE64, dword_60FE64);
         if (v2)
         {
@@ -1509,7 +1506,7 @@ int sub_577C00()
     {
         if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 96))(dword_60FE68, dword_60FE68) == -2005532222)
         {
-            writeDebug(aRestoresurface_4);
+            writeDebug("RestoreSurfaces(): back buffer lost, restoring");
             v3 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 108))(dword_60FE68, dword_60FE68);
             if (v3)
             {
@@ -1521,7 +1518,7 @@ int sub_577C00()
     }
     if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE6C + 96))(dword_60FE6C, dword_60FE6C) != -2005532222)
         return 0;
-    writeDebug(aRestoresurface_6);
+    writeDebug("RestoreSurfaces(): z buffer lost, restoring");
     v4 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE6C + 108))(dword_60FE6C, dword_60FE6C);
     if (!v4)
         return 0;

@@ -94,3 +94,4 @@ int sub_58273D();
 void sub_583213();
 int maybeSoundInit2();
 int sub_57E8A0();
+int sub_45CF8C();

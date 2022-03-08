@@ -518,7 +518,7 @@ int __cdecl loadItemsInfo(char* FileName)
     int v9; // [esp+120h] [ebp-4h] BYREF
 
     v7 = 0;
-    writeDebug(aLoadingItemsIn);
+    writeDebug("Loading Items Info. File...");
     v8 = (char*)someLoadFile(FileName, (int)&v9);
     Buffer = v8;
     while (Buffer <= &v8[v9])
@@ -1915,7 +1915,7 @@ int __cdecl loadSprite(int a1, const char* a2)
     }
     else
     {
-        writeDebug(aSprFileNotVali);
+        writeDebug("Spr file NOT valid!!");
         result = dword_622C58;
     }
     return result;
