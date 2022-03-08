@@ -7,7 +7,7 @@ extern BYTE g_SoundProviderId; // idb
 extern int sound3DProvider; // weak
 extern int sound3DProviderName; // weak
 extern int soundSampleHandle[20]; // idb
-extern int sound3DSampleHandle[108]; // idb
+extern H3DSAMPLE sound3DSampleHandle[108]; // idb
 extern int sound3DSampleCount; // weak
 extern int isMusicDisabled; // weak
 extern int isSoundDisabled; // weak
@@ -37,8 +37,8 @@ int __cdecl maybe_setSound3DVolume(int a1, unsigned __int8 a2);
 int __cdecl maybe_setSound3DPosition2(int a1, _DWORD* a2);
 int __cdecl maybe_setSound3DVelocityVec2(int a1, float* a2);
 int __cdecl maybe_setSound3DDistance(int a1, int a2);
-int __cdecl maybe_setSound3DRoomType2(int a1);
-int __cdecl maybe_setSound3DRoomType(int a1);
+void __cdecl maybe_setSound3DRoomType2(int a1);
+void __cdecl maybe_setSound3DRoomType(int a1);
 int maybe_shutdownSound();
 void tryInitSoundSampleHandles();
 int releaseAllSoundSampleHandles();

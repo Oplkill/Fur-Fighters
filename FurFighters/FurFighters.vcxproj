@@ -201,6 +201,7 @@
     <ClInclude Include="minigame_lander.h" />
     <ClInclude Include="minigame_snake.h" />
     <ClInclude Include="models.h" />
+    <ClInclude Include="MSS.H" />
     <ClInclude Include="multiplayer.h" />
     <ClInclude Include="pakdata.h" />
     <ClInclude Include="save.h" />

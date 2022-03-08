@@ -233,5 +233,8 @@
     <ClInclude Include="Loader.h">
       <Filter>Файлы заголовков\libs</Filter>
     </ClInclude>
+    <ClInclude Include="MSS.H">
+      <Filter>Файлы заголовков\libs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

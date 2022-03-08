@@ -64,7 +64,7 @@ int sound3DProvider; // weak
 int sound3DProviderName; // weak
 BYTE g_SoundProviderId; // idb
 int soundSampleHandle[20]; // idb
-int sound3DSampleHandle[108]; // idb
+H3DSAMPLE sound3DSampleHandle[108]; // idb
 int sound3DSampleCount; // weak
 int isMusicDisabled; // weak
 int isSoundDisabled; // weak
@@ -419,123 +419,114 @@ int __cdecl maybe_setSound3DDistance(int a1, int a2)
 // 6AE838: using guessed type int isSoundDisabled;
 
 //----- (005809A9) --------------------------------------------------------
-int __cdecl maybe_setSound3DRoomType2(int a1)
+void __cdecl maybe_setSound3DRoomType2(int a1)
 {
-    int result; // eax
-
-    result = a1;
     switch (a1)
     {
     case 0:
-        result = AIL_set_3D_room_type(sound3DProvider, 0);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_GENERIC);
         dword_6AE810 = 17;
         break;
     case 1:
-        result = AIL_set_3D_room_type(sound3DProvider, 2);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_ROOM);
         dword_6AE810 = 18;
         break;
     case 2:
-        result = AIL_set_3D_room_type(sound3DProvider, 5);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_STONEROOM);
         dword_6AE810 = 19;
         break;
     case 3:
-        result = AIL_set_3D_room_type(sound3DProvider, 13);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_STONECORRIDOR);
         dword_6AE810 = 20;
         break;
     case 4:
-        result = AIL_set_3D_room_type(sound3DProvider, 21);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_SEWERPIPE);
         dword_6AE810 = 21;
         break;
     case 5:
-        result = AIL_set_3D_room_type(sound3DProvider, 3);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_BATHROOM);
         dword_6AE810 = 22;
         break;
     case 6:
-        result = AIL_set_3D_room_type(sound3DProvider, 14);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_ALLEY);
         dword_6AE810 = 23;
         break;
     case 7:
-        result = AIL_set_3D_room_type(sound3DProvider, 12);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_HALLWAY);
         dword_6AE810 = 24;
         break;
     case 8:
-        result = AIL_set_3D_room_type(sound3DProvider, 11);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_CARPETEDHALLWAY);
         dword_6AE810 = 25;
         break;
     case 9:
-        result = AIL_set_3D_room_type(sound3DProvider, 8);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_CAVE);
         dword_6AE810 = 26;
         break;
     case 10:
-        result = AIL_set_3D_room_type(sound3DProvider, 16);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_CITY);
         dword_6AE810 = 27;
         break;
     case 11:
-        result = AIL_set_3D_room_type(sound3DProvider, 7);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_CONCERTHALL);
         dword_6AE810 = 28;
         break;
     case 12:
-        result = AIL_set_3D_room_type(sound3DProvider, 9);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_ARENA);
         dword_6AE810 = 29;
         break;
     case 16:
-        result = AIL_set_3D_room_type(sound3DProvider, 22);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_UNDERWATER);
         dword_6AE810 = 16;
         break;
     case 35:
-        result = AIL_set_3D_room_type(sound3DProvider, 25);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_PSYCHOTIC);
         dword_6AE810 = 35;
         break;
-    default:
-        return result;
     }
-    return result;
 }
 // 594350: using guessed type int __stdcall AIL_set_3D_room_type(_DWORD, _DWORD);
 // 6ADA44: using guessed type int dword_6ADA44;
 // 6AE810: using guessed type int dword_6AE810;
 
 //----- (00580BE3) --------------------------------------------------------
-int __cdecl maybe_setSound3DRoomType(int a1)
+void __cdecl maybe_setSound3DRoomType(int a1)
 {
-    int result; // eax
-
     switch (a1)
     {
     case 1:
-        result = AIL_set_3D_room_type(sound3DProvider, 19);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_PLAIN);
         dword_6AE810 = 31;
         break;
     case 2:
-        result = AIL_set_3D_room_type(sound3DProvider, 18);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_QUARRY);
         dword_6AE810 = 32;
         break;
     case 3:
-        result = AIL_set_3D_room_type(sound3DProvider, 20);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_PARKINGLOT);
         dword_6AE810 = 33;
         break;
     case 4:
-        result = AIL_set_3D_room_type(sound3DProvider, 15);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_FOREST);
         dword_6AE810 = 34;
         break;
     case 5:
-        result = AIL_set_3D_room_type(sound3DProvider, 4);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_LIVINGROOM);
         dword_6AE810 = 37;
         break;
     case 6:
-        result = AIL_set_3D_room_type(sound3DProvider, 24);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_DIZZY);
         dword_6AE810 = 36;
         break;
     case 7:
-        result = AIL_set_3D_room_type(sound3DProvider, 10);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_HANGAR);
         dword_6AE810 = 30;
         break;
     default:
-        result = AIL_set_3D_room_type(sound3DProvider, 0);
+        AIL_set_3D_room_type(sound3DProvider, ENVIRONMENT_GENERIC);
         dword_6AE810 = 17;
         break;
     }
-    return result;
 }
 // 594350: using guessed type int __stdcall AIL_set_3D_room_type(_DWORD, _DWORD);
 // 6ADA44: using guessed type int dword_6ADA44;
