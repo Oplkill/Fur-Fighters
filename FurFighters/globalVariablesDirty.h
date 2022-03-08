@@ -604,7 +604,6 @@ int dword_59F7F4 = 5; // weak
 int dword_59F7FC = 25; // weak
 int dword_59F800 = 20; // weak
 int dword_59F804 = 40; // weak
-char aDebugLog_0[10] = "Debug Log"; // weak
 char aAcclaimTga_0[12] = "ACCLAIM.tga"; // weak
 char aBizarreTga_0[12] = "Bizarre.tga"; // weak
 char aFfightersTga_2[14] = "FFighters.tga"; // weak
@@ -4214,7 +4213,6 @@ _UNKNOWN unk_5AC9A0; // weak
 char aBossesWinnieSk[] = "bosses\\winnie.skl"; // idb
 char aBossesMaiSkl[] = "bosses\\mai.skl"; // idb
 int dword_5AC9F8 = 1; // weak
-char asc_5AD274[] = "-----------------------------------------------------"; // idb
 int off_5AD300 = 6001856; // idb
 _UNKNOWN unk_5AD328; // weak
 void* off_5AD418 = &unk_5AD328; // weak
@@ -4230,11 +4228,7 @@ CHAR aFindingGame[] = "Finding Game..."; // idb
 int dword_5AD968 = 10; // weak
 CHAR Name[] = "g_hDPMsgBufferMutex"; // idb
 char a02x_0[] = "%02x "; // idb
-char a001[5] = "0.01"; // weak
-char aFurfighters[12] = "furfighters"; // weak
-char aMapnameLobby[] = "\\mapname\\Lobby"; // idb
 char aOpenplaying[12] = "openplaying"; // weak
-char aFurfighters_0[12] = "furfighters"; // weak
 int dword_5AE60C = 1; // weak
 int dword_5AE710 = 1; // weak
 int(__cdecl* off_5AE714)(_DWORD) = &emptyFunction23; // weak
@@ -5883,7 +5877,6 @@ int dword_5B91A4; // weak
 char buf[256]; // idb
 int dword_5B92A8; // weak
 _UNKNOWN unk_5B92AC; // weak
-struct sockaddr to; // idb
 char byte_5B94C4; // weak
 char byte_5B94C8; // weak
 char byte_5B94CC; // weak
@@ -5908,8 +5901,6 @@ int dword_5B9F20; // weak
 int dword_5B9F24; // weak
 int dword_5B9F28; // weak
 char byte_5B9F2C[4]; // idb
-int dword_5BABCC; // weak
-int dword_5BABEC; // weak
 int dword_5BABF0; // weak
 BYTE byte_5BABF4; // idb
 int dword_5BACF4; // weak
@@ -6721,7 +6712,7 @@ int dword_60420C; // weak
 int dword_604210; // weak
 _UNKNOWN unk_604214; // weak
 int dword_604254; // weak
-int dword_604258; // weak
+int g_maybeFirstperson; // weak
 int dword_60425C; // weak
 int dword_604280; // weak
 int dword_604284; // weak
@@ -6853,8 +6844,8 @@ _UNKNOWN unk_604620; // weak
 int dword_604680[]; // weak
 int dword_6046C0; // weak
 int dword_6046C4; // weak
-int dword_6046C8; // weak
-int dword_6046CC; // weak
+int g_maybeCurrentCharacterType; // weak
+int g_maybePrevCharacterType; // weak
 int dword_6046D0; // weak
 int dword_6046D4; // weak
 int dword_6046D8[4]; // idb
@@ -6873,7 +6864,7 @@ int dword_604720; // weak
 char byte_604724; // weak
 int dword_604728; // weak
 int dword_604740; // weak
-int dword_604744; // weak
+int g_UselessVariable5; // weak
 int dword_604760; // weak
 char byte_604764; // weak
 int dword_604768; // weak
@@ -7773,7 +7764,6 @@ int dword_668770; // weak
 int dword_668774; // weak
 int dword_668778; // weak
 __int16 word_668780; // weak
-int dword_668784; // weak
 int dword_668788; // weak
 int dword_668794; // weak
 int dword_66879C; // weak

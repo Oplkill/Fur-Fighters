@@ -1690,29 +1690,14 @@ int __cdecl sub_51B6D1(_DWORD* a1, int a2, int(__cdecl* a3)(int, int), int a4, i
 int __cdecl sub_51B774(int* a1, void(__cdecl* a2)(int, int), int a3);
 int __cdecl sub_51B7B5(int a1, int a2, int a3, int a4, int(__cdecl* a5)(int, int));
 int __cdecl sub_51B804(int a1, int a2, int a3, int a4, int(__cdecl* a5)(int, int));
-int __cdecl sub_51B880(int a1, char* cp, int hostshort, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
-int __cdecl sub_51BAC5(SOCKET* a1);
-int __cdecl sub_51BAF0(SOCKET* a1);
 DWORD __cdecl sub_51BBFA(int a1);
-DWORD __cdecl sub_51BCB4(void* a1);
-int __cdecl sub_51BCD5(SOCKET* lpMem);
 int __cdecl sub_51BD57(int, char* cp, u_short hostshort); // idb
 int __cdecl sub_51BD75(char* cp, u_short hostshort, int, int); // idb
 char* __cdecl sub_51BE10(_BYTE* a1, int a2, char* a3);
 char __cdecl sub_51BF13(unsigned __int8 a1);
 int __cdecl sub_51BF8D(int a1, int a2, int a3, int a4);
 char __cdecl sub_51C1F6(char* a1, char* a2);
-int __cdecl sub_51C218(int, char* Str, struct sockaddr* to); // idb
 int __cdecl sub_51C51C(char* Str, int); // idb
-int __cdecl sub_51C655(int, struct sockaddr* to, char* buf); // idb
-unsigned int __cdecl sub_51C713(int a1, struct sockaddr* to, char* buf);
-unsigned int __cdecl sub_51C77C(int a1, struct sockaddr* to, char* buf, int a4);
-unsigned int __cdecl sub_51C8DE(int a1, struct sockaddr* to, char* buf);
-unsigned int __cdecl sub_51C947(int a1, struct sockaddr* to, char* buf);
-unsigned int __cdecl sub_51C9B0(int a1, struct sockaddr* to, char* buf);
-unsigned int __cdecl sub_51CA19(int a1, struct sockaddr* to, char* buf, int a4);
-int __cdecl sub_51CA74(int, struct sockaddr* to, char* buf, int); // idb
-DWORD __cdecl sub_51CBA5(int a1, int a2);
 _DWORD* __cdecl sub_51CC83(int a1, int a2, int a3, int a4, int a5, int a6);
 _DWORD* __cdecl sub_51CF60(_DWORD* a1);
 // unsigned int __usercall sub_51CFA0(int a1, int *a2, char *a3, unsigned int a4);
@@ -1723,9 +1708,7 @@ int __cdecl sub_51E083(int a1, int a2, unsigned int a3);
 unsigned int __cdecl sub_51E0FC(void* a1, const void* a2, unsigned int a3);
 // __int16 __usercall sub_51E11C(int a1, char *a2, char a3, unsigned int a4);
 unsigned int __cdecl sub_51E148(int a1, int a2);
-DWORD sub_51E1E0();
 int sub_51E1FA();
-int sub_51E218();
 unsigned int __cdecl sub_51EEEE(HWND hDlg);
 int sub_51F63F();
 int __cdecl sub_51F649(int a1);
@@ -1746,7 +1729,6 @@ int __cdecl sub_522BAD(unsigned int a1, int a2, int a3);
 double __cdecl sub_522DEF(int a1, int a2);
 int __cdecl sub_522FD8(int a1, int a2);
 // float __cdecl sqrtf(float X);
-int sub_523577();
 DWORD sub_52358F();
 void sub_523808();
 int (*__cdecl sub_5239B8(int (*a1)()))();

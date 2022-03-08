@@ -4,5 +4,5 @@
 #include <Windows.h>
 
 int some_init();
-void __noreturn sub_43FC90();
+void __noreturn someCloseGame();
 int __cdecl maybe_NewGame(int); // weak

@@ -2,6 +2,7 @@
 
 #include <windows.h>
 #include <cstdio>
+#include <ctime>
 #include "settings.h"
 #include "files.h"
 #include "emptyfunctions.h"
@@ -175,32 +176,32 @@ int __cdecl parseArguments(LPSTR a1)
             }
             else if (isStringsEquals(Buffer, "roofus"))
             {
-                g_CharacterType = 0; //todo move to character enum
+                g_CharacterType = characters::Roofus;
                 writeDebug("Roofus");
             }
             else if (isStringsEquals(Buffer, "juliette"))
             {
-                g_CharacterType = 1;
+                g_CharacterType = characters::Juliette;
                 writeDebug("juliette");
             }
             else if (isStringsEquals(Buffer, "bungalow"))
             {
-                g_CharacterType = 2;
+                g_CharacterType = characters::Bungalow;
                 writeDebug("bungalow");
             }
             else if (isStringsEquals(Buffer, "tweek"))
             {
-                g_CharacterType = 3;
+                g_CharacterType = characters::Tweek;
                 writeDebug("tweek");
             }
             else if (isStringsEquals(Buffer, "rico"))
             {
-                g_CharacterType = 4;
+                g_CharacterType = characters::Rico;
                 writeDebug("rico");
             }
             else if (isStringsEquals(Buffer, "chang"))
             {
-                g_CharacterType = 5;
+                g_CharacterType = characters::Chang;
                 writeDebug("chang");
             }
             else if (isStringsEquals(Buffer, "firstperson"))
@@ -235,17 +236,17 @@ int __cdecl parseArguments(LPSTR a1)
     }
     if (v12)
     {
-        dword_668784 = 1;
+        g_GameSpyConnectionType = GameSpy::Host;
     }
     else if (v9)
     {
-        dword_668784 = 2;
+        g_GameSpyConnectionType = GameSpy::Connector;
     }
     else
     {
-        dword_668784 = 0;
+        g_GameSpyConnectionType = GameSpy::Unknown;
     }
-    return writeDebug(asc_5AD274);
+    return writeDebug("-----------------------------------------------------");
 }
 // 523AB8: using guessed type _DWORD __cdecl loadPlayerName(_DWORD);
 // 523B2D: using guessed type _DWORD __cdecl loadGameSessionName(_DWORD);
@@ -253,7 +254,7 @@ int __cdecl parseArguments(LPSTR a1)
 // 604600: using guessed type int g_CharacterType;
 // 604604: using guessed type int g_IsFirstPerson;
 // 604A18: using guessed type int g_MultiplayerMaxPlayers;
-// 668784: using guessed type int dword_668784;
+// 668784: using guessed type int g_GameSpyConnectionType;
 
 //----- (0051ADB7) --------------------------------------------------------
 int sub_51ADB7()

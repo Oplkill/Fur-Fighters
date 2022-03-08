@@ -123,3 +123,16 @@ char* g_ReplayFilesList[6] =
   "replays\\Dam_L2rp.dat",
   "replays\\Dam_L3rp.dat"
 }; // weak
+
+namespace characters
+{
+	enum characterType
+	{
+		Roofus,
+		Juliette,
+		Bungalow,
+		Tweek,
+		Rico,
+		Chang
+	};
+}

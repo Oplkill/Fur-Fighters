@@ -149,11 +149,11 @@ int some_init()
     dword_604528 = 0;
     dword_604524 = 0;
     word_604322 = 1;
-    if (dword_668784 == 1)
+    if (g_GameSpyConnectionType == GameSpy::Host)
     {
         sub_45C761(3, 4);
     }
-    else if (dword_668784 == 2)
+    else if (g_GameSpyConnectionType == GameSpy::Connector)
     {
         sub_45C761(3, 3);
     }
@@ -362,7 +362,7 @@ int some_init()
 // 667E88: using guessed type int dword_667E88;
 // 667E90: using guessed type int dword_667E90;
 // 668766: using guessed type __int16 word_668766;
-// 668784: using guessed type int dword_668784;
+// 668784: using guessed type int g_GameSpyConnectionType;
 // 668BE0: using guessed type int dword_668BE0;
 // 6AD860: using guessed type int dword_6AD860;
 // 6AD864: using guessed type int dword_6AD864;
@@ -370,10 +370,10 @@ int some_init()
 // 6AE818: using guessed type char byte_6AE818;
 
 //----- (0043FC90) --------------------------------------------------------
-void __noreturn sub_43FC90()
+void __noreturn someCloseGame()
 {
     sub_523838();
-    sub_52354B();
+    CloseGameSpy();
     CoUninitialize();
     ClipCursor(0);
     exit(0);
@@ -528,10 +528,10 @@ int __cdecl maybe_NewGame(int a1)
         dword_59EE3C = 0;
     word_604316 = 1;
     if (word_6015C6 > 1)
-        dword_6046C8 = 2;
+        g_maybeCurrentCharacterType = characters::Bungalow;
     else
-        dword_6046C8 = 0;
-    dword_6046CC = 0;
+        g_maybeCurrentCharacterType = characters::Roofus;
+    g_maybePrevCharacterType = characters::Roofus;
     dword_6046D0 = 1;
     dword_6046D4 = 1;
     dword_6046E8 = 0;
@@ -576,7 +576,7 @@ int __cdecl maybe_NewGame(int a1)
         dword_60420C = 0;
         dword_604210 = 192;
         dword_60425C = 1;
-        dword_604258 = 0;
+        g_maybeFirstperson = 0;
     }
     if ((dword_6047B4 & 0x400000) != 0 || g_UseGameSpy && (dword_6047B0 & 0x400000) != 0)
         dword_59F058 = 5;
@@ -598,9 +598,9 @@ int __cdecl maybe_NewGame(int a1)
         dword_6049A4 = sub_51F63F();
         dword_604728 = 0;
         dword_6046D8[0] = g_CharacterType;
-        dword_604744 = g_IsFirstPerson;
-        dword_604258 = g_IsFirstPerson;
-        dword_6046C8 = g_CharacterType;
+        g_UselessVariable5 = g_IsFirstPerson;
+        g_maybeFirstperson = g_IsFirstPerson;
+        g_maybeCurrentCharacterType = g_CharacterType;
         dword_6049F8 = 0;
         *(_DWORD*)dword_6046F0 = 9;
         dword_59F058 = 5;
@@ -627,15 +627,15 @@ int __cdecl maybe_NewGame(int a1)
         dword_6046D0 = 0;
         *(_DWORD*)dword_6046F0 = 8;
         dword_6046D8[0] = g_CharacterType;
-        dword_604744 = g_IsFirstPerson;
-        dword_604258 = g_IsFirstPerson;
-        dword_6046C8 = g_CharacterType;
+        g_UselessVariable5 = g_IsFirstPerson;
+        g_maybeFirstperson = g_IsFirstPerson;
+        g_maybeCurrentCharacterType = g_CharacterType;
         dword_6049F8 = 1;
         writeDebug("Done Host Frontend Setup");
         break;
     default:
         if (g_UseGameSpy)
-            sub_43FC90();
+            someCloseGame();
         dword_6049A8 = 3;
         dword_6049AC = 1;
         byte_604964 = 0;
@@ -644,7 +644,7 @@ int __cdecl maybe_NewGame(int a1)
         Count = 0;
         if (a1 == 2)
         {
-            dword_6046C8 = 5;
+            g_maybeCurrentCharacterType = characters::Chang;
             *(_DWORD*)dword_6046F0 = 1;
         }
         break;
@@ -731,7 +731,7 @@ int __cdecl maybe_NewGame(int a1)
 // 604204: using guessed type int dword_604204;
 // 60420C: using guessed type int dword_60420C;
 // 604210: using guessed type int dword_604210;
-// 604258: using guessed type int dword_604258;
+// 604258: using guessed type int g_maybeFirstperson;
 // 60425C: using guessed type int dword_60425C;
 // 604316: using guessed type __int16 word_604316;
 // 604320: using guessed type __int16 g_maybeDemoVersionType;
@@ -749,8 +749,8 @@ int __cdecl maybe_NewGame(int a1)
 // 604680: using guessed type int dword_604680[];
 // 6046C0: using guessed type int dword_6046C0;
 // 6046C4: using guessed type int dword_6046C4;
-// 6046C8: using guessed type int dword_6046C8;
-// 6046CC: using guessed type int dword_6046CC;
+// 6046C8: using guessed type int g_maybeCurrentCharacterType;
+// 6046CC: using guessed type int g_maybePrevCharacterType;
 // 6046D0: using guessed type int dword_6046D0;
 // 6046D4: using guessed type int dword_6046D4;
 // 6046E8: using guessed type int dword_6046E8;
@@ -760,7 +760,7 @@ int __cdecl maybe_NewGame(int a1)
 // 604708: using guessed type double dbl_604708;
 // 604710: using guessed type double dbl_604710;
 // 604728: using guessed type int dword_604728;
-// 604744: using guessed type int dword_604744;
+// 604744: using guessed type int g_UselessVariable5;
 // 604760: using guessed type int dword_604760;
 // 604768: using guessed type int dword_604768;
 // 604798: using guessed type int dword_604798[];

@@ -46,7 +46,7 @@ HANDLE hObject; // idb
 int dword_5BAE80; // weak
 int dword_5B94E8; // weak
 int dword_5B9610; // weak
-int dword_5B9970; // weak
+int g_maybeMaxPlayers; // weak
 int dword_5B9F08; // weak
 int dword_66878C; // weak
 int dword_594AF0 = 1881618624; // weak
@@ -54,6 +54,7 @@ __int16 word_5BACFC; // weak
 int dword_5AEAFC = 4096; // weak
 int dword_5AD580[] = { 14 }; // weak
 char g_UselessVariableMultiplayerStage[256]; // idb
+struct sockaddr to; // idb
 
 int __cdecl sub_520169(HWND hWnd); // idb
 int __stdcall sub_51EA40(int a1, void* a2, size_t Size, int a4, int a5, HWND a6);
@@ -68,6 +69,10 @@ int __cdecl sub_5210FE(int* a1);
 int __cdecl sub_5293FE(int a1, int* a2, unsigned int a3, int a4, unsigned int a5);
 void __cdecl sub_52C6C3(int a1);
 int sub_52C95B();
+int __cdecl sub_51BAF0(SOCKET* a1);
+int sub_523577();
+int sub_51E218();
+int __cdecl sub_51C218(int, char* Str, struct sockaddr* to); // idb
 
 //----- (0051E347) --------------------------------------------------------
 int __cdecl sub_51E347(HINSTANCE a1)
@@ -142,17 +147,17 @@ void __cdecl unloadGame()
     {
         v0 = 0;
     LABEL_9:
-        sub_52354B(v0, v2);
+        CloseGameSpy(v0, v2);
         goto LABEL_10;
     }
     v1 = (**(int(__thiscall***)(int, int))dword_5BAE80)(dword_5BAE80, 1);
-    sub_52354B(v1, v2);
+    CloseGameSpy(v1, v2);
 LABEL_10:
     CoUninitialize();
 }
 // 523A7B: variable 'v0' is possibly undefined
 // 523A7B: variable 'v2' is possibly undefined
-// 52354B: using guessed type int __cdecl sub_52354B(_DWORD, _DWORD);
+// 52354B: using guessed type int __cdecl CloseGameSpy(_DWORD, _DWORD);
 // 594218: using guessed type _DWORD __thiscall FakeDP::DestroyPlayer(FakeDP *__hidden this, unsigned int);
 // 59422C: using guessed type _DWORD __thiscall FakeDP::Close(FakeDP *__hidden this);
 // 5BAE80: using guessed type int dword_5BAE80;
@@ -461,7 +466,7 @@ int __cdecl sub_51FDEE(int a1, int a2)
     int v6; // [esp+68h] [ebp-4h] BYREF
 
     v6 = 0;
-    dword_5B9970 = a2;
+    g_maybeMaxPlayers = a2;
     memset(v3, 0, sizeof(v3));
     v3[0] = 80;
     v3[6] = 1881618624;
@@ -473,7 +478,7 @@ int __cdecl sub_51FDEE(int a1, int a2)
     v3[1] = 40964;
     v3[17] = dword_5BAE98;
     dword_5BABF0 = 1;
-    sub_52348B();
+    GameSpyInitiliazation0();
     v4 = FakeDP::Open((FakeDP*)dword_5BAE80, (struct DPSESSIONDESC2*)v3, 2u);
     if (v4 < 0)
         return v4;
@@ -508,7 +513,7 @@ int __cdecl sub_51FDEE(int a1, int a2)
 // 594220: using guessed type _DWORD __thiscall FakeDP::SetPlayerData(FakeDP *__hidden this, unsigned int, void *, unsigned int, unsigned int);
 // 594224: using guessed type _DWORD __thiscall FakeDP::Open(FakeDP *__hidden this, struct DPSESSIONDESC2 *, unsigned int);
 // 594AF0: using guessed type int dword_594AF0;
-// 5B9970: using guessed type int dword_5B9970;
+// 5B9970: using guessed type int g_maybeMaxPlayers;
 // 5B9F08: using guessed type int dword_5B9F08;
 // 5BABF0: using guessed type int dword_5BABF0;
 // 5BACFE: using guessed type int dword_5BACFE;
@@ -948,7 +953,7 @@ int __cdecl sub_51FC21(HWND hWnd)
     v5[8] = -2147457396;
     v5[9] = 1894125741;
     v5[12] = (int)&byte_5BAD14;
-    v5[10] = dword_5B9970;
+    v5[10] = g_maybeMaxPlayers;
     v5[1] = 40964;
     v5[17] = dword_5BAE98;
     dword_5BABF0 = 1;
@@ -985,7 +990,7 @@ int __cdecl sub_51FC21(HWND hWnd)
 // 594220: using guessed type _DWORD __thiscall FakeDP::SetPlayerData(FakeDP *__hidden this, unsigned int, void *, unsigned int, unsigned int);
 // 594224: using guessed type _DWORD __thiscall FakeDP::Open(FakeDP *__hidden this, struct DPSESSIONDESC2 *, unsigned int);
 // 594AF0: using guessed type int dword_594AF0;
-// 5B9970: using guessed type int dword_5B9970;
+// 5B9970: using guessed type int g_maybeMaxPlayers;
 // 5BABF0: using guessed type int dword_5BABF0;
 // 5BACFE: using guessed type int dword_5BACFE;
 // 5BAE80: using guessed type int dword_5BAE80;
@@ -1164,7 +1169,7 @@ int sub_5219C6()
     if (v4 < 0)
         return v4;
     v3 = (struct DPSESSIONDESC2*)v5;
-    *((_DWORD*)v5 + 10) = dword_5B9970;
+    *((_DWORD*)v5 + 10) = g_maybeMaxPlayers;
     v1 = *((_DWORD*)v3 + 1);
     if (dword_5B9F08)
         LOBYTE(v1) = v1 & 0xDF;
@@ -1186,7 +1191,7 @@ int sub_5219C6()
 }
 // 594208: using guessed type _DWORD __thiscall FakeDP::SetSessionDesc(FakeDP *__hidden this, struct DPSESSIONDESC2 *, unsigned int);
 // 594240: using guessed type _DWORD __thiscall FakeDP::GetSessionDesc(FakeDP *__hidden this, void *, unsigned int *);
-// 5B9970: using guessed type int dword_5B9970;
+// 5B9970: using guessed type int g_maybeMaxPlayers;
 // 5B9F08: using guessed type int dword_5B9F08;
 // 5BABF0: using guessed type int dword_5BABF0;
 // 5BACFE: using guessed type int dword_5BACFE;
@@ -2922,19 +2927,19 @@ int sub_52C3E2()
 // 668794: using guessed type int dword_668794;
 
 //----- (0052354B) --------------------------------------------------------
-int sub_52354B()
+int CloseGameSpy(_DWORD dw = 0, _DWORD dw2 = 0)
 {
     int result; // eax
 
-    if (dword_5BABEC)
+    if (g_IsGameSpyInited)
     {
         sub_51BCB4(0);
         result = sub_51BCD5(0);
-        dword_5BABEC = 0;
+        g_IsGameSpyInited = 0;
     }
     return result;
 }
-// 5BABEC: using guessed type int dword_5BABEC;
+// 5BABEC: using guessed type int g_IsGameSpyInited;
 
 //----- (005235C0) --------------------------------------------------------
 DWORD sub_5235C0()
@@ -3084,7 +3089,7 @@ INT_PTR __stdcall sub_51FF63(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
             Translated[1] = SendMessageA(v5, 0x147u, 0, 0);
             if (GetDlgItemTextA(hDlg, 1007, (LPSTR)&byte_5BAD14, 256))
             {
-                dword_5B9970 = GetDlgItemInt(hDlg, 1006, Translated, 0);
+                g_maybeMaxPlayers = GetDlgItemInt(hDlg, 1006, Translated, 0);
                 dword_5B9F08 = IsDlgButtonChecked(hDlg, 1017) == 1;
                 EndDialog(hDlg, 1);
             }
@@ -3104,7 +3109,7 @@ INT_PTR __stdcall sub_51FF63(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
     return result;
 }
 // 5AD580: using guessed type int dword_5AD580[];
-// 5B9970: using guessed type int dword_5B9970;
+// 5B9970: using guessed type int g_maybeMaxPlayers;
 // 5B9F08: using guessed type int dword_5B9F08;
 
 //----- (00520870) --------------------------------------------------------
@@ -3633,3 +3638,354 @@ int sub_52C95B()
 // 5BAD06: using guessed type int dword_5BAD06;
 // 5BAE98: using guessed type int dword_5BAE98;
 // 5BDCB0: using guessed type int dword_5BDCB0[];
+
+//----- (0051CBA5) --------------------------------------------------------
+DWORD __cdecl sub_51CBA5(int a1, int a2)
+{
+    DWORD result; // eax
+    char buf[256]; // [esp+8h] [ebp-100h] BYREF
+
+    sprintf(buf, "\\heartbeat\\%d\\gamename\\%s", *(_DWORD*)(a1 + 228), (const char*)(a1 + 8));
+    if (a2)
+        strcat(buf, "\\statechanged\\");
+    sendto(*(_DWORD*)(a1 + 4), buf, strlen(buf), 0, &to, 16);
+    result = getGameTickCount();
+    *(_DWORD*)(a1 + 216) = result;
+    return result;
+}
+// 5AD4D8: using guessed type int dword_5AD4D8;
+
+//----- (0051BAC5) --------------------------------------------------------
+int __cdecl sub_51BAC5(SOCKET* a1)
+{
+    if (!a1)
+        a1 = (SOCKET*)off_5AD418;
+    sub_51BBFA((int)a1);
+    return sub_51BAF0(a1);
+}
+// 5AD418: using guessed type void *off_5AD418;
+
+//----- (0051BAF0) --------------------------------------------------------
+int __cdecl sub_51BAF0(SOCKET* a1)
+{
+    int result; // eax
+    int v2; // [esp+0h] [ebp-124h]
+    struct sockaddr from; // [esp+4h] [ebp-120h] BYREF
+    struct timeval timeout; // [esp+14h] [ebp-110h] BYREF
+    fd_set readfds; // [esp+1Ch] [ebp-108h] BYREF
+    int fromlen; // [esp+120h] [ebp-4h] BYREF
+
+    fromlen = 16;
+    timeout.tv_sec = 0;
+    timeout.tv_usec = 0;
+    result = (int)a1;
+    if (*a1 != -1)
+    {
+        readfds.fd_count = 0;
+        readfds.fd_array[readfds.fd_count++] = *a1;
+        while (1)
+        {
+            result = select(64, &readfds, 0, 0, &timeout);
+            if (result == -1 || !result)
+                break;
+            v2 = recvfrom(*a1, buf, 255, 0, &from, &fromlen);
+            if (v2 != -1)
+            {
+                buf[v2] = 0;
+                sub_51C218((int)a1, buf, &from);
+            }
+        }
+    }
+    return result;
+}
+// 51BB32: conditional instruction was optimized away because of '%readfds.4==0'
+
+//----- (00523577) --------------------------------------------------------
+int sub_523577()
+{
+    int result; // eax
+
+    if (g_IsGameSpyInited)
+        result = sub_51BAC5(0);
+    return result;
+}
+// 5BABEC: using guessed type int g_IsGameSpyInited;
+
+//----- (0051BCB4) --------------------------------------------------------
+DWORD __cdecl sub_51BCB4(void* a1)
+{
+    if (!a1)
+        a1 = off_5AD418;
+    return sub_51CBA5((int)a1, 1);
+}
+// 5AD418: using guessed type void *off_5AD418;
+
+//----- (0051BCD5) --------------------------------------------------------
+int __cdecl sub_51BCD5(SOCKET* lpMem)
+{
+    if (!lpMem)
+        lpMem = (SOCKET*)off_5AD418;
+    if (*lpMem != -1)
+        closesocket(*lpMem);
+    if (lpMem[1] != -1 && lpMem[1] != *lpMem)
+        closesocket(lpMem[1]);
+    lpMem[1] = -1;
+    *lpMem = -1;
+    lpMem[54] = 0;
+    if (lpMem != (SOCKET*)&unk_5AD328)
+        sub_584E87(lpMem);
+    return sub_51E218();
+}
+// 5AD418: using guessed type void *off_5AD418;
+
+//----- (0051E218) --------------------------------------------------------
+int sub_51E218()
+{
+    return WSACleanup();
+}
+
+//----- (0051C218) --------------------------------------------------------
+int __cdecl sub_51C218(int a1, char* Str, struct sockaddr* to)
+{
+    char buf; // [esp+Ch] [ebp-680h] BYREF
+    char v5[1396]; // [esp+Dh] [ebp-67Fh] BYREF
+    __int16 v6; // [esp+581h] [ebp-10Bh]
+    char v7; // [esp+583h] [ebp-109h]
+    int i; // [esp+584h] [ebp-108h]
+    char v9[253]; // [esp+588h] [ebp-104h] BYREF
+    __int16 v10; // [esp+685h] [ebp-7h]
+    char v11; // [esp+687h] [ebp-5h]
+    int v12; // [esp+688h] [ebp-4h]
+
+    buf = byte_5B94C4;
+    memset(v5, 0, sizeof(v5));
+    v6 = 0;
+    v7 = 0;
+    v9[0] = byte_5B94C8;
+    memset(&v9[1], 0, 0xFCu);
+    v10 = 0;
+    v11 = 0;
+    ++* (_DWORD*)(a1 + 220);
+    *(_DWORD*)(a1 + 224) = 0;
+    if (*(char*)(a1 + 232) > 0)
+        *(_BYTE*)(a1 + 232) = 0;
+    for (i = 1; i <= 8; ++i)
+    {
+        v12 = sub_51C51C(Str, *(&off_5AD300 + i));
+        if (v12)
+        {
+            switch (i)
+            {
+            case 1:
+                sub_51C713(a1, to, &buf);
+                break;
+            case 2:
+                sub_51C8DE(a1, to, &buf);
+                break;
+            case 3:
+                sub_51C947(a1, to, &buf);
+                break;
+            case 4:
+                sub_51C9B0(a1, to, &buf);
+                break;
+            case 5:
+                sub_51C713(a1, to, &buf);
+                sub_51C8DE(a1, to, &buf);
+                sub_51C947(a1, to, &buf);
+                sub_51C9B0(a1, to, &buf);
+                break;
+            case 6:
+                sub_51C713(a1, to, &buf);
+                sub_51C655(a1, to, &buf);
+                sub_51C8DE(a1, to, &buf);
+                sub_51C655(a1, to, &buf);
+                sub_51C947(a1, to, &buf);
+                sub_51C655(a1, to, &buf);
+                sub_51C9B0(a1, to, &buf);
+                break;
+            case 7:
+                sub_51CA19(a1, to, &buf, v12);
+                break;
+            case 8:
+                strcpy(v9, (const char*)v12);
+                break;
+            default:
+                continue;
+            }
+        }
+    }
+    return sub_51CA74(a1, to, &buf, (int)v9);
+}
+// 5B94C4: using guessed type char byte_5B94C4;
+// 5B94C8: using guessed type char byte_5B94C8;
+
+//----- (0051C655) --------------------------------------------------------
+int __cdecl sub_51C655(int a1, struct sockaddr* to, char* buf)
+{
+    int result; // eax
+    char Buffer[80]; // [esp+Ch] [ebp-50h] BYREF
+
+    result = 0;
+    if (strlen(buf))
+    {
+        sprintf(Buffer, "\\queryid\\%d.%d", *(_DWORD*)(a1 + 220), ++ * (_DWORD*)(a1 + 224));
+        strcat(buf, Buffer);
+        result = sendto(*(_DWORD*)a1, buf, strlen(buf), 0, to, 16);
+        *buf = 0;
+    }
+    return result;
+}
+
+//----- (0051C713) --------------------------------------------------------
+unsigned int __cdecl sub_51C713(int a1, struct sockaddr* to, char* buf)
+{
+    int v4[349]; // [esp+4h] [ebp-578h] BYREF
+    __int16 v5; // [esp+579h] [ebp-3h]
+    char v6; // [esp+57Bh] [ebp-1h]
+
+    LOBYTE(v4[0]) = byte_5B94CC;
+    memset((char*)v4 + 1, 0, 0x574u);
+    v5 = 0;
+    v6 = 0;
+    (*(void(__cdecl**)(int*, int, _DWORD))(a1 + 200))(v4, 1400, *(_DWORD*)(a1 + 236));
+    return sub_51C77C(a1, to, buf, (int)v4);
+}
+// 5B94CC: using guessed type char byte_5B94CC;
+
+//----- (0051C77C) --------------------------------------------------------
+unsigned int __cdecl sub_51C77C(int a1, struct sockaddr* to, char* buf, int a4)
+{
+    unsigned int result; // eax
+    _BYTE* v5; // [esp+Ch] [ebp-Ch]
+    int v6; // [esp+10h] [ebp-8h]
+    _BYTE* v7; // [esp+14h] [ebp-4h]
+
+    v6 = 0;
+    if (strlen((const char*)a4) + strlen(buf) >= 0x546)
+    {
+        if (strlen((const char*)a4) <= 0x546)
+        {
+            sub_51C655(a1, to, buf);
+            result = strlen((const char*)a4) + 1;
+            qmemcpy(buf, (const void*)a4, result);
+        }
+        else
+        {
+            v5 = (_BYTE*)a4;
+            v7 = (_BYTE*)a4;
+            while ((int)&v5[-a4] < 1350)
+            {
+                if (*v5 == 92)
+                {
+                    if (!(v6 % 2))
+                        v7 = v5;
+                    ++v6;
+                }
+                ++v5;
+            }
+            result = (unsigned int)v7;
+            if (v7 != (_BYTE*)a4)
+            {
+                *v7 = 0;
+                sub_51C77C(a1, to, buf, a4);
+                *v7 = 92;
+                result = sub_51C77C(a1, to, buf, (int)v7);
+            }
+        }
+    }
+    else
+    {
+        result = 0;
+        strcat(buf, (const char*)a4);
+    }
+    return result;
+}
+
+//----- (0051C8DE) --------------------------------------------------------
+unsigned int __cdecl sub_51C8DE(int a1, struct sockaddr* to, char* buf)
+{
+    int v4[349]; // [esp+4h] [ebp-578h] BYREF
+    __int16 v5; // [esp+579h] [ebp-3h]
+    char v6; // [esp+57Bh] [ebp-1h]
+
+    LOBYTE(v4[0]) = byte_5B94D0;
+    memset((char*)v4 + 1, 0, 0x574u);
+    v5 = 0;
+    v6 = 0;
+    (*(void(__cdecl**)(int*, int, _DWORD))(a1 + 204))(v4, 1400, *(_DWORD*)(a1 + 236));
+    return sub_51C77C(a1, to, buf, (int)v4);
+}
+// 5B94D0: using guessed type char byte_5B94D0;
+
+//----- (0051C947) --------------------------------------------------------
+unsigned int __cdecl sub_51C947(int a1, struct sockaddr* to, char* buf)
+{
+    int v4[349]; // [esp+4h] [ebp-578h] BYREF
+    __int16 v5; // [esp+579h] [ebp-3h]
+    char v6; // [esp+57Bh] [ebp-1h]
+
+    LOBYTE(v4[0]) = byte_5B94D4;
+    memset((char*)v4 + 1, 0, 0x574u);
+    v5 = 0;
+    v6 = 0;
+    (*(void(__cdecl**)(int*, int, _DWORD))(a1 + 208))(v4, 1400, *(_DWORD*)(a1 + 236));
+    return sub_51C77C(a1, to, buf, (int)v4);
+}
+// 5B94D4: using guessed type char byte_5B94D4;
+
+//----- (0051C9B0) --------------------------------------------------------
+unsigned int __cdecl sub_51C9B0(int a1, struct sockaddr* to, char* buf)
+{
+    int v4[349]; // [esp+4h] [ebp-578h] BYREF
+    __int16 v5; // [esp+579h] [ebp-3h]
+    char v6; // [esp+57Bh] [ebp-1h]
+
+    LOBYTE(v4[0]) = byte_5B94D8;
+    memset((char*)v4 + 1, 0, 0x574u);
+    v5 = 0;
+    v6 = 0;
+    (*(void(__cdecl**)(int*, int, _DWORD))(a1 + 212))(v4, 1400, *(_DWORD*)(a1 + 236));
+    return sub_51C77C(a1, to, buf, (int)v4);
+}
+// 5B94D8: using guessed type char byte_5B94D8;
+
+//----- (0051CA19) --------------------------------------------------------
+unsigned int __cdecl sub_51CA19(int a1, struct sockaddr* to, char* buf, int a4)
+{
+    unsigned int result; // eax
+    char Buffer[1400]; // [esp+4h] [ebp-578h] BYREF
+
+    result = 0;
+    if (strlen((const char*)a4) <= 0x546)
+    {
+        sprintf(Buffer, "\\echo\\%s", (const char*)a4);
+        result = sub_51C77C(a1, to, buf, (int)Buffer);
+    }
+    return result;
+}
+
+//----- (0051CA74) --------------------------------------------------------
+int __cdecl sub_51CA74(int a1, struct sockaddr* to, char* buf, int a4)
+{
+    int result; // eax
+    char v5[128]; // [esp+8h] [ebp-24Ch] BYREF
+    char Buffer[256]; // [esp+88h] [ebp-1CCh] BYREF
+    int v7; // [esp+188h] [ebp-CCh]
+    char v8[200]; // [esp+18Ch] [ebp-C8h] BYREF
+
+    if (*(_BYTE*)a4)
+    {
+        result = 0;
+        v7 = strlen((const char*)a4);
+        if (v7 > 128)
+            return result;
+        strcpy(v5, (const char*)a4);
+        sub_51BF8D(a1 + 72, strlen((const char*)(a1 + 72)), (int)v5, v7);
+        sub_51BE10(v5, v7, v8);
+        sprintf(Buffer, "\\validate\\%s", v8);
+        sub_51C77C(a1, to, buf, (int)Buffer);
+    }
+    sprintf(Buffer, aFinal);
+    sub_51C77C(a1, to, buf, (int)Buffer);
+    return sub_51C655(a1, to, buf);
+}

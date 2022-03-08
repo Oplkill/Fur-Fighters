@@ -8,7 +8,8 @@ extern int g_MultiplayerMaxPlayers; // weak
 extern LPCVOID pMem; // idb
 extern int dword_5BAE80; // weak
 extern int dword_5B94E8; // weak
-extern int dword_5B9970; // weak
+extern int g_maybeMaxPlayers; // weak
+extern struct sockaddr to; // idb
 
 int __cdecl sub_51E347(HINSTANCE a1);
 void __cdecl unloadGame(); // idb
@@ -59,7 +60,7 @@ int __cdecl sub_52C211(int a1);
 int sub_52C2E3();
 int __cdecl sub_52C36C(__int16 a1);
 int sub_52C3E2();
-int sub_52354B();
+int CloseGameSpy(_DWORD dw = 0, _DWORD dw2 = 0);
 INT_PTR __stdcall sub_5205B2(HWND, UINT, WPARAM, LPARAM); // idb
 BOOL __cdecl sub_51F32A(HWND hDlg);
 int sub_520111();
@@ -68,3 +69,15 @@ int __cdecl online_maybeWriteTextChat(const char* a1);
 void __cdecl online_PlayerFluffedPlayer(int a1, int a2);
 int __cdecl sub_529BB6(int, FILE*); // idb
 int __cdecl sub_5218AD(int a1);
+DWORD __cdecl sub_51CBA5(int a1, int a2);
+int __cdecl sub_51BAC5(SOCKET* a1);
+DWORD __cdecl sub_51BCB4(void* a1);
+int __cdecl sub_51BCD5(SOCKET* lpMem);
+int __cdecl sub_51C655(int, struct sockaddr* to, char* buf); // idb
+unsigned int __cdecl sub_51C713(int a1, struct sockaddr* to, char* buf);
+unsigned int __cdecl sub_51C77C(int a1, struct sockaddr* to, char* buf, int a4);
+unsigned int __cdecl sub_51C8DE(int a1, struct sockaddr* to, char* buf);
+unsigned int __cdecl sub_51C947(int a1, struct sockaddr* to, char* buf);
+unsigned int __cdecl sub_51C9B0(int a1, struct sockaddr* to, char* buf);
+unsigned int __cdecl sub_51CA19(int a1, struct sockaddr* to, char* buf, int a4);
+int __cdecl sub_51CA74(int, struct sockaddr* to, char* buf, int); // idb

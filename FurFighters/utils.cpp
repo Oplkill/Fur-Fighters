@@ -20,3 +20,9 @@ char* getFormattedString(const char* Format, ...)
     vsprintf(getFormattedStringBuffer, Format, va);
     return getFormattedStringBuffer;
 }
+
+//----- (0051E1E0) --------------------------------------------------------
+DWORD getGameTickCount()
+{
+    return GetTickCount();
+}

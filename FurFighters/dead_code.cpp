@@ -253,7 +253,7 @@ void sub_445B65()
     {
     case 5:
         if (g_UseGameSpy)
-            sub_43FC90();
+            someCloseGame();
         if (sub_43FCB4())
         {
             dword_6234D4 = 0;
@@ -310,7 +310,7 @@ void sub_445B65()
         if (sub_43FCB4())
         {
             if (g_UseGameSpy)
-                sub_43FC90();
+                someCloseGame();
             dword_6234D4 = 0;
             sub_45E3F7(91, 255);
             dword_604718 = sub_439511(dword_604718, 15.0);
