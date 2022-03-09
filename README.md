@@ -1,5 +1,6 @@
 # Fur-Fighters
 Fully reverse engineered source code from game Fur Fighters.
+[Discord](https://discord.gg/zgSVGSs)
 
 # Current state
 * Not compilling, under reverse engineering
@@ -20,6 +21,11 @@ Fully reverse engineered source code from game Fur Fighters.
 * Replace all old libraries by new one
 * Make game plays with newest DirectX and OpenGL
 * Make game works on Linux
+
+# Ideas to do after release
+* Better AI(as option in settings)
+* Make game menu better
+* Pause game when minimazed(with turning off sounds and music)
 
 # Info
 * Code will be C++ with C parts of code
