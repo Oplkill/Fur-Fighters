@@ -110,10 +110,10 @@ int* __cdecl sub_4D6CFC(int* a1)
         case language::German:
             loadSprite(v27 + 792, aBlockPressGeSp_0);
             break;
-        case language::Spanish:
+        case language::Unknown1:
             loadSprite(v27 + 792, aBlockPressEnSp_2);
             break;
-        case language::Italy:
+        case language::Spanish:
             loadSprite(v27 + 792, aBlockPressSpSp_0);
             break;
         default:

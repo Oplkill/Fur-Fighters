@@ -142,12 +142,12 @@ _DWORD* __cdecl sub_4D9449(_DWORD* a1)
             loadSprite(v5 + 180, aBomberPressGeS_0);
             loadSprite(v5 + 204, aBomberRoundGeS_0);
             break;
-        case language::Spanish:
+        case language::Unknown1:
             loadSprite(v5 + 192, aBomberOverEnSp_2);
             loadSprite(v5 + 180, aBomberPressEnS_2);
             loadSprite(v5 + 204, aBomberRoundEnS_2);
             break;
-        case language::Italy:
+        case language::Spanish:
             loadSprite(v5 + 192, aBomberOverSpSp_0);
             loadSprite(v5 + 180, aBomberPressSpS_0);
             loadSprite(v5 + 204, aBomberRoundSpS_0);

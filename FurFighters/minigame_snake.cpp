@@ -185,12 +185,12 @@ int* __cdecl sub_4D6089(int* a1)
             loadSprite(v4 + 168, aSnakePressGeSp_0);
             loadSprite(v4 + 192, aSnakeReadyGeSp_0);
             break;
-        case language::Spanish:
+        case language::Unknown1:
             loadSprite(v4 + 180, aSnakeOverEnSpr_2);
             loadSprite(v4 + 168, aSnakePressEnSp_2);
             loadSprite(v4 + 192, aSnakeReadyEnSp_2);
             break;
-        case language::Italy:
+        case language::Spanish:
             loadSprite(v4 + 180, aSnakeOverSpSpr_0);
             loadSprite(v4 + 168, aSnakePressSpSp_0);
             loadSprite(v4 + 192, aSnakeReadySpSp_0);
@@ -312,12 +312,12 @@ _DWORD* __cdecl sub_4D6781(_DWORD* a1)
             loadSprite(v4 + 168, aSnakePressGeSp_2);
             loadSprite(v4 + 192, aSnakeReadyGeSp_2);
             break;
-        case language::Spanish:
+        case language::Unknown1:
             loadSprite(v4 + 180, aSnakeOverEnSpr_6);
             loadSprite(v4 + 168, aSnakePressEnSp_6);
             loadSprite(v4 + 192, aSnakeReadyEnSp_6);
             break;
-        case language::Italy:
+        case language::Spanish:
             loadSprite(v4 + 180, aSnakeOverSpSpr_2);
             loadSprite(v4 + 168, aSnakePressSpSp_2);
             loadSprite(v4 + 192, aSnakeReadySpSp_2);

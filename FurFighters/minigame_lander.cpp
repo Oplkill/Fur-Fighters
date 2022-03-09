@@ -184,13 +184,13 @@ _DWORD* __cdecl sub_4D82FE(_DWORD* a1)
             loadSprite(v12 + 356, aLanderRoundGeS_0);
             loadSprite(v12 + 368, aLanderBonusGeS_0);
             break;
-        case language::Spanish:
+        case language::Unknown1:
             loadSprite(v12 + 344, aLanderOverEnSp_2);
             loadSprite(v12 + 380, aLanderPressEnS_2);
             loadSprite(v12 + 356, aLanderRoundEnS_2);
             loadSprite(v12 + 368, aLanderBonusEnS_2);
             break;
-        case language::Italy:
+        case language::Spanish:
             loadSprite(v12 + 344, aLanderOverSpSp_0);
             loadSprite(v12 + 380, aLanderPressSpS_0);
             loadSprite(v12 + 356, aLanderRoundSpS_0);

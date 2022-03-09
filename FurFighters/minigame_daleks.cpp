@@ -132,12 +132,12 @@ int* __cdecl sub_4D7C34(int* a1)
             loadSprite(v3 + 216, aDaleksPressGeS_0);
             loadSprite(v3 + 204, aDaleksRoundGeS_0);
             break;
-        case language::Spanish:
+        case language::Unknown1:
             loadSprite(v3 + 228, aDaleksOverEnSp_2);
             loadSprite(v3 + 216, aDaleksPressEnS_2);
             loadSprite(v3 + 204, aDaleksRoundEnS_2);
             break;
-        case language::Italy:
+        case language::Spanish:
             loadSprite(v3 + 228, aDaleksOverSpSp_0);
             loadSprite(v3 + 216, aDaleksPressSpS_0);
             loadSprite(v3 + 204, aDaleksRoundSpS_0);

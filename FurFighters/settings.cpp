@@ -400,7 +400,7 @@ int __cdecl initSettings(HINSTANCE hInstance)
             fatalError(aPourJouerInsir);
         case language::German:
             fatalError(aUmZuSpielenLeg);
-        case language::Italy:
+        case language::Spanish:
             fatalError(aNecesitasElCdD);
         default:
             fatalError(aYouNeedTheFurF_0);

@@ -16,8 +16,8 @@ namespace language
 		English,
 		French,
 		German,
+		Unknown1,
 		Spanish,
-		Italy,
 		Japan,
 		Unknown,
 	};

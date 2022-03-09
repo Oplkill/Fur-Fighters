@@ -52,10 +52,10 @@ int loadLanguageDatas()
     case language::German:
         result = loadItemsInfo(aItemsGerTxt);
         break;
-    case language::Spanish:
+    case language::Unknown1:
         result = loadItemsInfo(aItemsItlTxt);
         break;
-    case language::Italy:
+    case language::Spanish:
         result = loadItemsInfo(aItemsSpnTxt);
         break;
     case language::Japan:
@@ -92,7 +92,7 @@ int initLanguage()
     {
         GetLocaleInfoA(0x400u, 2u, LCData, 32);
         if (!strcmp(LCData, aEnglishUnitedS))
-            languageId = language::Spanish;
+            languageId = language::Unknown1;
         else
             languageId = language::English;
     }
@@ -106,7 +106,7 @@ int initLanguage()
     }
     else if (!strcmp(Format, aSpanish))
     {
-        languageId = language::Italy;
+        languageId = language::Spanish;
     }
     else
     {
