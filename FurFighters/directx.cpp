@@ -10,11 +10,6 @@
 #include "settings.h"
 #include "globalVariables.h"
 
-CHAR aNoDevicesAndOr[] = "No devices and/or modes were enumerated!"; // idb
-CHAR aNoEnumeratedDe[] = "No enumerated devices were accepted!"; // idb
-CHAR aCanTCreateDdra[] = "Can't create DDraw during enumeration!"; // idb
-CHAR aCanTQueryIdire[] = "Can't query IDirect3D7 during enumeration!"; // idb
-
 int dword_6673E0; // weak
 int numVideoDevicesOrModes; // weak
 int numVideoDevices; // weak
@@ -1147,7 +1142,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
                 writeDebug("HandleActivateApp(): DEACTIVATE received");
                 writeDebug("HandleActivateApp(): Suspending and releasing");
                 dword_6673E0 = a3;
-                if (!dword_60FE2C)
+                if (!g_dwWindowedMode)
                 {
                     writeDebug("HandleActivateApp(): Restoring display mode");
                     v6 = (*(int(__thiscall**)(LPVOID, LPVOID))(*(_DWORD*)lpDD + 76))(lpDD, lpDD);
@@ -1170,7 +1165,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
                 startSoundTimer();
                 maybeSoundRelease();
                 maybeSoundRelease2();
-                if (!dword_60FE2C)
+                if (!g_dwWindowedMode)
                     ShowWindow(dword_60FE48, 6);
             }
         }
@@ -1180,7 +1175,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
             writeDebug("HandleActivateApp(): ACTIVATE received");
             writeDebug("HandleActivateApp(): Reacquiring and restoring");
             writeDebug("HandleActivateApp(): Setting cooperative level to EXCLUSIVE");
-            if (dword_60FE2C)
+            if (g_dwWindowedMode)
             {
                 v4 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 8);
                 if (v4)
@@ -1233,7 +1228,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
 // 5836F8: using guessed type int sub_5836F8(void);
 // 583776: using guessed type int sub_583776(void);
 // 5B91A4: using guessed type int dword_5B91A4;
-// 60FE2C: using guessed type int dword_60FE2C;
+// 60FE2C: using guessed type int g_dwWindowedMode;
 // 610070: using guessed type int dword_610070;
 // 6673E0: using guessed type int dword_6673E0;
 
@@ -1393,12 +1388,12 @@ int __cdecl sub_5752F3(int a1, int a2)
         &dword_62232C,
         0))
     {
-        fatalError(aMouseCreationE);
+        fatalError("Mouse Creation Error");
     }
     if ((*(int(__thiscall**)(int, int, void*))(*(_DWORD*)dword_62232C + 44))(dword_62232C, dword_62232C, &unk_597C78))
-        fatalError(aMouseDataForma);
+        fatalError("Mouse Data Format Error");
     if ((*(int(__stdcall**)(int, int, int))(*(_DWORD*)dword_62232C + 52))(dword_62232C, a2, 21))
-        fatalError(aMouseCoOpError);
+        fatalError("Mouse Co-op Error");
     dword_622338 = (int)CreateEventA(0, 0, 0, 0);
     (*(void(__thiscall**)(int, int, void(__stdcall*)(DWORD, DWORD, DWORD, DWORD, ULONG_PTR)))(*(_DWORD*)dword_62232C
         + 48))(
@@ -1465,20 +1460,20 @@ int sub_577C00()
     }
     if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 96))(dword_60FE64, dword_60FE64) != -2005532222
         && (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE6C + 96))(dword_60FE6C, dword_60FE6C) != -2005532222
-        && (!dword_60FE2C
+        && (!g_dwWindowedMode
             || (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 96))(dword_60FE68, dword_60FE68) != -2005532222))
     {
         return 0;
     }
     writeDebug("RestoreSurfaces(): Restoring display mode and the front, back and z buffers");
-    if (!dword_60FE2C)
+    if (!g_dwWindowedMode)
     {
         v1 = (*(int(__thiscall**)(LPVOID, LPVOID, int, int, int, _DWORD, _DWORD))(*(_DWORD*)lpDD + 84))(
             lpDD,
             lpDD,
-            nWidth,
-            nHeight,
-            dword_60FE28,
+            dwWidth,
+            dwHeight,
+            dwRGBBitsCount,
             0,
             0);
         if (v1)
@@ -1502,7 +1497,7 @@ int sub_577C00()
             return v2;
         }
     }
-    if (dword_60FE2C)
+    if (g_dwWindowedMode)
     {
         if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 96))(dword_60FE68, dword_60FE68) == -2005532222)
         {
@@ -1526,8 +1521,8 @@ int sub_577C00()
     writeDebug("RestoreSurfaces(): z buffer IDirectDrawSurface7_Restore() failed with error %s", Buffer);
     return v4;
 }
-// 60FE28: using guessed type int dword_60FE28;
-// 60FE2C: using guessed type int dword_60FE2C;
+// 60FE28: using guessed type int dwRGBBitsCount;
+// 60FE2C: using guessed type int g_dwWindowedMode;
 // 60FE64: using guessed type int dword_60FE64;
 // 60FE68: using guessed type int dword_60FE68;
 // 60FE6C: using guessed type int dword_60FE6C;
@@ -1541,9 +1536,9 @@ int __cdecl checkAudioVideoDevices(int a1)
     dword_61044C = 0;
     DirectDrawEnumerateExA(Callback, 0, 7u);
     if (!numVideoDevicesOrModes)
-        fatalError(aNoDevicesAndOr);
+        fatalError("No devices and/or modes were enumerated!");
     if (!numVideoDevices)
-        fatalError(aNoEnumeratedDe);
+        fatalError("No enumerated devices were accepted!");
     return 0;
 }
 // 5C6064: using guessed type int dword_5C6064;
@@ -1560,11 +1555,11 @@ BOOL __stdcall Callback(GUID* lpGuid, LPSTR a2, LPSTR a3, LPVOID a4, HMONITOR a5
     LPVOID lpDD; // [esp+4E0h] [ebp-4h] BYREF
 
     if (DirectDrawCreateEx(lpGuid, &lpDD, &iid, 0) < 0)
-        fatalError(aCanTCreateDdra);
+        fatalError("Can't create DDraw during enumeration!");
     if ((**(int(__thiscall***)(LPVOID, LPVOID, void*, int*))lpDD)(lpDD, lpDD, &unk_5972C8, &v6) < 0)
     {
         (*(void(__thiscall**)(LPVOID, LPVOID))(*(_DWORD*)lpDD + 8))(lpDD, lpDD);
-        fatalError(aCanTQueryIdire);
+        fatalError("Can't query IDirect3D7 during enumeration!");
     }
     memset(String1, 0, sizeof(String1));
     lstrcpynA((LPSTR)String1, a2, 39);

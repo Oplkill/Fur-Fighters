@@ -45,6 +45,11 @@ extern BYTE g_BumpMapping; // idb
 extern BYTE g_Trilinear; // idb
 extern BYTE g_Gamma; // idb
 extern BYTE g_TrippleBuffer; // idb
+extern int g_dwWindowedMode; // weak
+extern int g_dwHave32bitZBuffer; // weak
+extern int dwWidth; // idb
+extern int dwHeight; // idb
+extern int dwRGBBitsCount; // weak
 
 int __cdecl loadSettings(char* FileName);
 int __cdecl initSettings(HINSTANCE hInstance); // idb

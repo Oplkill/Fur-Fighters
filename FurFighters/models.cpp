@@ -23,7 +23,7 @@ int __cdecl loadModelPML(const char* fileName)
             return i;                                 // model already loaded, returning ID
     }
     if (numLoadedPMLModels == meshListMaxNumber)
-        fatalError(aMeshListOverfl);
+        fatalError("Mesh List Overflow\n");
     v3 = numLoadedPMLModels;
     sub_54EE64(dword_658700 + 112 * numLoadedPMLModels + 36, fileNameLower);
     strncpy((char*)(112 * v3 + dword_658700), fileNameLower, 32u);

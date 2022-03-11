@@ -36,11 +36,6 @@ char aReqTokens[] = "req tokens"; // idb
 char byte_5A592E = '\0'; // weak
 __int16 word_5A592C = 24942; // weak
 char aSettingsTxt_0[] = "settings.txt"; // idb
-CHAR aYouNeedTheFurF[] = "You need the Fur Fighters CD in the drive to play."; // idb
-CHAR aPourJouerInsir[] = "Pour jouer, insÈrez le CD Fur Fighters dans le lecteur."; // idb
-CHAR aUmZuSpielenLeg[] = "Um zu spielen, legen Sie bitte die Fur Fighters CD in Ihr Laufwerk ein."; // idb
-CHAR aNecesitasElCdD[] = "Necesitas el CD de Fur Fighters en el lector para jugar."; // idb
-CHAR aYouNeedTheFurF_0[] = "You need the Fur Fighters CD in the drive to play."; // idb
 CHAR aResSettings_0[] = "Res Settings"; // idb
 CHAR aResSettings_1[] = "Res Settings"; // idb
 CHAR WindowName[] = "ÃÂıÓ‚˚Â  ÛÎ‡ÍË"; // idb
@@ -92,7 +87,6 @@ char aWeaponsPistolR_0[18] = "Weapons\\pistol.r2"; // weak
 char aBearitemsBbear_0[22] = "bearitems\\bbearhed.r2"; // weak
 char aHappybearsSrf[15] = "happybears.srf"; // weak
 char aEnemiesMrgMraS[] = "enemies\\mrg_mra.skl"; // idb
-CHAR aPatrolSpawnerN[] = "Patrol Spawner needs a link"; // idb
 char aEnemiesHellbea_2[] = "enemies\\hellbear.skl"; // idb
 char aEnemiesIslebea_2[] = "enemies\\islebear.skl"; // idb
 char aEnemiesHellbea_3[] = "enemies\\hellbear.skl"; // idb
@@ -221,6 +215,13 @@ BYTE g_Trilinear; // idb
 BYTE g_Gamma; // idb
 BYTE g_TrippleBuffer; // idb
 BYTE String; // idb
+int g_dwWindowedMode; // weak
+int g_dwHave32bitZBuffer; // weak
+int g_deviceGUIDs0; // weak
+int g_deviceGUIDs1; // weak
+int dwWidth; // idb
+int dwHeight; // idb
+int dwRGBBitsCount; // weak
 
 LSTATUS sub_56A4D1();
 int __cdecl showDialogSettingsBox(LPARAM dwInitParam); // idb
@@ -395,15 +396,15 @@ int __cdecl initSettings(HINSTANCE hInstance)
         switch (languageId)
         {
         case language::English:
-            fatalError(aYouNeedTheFurF);
+            fatalError("You need the Fur Fighters CD in the drive to play.");
         case language::French:
-            fatalError(aPourJouerInsir);
+            fatalError("Pour jouer, insÈrez le CD Fur Fighters dans le lecteur.");
         case language::German:
-            fatalError(aUmZuSpielenLeg);
+            fatalError("Um zu spielen, legen Sie bitte die Fur Fighters CD in Ihr Laufwerk ein.");
         case language::Spanish:
-            fatalError(aNecesitasElCdD);
+            fatalError("Necesitas el CD de Fur Fighters en el lector para jugar.");
         default:
-            fatalError(aYouNeedTheFurF_0);
+            fatalError("You need the Fur Fighters CD in the drive to play.");
         }
     }
     RegCreateKeyExA(HKEY_LOCAL_MACHINE, SubKey, 0, 0, 0, 0xF003Fu, 0, &regKey, 0);
@@ -424,13 +425,13 @@ int __cdecl initSettings(HINSTANCE hInstance)
     *(_DWORD*)&g_TrippleBuffer = *(_DWORD*)(dword_5C6448 + 1176);
     RegSetValueExA(regKey, aResSettings_1, 0, 1u, (const BYTE*)(dword_5C6448 + 1220), 4u);
     loadVideoSettings();
-    dword_60FE4C = *(_DWORD*)(dword_5C6448 + 284);
-    dword_60FE50 = *(_DWORD*)(dword_5C6448 + 40);
-    dword_60FE44 = *(_DWORD*)(dword_5C6448 + 1172);
-    nWidth = *(_DWORD*)(dword_5C6448 + 1060);
-    nHeight = *(_DWORD*)(dword_5C6448 + 1056);
-    dword_60FE28 = *(_DWORD*)(dword_5C6448 + 1132);
-    dword_60FE2C = 0;
+    g_deviceGUIDs0 = *(_DWORD*)(dword_5C6448 + 284);
+    g_deviceGUIDs1 = *(_DWORD*)(dword_5C6448 + 40);
+    g_dwHave32bitZBuffer = *(_DWORD*)(dword_5C6448 + 1172);
+    dwWidth = *(_DWORD*)(dword_5C6448 + 1060);
+    dwHeight = *(_DWORD*)(dword_5C6448 + 1056);
+    dwRGBBitsCount = *(_DWORD*)(dword_5C6448 + 1132);
+    g_dwWindowedMode = 0;
     WndClass.style = 0;
     WndClass.lpfnWndProc = (WNDPROC)sub_51A85B;
     WndClass.cbClsExtra = 0;
@@ -443,7 +444,7 @@ int __cdecl initSettings(HINSTANCE hInstance)
     WndClass.lpszClassName = "WINNY";
     if (!RegisterClassA(&WndClass))
         return 0;
-    hWnd = CreateWindowExA(0x40008u, ClassName, WindowName, 0x80CF0000, 0, 0, nWidth, nHeight, 0, 0, hInstance, 0);
+    hWnd = CreateWindowExA(0x40008u, ClassName, WindowName, 0x80CF0000, 0, 0, dwWidth, dwHeight, 0, 0, hInstance, 0);
     if (hWnd)
     {
         ShowWindow(hWnd, 1);
@@ -468,11 +469,11 @@ int __cdecl initSettings(HINSTANCE hInstance)
 // 5C6444: using guessed type char g_IsGameCDInserted;
 // 5C6448: using guessed type int dword_5C6448;
 // 6045D4: using guessed type int dword_6045D4;
-// 60FE28: using guessed type int dword_60FE28;
-// 60FE2C: using guessed type int dword_60FE2C;
-// 60FE44: using guessed type int dword_60FE44;
-// 60FE4C: using guessed type int dword_60FE4C;
-// 60FE50: using guessed type int dword_60FE50;
+// 60FE28: using guessed type int dwRGBBitsCount;
+// 60FE2C: using guessed type int g_dwWindowedMode;
+// 60FE44: using guessed type int g_dwHave32bitZBuffer;
+// 60FE4C: using guessed type int g_deviceGUIDs0;
+// 60FE50: using guessed type int g_deviceGUIDs1;
 
 //----- (0053F680) --------------------------------------------------------
 int __cdecl anotherLoadSettings(char* FileName)

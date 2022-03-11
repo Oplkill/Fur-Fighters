@@ -170,7 +170,6 @@ int dword_59B350[11] = { 14, 5, 6, 7, 8, 9, 10, 11, 12, 13, -1 }; // idb
 int dword_59B37C = -1; // weak
 char aBossesClaudeSk[] = "bosses\\claude.skl"; // idb
 char aBearitemsClaud[22] = "bearitems\\claudome.r2"; // weak
-CHAR aDragonflyNeeds[] = "Dragonfly needs a link!"; // idb
 char aCreaturesRabbi[21] = "creatures\\rabbit.skl"; // weak
 __int16 word_59B554 = 27755; // weak
 char aFishR2[8] = "fish.r2"; // weak
@@ -421,7 +420,6 @@ int dword_59E4B0 = 1; // weak
 char* off_59E4B4[5] = { "_eng.fpp", "_fra.fpp", "_ger.fpp", "_usa.fpp", "_spa.fpp" }; // weak
 __int16 word_59E768 = 32; // weak
 char Str[] = ",.;?!"; // idb
-CHAR aTooManyVoiceCh[] = "Too many voice changes for current dialogue."; // idb
 float dword_59E934[9] =
 {
    0.0,
@@ -587,8 +585,6 @@ char aLevelsMachineL_0[] = "levels\\machine.lpc"; // idb
 char aDebugLog[10] = "Debug Log"; // weak
 char aFfightersTga_1[14] = "ffighters.tga"; // weak
 char aSLdTga_1[] = "%s_ld.tga"; // idb
-CHAR aCannotFindASup[] = "Cannot find a supported screen mode."; // idb
-CHAR aCannotFindASup_0[] = "Cannot find a supported screen mode."; // idb
 char aSetevoeMen[13] = "Сетевое меню"; // weak
 __int16 word_59F634 = 46; // weak
 __int16 word_59F65C = 46; // weak
@@ -1072,8 +1068,6 @@ char aRockR2[8] = "rock.r2"; // weak
 char aDebrisR2_1[10] = "debris.r2"; // weak
 char aDebrisR2_2[10] = "debris.r2"; // weak
 char aDebrisR2_3[10] = "debris.r2"; // weak
-CHAR aUpdateListFull[] = "Update List full"; // idb
-CHAR aRenderListFull[] = "Render List full."; // idb
 FILE* dword_5A0118 = (FILE*)0x42000000; // idb
 FILE* dword_5A011C = (FILE*)0x42F00000; // idb
 int dword_5A0120 = 1073741824; // weak
@@ -1418,7 +1412,6 @@ char aWatr[] = "WATR"; // idb
 char aCode[] = "CODE"; // idb
 char aScpt[] = "SCPT"; // idb
 char aText[] = "TEXT"; // idb
-CHAR aLevelHasTooMan[] = "Level Has too many Actor Placements"; // idb
 int dword_5A3590 = 1045220557; // weak
 int dword_5A3594 = -1082130432; // weak
 int dword_5A3598 = 1036831949; // weak
@@ -1433,7 +1426,6 @@ char aWaterTooSlowFi[24] = "Water Too Slow, FIX IT!"; // weak
 char aFlourbagR2[12] = "Flourbag.r2"; // weak
 char aSnow1Spr[10] = "snow1.spr"; // weak
 char aSnow1Spr_0[10] = "snow1.spr"; // weak
-CHAR aFollowskeljoin[] = "FollowSkelJointNull has no link"; // idb
 void** off_5A36A0 = &off_5A3C98; // weak
 int dword_5A36E8[] = { 0 }; // weak
 int dword_5A36EC[] = { 1 }; // weak
@@ -1550,7 +1542,6 @@ char aWeaponsFgunlow[19] = "weapons\\fgunlow.r2"; // weak
 char aWeaponsFreezeg[21] = "weapons\\freezegun.r2"; // weak
 char aWeaponsFlamelo[20] = "weapons\\flamelow.r2"; // weak
 char aWeaponsFlamegu[20] = "weapons\\flamegun.r2"; // weak
-CHAR aTooManyNullAct[] = "Too Many NULL Actors on level"; // idb
 int dword_5A5B04[25] =
 {
   8,
@@ -1991,7 +1982,6 @@ float flt_5A6540 = 0.40000001; // weak
 int dword_5A6544[6] = { 0, 1, 4, 5, 2, 3 }; // idb
 wctype_t dword_5A655C = 400u; // idb
 int dword_5A6560 = 100; // weak
-CHAR aTooManyPickups[] = "Too many pickups in level (Matt probably did it)"; // idb
 char aPickupsPyumjnr_0[19] = "pickups\\pyumjnr.r2"; // weak
 char aPickupsPyumjnr_1[19] = "pickups\\pyumjnr.r2"; // weak
 char aPickupsPyumreg_0[19] = "pickups\\pyumreg.r2"; // weak
@@ -2073,7 +2063,6 @@ char aPickupsTokenlo_2[20] = "pickups\\tokenlow.r2"; // weak
 char aPickupsTokenR2_2[17] = "pickups\\token.r2"; // weak
 char aJetpackR2_0[11] = "jetpack.r2"; // weak
 char aBabiesSkl_0[] = "babies.skl"; // idb
-CHAR aCheckYourBabie[] = "Check your babies!"; // idb
 char aSpawnPickupTim_0[21] = "Spawn Pickup Timeout"; // weak
 float flt_5A6EB0 = 0.050000001; // weak
 float flt_5A6EB4 = 0.15000001; // weak
@@ -3801,8 +3790,6 @@ char aNo[3] = "NO"; // weak
 void* off_5A9410 = (void*)0x534559; // weak
 char aIniValues_0[11] = "Ini Values"; // weak
 char aBitmapsOvalPvr_0[17] = "bitmaps\\oval.pvr"; // weak
-CHAR aLoadpauseovalT[] = "LoadPauseOval - texture too big."; // idb
-CHAR aLoadlevelimage[] = "LoadLevelImage - texture too big."; // idb
 char off_5A9528[] = { ' ', '%', 'd', '\0' }; // idb
 char a2000[6] = " 2000"; // weak
 char aCDevPcfurDbgam[28] = "C:\\dev\\PCFur\\dbgame\\pmenu.c"; // weak
@@ -3837,7 +3824,6 @@ float flt_5AAC28 = 1.8; // weak
 float flt_5AAC2C = 0.15000001; // weak
 float flt_5AAC30 = 0.15000001; // weak
 float flt_5AAC34 = 0.2; // weak
-CHAR aTooManyBirdies[] = "Too many birdies in the level"; // idb
 char aButter3R2[11] = "butter3.r2"; // weak
 _UNKNOWN unk_5AAD58; // weak
 _UNKNOWN unk_5AAD88; // weak
@@ -4661,7 +4647,6 @@ _UNKNOWN unk_5AFCF8; // weak
 int dword_5AFD0C[15] = { 67, 88, 173, 181, 236, 247, 164, 91, 7, 56, 63, 192, 199, 248, 255 }; // idb
 struct tagPALETTEENTRY pPalEntries = { 0u, 0u, 0u, 0u }; // idb
 _UNKNOWN unk_5AFD70; // weak
-CHAR aTooManyActors[] = "Too Many Actors"; // idb
 _UNKNOWN unk_5B0630; // weak
 char aDebugLog_2[10] = "Debug Log"; // weak
 char aColourBars[12] = "Colour Bars"; // weak
@@ -4670,37 +4655,15 @@ char aRb_3[] = "rb"; // idb
 char aRb_4[] = "rb"; // idb
 char aRb_5[] = "rb"; // idb
 char aWb_0[] = "wb"; // idb
-CHAR aCantLoadCacheB[] = "Cant load cache block from cache file"; // idb
 int dword_5B0770 = 1; // weak
 float flt_5B0774 = 1.5; // weak
-CHAR aTooManyScrollU[] = "Too Many Scroll UV things on level"; // idb
-CHAR aLevelFileHasnt[] = "Level file hasnt been preprocessed since the year 1832"; // idb
-CHAR aCheckportalvis[] = "CheckPortalVis:Invalid PID"; // idb
-CHAR aSimplecheckpor[] = "SimpleCheckPortalVis:Invalid PID"; // idb
-CHAR aUpdateportalid[] = "UpdatePortalID:Invalid PID"; // idb
-CHAR aPortalraytrace[] = "PortalRaytrace:Invalid PID"; // idb
 char aDsk[5] = ".dsk"; // weak
-CHAR aSkelListOverfl[] = "Skel List Overflow\n"; // idb
-CHAR aMeshVertexBuff[] = "mesh vertex buffer overflow"; // idb
-CHAR aVbufferStackOv[] = "Vbuffer stack overflow"; // idb
-CHAR aMeshListOverfl[] = "Mesh List Overflow\n"; // idb
 char aRenderPortals[15] = "Render Portals"; // weak
 __int16 word_5B1068[10] = { 16, 32, 64, 128, 4, 2, 1024, 512, 8, 0 }; // idb
-CHAR aTooManyPoolsOf[] = "Too many pools of water"; // idb
-CHAR aInvalidSkeleto[] = "Invalid Skeleton Base Model Number"; // idb
-CHAR aInvalidSkeleto_0[] = "Invalid Skeleton Base Model Number"; // idb
-CHAR aOutOfMallocSpa[] = "OUT OF MALLOC SPACE!"; // idb
-CHAR aOutOfMallocSpa_0[] = "OUT OF MALLOC SPACE!"; // idb
-CHAR aOutOfMallocSpa_1[] = "OUT OF MALLOC SPACE!"; // idb
-CHAR aOutOfMallocSpa_2[] = "OUT OF MALLOC SPACE!"; // idb
-CHAR aCylinderRaytra[] = "Cylinder Raytrace Vertex Overflow"; // idb
 float flt_5B1410 = 1.0; // weak
 float flt_5B1414 = 0.081; // weak
 float flt_5B1418 = 0.2; // weak
 _UNKNOWN unk_5B1420; // weak
-CHAR aTooManyTexture[] = "Too Many Textures Allocated"; // idb
-CHAR aTooManyTexture_0[] = "Too Many Textures Allocated"; // idb
-CHAR aFailedToSetVie[] = "Failed to set viewport correctly"; // idb
 __int16 word_5B16A8 = 33; // weak
 char aRb_6[] = "rb"; // idb
 char aFont[5] = "FONT"; // weak
@@ -4713,29 +4676,17 @@ char aSmpl[5] = "SMPL"; // weak
 char aMods[5] = "MODS"; // weak
 char aMdec[5] = "MDEC"; // weak
 char aStop_0[5] = "STOP"; // weak
-CHAR aProceduralText[] = "Procedural Texture List Overflow"; // idb
 int dword_5B17B4 = 8; // weak
 int dword_5B17B8 = 2048; // weak
 char aDefault[] = "default"; // idb
-CHAR aTextureStackOv[] = "Texture Stack Overflow\n"; // idb
-CHAR aTextureStackOv_1[] = "Texture Stack Overflow\n"; // idb
 char aRb_7[] = "rb"; // idb
 char aRb_8[] = "rb"; // idb
 char aWb_1[] = "wb"; // idb
-CHAR aMouseCreationE[] = "Mouse Creation Error"; // idb
-CHAR aMouseDataForma[] = "Mouse Data Format Error"; // idb
-CHAR aMouseCoOpError[] = "Mouse Co-op Error"; // idb
 float flt_5B1D0C = 0.2; // weak
 float flt_5B1D10 = 5120.0; // weak
 int dword_5B1D14 = 1065353216; // weak
-CHAR aTooManyTrailsI[] = "Too Many trails in level"; // idb
-CHAR aTooManyTrailVe[] = "Too Many trail vertices"; // idb
-CHAR aMenuNameTooLar[] = "Menu name too large"; // idb
-CHAR aMenuItemNameTo[] = "Menu item name too large"; // idb
 char aYes[4] = "Yes"; // weak
 char aNo_0[3] = "No"; // weak
-CHAR aVertexMallocFa[] = "Vertex Malloc failed, MemLoadR2Polygon(); File - preproc.c\n"; // idb
-CHAR aPaletteMallocF[] = "Palette Malloc failed, MemLoadR2Texture(); File - preproc.c\n"; // idb
 char aRb_10[] = "rb"; // idb
 char aTexdbTdb[] = "texdb.tdb"; // idb
 char aRb_11[] = "rb"; // idb
@@ -7291,14 +7242,7 @@ char byte_60FDC4[]; // weak
 char byte_60FDC5[]; // weak
 char byte_60FDC6[78]; // idb
 int dword_60FE14; // weak
-int nWidth; // idb
-int nHeight; // idb
-int dword_60FE28; // weak
-int dword_60FE2C; // weak
-int dword_60FE44; // weak
 HWND dword_60FE48; // idb
-int dword_60FE4C; // weak
-int dword_60FE50; // weak
 int dword_60FE64; // weak
 int dword_60FE68; // weak
 int dword_60FE6C; // weak

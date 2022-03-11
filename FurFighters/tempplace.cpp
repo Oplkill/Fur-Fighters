@@ -557,9 +557,9 @@ int __cdecl maybe_NewGame(int a1)
         dword_6049C0 = 0;
         for (j = 0; j < 10; ++j)
         {
-            if (*(_DWORD*)(dword_610448 + 12 * j) == nWidth
-                && *(_DWORD*)(dword_610448 + 12 * j + 4) == nHeight
-                && *(_DWORD*)(dword_610448 + 12 * j + 8) == dword_60FE28)
+            if (*(_DWORD*)(dword_610448 + 12 * j) == dwWidth
+                && *(_DWORD*)(dword_610448 + 12 * j + 4) == dwHeight
+                && *(_DWORD*)(dword_610448 + 12 * j + 8) == dwRGBBitsCount)
             {
                 screenMode = j;
                 if (j >= 5)
@@ -791,7 +791,7 @@ int __cdecl maybe_NewGame(int a1)
 // 604A10: using guessed type int dword_604A10;
 // 604A14: using guessed type int dword_604A14;
 // 604A18: using guessed type int g_MultiplayerMaxPlayers;
-// 60FE28: using guessed type int dword_60FE28;
+// 60FE28: using guessed type int dwRGBBitsCount;
 // 610448: using guessed type int dword_610448;
 // 622C40: using guessed type int dword_622C40;
 // 622C44: using guessed type int dword_622C44;

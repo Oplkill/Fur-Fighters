@@ -43,7 +43,7 @@ int __cdecl maybe_allocateMemory(int a1)
     if (dword_6687A4 > (unsigned int)dword_6687A8)
     {
         writeDebug("\nToo short by %d bytes (min)", dword_6687A4 - dword_6687A8);
-        fatalError(aOutOfMallocSpa);
+        fatalError("OUT OF MALLOC SPACE!");
     }
     return v2;
 }

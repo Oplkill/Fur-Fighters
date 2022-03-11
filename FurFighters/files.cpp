@@ -3,9 +3,6 @@
 #include "debug.h"
 #include "maybe.h"
 
-CHAR aTargaFileNotFo[] = "TARGA file not found"; // idb
-CHAR aTargaFileNotFo_0[] = "TARGA file not found"; // idb
-
 int dword_6673DC; // weak
 void* dword_66738C; // idb
 char* dword_5BE59C; // idb
@@ -163,11 +160,11 @@ int __cdecl loadBitmapFile(const char* fileName)
     if (v3[21] == 32)
     {
         if (sub_56EF1B(Buffer, v4))
-            fatalError(aTargaFileNotFo);
+            fatalError("TARGA file not found");
     }
     else if (sub_56EDB7(Buffer, v4))
     {
-        fatalError(aTargaFileNotFo_0);
+        fatalError("TARGA file not found");
     }
     (*(void(__stdcall**)(int, _DWORD))(*(_DWORD*)dword_5BFFA8 + 128))(dword_5BFFA8, 0);
     return 1;
@@ -1792,7 +1789,7 @@ int __cdecl LoadFile_SKL(char* fileName)
             return i;
     }
     if (lastBuffSKL_i == buffSize_SKL)
-        fatalError(aSkelListOverfl);
+        fatalError("Skel List Overflow\n");
     v3 = lastBuffSKL_i;
     sub_54A3B4((_DWORD*)(dword_6587A0 + 132 * lastBuffSKL_i + 36), fileName);
     strncpy((char*)(132 * v3 + dword_6587A0), fileName, 32u);
@@ -1954,7 +1951,7 @@ int __cdecl sub_53F4F6(const char* a1, _DWORD* a2)
     for (i = 0; ; ++i)
     {
         if (i >= (int)ElementSize)
-            fatalError(aCantLoadCacheB);
+            fatalError("Cant load cache block from cache file");
         if (!strcmp((const char*)&unk_66BC00 + 72 * i, a1))
             break;
     }
