@@ -10,6 +10,8 @@ extern int dword_5BAE80; // weak
 extern int dword_5B94E8; // weak
 extern int g_maybeMaxPlayers; // weak
 extern struct sockaddr to; // idb
+extern BYTE g_maybeSessionName; // idb
+extern BYTE g_maybePrefferedProvider; // idb
 
 int __cdecl sub_51E347(HINSTANCE a1);
 void __cdecl unloadGame(); // idb

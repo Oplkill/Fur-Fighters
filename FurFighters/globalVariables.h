@@ -21,6 +21,13 @@ extern LPVOID lpDD; // idb
 extern int g_CharacterType; // weak
 extern int g_IsFirstPerson; // weak
 extern SIZE_T dwBytes; // idb
+extern int g_maybeIsMouseDevAvailable; // weak
+extern int g_maybeIsKeyboardDevAvailable; // weak
+
+extern int g_maybeDialogBankSampleData; // weak
+extern int dword_6AE4E0; // weak
+extern int g_maybeDialogBankHeaderData; // weak
+extern int dword_6AE528; // weak
 
 extern __int16 g_UselessVariable; // weak
 

@@ -55,6 +55,8 @@ int dword_5AEAFC = 4096; // weak
 int dword_5AD580[] = { 14 }; // weak
 char g_UselessVariableMultiplayerStage[256]; // idb
 struct sockaddr to; // idb
+BYTE g_maybeSessionName; // idb
+BYTE g_maybePrefferedProvider; // idb
 
 int __cdecl sub_520169(HWND hWnd); // idb
 int __stdcall sub_51EA40(int a1, void* a2, size_t Size, int a4, int a5, HWND a6);
@@ -351,7 +353,7 @@ int __cdecl sub_51ED34(HWND hDlg)
     {
         hWnd = GetDlgItem(hDlg, 1004);
         wParam = SendMessageA(hWnd, 0x188u, 0, 0);
-        SendMessageA(hWnd, 0x189u, wParam, (LPARAM)&byte_5BABF4);
+        SendMessageA(hWnd, 0x189u, wParam, (LPARAM)&g_maybePrefferedProvider);
         v7 = (void*)SendMessageA(hWnd, 0x199u, wParam, 0);
         if (v7)
         {
@@ -581,7 +583,7 @@ int __cdecl sub_51E8EB(HWND hDlg)
             (*(void(__thiscall**)(FakeDP*))(*(_DWORD*)v2 + 4))(v2);
         SendMessageA(hWnd, 0x180u, 0, (LPARAM)aWaitForLobbyCo);
         SetFocus(hWnd);
-        wParam = SendMessageA(hWnd, 0x1A2u, 0xFFFFFFFF, (LPARAM)&byte_5BABF4);
+        wParam = SendMessageA(hWnd, 0x1A2u, 0xFFFFFFFF, (LPARAM)&g_maybePrefferedProvider);
         if (wParam == -1)
             SendMessageA(hWnd, 0x186u, 0, 0);
         else
@@ -952,7 +954,7 @@ int __cdecl sub_51FC21(HWND hWnd)
     v5[7] = 299086062;
     v5[8] = -2147457396;
     v5[9] = 1894125741;
-    v5[12] = (int)&byte_5BAD14;
+    v5[12] = (int)&g_maybeSessionName;
     v5[10] = g_maybeMaxPlayers;
     v5[1] = 40964;
     v5[17] = dword_5BAE98;
@@ -3069,7 +3071,7 @@ INT_PTR __stdcall sub_51FF63(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
 
     if (a2 == 272)
     {
-        SetDlgItemTextA(hDlg, 1007, (LPCSTR)&byte_5BAD14);
+        SetDlgItemTextA(hDlg, 1007, (LPCSTR)&g_maybeSessionName);
         CheckDlgButton(hDlg, 1017, 1u);
         SetDlgItemInt(hDlg, 1006, 4u, 0);
         hWnd = GetDlgItem(hDlg, 1009);
@@ -3087,7 +3089,7 @@ INT_PTR __stdcall sub_51FF63(HWND hDlg, UINT a2, WPARAM a3, LPARAM a4)
         {
             v5 = GetDlgItem(hDlg, 1009);
             Translated[1] = SendMessageA(v5, 0x147u, 0, 0);
-            if (GetDlgItemTextA(hDlg, 1007, (LPSTR)&byte_5BAD14, 256))
+            if (GetDlgItemTextA(hDlg, 1007, (LPSTR)&g_maybeSessionName, 256))
             {
                 g_maybeMaxPlayers = GetDlgItemInt(hDlg, 1006, Translated, 0);
                 dword_5B9F08 = IsDlgButtonChecked(hDlg, 1017) == 1;

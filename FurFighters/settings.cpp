@@ -37,15 +37,8 @@ char byte_5A592E = '\0'; // weak
 __int16 word_5A592C = 24942; // weak
 char aSettingsTxt_0[] = "settings.txt"; // idb
 CHAR aResSettings_0[] = "Res Settings"; // idb
-CHAR aResSettings_1[] = "Res Settings"; // idb
 CHAR WindowName[] = "Меховые Кулаки"; // idb
 CHAR ClassName[] = "WINNY"; // idb
-char aBearSpeed[11] = "Bear Speed"; // weak
-char aBearShotDamage[17] = "Bear Shot Damage"; // weak
-char aBearHitDamage[16] = "Bear Hit Damage"; // weak
-char aBearEnergy[12] = "Bear Energy"; // weak
-char aBearScore[11] = "Bear Score"; // weak
-char aBearTime[10] = "Bear Time"; // weak
 char aWeaponsShotgun[19] = "Weapons\\shotgun.r2"; // weak
 char aBearitemsBrnin[22] = "bearitems\\brninhed.r2"; // weak
 char aBearitemsBrtoy[22] = "bearitems\\brtoyhed.r2"; // weak
@@ -98,23 +91,11 @@ char aEnemiesIslecro[] = "enemies\\islecroc.skl"; // idb
 char aEnemiesHellarm_0[] = "enemies\\hellarma.skl"; // idb
 char aEnemiesArmadil_0[] = "enemies\\armadillo.skl"; // idb
 char aBossesViggoSkl[] = "bosses\\viggo.skl"; // idb
-char aCrocSpeed[11] = "Croc Speed"; // weak
-char aCrocEnergy[12] = "Croc Energy"; // weak
-char aCrocDamage[12] = "Croc Damage"; // weak
-char aCrocScore[11] = "Croc Score"; // weak
-char aCrocTime[10] = "Croc Time"; // weak
 char aBearitemsBeret[19] = "bearitems\\beret.r2"; // weak
 char aCrocSrf[9] = "croc.srf"; // weak
 char aEnemiesHellcro_0[] = "enemies\\hellcroc.skl"; // idb
 char aEnemiesIslecro_0[] = "enemies\\islecroc.skl"; // idb
 char aPakdataLevelPa[] = "Pakdata\\level.pak"; // idb
-char aPeacockSpeed[14] = "Peacock Speed"; // weak
-char aPeacockRocketS[21] = "Peacock Rocket Speed"; // weak
-char aPeacockDamage[15] = "Peacock Damage"; // weak
-char aPeacockDamageR[22] = "Peacock Damage Radius"; // weak
-char aPeacockEnergy[15] = "Peacock Energy"; // weak
-char aPeacockScore[14] = "Peacock Score"; // weak
-char aPeacockTime[13] = "Peacock Time"; // weak
 char aBearitemsBeret_1[19] = "bearitems\\beret.r2"; // weak
 char aWeaponsRlaunch_1[21] = "Weapons\\rlauncher.r2"; // weak
 char aPcockSrf[10] = "pcock.srf"; // weak
@@ -151,21 +132,8 @@ char aMaxRockets[12] = "Max Rockets"; // weak
 char aMaxEnergy[11] = "Max Energy"; // weak
 char aMaxSmartAmmo[15] = "Max Smart Ammo"; // weak
 char aMaxFreezeAmmo[16] = "Max Freeze Ammo"; // weak
-CHAR aLighting[] = "Lighting"; // idb
-CHAR aBumpMapping[] = "Bump Mapping"; // idb
-CHAR aTrilinear[] = "Trilinear"; // idb
-CHAR aGamma[] = "Gamma"; // idb
-CHAR aTripleBuffer[] = "Triple Buffer"; // idb
-CHAR aPlayerName_0[] = "Player Name"; // idb
-CHAR aSessionName_0[] = "Session Name"; // idb
-CHAR aLighting_0[] = "Lighting"; // idb
-CHAR aBumpMapping_0[] = "Bump Mapping"; // idb
-CHAR aTrilinear_0[] = "Trilinear"; // idb
-CHAR aTripleBuffer_0[] = "Triple Buffer"; // idb
-CHAR aGamma_0[] = "Gamma"; // idb
 CHAR SubKey[] = "SOFTWARE\\Bizarre Creations\\Fur Fighters"; // idb
 char aRt[] = "rt"; // idb
-CHAR aControllerConf_0[] = "Controller Configuration"; // idb
 
 int g_NumLoadedLineSettingsInFile; // weak
 int g_SettingsVariableTypes[3061]; // idb
@@ -222,6 +190,30 @@ int g_deviceGUIDs1; // weak
 int dwWidth; // idb
 int dwHeight; // idb
 int dwRGBBitsCount; // weak
+int junk1; // weak
+int g_bearSpeed[5]; // idb
+int g_bearShotDamage; // weak
+int g_bearHitDamage; // weak
+int g_bearEnergy; // weak
+_BYTE g_bearScore[4]; // idb
+_BYTE g_bearTime[28]; // idb
+int g_crocSpeed; // weak
+int dword_606864; // weak
+_BYTE g_crocScore[4]; // idb
+int g_crocEnergy; // weak
+int g_crocDamage; // weak
+_BYTE g_crocTime[4]; // idb
+int g_PeacockSpeed; // weak
+int g_PeacockDamage; // weak
+_BYTE g_PeacockRocketSpeed[4]; // idb
+int g_PeacockDamageRadius; // weak
+int g_PeacocEnergy; // weak
+_BYTE g_PeacockScore[4]; // idb
+_BYTE g_PeacockTime[30]; // idb
+int dword_5CDC3C; // weak
+int dword_5CDC40; // weak
+int dword_5CDC44; // weak
+_UNKNOWN unk_5BFFC8; // weak
 
 LSTATUS sub_56A4D1();
 int __cdecl showDialogSettingsBox(LPARAM dwInitParam); // idb
@@ -229,7 +221,7 @@ INT_PTR __stdcall dialogGameSettingsCallback(HWND, UINT, WPARAM, LPARAM); // idb
 LRESULT __cdecl sub_57951B(HWND hDlg, int a2, int a3, int a4, WPARAM a5);
 int __cdecl sub_57972A(_DWORD* a1, char a2);
 _DWORD* __cdecl sub_5791DC(_DWORD* a1, _DWORD* a2);
-int __cdecl sub_523E05(HKEY hKey, LPCSTR lpValueName, BYTE* lpData); // idb
+int __cdecl LoadRegisterSettings(HKEY hKey, LPCSTR lpValueName, BYTE* lpData); // idb
 
 //----- (0047B665) --------------------------------------------------------
 int __cdecl loadSettings(char* FileName)
@@ -423,7 +415,7 @@ int __cdecl initSettings(HINSTANCE hInstance)
     *(_DWORD*)(dword_5C6448 + 1176) = *(_DWORD*)&g_TrippleBuffer;
     showDialogSettingsBox((LPARAM)&dword_5C6448);
     *(_DWORD*)&g_TrippleBuffer = *(_DWORD*)(dword_5C6448 + 1176);
-    RegSetValueExA(regKey, aResSettings_1, 0, 1u, (const BYTE*)(dword_5C6448 + 1220), 4u);
+    RegSetValueExA(regKey, "Res Settings", 0, 1u, (const BYTE*)(dword_5C6448 + 1220), 4u);
     loadVideoSettings();
     g_deviceGUIDs0 = *(_DWORD*)(dword_5C6448 + 284);
     g_deviceGUIDs1 = *(_DWORD*)(dword_5C6448 + 40);
@@ -451,7 +443,7 @@ int __cdecl initSettings(HINSTANCE hInstance)
         UpdateWindow(hWnd);
         SetFocus(hWnd);
         ShowCursor(0);
-        dword_60FE48 = hWnd;
+        g_WindowHWnd = hWnd;
         result = 1;
     }
     else
@@ -603,47 +595,47 @@ int __cdecl maybe_LoadSettingsValue(const char* settingsName, void* variable, in
 //----- (00411E50) --------------------------------------------------------
 int loadBearSettings()
 {
-    maybe_LoadSettingsValue(aBearSpeed, dword_607080, settings::tFloat1, 10);
-    maybe_LoadSettingsValue(aBearShotDamage, &dword_607094, settings::tDWrord, 15);
-    maybe_LoadSettingsValue(aBearHitDamage, &dword_607098, settings::tDWrord, 10);
-    maybe_LoadSettingsValue(aBearEnergy, &dword_60709C, settings::tDWrord, 30);
-    maybe_LoadSettingsValue(aBearScore, byte_6070A0, settings::tDWrord, 50);
-    return maybe_LoadSettingsValue(aBearTime, byte_6070A4, settings::tDWrord, 10);
+    maybe_LoadSettingsValue("Bear Speed", g_bearSpeed, settings::tFloat1, 10);
+    maybe_LoadSettingsValue("Bear Shot Damage", &g_bearShotDamage, settings::tDWrord, 15);
+    maybe_LoadSettingsValue("Bear Hit Damage", &g_bearHitDamage, settings::tDWrord, 10);
+    maybe_LoadSettingsValue("Bear Energy", &g_bearEnergy, settings::tDWrord, 30);
+    maybe_LoadSettingsValue("Bear Score", g_bearScore, settings::tDWrord, 50);
+    return maybe_LoadSettingsValue("Bear Time", g_bearTime, settings::tDWrord, 10);
 }
-// 607094: using guessed type int dword_607094;
-// 607098: using guessed type int dword_607098;
-// 60709C: using guessed type int dword_60709C;
+// 607094: using guessed type int g_bearShotDamage;
+// 607098: using guessed type int g_bearHitDamage;
+// 60709C: using guessed type int g_bearEnergy;
 
 //----- (0042A970) --------------------------------------------------------
 int loadCrocodyleSettings()
 {
-    maybe_LoadSettingsValue(aCrocSpeed, &dword_606860, settings::tFloat1, 30);
+    maybe_LoadSettingsValue("Croc Speed", &g_crocSpeed, settings::tFloat1, 30);
     dword_606864 = 1048576000;
-    maybe_LoadSettingsValue(aCrocEnergy, &dword_60686C, settings::tDWrord, 30);
-    maybe_LoadSettingsValue(aCrocDamage, &dword_606870, settings::tDWrord, 15);
-    maybe_LoadSettingsValue(aCrocScore, byte_606868, settings::tDWrord, 50);
-    return maybe_LoadSettingsValue(aCrocTime, byte_606874, settings::tDWrord, 20);
+    maybe_LoadSettingsValue("Croc Energy", &g_crocEnergy, settings::tDWrord, 30);
+    maybe_LoadSettingsValue("Croc Damage", &g_crocDamage, settings::tDWrord, 15);
+    maybe_LoadSettingsValue("Croc Score", g_crocScore, settings::tDWrord, 50);
+    return maybe_LoadSettingsValue("Croc Time", g_crocTime, settings::tDWrord, 20);
 }
-// 606860: using guessed type int dword_606860;
+// 606860: using guessed type int g_crocSpeed;
 // 606864: using guessed type int dword_606864;
-// 60686C: using guessed type int dword_60686C;
-// 606870: using guessed type int dword_606870;
+// 60686C: using guessed type int g_crocEnergy;
+// 606870: using guessed type int g_crocDamage;
 
 //----- (0048C7B0) --------------------------------------------------------
 int loadPeacockSettings()
 {
-    maybe_LoadSettingsValue(aPeacockSpeed, &dword_5CDCA0, settings::tFloat1, 10);
-    maybe_LoadSettingsValue(aPeacockRocketS, byte_5CDCA8, settings::tFloat1, 200);
-    maybe_LoadSettingsValue(aPeacockDamage, &dword_5CDCA4, settings::tDWrord, 20);
-    maybe_LoadSettingsValue(aPeacockDamageR, &dword_5CDCAC, settings::tFloat1, 600);
-    maybe_LoadSettingsValue(aPeacockEnergy, &dword_5CDCB0, settings::tDWrord, 30);
-    maybe_LoadSettingsValue(aPeacockScore, byte_5CDCB4, settings::tDWrord, 50);
-    return maybe_LoadSettingsValue(aPeacockTime, byte_5CDCB8, settings::tDWrord, 20);
+    maybe_LoadSettingsValue("Peacock Speed", &g_PeacockSpeed, settings::tFloat1, 10);
+    maybe_LoadSettingsValue("Peacock Rocket Speed", g_PeacockRocketSpeed, settings::tFloat1, 200);
+    maybe_LoadSettingsValue("Peacock Damage", &g_PeacockDamage, settings::tDWrord, 20);
+    maybe_LoadSettingsValue("Peacock Damage Radius", &g_PeacockDamageRadius, settings::tFloat1, 600);
+    maybe_LoadSettingsValue("Peacock Energy", &g_PeacocEnergy, settings::tDWrord, 30);
+    maybe_LoadSettingsValue("Peacock Score", g_PeacockScore, settings::tDWrord, 50);
+    return maybe_LoadSettingsValue("Peacock Time", g_PeacockTime, settings::tDWrord, 20);
 }
-// 5CDCA0: using guessed type int dword_5CDCA0;
-// 5CDCA4: using guessed type int dword_5CDCA4;
-// 5CDCAC: using guessed type int dword_5CDCAC;
-// 5CDCB0: using guessed type int dword_5CDCB0;
+// 5CDCA0: using guessed type int g_PeacockSpeed;
+// 5CDCA4: using guessed type int g_PeacockDamage;
+// 5CDCAC: using guessed type int g_PeacockDamageRadius;
+// 5CDCB0: using guessed type int g_PeacocEnergy;
 
 //----- (0048ED94) --------------------------------------------------------
 int loadWeaponSettings()
@@ -813,23 +805,23 @@ LSTATUS sub_56A4D1()
     BYTE Data[4]; // [esp+Ch] [ebp-4h] BYREF
 
     cbData = 4;
-    if (RegQueryValueExA(regKey, aLighting_0, 0, &Type, Data, &cbData))
+    if (RegQueryValueExA(regKey, "Lighting", 0, &Type, Data, &cbData))
         *(_DWORD*)&g_Lighting = 1;
     else
         *(_DWORD*)&g_Lighting = *(_DWORD*)Data;
-    if (RegQueryValueExA(regKey, aBumpMapping_0, 0, &Type, Data, &cbData))
+    if (RegQueryValueExA(regKey, "Bump Mapping", 0, &Type, Data, &cbData))
         *(_DWORD*)&g_BumpMapping = 0;
     else
         *(_DWORD*)&g_BumpMapping = *(_DWORD*)Data;
-    if (RegQueryValueExA(regKey, aTrilinear_0, 0, &Type, Data, &cbData))
+    if (RegQueryValueExA(regKey, "Trilinear", 0, &Type, Data, &cbData))
         *(_DWORD*)&g_Trilinear = 0;
     else
         *(_DWORD*)&g_Trilinear = *(_DWORD*)Data;
-    if (RegQueryValueExA(regKey, aTripleBuffer_0, 0, &Type, Data, &cbData))
+    if (RegQueryValueExA(regKey, "Triple Buffer", 0, &Type, Data, &cbData))
         *(_DWORD*)&g_TrippleBuffer = 0;
     else
         *(_DWORD*)&g_TrippleBuffer = *(_DWORD*)Data;
-    result = RegQueryValueExA(regKey, aGamma_0, 0, &Type, Data, &cbData);
+    result = RegQueryValueExA(regKey, "Gamma", 0, &Type, Data, &cbData);
     if (result)
     {
         *(_DWORD*)&g_Gamma = 200;
@@ -843,27 +835,27 @@ LSTATUS sub_56A4D1()
 }
 
 //----- (00523AB8) --------------------------------------------------------
-int __cdecl loadPlayerName(const char* a1)
+void __cdecl loadPlayerName(const char* a1)
 {
     strcpy((char*)&String, a1);
-    return sub_523E05(regKey, aPlayerName_0, &String);
+    LoadRegisterSettings(regKey, "Player Name", &String);
 }
 
 //----- (00523B2D) --------------------------------------------------------
 int __cdecl loadGameSessionName(const char* a1)
 {
-    strcpy((char*)&byte_5BAD14, a1);
-    return sub_523E05(regKey, aSessionName_0, &byte_5BAD14);
+    strcpy((char*)&g_maybeSessionName, a1);
+    return LoadRegisterSettings(regKey, "Session Name", &g_maybeSessionName);
 }
 
 //----- (0056A43D) --------------------------------------------------------
 LSTATUS loadVideoSettings()
 {
-    RegSetValueExA(regKey, aLighting, 0, 4u, &g_Lighting, 4u);
-    RegSetValueExA(regKey, aBumpMapping, 0, 4u, &g_BumpMapping, 4u);
-    RegSetValueExA(regKey, aTrilinear, 0, 4u, &g_Trilinear, 4u);
-    RegSetValueExA(regKey, aGamma, 0, 4u, &g_Gamma, 4u);
-    return RegSetValueExA(regKey, aTripleBuffer, 0, 4u, &g_TrippleBuffer, 4u);
+    RegSetValueExA(regKey, "Lighting", 0, 4u, &g_Lighting, 4u);
+    RegSetValueExA(regKey, "Bump Mapping", 0, 4u, &g_BumpMapping, 4u);
+    RegSetValueExA(regKey, "Trilinear", 0, 4u, &g_Trilinear, 4u);
+    RegSetValueExA(regKey, "Gamma", 0, 4u, &g_Gamma, 4u);
+    return RegSetValueExA(regKey, "Triple Buffer", 0, 4u, &g_TrippleBuffer, 4u);
 }
 
 //----- (00579201) --------------------------------------------------------
@@ -983,7 +975,7 @@ LSTATUS loadControllerSettings()
     BYTE Data[204]; // [esp+14h] [ebp-CCh] BYREF
 
     cbData = 204;
-    result = RegQueryValueExA(regKey, aControllerConf_0, 0, &Type, Data, &cbData);
+    result = RegQueryValueExA(regKey, "Controller Configuration", 0, &Type, Data, &cbData);
     if (!result)
         qmemcpy(&g_ControllerSettings, Data, cbData);
     return result;
@@ -1130,7 +1122,7 @@ _DWORD* __cdecl sub_5791DC(_DWORD* a1, _DWORD* a2)
 // 5C6068: using guessed type int dword_5C6068;
 
 //----- (00523E05) --------------------------------------------------------
-int __cdecl sub_523E05(HKEY hKey, LPCSTR lpValueName, BYTE* lpData)
+int __cdecl LoadRegisterSettings(HKEY hKey, LPCSTR lpValueName, BYTE* lpData)
 {
     int result; // eax
 
@@ -1142,11 +1134,10 @@ int __cdecl sub_523E05(HKEY hKey, LPCSTR lpValueName, BYTE* lpData)
 }
 
 //----- (00523DAD) --------------------------------------------------------
-int __cdecl loadRegisterSetting(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, int a5)
+void __cdecl loadRegisterSetting(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, const char* a5)
 {
     DWORD Type; // [esp+Ch] [ebp-4h] BYREF
 
     if (RegQueryValueExA(hKey, lpValueName, 0, &Type, lpData, &cbData))
-        strcpy((char*)lpData, (const char*)a5);
-    return 0;
+        strcpy((char*)lpData, a5);
 }

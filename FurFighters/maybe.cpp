@@ -67,3 +67,29 @@ int __cdecl sub_47B5A5(char* String1)
     return -1;
 }
 // 5A3908: using guessed type char *off_5A3908;
+
+//----- (00438E31) --------------------------------------------------------
+int __cdecl maybeLoadDialog(const char* a1)
+{
+    int result; // eax
+    int v2; // [esp+8h] [ebp-28h] BYREF
+    const void* v3; // [esp+Ch] [ebp-24h]
+    char Buffer[32]; // [esp+10h] [ebp-20h] BYREF
+
+    sprintf(Buffer, "%s%s", a1, off_59E4B4[languageId]);
+    writeDebug("Loading Dialogue data ...");
+    v3 = (const void*)someLoadFile(Buffer, (int)&v2);
+    dword_6045CC = maybe_allocateMemory(v2);
+    qmemcpy((void*)dword_6045CC, v3, v2);
+    result = sub_53F213();
+    dword_605CAC = 0;
+    dword_605D04 = 0;
+    return result;
+}
+// 53F213: using guessed type int sub_53F213(void);
+// 5624E0: using guessed type _DWORD __cdecl maybe_allocateMemory(_DWORD);
+// 59E4B4: using guessed type char *off_59E4B4[5];
+// 6045CC: using guessed type int dword_6045CC;
+// 6045D4: using guessed type int languageId;
+// 605CAC: using guessed type int dword_605CAC;
+// 605D04: using guessed type int dword_605D04;

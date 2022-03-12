@@ -22,11 +22,11 @@ char Destination[32]; // idb
 
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);
 int sub_45C710(HRESULT initResult);
-int __stdcall sub_523623(HINSTANCE a1, HINSTANCE a2, LPSTR a3, int a4);
+void __stdcall AnotherGameInitialization(HINSTANCE a1, HINSTANCE a2, LPSTR a3, int a4);
 int __cdecl parseArguments(LPSTR a1);
-int sub_51ADB7();
-int sub_4494D3();
-int sub_575614();
+void sub_51ADB7();
+void sub_4494D3();
+void sub_575614();
 
 //----- (0051A330) --------------------------------------------------------
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
@@ -44,7 +44,7 @@ int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
     emptyFunction0("Network Debug");
     if (!initSettings(hInstance))
         return 0;
-    sub_523623(hInstance, hPrevInstance, lpCmdLine, nShowCmd);
+    AnotherGameInitialization(hInstance, hPrevInstance, lpCmdLine, nShowCmd);
     SetFocus(hWnd);
     parseArguments(lpCmdLine);
     some_init();
@@ -72,7 +72,7 @@ int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 // 51ADB7: using guessed type int sub_51ADB7(void);
 // 51AE27: using guessed type int __cdecl parseArguments(_DWORD);
 // 5227D0: using guessed type int sub_5227D0(const char *, ...);
-// 523623: using guessed type _DWORD __stdcall sub_523623(_DWORD, _DWORD, _DWORD, _DWORD);
+// 523623: using guessed type _DWORD __stdcall AnotherGameInitialization(_DWORD, _DWORD, _DWORD, _DWORD);
 // 5B9F50: using guessed type int g_UseGameSpy;
 // 6673E0: using guessed type int dword_6673E0;
 
@@ -96,21 +96,20 @@ int sub_45C710(HRESULT initResult)
 // 604524: using guessed type int dword_604524;
 
 //----- (00523623) --------------------------------------------------------
-int __stdcall sub_523623(HINSTANCE a1, HINSTANCE a2, LPSTR a3, int a4)
+void __stdcall AnotherGameInitialization(HINSTANCE a1, HINSTANCE a2, LPSTR a3, int a4)
 {
     sub_5242F0();
     atexit(unloadGame);
     g_hInstanceInt = (int)a1;
     ShowCursor(1);
-    loadRegisterSetting(regKey, "Player Name", &String, 0x20u, (int)&unk_5BAEA4);
-    loadRegisterSetting(regKey, "Session Name", &byte_5BAD14, 0x100u, (int)&unk_5BAEA8);
-    loadRegisterSetting(regKey, "Preferred Provider", &byte_5BABF4, 0x100u, (int)&unk_5BAEAC);
+    loadRegisterSetting(regKey, "Player Name", &String, 0x20u, &unk_5BAEA4);
+    loadRegisterSetting(regKey, "Session Name", &g_maybeSessionName, 0x100u, &unk_5BAEA8);
+    loadRegisterSetting(regKey, "Preferred Provider", &g_maybePrefferedProvider, 0x100u, &unk_5BAEAC);
     pHandles = CreateEventA(0, 0, 0, 0);
     if (CoInitialize(0) < 0)
         emptyFunction0();
     else
         sub_523C7A(a1);
-    return 1;
 }
 // 5BAE14: using guessed type int g_hInstanceInt;
 
@@ -257,14 +256,14 @@ int __cdecl parseArguments(LPSTR a1)
 // 668784: using guessed type int g_GameSpyConnectionType;
 
 //----- (0051ADB7) --------------------------------------------------------
-int sub_51ADB7()
+void sub_51ADB7()
 {
     sub_4494D3();
-    return ShowCursor(1);
+    ShowCursor(1);
 }
 
 //----- (004494D3) --------------------------------------------------------
-int sub_4494D3()
+void sub_4494D3()
 {
     void* v0; // ecx
 
@@ -272,30 +271,27 @@ int sub_4494D3()
     sub_568F8A(v0);
     emptyFunction4();
     sub_584E87(dword_66D820);
-    return sub_575614();
+    sub_575614();
 }
 // 4494E2: variable 'v0' is possibly undefined
 // 53F828: using guessed type int sub_53F828(void);
 // 575614: using guessed type int sub_575614(void);
 
 //----- (00575614) --------------------------------------------------------
-int sub_575614()
+void sub_575614()
 {
-    int result; // eax
-
-    if (dword_622330)
+    if (g_maybeIsKeyboardDevAvailable)
     {
         (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_622044 + 32))(dword_622044, dword_622044);
-        dword_622330 = 0;
+        g_maybeIsKeyboardDevAvailable = 0;
     }
     if (dword_622044)
         (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_622044 + 8))(dword_622044, dword_622044);
-    result = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_62232C + 8))(dword_62232C, dword_62232C);
-    if (dword_622334)
-        result = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_622334 + 8))(dword_622334, dword_622334);
-    return result;
+    (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_62232C + 8))(dword_62232C, dword_62232C);
+    if (g_maybeDirectInput)
+        (*(int(__thiscall**)(int, int))(*(_DWORD*)g_maybeDirectInput + 8))(g_maybeDirectInput, g_maybeDirectInput);
 }
 // 622044: using guessed type int dword_622044;
 // 62232C: using guessed type int dword_62232C;
-// 622330: using guessed type int dword_622330;
-// 622334: using guessed type int dword_622334;
+// 622330: using guessed type int g_maybeIsKeyboardDevAvailable;
+// 622334: using guessed type int g_maybeDirectInput;

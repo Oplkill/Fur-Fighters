@@ -9,6 +9,8 @@ extern int numVideoDevices; // weak
 extern __int16 g_RedBits; // weak
 extern __int16 g_GreenBits; // weak
 extern __int16 g_BlueBits; // weak
+extern HWND g_WindowHWnd; // idb
+extern int g_maybeDirectInput; // weak
 
 void __stdcall getDirectXErrorName(int a1, size_t BufferCount, char* Buffer);
 [[noreturn]] void __cdecl throwDirectXError(int a1);

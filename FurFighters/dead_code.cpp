@@ -16,15 +16,6 @@
 #include <cmath>
 #include "sounds.h"
 
-char aMilesFast2dPos_1[31] = "Miles Fast 2D Positional Audio"; // weak
-char aRadGameToolsRs_2[28] = "RAD Game Tools RSX 3D Audio"; // weak
-char aDirectsound3dH_2[31] = "DirectSound3D Hardware Support"; // weak
-char aDirectsound3dS_3[33] = "DirectSound3D Software Emulation"; // weak
-char aCreativeLabsEa_4[23] = "Creative Labs EAX (TM)"; // weak
-char aAurealA3dInter_0[28] = "Aureal A3D Interactive (TM)"; // weak
-char aCreativeLabsEa_5[23] = "Creative Labs EAX (TM)"; // weak
-CHAR aControllerConf[] = "Controller Configuration"; // idb
-
 int dword_6049B8; // weak
 int dword_604730; // weak
 int dword_604738; // weak
@@ -222,17 +213,17 @@ void emptyFunction17()
 //----- (0058216D) --------------------------------------------------------
 int sub_58216D()
 {
-    if (strcmp((const char*)sound3DProviderName, aMilesFast2dPos_1)
-        && strcmp((const char*)sound3DProviderName, aRadGameToolsRs_2)
-        && strcmp((const char*)sound3DProviderName, aDirectsound3dH_2)
-        && strcmp((const char*)sound3DProviderName, aDirectsound3dS_3))
+    if (strcmp(sound3DProviderName, "Miles Fast 2D Positional Audio")
+        && strcmp(sound3DProviderName, "RAD Game Tools RSX 3D Audio")
+        && strcmp(sound3DProviderName, "DirectSound3D Hardware Support")
+        && strcmp(sound3DProviderName, "DirectSound3D Software Emulation"))
     {
-        if (!strcmp((const char*)sound3DProviderName, aCreativeLabsEa_4))
+        if (!strcmp(sound3DProviderName, "Creative Labs EAX (TM)"))
         {
             debugFunc1();
             return 1;
         }
-        strcmp((const char*)sound3DProviderName, aAurealA3dInter_0);
+        strcmp(sound3DProviderName, "Aureal A3D Interactive (TM)");
     }
     debugFunc1();
     return 0;
@@ -243,7 +234,7 @@ int sub_58216D()
 //----- (0044D112) --------------------------------------------------------
 LSTATUS sub_44D112()
 {
-    return RegSetValueExA(regKey, aControllerConf, 0, 3u, &g_ControllerSettings, 0xCCu);
+    return RegSetValueExA(regKey, "Controller Configuration", 0, 3u, &g_ControllerSettings, 0xCCu);
 }
 
 //----- (00445B65) --------------------------------------------------------
@@ -708,3 +699,527 @@ int sub_581251()
     return g_NumAudioProviders;
 }
 // 6AE2D0: using guessed type int g_NumAudioProviders;
+
+//----- (004394C5) --------------------------------------------------------
+double __cdecl sub_4394C5(float a1, float a2)
+{
+    if (a1 >= 0.0)
+    {
+        if (a1 == 0.0)
+            a1 = 1.0;
+    }
+    else
+    {
+        a1 = -a1;
+    }
+    if (a1 > (double)a2)
+        a1 = a2;
+    return a1;
+}
+
+//----- (0057F130) --------------------------------------------------------
+int __cdecl sub_57F130(__int16 a1, int a2)
+{
+    int result; // eax
+
+    if (a1 == -1)
+        return 0;
+    if (isSoundDisabled)
+        return 0;
+    if ((a1 & 0x8000) == 0x8000 || !maybe_setSound3DDistance(sound3DSampleHandle[a1], a2))
+    {
+        debugFunc1();
+        result = 0;
+    }
+    else
+    {
+        debugFunc1();
+        result = 1;
+    }
+    return result;
+}
+// 607114: using guessed type char byte_607114;
+// 607115: using guessed type char byte_607115;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (0057EEDA) --------------------------------------------------------
+int __cdecl sub_57EEDA(__int16 a1, float* a2)
+{
+    int result; // eax
+
+    if (a1 == -1)
+        return 0;
+    if (isSoundDisabled)
+        return 0;
+    if ((a1 & 0x8000) == 0x8000 || !maybe_setSound3DVelocityVec2(sound3DSampleHandle[a1], a2))
+    {
+        debugFunc1();
+        result = 0;
+    }
+    else
+    {
+        debugFunc1();
+        result = 1;
+    }
+    return result;
+}
+// 607114: using guessed type char byte_607114;
+// 607115: using guessed type char byte_607115;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (0057EE12) --------------------------------------------------------
+int __cdecl sub_57EE12(__int16 a1, _DWORD* a2)
+{
+    int result; // eax
+
+    if (a1 == -1)
+        return 0;
+    if (isSoundDisabled)
+        return 0;
+    if ((a1 & 0x8000) == 0x8000 || !maybe_setSound3DPosition2(sound3DSampleHandle[a1], a2))
+    {
+        debugFunc1();
+        result = 0;
+    }
+    else
+    {
+        debugFunc1();
+        result = 1;
+    }
+    return result;
+}
+// 607114: using guessed type char byte_607114;
+// 607115: using guessed type char byte_607115;
+// 6AE838: using guessed type int isSoundDisabled;
+
+//----- (005832FB) --------------------------------------------------------
+__int64 GetSoundMsCountFormatter2()
+{
+    float v1; // [esp+0h] [ebp-10h]
+
+    v1 = (float)(unsigned int)AIL_ms_count();
+    return (__int64)(v1 * 0.001 * 30.0);
+}
+// 59434C: using guessed type _DWORD __stdcall AIL_ms_count();
+
+//----- (00583EA4) --------------------------------------------------------
+int sub_583EA4()
+{
+    int result; // eax
+
+    _cfltcvt_init_5();
+    dword_5C60A4 = _ms_p5_mp_test_fdiv();
+    result = _setdefaultprecision();
+    __asm { fnclex }
+    return result;
+}
+// 583EBC: using guessed type int _cfltcvt_init_5(void);
+// 586CFA: using guessed type int _setdefaultprecision(void);
+// 586D4A: using guessed type int _ms_p5_mp_test_fdiv(void);
+// 5C60A4: using guessed type int dword_5C60A4;
+
+//----- (00584D8B) --------------------------------------------------------
+LPVOID __cdecl sub_584D8B(unsigned int a1)
+{
+    LPVOID result; // eax
+    unsigned int v2; // esi
+    int v3; // eax
+    SIZE_T v4; // eax
+    void* v5; // [esp+Ch] [ebp-1Ch]
+    int v6; // [esp+Ch] [ebp-1Ch]
+
+    if (dword_6AEBC4 == 3)
+    {
+        if (a1 <= dword_6AEBBC)
+        {
+            _lock(9);
+            v5 = (void*)__sbh_alloc_block(a1);
+            _unlock(9);
+            result = v5;
+            if (v5)
+                return result;
+        }
+        goto LABEL_12;
+    }
+    if (dword_6AEBC4 != 2)
+    {
+    LABEL_12:
+        v3 = a1;
+        if (!a1)
+            v3 = 1;
+        v4 = v3 + 15;
+        LOBYTE(v4) = v4 & 0xF0;
+        return HeapAlloc(hHeap, 0, v4);
+    }
+    if (a1)
+        v2 = (a1 + 15) & 0xFFFFFFF0;
+    else
+        v2 = 16;
+    if (v2 > dword_5B7BAC || (_lock(9), v6 = sub_58A1B1(v2 >> 4), _unlock(9), (result = (LPVOID)v6) == 0))
+        result = HeapAlloc(hHeap, 0, v2);
+    return result;
+}
+// 588EF8: using guessed type _DWORD __cdecl _lock(_DWORD);
+// 588F59: using guessed type _DWORD __cdecl _unlock(_DWORD);
+// 58970E: using guessed type _DWORD __cdecl __sbh_alloc_block(_DWORD);
+// 5B7BAC: using guessed type int dword_5B7BAC;
+// 6AEBBC: using guessed type int dword_6AEBBC;
+// 6AEBC4: using guessed type int dword_6AEBC4;
+
+//----- (00589315) --------------------------------------------------------
+int __cdecl strangefunc1Op(int a1)
+{
+    int v1; // eax
+    int v2; // eax
+
+    hHeap = HeapCreate(a1 == 0, 0x1000u, 0);
+    if (!hHeap)
+        return 0;
+    v1 = sub_5891CD();
+    dword_6AEBC4 = v1;
+    if (v1 == 3)
+    {
+        v2 = __sbh_heap_init(1016);
+    }
+    else
+    {
+        if (v1 != 2)
+            return 1;
+        v2 = sub_589EB9();
+    }
+    if (!v2)
+    {
+        HeapDestroy(hHeap);
+        return 0;
+    }
+    return 1;
+}
+// 5891CD: using guessed type int sub_5891CD(void);
+// 589372: using guessed type _DWORD __cdecl __sbh_heap_init(_DWORD);
+// 589EB9: using guessed type int sub_589EB9(void);
+// 6AEBC4: using guessed type int dword_6AEBC4;
+
+//----- (0058A7FD) --------------------------------------------------------
+int sub_58A7FD()
+{
+    return flsall(1);
+}
+// 58A806: using guessed type _DWORD __cdecl flsall(_DWORD);
+
+//----- (0058B327) --------------------------------------------------------
+int* __cdecl sub_58B327(unsigned int a1)
+{
+    int v1; // esi
+    char* v2; // eax
+    int* result; // eax
+
+    v1 = 0;
+    *__doserrno() = a1;
+    v2 = (char*)&unk_5B7BB0;
+    do
+    {
+        if (a1 == *(_DWORD*)v2)
+        {
+            result = _errno();
+            *result = dword_5B7BB4[2 * v1];
+            return result;
+        }
+        v2 += 8;
+        ++v1;
+    } while (v2 < asc_5B7D18);
+    if (a1 < 0x13 || a1 > 0x24)
+    {
+        if (a1 < 0xBC || a1 > 0xCA)
+        {
+            result = _errno();
+            *result = 22;
+        }
+        else
+        {
+            result = _errno();
+            *result = 8;
+        }
+    }
+    else
+    {
+        result = _errno();
+        *result = 13;
+    }
+    return result;
+}
+
+//----- (0058D88D) --------------------------------------------------------
+void __usercall __noreturn sub_58D88D(EXCEPTION_POINTERS* a1, int a2, int a3, int a4)
+{
+    int v4; // [esp-Ch] [ebp-24h] BYREF
+    int v5; // [esp-8h] [ebp-20h]
+    int v6; // [esp-4h] [ebp-1Ch]
+    CPPEH_RECORD ms_exc; // [esp+0h] [ebp-18h]
+
+    ms_exc.registration.ScopeTable = stru_597740;
+    ms_exc.registration.ExceptionHandler = _except_handler3;
+    ms_exc.registration.Next = (struct _EH3_EXCEPTION_REGISTRATION*)NtCurrentTeb()->NtTib.ExceptionList;
+    ms_exc.exc_ptr = a1;
+    v6 = a2;
+    v5 = a4;
+    v4 = a3;
+    ms_exc.old_esp = (DWORD)&v4;
+    ms_exc.registration.TryLevel = 0;
+    if (off_5B7EC0)
+        off_5B7EC0(
+            v4,
+            v5,
+            v6,
+            ms_exc.old_esp,
+            ms_exc.exc_ptr,
+            ms_exc.registration.Next,
+            ms_exc.registration.ExceptionHandler,
+            ms_exc.registration.ScopeTable,
+            1);
+    ms_exc.registration.TryLevel = -1;
+    terminate();
+}
+// 597740: using guessed type _SCOPETABLE_ENTRY stru_597740[2];
+// 5B7EC0: using guessed type int (__cdecl *off_5B7EC0)(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
+
+//----- (0058DA08) --------------------------------------------------------
+SIZE_T __cdecl sub_58DA08(LPCVOID lpMem)
+{
+    int v1; // esi
+    bool v2; // zf
+    unsigned __int8* v3; // eax
+    void** v5; // [esp+Ch] [ebp-2Ch] BYREF
+    unsigned __int8* v6; // [esp+10h] [ebp-28h]
+    unsigned int v7; // [esp+14h] [ebp-24h] BYREF
+    int v8; // [esp+18h] [ebp-20h]
+    int v9; // [esp+1Ch] [ebp-1Ch]
+    CPPEH_RECORD ms_exc; // [esp+20h] [ebp-18h]
+
+    if (dword_6AEBC4 == 3)
+    {
+        _lock(9);
+        ms_exc.registration.TryLevel = 0;
+        v9 = __sbh_find_block(lpMem);
+        if (v9)
+        {
+            v1 = *((_DWORD*)lpMem - 1) - 9;
+            v8 = v1;
+        }
+        else
+        {
+            v1 = v8;
+        }
+        ms_exc.registration.TryLevel = -1;
+        _unlock(9);
+        v2 = v9 == 0;
+    }
+    else
+    {
+        if (dword_6AEBC4 != 2)
+            return HeapSize(hHeap, 0, lpMem);
+        _lock(9);
+        ms_exc.registration.TryLevel = 1;
+        v3 = (unsigned __int8*)sub_58A115((unsigned int)lpMem, &v5, &v7);
+        v6 = v3;
+        if (v3)
+        {
+            v1 = 16 * *v3;
+            v8 = v1;
+        }
+        else
+        {
+            v1 = v8;
+        }
+        ms_exc.registration.TryLevel = -1;
+        _unlock(9);
+        v2 = v6 == 0;
+    }
+    if (v2)
+        return HeapSize(hHeap, 0, lpMem);
+    return v1;
+}
+// 588EF8: using guessed type _DWORD __cdecl _lock(_DWORD);
+// 588F59: using guessed type _DWORD __cdecl _unlock(_DWORD);
+// 5893BA: using guessed type _DWORD __cdecl __sbh_find_block(_DWORD);
+// 6AEBC4: using guessed type int dword_6AEBC4;
+
+//----- (0058E137) --------------------------------------------------------
+int* __cdecl sub_58E137(DWORD NumberOfBytesWritten)
+{
+    int v1; // ecx
+    int* result; // eax
+    int v3; // esi
+    char* v4; // edi
+    const char** v5; // esi
+    HANDLE v6; // eax
+    const char* v7; // [esp-14h] [ebp-1B8h]
+    DWORD v8; // [esp-10h] [ebp-1B4h]
+    DWORD* v9; // [esp-Ch] [ebp-1B0h]
+    int v10; // [esp-8h] [ebp-1ACh]
+    CHAR Filename[260]; // [esp+0h] [ebp-1A4h] BYREF
+    char Destination[160]; // [esp+104h] [ebp-A0h] BYREF
+    int savedregs; // [esp+1A4h] [ebp+0h] BYREF
+
+    v1 = 0;
+    result = dword_5B8168;
+    do
+    {
+        if (NumberOfBytesWritten == *result)
+            break;
+        result += 2;
+        ++v1;
+    } while (result < (int*)&unk_5B81F8);
+    v3 = 2 * v1;
+    if (NumberOfBytesWritten == dword_5B8168[2 * v1])
+    {
+        result = (int*)dword_5C6118;
+        if (dword_5C6118 == 1 || !dword_5C6118 && dword_5B54B4 == 1)
+        {
+            v5 = (const char**)&(&off_5B816C)[v3];
+            v10 = 0;
+            v9 = &NumberOfBytesWritten;
+            v8 = strlen(*v5);
+            v7 = *v5;
+            v6 = GetStdHandle(0xFFFFFFF4);
+            result = (int*)WriteFile(v6, v7, v8, &NumberOfBytesWritten, 0);
+        }
+        else if (NumberOfBytesWritten != 252)
+        {
+            if (!GetModuleFileNameA(0, Filename, 0x104u))
+                strcpy(Filename, "<program name unknown>");
+            v4 = Filename;
+            if (strlen(Filename) + 1 > 0x3C)
+            {
+                v4 = (char*)&savedregs + strlen(Filename) - 479;
+                strncpy(v4, "...", 3u);
+            }
+            strcpy(Destination, "Runtime Error!\n\nProgram: ");
+            strcat(Destination, v4);
+            strcat(Destination, "\n\n");
+            strcat(Destination, (&off_5B816C)[v3]);
+            result = (int*)__crtMessageBoxA(Destination, "Microsoft Visual C++ Runtime Library", 73744);
+        }
+    }
+    return result;
+}
+// 590695: using guessed type _DWORD __cdecl __crtMessageBoxA(_DWORD, _DWORD, _DWORD);
+// 5B54B4: using guessed type int dword_5B54B4;
+// 5B8168: using guessed type int dword_5B8168[];
+// 5B816C: using guessed type char *off_5B816C;
+// 5C6118: using guessed type int dword_5C6118;
+
+//----- (0058E35A) --------------------------------------------------------
+LONG(__stdcall* sub_58E35A())(struct _EXCEPTION_POINTERS* ExceptionInfo)
+{
+    LONG(__stdcall * result)(struct _EXCEPTION_POINTERS*); // eax
+
+    result = SetUnhandledExceptionFilter(__CxxUnhandledExceptionFilter);
+    lpfn = result;
+    return result;
+}
+
+//----- (0058E36B) --------------------------------------------------------
+LPTOP_LEVEL_EXCEPTION_FILTER sub_58E36B()
+{
+    return SetUnhandledExceptionFilter(lpfn);
+}
+
+//----- (0058EA7A) --------------------------------------------------------
+int __cdecl sub_58EA7A(int a1, int a2)
+{
+    char v3[12]; // [esp+0h] [ebp-Ch] BYREF
+
+    __strgtold12(v3, &a2, a2, 0, 0, 0, 0);
+    return sub_58EA4E((int)v3, a1);
+}
+// 590A7E: using guessed type _DWORD __cdecl __strgtold12(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
+
+//----- (0058EA4E) --------------------------------------------------------
+int __cdecl sub_58EA4E(int a1, int a2)
+{
+    return _ld12cvt(a1, a2, &unk_5B8200);
+}
+// 58E8E2: using guessed type _DWORD __cdecl _ld12cvt(_DWORD, _DWORD, _DWORD);
+
+//----- (0058EA64) --------------------------------------------------------
+int __cdecl sub_58EA64(int a1, int a2)
+{
+    return _ld12cvt(a1, a2, &unk_5B8218);
+}
+// 58E8E2: using guessed type _DWORD __cdecl _ld12cvt(_DWORD, _DWORD, _DWORD);
+
+//----- (0058EAA7) --------------------------------------------------------
+int __cdecl sub_58EAA7(int a1, int a2)
+{
+    char v3[12]; // [esp+0h] [ebp-Ch] BYREF
+
+    __strgtold12(v3, &a2, a2, 0, 0, 0, 0);
+    return sub_58EA64((int)v3, a1);
+}
+// 590A7E: using guessed type _DWORD __cdecl __strgtold12(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
+
+//----- (0058ECC4) --------------------------------------------------------
+int __cdecl sub_58ECC4(int a1, int a2)
+{
+    unsigned int v2; // esi
+    int result; // eax
+    void* v4; // [esp+14h] [ebp-20h]
+    size_t v5; // [esp+18h] [ebp-1Ch]
+
+    v2 = a2 * a1;
+    v5 = a2 * a1;
+    if ((unsigned int)(a2 * a1) <= 0xFFFFFFE0)
+    {
+        if (!v2)
+            v2 = 1;
+        v2 = (v2 + 15) & 0xFFFFFFF0;
+    }
+    while (1)
+    {
+        v4 = 0;
+        if (v2 <= 0xFFFFFFE0)
+        {
+            if (dword_6AEBC4 == 3)
+            {
+                if (v5 > dword_6AEBBC)
+                    goto LABEL_14;
+                _lock(9);
+                v4 = (void*)__sbh_alloc_block(v5);
+                _unlock(9);
+                if (v4)
+                {
+                    memset(v4, 0, v5);
+                    goto LABEL_14;
+                }
+            LABEL_15:
+                v4 = HeapAlloc(hHeap, 8u, v2);
+                goto LABEL_16;
+            }
+            if (dword_6AEBC4 == 2 && v2 <= dword_5B7BAC)
+            {
+                _lock(9);
+                v4 = (void*)sub_58A1B1(v2 >> 4);
+                _unlock(9);
+                if (!v4)
+                    goto LABEL_15;
+                memset(v4, 0, v2);
+            }
+        LABEL_14:
+            if (v4)
+                return (int)v4;
+            goto LABEL_15;
+        }
+    LABEL_16:
+        if (v4 || !dword_5C61B8)
+            return (int)v4;
+        result = _callnewh(v2);
+        if (!result)
+            return result;
+    }
+}
+// 588EF8: using guessed type _DWORD __cdecl _lock(_DWORD);
+// 588F59: using guessed type _DWORD __cdecl _unlock(_DWORD);
+// 58970E: using guessed type _DWORD __cdecl __sbh_alloc_block(_DWORD);
+// 5B7BAC: using guessed type int dword_5B7BAC;
+// 6AEBBC: using guessed type int dword_6AEBBC;
+// 6AEBC4: using guessed type int dword_6AEBC4;

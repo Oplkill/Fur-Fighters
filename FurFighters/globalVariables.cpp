@@ -19,6 +19,12 @@ __int16 g_UselessVariable; // weak
 int g_CharacterType; // weak
 int g_IsFirstPerson; // weak
 SIZE_T dwBytes; // idb
+int g_maybeIsMouseDevAvailable; // weak
+int g_maybeIsKeyboardDevAvailable; // weak
+int g_maybeDialogBankSampleData; // weak
+int dword_6AE4E0; // weak
+int g_maybeDialogBankHeaderData; // weak
+int dword_6AE528; // weak
 
 //-----dirty variables
 int dword_5BAE84; // weak

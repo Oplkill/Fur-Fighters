@@ -224,7 +224,6 @@ char byte_59DFFC = '\x01'; // weak
 char byte_59DFFD = '\x01'; // weak
 char byte_59DFFE = '\x02'; // weak
 char byte_59E001 = '\x01'; // weak
-int dword_59E014 = 6; // weak
 int dword_59E1D8[19] =
 {
   65536,
@@ -1068,14 +1067,9 @@ char aRockR2[8] = "rock.r2"; // weak
 char aDebrisR2_1[10] = "debris.r2"; // weak
 char aDebrisR2_2[10] = "debris.r2"; // weak
 char aDebrisR2_3[10] = "debris.r2"; // weak
-FILE* dword_5A0118 = (FILE*)0x42000000; // idb
 FILE* dword_5A011C = (FILE*)0x42F00000; // idb
-int dword_5A0120 = 1073741824; // weak
-int dword_5A0128 = 1082130432; // weak
 float flt_5A012C = 24.0; // weak
-FILE* dword_5A0130 = (FILE*)0x42400000; // idb
 FILE* Stream = (FILE*)0x43B40000; // idb
-int dword_5A0138 = 1115684864; // weak
 float flt_5A013C = 500.0; // weak
 float flt_5A0140 = 0.1; // weak
 int dword_5A0144[48] =
@@ -1160,70 +1154,7 @@ int dword_5A039C = 196634; // weak
 int dword_5A03A0 = 196635; // weak
 int dword_5A03A4 = 196636; // weak
 int dword_5A03A8 = 196637; // weak
-int dword_5A03D8 = 1103101952; // weak
-int dword_5A03E0 = 1073741824; // weak
-int dword_5A03E8 = 1082130432; // weak
-int dword_5A03F0 = 1111490560; // weak
-int dword_5A03F8 = 1115684864; // weak
-int dword_5A0400 = 1107296256; // weak
-int dword_5A0408 = 1073741824; // weak
-int dword_5A0410 = 1082130432; // weak
-int dword_5A0418 = 1109393408; // weak
-int dword_5A0420 = 1111490560; // weak
-int dword_5A0428 = 1098907648; // weak
-int dword_5A0430 = 1073741824; // weak
-int dword_5A0438 = 1082130432; // weak
-int dword_5A0440 = 1107296256; // weak
-int dword_5A0448 = 1115684864; // weak
-int dword_5A0450 = 1090519040; // weak
-int dword_5A0458 = 1065353216; // weak
-int dword_5A0460 = 1073741824; // weak
-int dword_5A0468 = 1098907648; // weak
-int dword_5A0470 = 1107296256; // weak
-int dword_5A0478 = 1094713344; // weak
-int dword_5A0480 = 1065353216; // weak
-int dword_5A0488 = 1073741824; // weak
-int dword_5A0490 = 1103101952; // weak
-int dword_5A0498 = 1108344832; // weak
-int dword_5A04A0 = 1089470464; // weak
-int dword_5A04A4 = 1082130432; // weak
-int dword_5A04A8 = 1089470464; // weak
 int dword_5A04AC = 1091567616; // idb
-char byte_5A04B0 = '‘'; // weak
-char byte_5A04B1 = 'x'; // weak
-char byte_5A04B2 = 'd'; // weak
-char byte_5A04B3 = 'ÿ'; // weak
-char byte_5A04B4 = '–'; // weak
-char byte_5A04B5 = 'd'; // weak
-char byte_5A04B6 = '‚'; // weak
-char byte_5A04B7 = '–'; // weak
-char byte_5A04B8 = 'Œ'; // weak
-char byte_5A04B9 = 'F'; // weak
-char byte_5A04BA = 'n'; // weak
-char byte_5A04BB = 'ÿ'; // weak
-char byte_5A04BC = 'ÿ'; // weak
-char byte_5A04BD = 'Œ'; // weak
-char byte_5A04BE = 'È'; // weak
-char byte_5A04BF = 'ÿ'; // weak
-char byte_5A04C0 = 'ÿ'; // weak
-char byte_5A04C1 = '–'; // weak
-char byte_5A04C2 = 'È'; // weak
-char byte_5A04C3 = 'ÿ'; // weak
-char byte_5A04C4 = 'ð'; // weak
-char byte_5A04C5 = 'P'; // weak
-char byte_5A04C6 = '´'; // weak
-char byte_5A04C7 = 'ÿ'; // weak
-char byte_5A04C8 = 'ÿ'; // weak
-int dword_5A04CC = 1061997773; // weak
-int dword_5A04D0 = 1045220557; // weak
-int dword_5A04D4 = 1056964608; // weak
-int dword_5A04D8 = 1061997773; // weak
-int dword_5A04DC = 1061997773; // weak
-int dword_5A04E0 = 1058642330; // weak
-int dword_5A04E4 = 1050253722; // weak
-int dword_5A04E8 = 1056964608; // weak
-int dword_5A04EC = 1061997773; // weak
-int dword_5A04F0 = 1061997773; // weak
 char aGeneralAfs[12] = "general.afs"; // weak
 char aHomeAfs[9] = "home.afs"; // weak
 char aNewykAfs[10] = "newyk.afs"; // weak
@@ -1232,7 +1163,6 @@ char aSpaceAfs[10] = "space.afs"; // weak
 char aDinoAfs[9] = "dino.afs"; // weak
 char aAngkhorAfs[12] = "angkhor.afs"; // weak
 char aFinaleAfs[11] = "finale.afs"; // weak
-char aDialog1Srf[12] = "dialog1.srf"; // weak
 _UNKNOWN unk_5A0CC4; // weak
 int dword_5A0CD8[13] = { 10, 11, 12, 7, 8, 9, 4, 5, 6, 1, 2, 3, -1 }; // idb
 _UNKNOWN unk_5A0D0C; // weak
@@ -4695,10 +4625,7 @@ char aFurfightersSrf[16] = "furfighters.srf"; // weak
 char aCouldNotLoadSa[36] = "Could not load sample resource file"; // weak
 char aSampleHeaderSe[51] = "SAMPLE HEADER SETUP FAILED. Could not allocate mem"; // weak
 char aSampleDataAllo[56] = "SAMPLE DATA ALLOCATION FAILED. Malloc was unsuccessful."; // weak
-char aClearDialogMai[49] = "* Clear dialog main bank sample data : is NULL *"; // weak
-char aClearDialogMai_0[49] = "* Clear dialog main bank header data : is NULL *"; // weak
 char off_5B4958[] = { '´', 'J', '[', '\0' }; // idb
-int dword_5B50E4 = 1061997773; // weak
 int dword_5B54B4 = 2; // weak
 void* off_5B5B88 = &off_5B5B88; // weak
 LPVOID off_5B5B8C = &off_5B5B88; // idb
@@ -5853,7 +5780,6 @@ int dword_5B9F24; // weak
 int dword_5B9F28; // weak
 char byte_5B9F2C[4]; // idb
 int dword_5BABF0; // weak
-BYTE byte_5BABF4; // idb
 int dword_5BACF4; // weak
 int dword_5BACF8; // weak
 int dword_5BACFE; // weak
@@ -5861,7 +5787,6 @@ int dword_5BAD02; // weak
 int dword_5BAD06; // weak
 int dword_5BAD0A; // weak
 int dword_5BAD0E; // weak
-BYTE byte_5BAD14; // idb
 int dword_5BAE18; // weak
 int dword_5BAE1C[16]; // idb
 int dword_5BAE90; // weak
@@ -5944,7 +5869,6 @@ int dword_5BFFB0; // weak
 int dword_5BFFB4; // weak
 char dword_5BFFB8[]; // idb
 int dword_5BFFBC; // weak
-_UNKNOWN unk_5BFFC8; // weak
 int(__cdecl* dword_5C606C)(_DWORD, _DWORD); // weak
 int dword_5C6070; // weak
 int dword_5C6074; // weak
@@ -6245,10 +6169,6 @@ int dword_5CB978; // weak
 int dword_5CB97C; // weak
 int dword_5CB980; // weak
 int dword_5CB984; // weak
-char byte_5CB988; // weak
-char byte_5CB989; // weak
-char byte_5CB98A; // weak
-char byte_5CB98B; // weak
 int dword_5CB9A0[16]; // idb
 __int16 word_5CB9E0[]; // weak
 int dword_5CB9E4[]; // weak
@@ -6293,9 +6213,6 @@ int dword_5CDBA8; // weak
 int dword_5CDBAC; // weak
 int dword_5CDBB0; // weak
 int dword_5CDBB4; // weak
-int dword_5CDC3C; // weak
-int dword_5CDC40; // weak
-int dword_5CDC44; // weak
 int dword_5CDC60; // idb
 int dword_5CDC64; // weak
 int dword_5CDC68; // weak
@@ -6308,13 +6225,6 @@ int dword_5CDC88; // weak
 int dword_5CDC8C; // weak
 int dword_5CDC90; // weak
 int dword_5CDC94; // weak
-int dword_5CDCA0; // weak
-int dword_5CDCA4; // weak
-_BYTE byte_5CDCA8[4]; // idb
-int dword_5CDCAC; // weak
-int dword_5CDCB0; // weak
-_BYTE byte_5CDCB4[4]; // idb
-_BYTE byte_5CDCB8[30]; // idb
 __int16 word_5CDCD6[]; // weak
 __int16 word_5CDCD8[]; // weak
 __int16 word_5CDCDA[]; // weak
@@ -6924,18 +6834,13 @@ int dword_606738; // weak
 int dword_60673C; // weak
 int dword_606740; // weak
 int dword_606744; // weak
-int dword_606748; // weak
-int dword_60674C; // weak
 int dword_606750[]; // weak
 int dword_606754; // weak
-int dword_606790; // weak
 int dword_606794; // weak
 int dword_606798; // weak
 int dword_60679C; // weak
 int dword_6067A0; // weak
-int dword_6067A4; // weak
 int dword_6067A8; // weak
-int dword_6067AC; // weak
 int dword_6067B0; // weak
 int dword_6067BC; // weak
 int dword_6067C0; // weak
@@ -6957,12 +6862,6 @@ int dword_60682C; // weak
 int dword_606830; // weak
 int dword_606834; // weak
 int dword_606850; // weak
-int dword_606860; // weak
-int dword_606864; // weak
-_BYTE byte_606868[4]; // idb
-int dword_60686C; // weak
-int dword_606870; // weak
-_BYTE byte_606874[4]; // idb
 int dword_60687C; // weak
 int dword_606880; // weak
 char byte_6068A0; // weak
@@ -7163,12 +7062,6 @@ int dword_607060; // weak
 int dword_607064; // weak
 int dword_607070; // weak
 int dword_607074; // weak
-int dword_607080[5]; // idb
-int dword_607094; // weak
-int dword_607098; // weak
-int dword_60709C; // weak
-_BYTE byte_6070A0[4]; // idb
-_BYTE byte_6070A4[28]; // idb
 int dword_6070C0[]; // weak
 int dword_6070C4; // weak
 int dword_6070C8; // weak
@@ -7242,7 +7135,6 @@ char byte_60FDC4[]; // weak
 char byte_60FDC5[]; // weak
 char byte_60FDC6[78]; // idb
 int dword_60FE14; // weak
-HWND dword_60FE48; // idb
 int dword_60FE64; // weak
 int dword_60FE68; // weak
 int dword_60FE6C; // weak
@@ -7306,7 +7198,6 @@ _UNKNOWN unk_611680; // weak
 float flt_6135C0; // weak
 _UNKNOWN unk_6135E0; // weak
 _UNKNOWN unk_61A340; // weak
-int dword_622040; // weak
 int dword_622044; // weak
 char byte_622060[]; // weak
 char byte_622061; // weak
@@ -7342,9 +7233,6 @@ int dword_622188[]; // weak
 int dword_622260[]; // weak
 int dword_622264[50]; // idb
 int dword_62232C; // weak
-int dword_622330; // weak
-int dword_622334; // weak
-int dword_622338; // weak
 int dword_622340[32]; // idb
 int dword_6223C0[224]; // idb
 __int16 word_622740[128]; // idb
@@ -7668,7 +7556,6 @@ int dword_658924[]; // weak
 int dword_658928[14161]; // idb
 int dword_667380; // weak
 int dword_667384; // weak
-int junk1; // weak
 int dword_667398; // weak
 _BYTE byte_66739C[4]; // idb
 int dword_6673A4; // weak
@@ -7744,18 +7631,13 @@ int dword_6AD8A8; // weak
 int dword_6AD8AC; // weak
 int dword_6AD8C0[64]; // idb
 int dword_6AD9C0[]; // weak
-int dword_6AD9C8[]; // weak
 char byte_6AD9D0[]; // weak
 int dword_6AD9D4[19]; // idb
 int dword_6ADA38; // weak
 int dword_6ADA3C; // weak
 int dword_6AE2D4; // weak
 int dword_6AE4D8[]; // weak
-int dword_6AE4DC; // weak
-int dword_6AE4E0; // weak
 int dword_6AE520[]; // weak
-int dword_6AE524; // weak
-int dword_6AE528; // weak
 __int16 word_6AE568[18]; // idb
 int dword_6AE58C[]; // weak
 int dword_6AE590[]; // weak
@@ -7766,8 +7648,6 @@ int dword_6AE820; // weak
 char byte_6AE824; // weak
 int dword_6AE828; // weak
 char byte_6AE840; // weak
-char byte_6AE841; // weak
-int dword_6AE844; // weak
 int dword_6AE848; // weak
 int g_UselessVariable3; // weak
 int g_UselessVariable4; // weak

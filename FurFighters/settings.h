@@ -50,6 +50,29 @@ extern int g_dwHave32bitZBuffer; // weak
 extern int dwWidth; // idb
 extern int dwHeight; // idb
 extern int dwRGBBitsCount; // weak
+extern int g_bearSpeed[5]; // idb
+extern int g_bearShotDamage; // weak
+extern int g_bearHitDamage; // weak
+extern int g_bearEnergy; // weak
+extern _BYTE g_bearScore[4]; // idb
+extern _BYTE g_bearTime[28]; // idb
+extern int g_crocSpeed; // weak
+extern int dword_606864; // weak
+extern _BYTE g_crocScore[4]; // idb
+extern int g_crocEnergy; // weak
+extern int g_crocDamage; // weak
+extern _BYTE g_crocTime[4]; // idb
+extern int g_PeacockSpeed; // weak
+extern int g_PeacockDamage; // weak
+extern _BYTE g_PeacockRocketSpeed[4]; // idb
+extern int g_PeacockDamageRadius; // weak
+extern int g_PeacocEnergy; // weak
+extern _BYTE g_PeacockScore[4]; // idb
+extern _BYTE g_PeacockTime[30]; // idb
+extern int dword_5CDC3C; // weak
+extern int dword_5CDC40; // weak
+extern int dword_5CDC44; // weak
+extern _UNKNOWN unk_5BFFC8; // weak
 
 int __cdecl loadSettings(char* FileName);
 int __cdecl initSettings(HINSTANCE hInstance); // idb
@@ -62,11 +85,11 @@ int loadPeacockSettings();
 int loadWeaponSettings();
 int __cdecl sub_53FA96(const char* a1, int a2);
 int __stdcall sub_51A85B(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
-int __cdecl loadPlayerName(const char* a1);
+void __cdecl loadPlayerName(const char* a1);
 int __cdecl loadGameSessionName(const char* a1);
 LSTATUS loadVideoSettings();
 LSTATUS loadControllerSettings();
-int __cdecl loadRegisterSetting(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, int); // idb
+void __cdecl loadRegisterSetting(HKEY hKey, LPCSTR lpValueName, LPBYTE lpData, DWORD cbData, const char*); // idb
 
 namespace settings
 {

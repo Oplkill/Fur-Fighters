@@ -35,6 +35,7 @@ void emptyFunction32();
 void emptyFunction33();
 void emptyFunction34();
 
+int empyFunt_xx3();
 
 int return0_2();
 int return0_3();

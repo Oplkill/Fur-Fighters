@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <windows.h>
+#include <dinput.h>
 #include "debug.h"
 #include "tempplace.h"
 #include "utils.h"
@@ -20,6 +21,9 @@ int dword_60FED4; // weak
 int dword_60FED0; // weak
 int dword_60FECC; // weak
 int dword_60FE74; // weak
+int g_uselessEventA; // weak
+HWND g_WindowHWnd; // idb
+int g_maybeDirectInput; // weak //todo maybe void** or LPVOID *
 
 int __cdecl sub_57808E(LONG* a1);
 
@@ -1153,7 +1157,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
                     }
                 }
                 writeDebug("HandleActivateApp(): Setting cooperative level to NORMAL");
-                v7 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 10);
+                v7 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, g_WindowHWnd, 10);
                 if (v7)
                 {
                     getDirectXErrorName(v7, 0x100u, v9);
@@ -1166,7 +1170,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
                 maybeSoundRelease();
                 maybeSoundRelease2();
                 if (!g_dwWindowedMode)
-                    ShowWindow(dword_60FE48, 6);
+                    ShowWindow(g_WindowHWnd, 6);
             }
         }
         else
@@ -1177,7 +1181,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
             writeDebug("HandleActivateApp(): Setting cooperative level to EXCLUSIVE");
             if (g_dwWindowedMode)
             {
-                v4 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 8);
+                v4 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, g_WindowHWnd, 8);
                 if (v4)
                 {
                     getDirectXErrorName(v4, 0x100u, v9);
@@ -1186,7 +1190,7 @@ int __cdecl sub_51A4CE(int a1, int a2, int a3)
             }
             else
             {
-                v5 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, dword_60FE48, 2071);
+                v5 = (*(int(__thiscall**)(LPVOID, LPVOID, HWND, int))(*(_DWORD*)lpDD + 80))(lpDD, lpDD, g_WindowHWnd, 2071);
                 if (v5)
                 {
                     getDirectXErrorName(v5, 0x100u, v9);
@@ -1352,9 +1356,9 @@ int __cdecl sub_5752F3(int a1, int a2)
     word_66873A = 2;
     word_66873C = 2;
     word_66875E = 0;
-    DirectInputCreateEx(a1, 1792, &unk_5973D0, &dword_622334, 0);
-    (*(void(__stdcall**)(int, int*, void*, int*, _DWORD))(*(_DWORD*)dword_622334 + 36))(
-        dword_622334,
+    DirectInputCreateEx(a1, DIRECTINPUT_VERSION, &IID_IDirectInput7, &g_maybeDirectInput, 0);
+    (*(void(__stdcall**)(int, int*, void*, int*, _DWORD))(*(_DWORD*)g_maybeDirectInput + 36))(
+        g_maybeDirectInput,
         &dword_597360,
         &unk_5973C0,
         &dword_622044,
@@ -1366,7 +1370,7 @@ int __cdecl sub_5752F3(int a1, int a2)
     v3 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_622044 + 28))(dword_622044, dword_622044);
     if (v3 != 1 && v3)
     {
-        dword_622330 = 0;
+        g_maybeIsKeyboardDevAvailable = 0;
         writeDebug("ERROR in acquiring Keyboard DI device");
         if (v3 == -2147024891)
             writeDebug("other app has priority");
@@ -1377,12 +1381,12 @@ int __cdecl sub_5752F3(int a1, int a2)
     }
     else
     {
-        dword_622330 = 1;
+        g_maybeIsKeyboardDevAvailable = 1;
     }
     memset(&dword_622340, 0, 0x100u);
-    if ((*(int(__thiscall**)(int, int, void*, void*, int*, _DWORD))(*(_DWORD*)dword_622334 + 36))(
-        dword_622334,
-        dword_622334,
+    if ((*(int(__thiscall**)(int, int, void*, void*, int*, _DWORD))(*(_DWORD*)g_maybeDirectInput + 36))(
+        g_maybeDirectInput,
+        g_maybeDirectInput,
         &unk_597370,
         &unk_5973C0,
         &dword_62232C,
@@ -1394,7 +1398,7 @@ int __cdecl sub_5752F3(int a1, int a2)
         fatalError("Mouse Data Format Error");
     if ((*(int(__stdcall**)(int, int, int))(*(_DWORD*)dword_62232C + 52))(dword_62232C, a2, 21))
         fatalError("Mouse Co-op Error");
-    dword_622338 = (int)CreateEventA(0, 0, 0, 0);
+    g_uselessEventA = (int)CreateEventA(0, 0, 0, 0);
     (*(void(__thiscall**)(int, int, void(__stdcall*)(DWORD, DWORD, DWORD, DWORD, ULONG_PTR)))(*(_DWORD*)dword_62232C
         + 48))(
             dword_62232C,
@@ -1404,7 +1408,7 @@ int __cdecl sub_5752F3(int a1, int a2)
     v4 = (*(int(__thiscall**)(int, int))(*(_DWORD*)dword_62232C + 28))(dword_62232C, dword_62232C);
     if (v3 != 1 && v3)
     {
-        dword_622040 = 0;
+        g_maybeIsMouseDevAvailable = 0;
         writeDebug("ERROR in acquiring Mouse DI device");
         if (v3 == -2147024891)
             writeDebug("other app has priority");
@@ -1415,7 +1419,7 @@ int __cdecl sub_5752F3(int a1, int a2)
     }
     else
     {
-        dword_622040 = 1;
+        g_maybeIsMouseDevAvailable = 1;
     }
     if (v4)
         writeDebug("Mouse Acquire Value NOT Ok - %d", v4);
@@ -1430,12 +1434,12 @@ int __cdecl sub_5752F3(int a1, int a2)
 // 5750F0: using guessed type int _cfltcvt_init_4(void);
 // 593050: using guessed type int __stdcall DirectInputCreateEx(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD);
 // 597360: using guessed type int dword_597360;
-// 622040: using guessed type int dword_622040;
+// 622040: using guessed type int g_maybeIsMouseDevAvailable;
 // 622044: using guessed type int dword_622044;
 // 62232C: using guessed type int dword_62232C;
-// 622330: using guessed type int dword_622330;
-// 622334: using guessed type int dword_622334;
-// 622338: using guessed type int dword_622338;
+// 622330: using guessed type int g_maybeIsKeyboardDevAvailable;
+// 622334: using guessed type int g_maybeDirectInput;
+// 622338: using guessed type int g_uselessEventA;
 // 622340: using guessed type int dword_622340;
 // 668736: using guessed type __int16 word_668736;
 // 668738: using guessed type __int16 word_668738;
@@ -1482,9 +1486,9 @@ int sub_577C00()
             writeDebug("RestoreSurfaces(): IDirectDraw7_SetDisplayMode() failed with error %s", Buffer);
             return v1;
         }
-        ShowWindow(dword_60FE48, 3);
-        UpdateWindow(dword_60FE48);
-        SetFocus(dword_60FE48);
+        ShowWindow(g_WindowHWnd, 3);
+        UpdateWindow(g_WindowHWnd);
+        SetFocus(g_WindowHWnd);
     }
     if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 96))(dword_60FE64, dword_60FE64) == -2005532222)
     {

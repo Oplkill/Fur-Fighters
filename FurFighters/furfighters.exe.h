@@ -349,9 +349,6 @@ __int16 sub_43882E();
 int __cdecl sub_43885C(int a1, int a2, int a3, int a4);
 void __thiscall sub_4388FC(void* this);
 int __cdecl sub_438AA8(__int16 a1, int a2, int* a3);
-int sub_438C3A();
-int sub_438DD2();
-int __cdecl sub_438E31(const char* a1);
 void sub_438ED4();
 BOOL sub_438EE3();
 int sub_438EFA();
@@ -360,15 +357,10 @@ __int64 sub_439015();
 BOOL __cdecl sub_43906F(int a1);
 unsigned __int8* __cdecl sub_43908D(int a1);
 int __cdecl sub_4390FB(__int16 a1, int a2, __int16 a3, __int16 a4);
-int sub_439174();
 int __cdecl sub_4392C5(unsigned __int8* a1);
 int __cdecl sub_439302(unsigned __int8* a1);
 int __cdecl sub_439348(int a1, int* a2, int a3);
-int __cdecl sub_4393A3(int a1, int a2);
-int __cdecl sub_4393D6(int a1, int a2);
 double __cdecl sub_4393FE(int a1, int a2, float a3);
-double __cdecl sub_4394C5(float a1, float a2);
-double __cdecl sub_439511(float a1, float a2);
 int* __cdecl sub_439550(int a1, int* a2);
 int __cdecl sub_439C9A(int a1, int a2, int a3);
 _DWORD* __cdecl sub_439ED5(int a1, const void* a2, int a3, int a4, int a5);
@@ -623,13 +615,11 @@ int sub_45CECB();
 int sub_45CF0E();
 int __cdecl sub_45CF56(int); // weak
 int __cdecl sub_45CF70(int a1);
-void __cdecl sub_45D106(int a1);
 int sub_45D7C5();
 void sub_45D7E4();
 int sub_45DDBC();
 void sub_45DEDF();
 __int16 __cdecl sub_45DEE4(int a1, int a2);
-__int16 __cdecl sub_45DFCE(int a1, FILE* Stream, int a3, wctype_t Type);
 __int16 __cdecl sub_45E0E9(int a1, int a2, FILE* Stream);
 __int16 __cdecl sub_45E22D(int a1, FILE* Stream);
 __int16 __cdecl sub_45E30E(int a1, FILE* Stream, char a3, int a4);
@@ -2544,7 +2534,6 @@ void* __cdecl sub_57E5BA(int a1, int a2);
 __int16 __cdecl sub_57E916(int a1);
 int __cdecl sub_57E927(__int16 a1);
 // int __cdecl is_wctype(wint_t C, wctype_t Type);
-int __cdecl sub_57E95F(__int16 a1, char a2);
 int __cdecl sub_57E975(__int16 a1, int a2, int a3);
 int __cdecl sub_57E999(int a1);
 // wint_t __cdecl putwc(wchar_t Character, FILE *Stream);
@@ -2558,44 +2547,11 @@ int __cdecl sub_57EA8E(char a1);
 __int16 __cdecl sub_57EC20(int a1);
 __int16 __cdecl sub_57EC82(int a1, unsigned __int8 a2, int a3);
 int __cdecl sub_57ECEC(__int16 a1);
-int __cdecl sub_57EE12(__int16 a1, _DWORD* a2);
-int __cdecl sub_57EEDA(__int16 a1, float* a2);
-int __cdecl sub_57EFC8(__int16 a1, unsigned __int16 a2);
-int __cdecl sub_57F07D(__int16 a1, char a2);
-int __cdecl sub_57F130(__int16 a1, int a2);
-int __cdecl sub_57F55F(int a1, int a2, unsigned __int8 a3, int a4);
-__int16 __cdecl sub_57F848(int a1);
-int __cdecl sub_57FBCF(__int16 a1);
-int __cdecl sub_57FC47(int a1);
-int __cdecl sub_580681(__int16 a1, int a2, int a3);
-int __cdecl sub_58079B(__int16 a1);
 BOOL __cdecl sub_58083C(int a1);
 __int16 __cdecl sub_58089A(int a1);
-void sub_580FB2();
-int sub_5822AE();
-int sub_58236B();
-int __cdecl sub_5823BE(int a1, const char* fileResource, void* a3); // idb
-int sub_582687();
 int sub_582772();
-void sub_5827C4();
-void sub_582CA9();
-int __cdecl sub_583340(int a1);
-int empyFunt_xx2();
 int __cdecl sub_5833E3(int a1, int a2);
-int sub_5834A8();
-int sub_5834C6();
-int __cdecl maybe_startMusic(unsigned __int8 a1);
 int __cdecl sub_58355A(unsigned __int8 a1);
-int empyFunt_xx3();
-int sub_5835EC();
-void sub_5836F8();
-void sub_583776();
-int __cdecl sub_58383D(int a1, int a2);
-int __cdecl sub_5838B2(int a1);
-int __cdecl sub_5838D9(int a1, unsigned __int8 a2);
-BOOL __cdecl sub_583941(int a1);
-int __cdecl sub_583E90(double a1, double a2);
-int sub_583EA4();
 // int _cfltcvt_init_5(void); weak
 // double __cdecl cos(double X);
 // double __cdecl sin(double X);
@@ -2616,7 +2572,6 @@ int sub_583EA4();
 // void __cdecl __noreturn exit(int Code);
 // void __cdecl __noreturn _exit(int Code);
 // void *__cdecl malloc(size_t Size);
-LPVOID __cdecl sub_584D8B(unsigned int a1);
 void __cdecl sub_584E87(LPVOID lpMem);
 // int __cdecl fclose(FILE *Stream);
 // size_t __cdecl fwrite(const void *Buffer, size_t ElementSize, size_t ElementCount, FILE *Stream);
@@ -2661,7 +2616,6 @@ int __cdecl sub_585E40(LPVOID lpMem); // idb
 // int __cdecl _callnewh(size_t Size);
 char __cdecl sub_5891A0(int a1);
 int sub_5891CD();
-int __cdecl strangefunc1Op(int a1);
 // _DWORD __cdecl __sbh_heap_init(_DWORD); weak
 // _DWORD __cdecl __sbh_find_block(_DWORD); weak
 _DWORD* __cdecl sub_5893E5(_DWORD* a1, int a2);
@@ -2676,33 +2630,21 @@ int __cdecl sub_58A1B1(unsigned int a1);
 int __cdecl sub_58A3B9(int a1, unsigned int a2, unsigned int a3);
 int __cdecl sub_58A4DD(int a1, _DWORD* a2, _BYTE* a3, unsigned int a4);
 // int __cdecl _except_handler3(int, PVOID TargetFrame, int); idb
-int sub_58A7FD();
 // _DWORD __cdecl flsall(_DWORD); weak
 // void *__cdecl memcpy_0(void *, const void *Src, size_t Size);
-int* __cdecl sub_58B327(unsigned int a1);
 // int *__cdecl _errno();
 // unsigned int *__cdecl __doserrno();
 // UINT _ioinit();
 // double __cdecl unknown_libname_8(_TBYTE a1, _TBYTE a2);
 // size_t __cdecl strlen(const char *Str);
 // void __cdecl __noreturn terminate(); idb
-// void __usercall __noreturn sub_58D88D(EXCEPTION_POINTERS *a1, int a2, int a3, int a4);
-SIZE_T __cdecl sub_58DA08(LPCVOID lpMem);
 // int _wincmdln(void); weak
 // int _setenvp(void); weak
 // int _setargv(void); weak
 // int __crtGetEnvironmentStringsA(void); weak
-int* __cdecl sub_58E137(DWORD NumberOfBytesWritten);
 // LONG __stdcall __CxxUnhandledExceptionFilter(struct _EXCEPTION_POINTERS *ExceptionInfo); idb
-LONG(__stdcall* sub_58E35A())(struct _EXCEPTION_POINTERS* ExceptionInfo);
-LPTOP_LEVEL_EXCEPTION_FILTER sub_58E36B();
 // _DWORD __cdecl _ld12cvt(_DWORD, _DWORD, _DWORD); weak
-int __cdecl sub_58EA4E(int a1, int a2);
-int __cdecl sub_58EA64(int a1, int a2);
-int __cdecl sub_58EA7A(int a1, int a2);
-int __cdecl sub_58EAA7(int a1, int a2);
 // void *__cdecl memset(void *, int Val, size_t Size);
-int __cdecl sub_58ECC4(int a1, int a2);
 // int __cdecl strtol(const char *String, char **EndPtr, int Radix);
 // _DWORD __cdecl __crtMessageBoxA(_DWORD, _DWORD, _DWORD); weak
 // _DWORD __cdecl __strgtold12(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD); weak
