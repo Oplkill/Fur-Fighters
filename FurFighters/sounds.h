@@ -140,3 +140,6 @@ int __cdecl sub_58383D(int a1, int a2);
 int __cdecl sub_5838B2(int a1);
 int __cdecl sub_5838D9(int a1, unsigned __int8 a2);
 BOOL __cdecl sub_583941(int a1);
+int __cdecl sub_5833E3(int a1, int a2);
+int __cdecl sub_58355A(unsigned __int8 a1);
+int sub_582772();

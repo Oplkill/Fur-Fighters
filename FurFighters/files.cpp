@@ -410,56 +410,6 @@ __int16 __cdecl someReadFile(FILE* Stream)
 // 5BFF9A: using guessed type __int16 word_5BFF9A;
 // 5BFF9C: using guessed type int dword_5BFF9C;
 
-//----- (0056F5F2) --------------------------------------------------------
-FILE* __cdecl sub_56F5F2(char* FileName, int a2)
-{
-    FILE* result; // eax
-    int j; // [esp+0h] [ebp-2Ch]
-    int i; // [esp+4h] [ebp-28h]
-    char v6; // [esp+Ch] [ebp-20h] BYREF
-    char v7; // [esp+Dh] [ebp-1Fh]
-    char v8; // [esp+Eh] [ebp-1Eh]
-    int Buffer[4]; // [esp+10h] [ebp-1Ch] BYREF
-    __int16 v10; // [esp+20h] [ebp-Ch]
-    FILE* Stream; // [esp+24h] [ebp-8h]
-    int v12; // [esp+28h] [ebp-4h]
-
-    v12 = 614400;
-    result = fopen(FileName, aWb_1);
-    Stream = result;
-    if (result)
-    {
-        Buffer[0] = 0x20000;
-        Buffer[1] = 0;
-        Buffer[2] = 0;
-        Buffer[3] = 31457920;
-        v10 = 8216;
-        writeInFile(Buffer, 1u, 0x12u, Stream);
-        for (i = 0; i < 480; ++i)
-        {
-            for (j = 0; j < 640; ++j)
-            {
-                v8 = 8 * ((*(__int16*)a2 >> g_RedBitsShift) & 0x1F);
-                if (g_GreenBits == 6)
-                    v7 = 4 * ((*(__int16*)a2 >> g_GreenBitsShift) & 0x3F);
-                else
-                    v7 = 8 * ((*(__int16*)a2 >> g_GreenBitsShift) & 0x1F);
-                v6 = 8 * ((*(__int16*)a2 >> g_BlueBitsShift) & 0x1F);
-                writeInFile(&v6, 1u, 3u, Stream);
-                a2 += 2;
-            }
-        }
-        ++dword_5BFFB0;
-        result = (FILE*)fclose(Stream);
-    }
-    return result;
-}
-// 5BFFB0: using guessed type int dword_5BFFB0;
-// 622CE8: using guessed type __int16 g_GreenBits;
-// 622CEC: using guessed type __int16 g_RedBitsShift;
-// 622CEE: using guessed type __int16 g_GreenBitsShift;
-// 622CF0: using guessed type __int16 g_BlueBitsShift;
-
 //----- (00584FED) --------------------------------------------------------
 size_t __cdecl writeInFile(void* Buffer, size_t ElementSize, size_t ElementCount, FILE* Stream)
 {

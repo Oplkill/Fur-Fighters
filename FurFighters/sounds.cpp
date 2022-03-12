@@ -3266,3 +3266,52 @@ BOOL __cdecl sub_583941(int a1)
 }
 // 6AD9C0: using guessed type int dword_6AD9C0[];
 // 6AE834: using guessed type int isMusicDisabled;
+
+//----- (005833E3) --------------------------------------------------------
+int __cdecl sub_5833E3(int a1, int a2)
+{
+    float v3; // [esp+0h] [ebp-8h]
+    int* v4; // [esp+4h] [ebp-4h]
+
+    v4 = &dword_6AD9C0[6 * a1];
+    if (*v4)
+    {
+        if (a1)
+        {
+            v4[1] = a2;
+        }
+        else
+        {
+            v3 = (float)a2;
+            v4[1] = (__int64)(v3 * *(float*)&dword_5B50E4);
+        }
+    }
+    return 0;
+}
+// 5B50E4: using guessed type int dword_5B50E4;
+// 6AD9C0: using guessed type int dword_6AD9C0[];
+
+//----- (0058355A) --------------------------------------------------------
+int __cdecl sub_58355A(unsigned __int8 a1)
+{
+    sub_5833E3(0, a1);
+    return 0;
+}
+
+//----- (00582772) --------------------------------------------------------
+int sub_582772()
+{
+    int result; // eax
+    int i; // [esp+0h] [ebp-4h]
+
+    for (i = 0; i < 16; ++i)
+    {
+        dword_6AE58C[3 * i] = -1;
+        dword_6AE590[3 * i] = 0;
+        dword_6AE594[3 * i] = 0;
+        result = i + 1;
+    }
+    return result;
+}
+// 6AE58C: using guessed type int dword_6AE58C[];
+// 6AE590: using guessed type int dword_6AE590[];

@@ -14,7 +14,6 @@ __int16 __cdecl sub_56EF1B(char* FileName, int a2);
 int __cdecl sub_56F079(int, FILE* Stream); // idb
 int __cdecl sub_56F226(int, FILE* Stream); // idb
 __int16 __cdecl someReadFile(FILE* Stream);
-FILE* __cdecl sub_56F5F2(char* FileName, int a2);
 size_t __cdecl writeInFile(void* Buffer, size_t ElementSize, size_t ElementCount, FILE* Stream);
 size_t __cdecl readFromFile(void* Buffer, size_t ElementSize, size_t ElementCount, FILE* Stream);
 int __cdecl sub_47B4F4(char* FileName);

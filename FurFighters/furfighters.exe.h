@@ -414,7 +414,6 @@ int __cdecl sub_4444AD(int a1);
 void sub_444EFD();
 __int16 sub_444F90();
 char sub_445113();
-void sub_4451E4();
 void sub_445311();
 __int16 sub_4454FA();
 void sub_44584A();
@@ -1699,7 +1698,6 @@ unsigned int __cdecl sub_51E0FC(void* a1, const void* a2, unsigned int a3);
 // __int16 __usercall sub_51E11C(int a1, char *a2, char a3, unsigned int a4);
 unsigned int __cdecl sub_51E148(int a1, int a2);
 int sub_51E1FA();
-unsigned int __cdecl sub_51EEEE(HWND hDlg);
 int sub_51F63F();
 int __cdecl sub_51F649(int a1);
 int __stdcall sub_51F744(int a1, int a2, char a3, int a4);
@@ -2398,18 +2396,7 @@ int sub_56A6E7();
 int sub_56A70F();
 int __cdecl sub_56A784(int (*a1)(void));
 void sub_56A952();
-size_t __cdecl sub_56A9D0(const char* a1);
 unsigned int __cdecl sub_56AAA8(void* a1, unsigned int a2);
-int sub_56AADA();
-unsigned int sub_56ABE8();
-int sub_56AD90();
-int sub_56AE9F();
-int sub_56AF9D();
-unsigned int sub_56AFF3();
-int sub_56B048();
-int sub_56B0EA();
-int sub_56B0F4();
-int sub_56B18C();
 int __cdecl sub_56B5B0(int a1);
 int sub_56B5DB();
 int sub_56B677();
@@ -2428,7 +2415,6 @@ int __cdecl sub_56E8FD(char* Str1, int); // idb
 int __cdecl sub_56EA26(int a1, __int16 a2, __int16 a3, __int16 a4);
 int __cdecl sub_56EA60(float); // idb
 // int unknown_libname_4(void); weak
-int __cdecl sub_56EC1B(const char* a1);
 int sub_56ED64();
 int sub_56F751();
 int __cdecl sub_56FC39(int a1, int a2, _BYTE* a3);
@@ -2444,9 +2430,6 @@ int sub_5707B2();
 // int __setargv_0(void); weak
 int sub_570849();
 int __cdecl sub_570D02(int, float); // idb
-_DWORD* __cdecl sub_570FA0(int a1, int a2, int* a3, unsigned __int8 a4, unsigned __int8 a5, unsigned __int8 a6);
-unsigned int* __cdecl sub_5712EC(unsigned int* a1);
-void __cdecl sub_5713A1(int a1, int a2, int a3);
 int sub_571762();
 _DWORD* __cdecl sub_571C00(_DWORD* a1);
 int __cdecl sub_571C98(int a1, int a2);
@@ -2480,24 +2463,17 @@ int __cdecl sub_577890(int a1, int a2);
 int __cdecl sub_5779E0(int a1);
 // int __cdecl unknown_libname_6(_DWORD); weak
 // int __cdecl unknown_libname_7(_DWORD, _DWORD); weak
-int sub_577F03();
-int __cdecl sub_5786C9(int a1);
 int __stdcall sub_578A63(_DWORD* a1, void* a2);
-int __cdecl CompareFunction(const void*, const void*); // idb
 int __stdcall sub_578DB1(_DWORD* a1, int a2);
-int __stdcall sub_578EFF(int, LPCSTR, int, int); // idb
 int sub_5798B0();
 DWORD __cdecl sub_5798F2(char a1, char a2, char a3);
 char __cdecl sub_5799C0(char a1, char a2, char a3);
 DWORD sub_579A15();
 DWORD sub_579A58();
 int sub_579B23();
-int __cdecl sub_579B75(int a1);
 DWORD sub_579BD5();
-int __cdecl sub_579DED(int a1, int a2);
 int __cdecl sub_579F40(int* a1);
 double __cdecl sub_57A047(int a1);
-int __cdecl sub_57A38C(int a1, int a2, int a3);
 int __cdecl sub_57A433(int a1, _DWORD* a2);
 float* __cdecl sub_57AB0E(int a1, int a2, float a3);
 double __cdecl sub_57ABCE(int a1, float a2);
@@ -2517,11 +2493,7 @@ char* __cdecl sub_57C0E5(int a1);
 int __cdecl sub_57C0F5(__int16 a1, __int16 a2, int a3);
 int __cdecl sub_57C121(__int16 a1, __int16 a2, int a3);
 int __cdecl sub_57C3A0(int a1, const void** a2);
-int __cdecl sub_57C42A(int a1, const void** a2);
-int __cdecl sub_57C507(_DWORD* a1, const void** a2);
 char* __cdecl sub_57C92D(_DWORD* a1, const void** a2);
-int __cdecl sub_57CC62(_DWORD* a1);
-int __cdecl sub_57CCCF(int a1);
 int sub_57CDB0();
 int __thiscall sub_57CEC9(void* this);
 int sub_57D24A();
@@ -2549,9 +2521,6 @@ __int16 __cdecl sub_57EC82(int a1, unsigned __int8 a2, int a3);
 int __cdecl sub_57ECEC(__int16 a1);
 BOOL __cdecl sub_58083C(int a1);
 __int16 __cdecl sub_58089A(int a1);
-int sub_582772();
-int __cdecl sub_5833E3(int a1, int a2);
-int __cdecl sub_58355A(unsigned __int8 a1);
 // int _cfltcvt_init_5(void); weak
 // double __cdecl cos(double X);
 // double __cdecl sin(double X);
@@ -2614,8 +2583,6 @@ int __cdecl sub_585E40(LPVOID lpMem); // idb
 // void __cdecl _lock_file(FILE *Stream);
 // void __cdecl _unlock_file(FILE *Stream);
 // int __cdecl _callnewh(size_t Size);
-char __cdecl sub_5891A0(int a1);
-int sub_5891CD();
 // _DWORD __cdecl __sbh_heap_init(_DWORD); weak
 // _DWORD __cdecl __sbh_find_block(_DWORD); weak
 _DWORD* __cdecl sub_5893E5(_DWORD* a1, int a2);

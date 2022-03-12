@@ -27,7 +27,6 @@ _DWORD dword_5972B8[4] = { -1536795552, 298788467, -1442833757, 1446230272 }; //
 _UNKNOWN unk_5972C8; // weak
 _UNKNOWN unk_5972D8; // weak
 _UNKNOWN unk_5972DC; // weak
-_UNKNOWN unk_597340; // weak
 _UNKNOWN unk_597350; // weak
 int dword_597360 = 1864182625; // weak
 _SCOPETABLE_ENTRY stru_597740[2] = { { -1, NULL, &loc_58D8DE }, { 0, &loc_58D8CA, &loc_58D8CE } }; // weak
@@ -4632,100 +4631,6 @@ LPVOID off_5B5B8C = &off_5B5B88; // idb
 int dword_5B5B98 = -1; // weak
 void** off_5B7BA8 = &off_5B5B88; // weak
 int dword_5B7BAC = 480; // weak
-_UNKNOWN unk_5B7BB0; // weak
-int dword_5B7BB4[89] =
-{
-  22,
-  2,
-  2,
-  3,
-  2,
-  4,
-  24,
-  5,
-  13,
-  6,
-  9,
-  7,
-  12,
-  8,
-  12,
-  9,
-  12,
-  10,
-  7,
-  11,
-  8,
-  12,
-  22,
-  13,
-  22,
-  15,
-  2,
-  16,
-  13,
-  17,
-  18,
-  18,
-  2,
-  33,
-  13,
-  53,
-  2,
-  65,
-  13,
-  67,
-  2,
-  80,
-  17,
-  82,
-  13,
-  83,
-  13,
-  87,
-  22,
-  89,
-  11,
-  108,
-  13,
-  109,
-  32,
-  112,
-  28,
-  114,
-  9,
-  6,
-  22,
-  128,
-  10,
-  129,
-  10,
-  130,
-  9,
-  131,
-  22,
-  132,
-  13,
-  145,
-  41,
-  158,
-  13,
-  161,
-  2,
-  164,
-  11,
-  167,
-  13,
-  183,
-  17,
-  206,
-  2,
-  215,
-  11,
-  1816,
-  12
-}; // idb
-char asc_5B7D18[5] = "ÿÿÿÿ"; // weak
 int(__cdecl* off_5B7EC0)(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD) = &terminate; // weak
 int dword_5B8168[] = { 2 }; // weak
 char* off_5B816C = "R6002\r\n- floating point not loaded\r\n"; // weak
@@ -5882,7 +5787,6 @@ int dword_5C6090; // weak
 int dword_5C6094; // weak
 void* dword_5C6098; // idb
 int dword_5C609C; // weak
-int dword_5C60A4; // weak
 int dword_5C6118; // weak
 int dword_5C61B8; // idb
 int dword_5C61C0; // weak
@@ -6754,7 +6658,6 @@ BYTE byte_6048DC[132]; // idb
 int dword_604960; // weak
 char byte_604964; // weak
 BYTE byte_604979[21]; // idb
-CHAR byte_60498E[22]; // idb
 int dword_6049A4; // weak
 int dword_6049A8; // weak
 int dword_6049AC; // weak
@@ -7286,10 +7189,7 @@ int dword_622914; // weak
 int dword_622920; // weak
 int dword_622924; // weak
 int dword_622928; // weak
-int dword_62292C; // weak
 void* dword_622930; // idb
-int dword_622934; // weak
-FILE* dword_622938; // idb
 int dword_622940[]; // weak
 int dword_622944; // weak
 int dword_622948; // weak

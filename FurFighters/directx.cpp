@@ -1796,3 +1796,276 @@ int __stdcall sub_568F8A(void* voidPrtVar)
 // 568E00: using guessed type void __cdecl __noreturn sub_568E00(_DWORD);
 // 569A61: using guessed type int __cdecl sub_569A61(_DWORD);
 // 577F03: using guessed type int sub_577F03(void);
+
+
+//----- (00578EFF) --------------------------------------------------------
+int __stdcall sub_578EFF(int a1, LPCSTR a2, int a3, int a4)
+{
+    LPSTR v4; // edx
+    LPCSTR v5; // eax
+    LPSTR v6; // ecx
+    int v8[31]; // [esp+8h] [ebp-90h] BYREF
+    int v9; // [esp+84h] [ebp-14h]
+    int v10; // [esp+88h] [ebp-10h]
+    LPSTR lpString1; // [esp+8Ch] [ebp-Ch]
+    unsigned int i; // [esp+90h] [ebp-8h]
+    LPCSTR lpString2; // [esp+94h] [ebp-4h]
+
+    lpString2 = (LPCSTR)a4;
+    lpString1 = (char*)&unk_5BFFC8 + 1236 * numVideoDevices;
+    ++numVideoDevicesOrModes;
+    memset(lpString1, 0, 0x4D4u);
+    *((_DWORD*)lpString1 + 70) = *(_DWORD*)a3 & 0x80000;
+    qmemcpy(lpString1 + 44, (const void*)a3, 0xECu);
+    *((_DWORD*)lpString1 + 308) = 1;
+    *((_DWORD*)lpString1 + 306) = *((_DWORD*)lpString2 + 306);
+    qmemcpy(lpString1 + 288, lpString2 + 288, 0x17Cu);
+    qmemcpy(lpString1 + 668, lpString2 + 668, 0x17Cu);
+    v4 = lpString1 + 1180;
+    *((_DWORD*)lpString1 + 295) = *(_DWORD*)(a3 + 196);
+    *((_DWORD*)v4 + 1) = *(_DWORD*)(a3 + 200);
+    *((_DWORD*)v4 + 2) = *(_DWORD*)(a3 + 204);
+    *((_DWORD*)v4 + 3) = *(_DWORD*)(a3 + 208);
+    *((_DWORD*)lpString1 + 10) = lpString1 + 1180;
+    *((_DWORD*)lpString1 + 303) = malloc(124 * *((_DWORD*)lpString2 + 304));
+    if (*((_DWORD*)lpString2 + 71))
+    {
+        v5 = lpString2 + 1196;
+        v6 = lpString1 + 1196;
+        *((_DWORD*)lpString1 + 299) = *((_DWORD*)lpString2 + 299);
+        *((_DWORD*)v6 + 1) = *((_DWORD*)v5 + 1);
+        *((_DWORD*)v6 + 2) = *((_DWORD*)v5 + 2);
+        *((_DWORD*)v6 + 3) = *((_DWORD*)v5 + 3);
+        *((_DWORD*)lpString1 + 71) = lpString1 + 1196;
+        lstrcpynA(lpString1, lpString2, 39);
+    }
+    else
+    {
+        *((_DWORD*)lpString1 + 71) = 0;
+        lstrcpynA(lpString1, a2, 39);
+    }
+    if (*((_DWORD*)lpString1 + 71) && !*((_DWORD*)lpString1 + 70))
+        return 1;
+    if (dword_5C606C && dword_5C606C(lpString1 + 288, lpString1 + 44) < 0)
+        return 1;
+    for (i = 0; i < *((_DWORD*)lpString2 + 304); ++i)
+    {
+        qmemcpy(v8, (const void*)(124 * i + *((_DWORD*)lpString2 + 303)), sizeof(v8));
+        v10 = *((_DWORD*)lpString1 + 40);
+        v9 = v8[21];
+        if (v8[21] == 32 && (v10 & 0x100) != 0 || v9 == 24 && (v10 & 0x200) != 0 || v9 == 16 && (v10 & 0x400) != 0)
+        {
+            qmemcpy((void*)(124 * (*((_DWORD*)lpString1 + 304))++ + *((_DWORD*)lpString1 + 303)), v8, 0x7Cu);
+            *((_DWORD*)lpString1 + 307) = 1;
+        }
+    }
+    if (*((_DWORD*)lpString1 + 304))
+        ++numVideoDevices;
+    return 1;
+}
+// 5C6064: using guessed type int dword_5C6064;
+// 5C6068: using guessed type int dword_5C6068;
+// 5C606C: using guessed type int (__cdecl *dword_5C606C)(_DWORD, _DWORD);
+
+//----- (00578B08) --------------------------------------------------------
+int __cdecl CompareFunction(const void* a1, const void* a2)
+{
+    if (*((_DWORD*)a1 + 3) < *((_DWORD*)a2 + 3))
+        return -1;
+    if (*((_DWORD*)a1 + 3) > *((_DWORD*)a2 + 3))
+        return 1;
+    if (*((_DWORD*)a1 + 2) < *((_DWORD*)a2 + 2))
+        return -1;
+    if (*((_DWORD*)a1 + 2) > *((_DWORD*)a2 + 2))
+        return 1;
+    if (*((_DWORD*)a1 + 21) >= *((_DWORD*)a2 + 21))
+        return *((_DWORD*)a1 + 21) > *((_DWORD*)a2 + 21);
+    return -1;
+}
+
+//----- (005786C9) --------------------------------------------------------
+int __cdecl sub_5786C9(int a1)
+{
+    int v2; // ecx
+    int v3; // ecx
+    int v4; // edx
+    int v5[2]; // [esp+8h] [ebp-B8h] BYREF
+    int v6; // [esp+10h] [ebp-B0h]
+    int v7; // [esp+14h] [ebp-ACh]
+    int v8; // [esp+18h] [ebp-A8h]
+    int v9; // [esp+1Ch] [ebp-A4h]
+    int v10[8]; // [esp+20h] [ebp-A0h] BYREF
+    int v11; // [esp+40h] [ebp-80h]
+    int v12; // [esp+44h] [ebp-7Ch] BYREF
+    int v13; // [esp+48h] [ebp-78h]
+    int v14; // [esp+4Ch] [ebp-74h]
+    int v15; // [esp+50h] [ebp-70h]
+    int v16[8]; // [esp+8Ch] [ebp-34h] BYREF
+    int v17; // [esp+ACh] [ebp-14h]
+
+    v11 = (**(int(__thiscall***)(LPVOID, LPVOID, void*, int*))lpDD)(lpDD, lpDD, &unk_5972C8, &dword_610070);
+    if (v11 < 0)
+        return v11;
+    v12 = 124;
+    (*(void(__thiscall**)(LPVOID, LPVOID, int*))(*(_DWORD*)lpDD + 48))(lpDD, lpDD, &v12);
+    if (v16[3] <= 8u)
+        return -2005532552;
+    (*(void(__thiscall**)(int, int, _DWORD, int(__stdcall*)(_DWORD*, void*), int*))(*(_DWORD*)dword_610070 + 24))(
+        dword_610070,
+        dword_610070,
+        *(_DWORD*)(a1 + 48),
+        sub_578A63,
+        v10);
+    if (v10[0] != 32)
+        return -2147467259;
+    v13 = 4103;
+    v17 = 0x20000;
+    if (dword_610400)
+    {
+        v15 = Point.right - Point.left;
+        v14 = Point.bottom - Point.top;
+    }
+    else
+    {
+        v15 = dword_60FE80;
+        v14 = dword_60FE7C;
+    }
+    qmemcpy(v16, v10, sizeof(v16));
+    if (!memcmp(*(const void**)(a1 + 48), dword_5972A8, 0x10u))
+    {
+        v2 = v17;
+        BYTE1(v2) = BYTE1(v17) | 0x40;
+        v17 = v2;
+        dword_61043C = 0;
+    }
+    else if (!memcmp(*(const void**)(a1 + 48), dword_597278, 0x10u))
+    {
+        v3 = v17;
+        BYTE1(v3) = BYTE1(v17) | 0x40;
+        v17 = v3;
+        dword_61043C = 1;
+    }
+    else
+    {
+        v4 = v17;
+        BYTE1(v4) = BYTE1(v17) | 8;
+        v17 = v4;
+        dword_61043C = 0;
+    }
+    v11 = (*(int(__thiscall**)(LPVOID, LPVOID, int*, int*, _DWORD))(*(_DWORD*)lpDD + 24))(
+        lpDD,
+        lpDD,
+        &v12,
+        &dword_60FE6C,
+        0);
+    if (v11 < 0)
+    {
+        *(_DWORD*)(a1 + 36) = !*(_DWORD*)(a1 + 36);
+        (*(void(__thiscall**)(int, int, _DWORD, int(__stdcall*)(_DWORD*, void*), int*))(*(_DWORD*)dword_610070 + 24))(
+            dword_610070,
+            dword_610070,
+            *(_DWORD*)(a1 + 48),
+            sub_578A63,
+            v10);
+        qmemcpy(v16, v10, sizeof(v16));
+        v11 = (*(int(__stdcall**)(LPVOID, int*, int*, _DWORD))(*(_DWORD*)lpDD + 24))(lpDD, &v12, &dword_60FE6C, 0);
+        if (v11 < 0)
+            return v11;
+    }
+    (*(void(__thiscall**)(int, int, int*))(*(_DWORD*)dword_60FE6C + 88))(dword_60FE6C, dword_60FE6C, &v12);
+    if (v12 == 124 && (v13 & 0x1000) != 0 && (v16[0] = 32, (v16[1] & 0x400) != 0))
+    {
+        *(_DWORD*)dword_610478 = v16[3];
+    }
+    else
+    {
+        writeDebug("Z buffer direct draw surface surface descriptor has invalid z buffer bit depth");
+        *(_DWORD*)dword_610478 = 16;
+    }
+    writeDebug("Z buffer bit depth %d", *(_DWORD*)dword_610478);
+    v11 = (*(int(__stdcall**)(int, int))(*(_DWORD*)dword_60FE68 + 12))(dword_60FE68, dword_60FE6C);
+    if (v11 < 0)
+        return v11;
+    v11 = (*(int(__stdcall**)(int, _DWORD, int, int*))(*(_DWORD*)dword_610070 + 16))(
+        dword_610070,
+        *(_DWORD*)(a1 + 48),
+        dword_60FE68,
+        &dword_610074);
+    if (v11 < 0)
+        return v11;
+    if ((*(int(__stdcall**)(int, void*))(*(_DWORD*)dword_610074 + 12))(dword_610074, &unk_610078) < 0)
+        return v11;
+    v5[0] = 0;
+    v5[1] = 0;
+    if (*(_DWORD*)(a1 + 12))
+    {
+        v6 = Point.right - Point.left;
+        v7 = Point.bottom - Point.top;
+    }
+    else
+    {
+        v6 = *(_DWORD*)a1;
+        v7 = *(_DWORD*)(a1 + 4);
+    }
+    v8 = 0;
+    v9 = 1065353216;
+    return (*(int(__thiscall**)(int, int, int*))(*(_DWORD*)dword_610074 + 52))(dword_610074, dword_610074, v5);
+}
+// 60FE68: using guessed type int dword_60FE68;
+// 60FE6C: using guessed type int dword_60FE6C;
+// 60FE7C: using guessed type int dword_60FE7C;
+// 60FE80: using guessed type int dword_60FE80;
+// 610070: using guessed type int dword_610070;
+// 610400: using guessed type int dword_610400;
+// 61043C: using guessed type int dword_61043C;
+
+//----- (00577F03) --------------------------------------------------------
+int sub_577F03()
+{
+    int i; // [esp+0h] [ebp-8h]
+
+    sub_52CD67();
+    if (dword_610074)
+    {
+        for (i = 0; i < 6; ++i)
+            (*(void(__thiscall**)(int, int, int))(*(_DWORD*)dword_610074 + 164))(
+                dword_610074,
+                dword_610074,
+                dword_622940[i]);
+        if ((*(int(__thiscall**)(int, int))(*(_DWORD*)dword_610074 + 8))(dword_610074, dword_610074) > 0)
+            return -2147467259;
+    }
+    if (dword_60FEF0)
+        (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_60FEF0 + 8))(dword_60FEF0, dword_60FEF0);
+    if (dword_610070)
+        (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_610070 + 8))(dword_610070, dword_610070);
+    if (dword_60FE6C)
+        (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_60FE6C + 8))(dword_60FE6C, dword_60FE6C);
+    if (dword_60FE68)
+        (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_60FE68 + 8))(dword_60FE68, dword_60FE68);
+    if (dword_60FE64)
+        (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_60FE64 + 8))(dword_60FE64, dword_60FE64);
+    if (lpDD)
+    {
+        if (dword_5BFFA8)
+        {
+            (*(void(__thiscall**)(int, int))(*(_DWORD*)dword_5BFFA8 + 8))(dword_5BFFA8, dword_5BFFA8);
+            dword_5BFFA8 = 0;
+        }
+        if ((*(int(__thiscall**)(LPVOID, LPVOID))(*(_DWORD*)lpDD + 8))(lpDD, lpDD) > 0)
+            return -2147467259;
+    }
+    dword_610074 = 0;
+    dword_610070 = 0;
+    dword_60FE68 = 0;
+    dword_60FE64 = 0;
+    lpDD = 0;
+    return 0;
+}
+// 5BFFA8: using guessed type int dword_5BFFA8;
+// 60FE64: using guessed type int dword_60FE64;
+// 60FE68: using guessed type int dword_60FE68;
+// 60FE6C: using guessed type int dword_60FE6C;
+// 60FEF0: using guessed type int dword_60FEF0;
+// 610070: using guessed type int dword_610070;
+// 622940: using guessed type int dword_622940[];

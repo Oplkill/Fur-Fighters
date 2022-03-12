@@ -26,3 +26,7 @@ int __cdecl checkAudioVideoDevices(int a1);
 BOOL __stdcall Callback(GUID*, LPSTR, LPSTR, LPVOID, HMONITOR); // idb
 int sub_56975B();
 int __stdcall sub_568F8A(void* voidPrtVar = 0);
+int __stdcall sub_578EFF(int, LPCSTR, int, int); // idb
+int __cdecl CompareFunction(const void*, const void*); // idb
+int __cdecl sub_5786C9(int a1);
+int sub_577F03();
