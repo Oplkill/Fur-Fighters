@@ -162,6 +162,8 @@ int dword_606748; // weak
 int dword_6067AC; // weak
 int dword_6067A4; // weak
 int dword_6AD9C8[]; // weak
+int g_UselessVariable3; // weak
+int g_UselessVariable4; // weak
 
 int __stdcall maybeSoundTimerCallback(int); // weak
 void sub_58295B();

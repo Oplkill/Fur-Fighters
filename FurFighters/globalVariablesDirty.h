@@ -18,7 +18,6 @@ int (*off_596F30)() = &sub_532DBD; // weak
 int (*off_5970E0)() = &sub_52F208; // weak
 _UNKNOWN unk_5971D0; // weak
 _UNKNOWN unk_597248; // weak
-_UNKNOWN unk_597258; // weak
 _DWORD dword_597278[4] = { -184246664, 298993761, -1610610780, -1473706295 }; // idb
 _DWORD dword_597288[4] = { -2023235806, 298957516, -1610585719, -1473706295 }; // idb
 _DWORD dword_597298[4] = { 1351837251, 298914793, -1610569079, 692127177 }; // idb
@@ -28,7 +27,6 @@ _UNKNOWN unk_5972C8; // weak
 _UNKNOWN unk_5972D8; // weak
 _UNKNOWN unk_5972DC; // weak
 _UNKNOWN unk_597350; // weak
-int dword_597360 = 1864182625; // weak
 _SCOPETABLE_ENTRY stru_597740[2] = { { -1, NULL, &loc_58D8DE }, { 0, &loc_58D8CA, &loc_58D8CE } }; // weak
 _UNKNOWN unk_597C68; // weak
 const _ThrowInfo _TI2_AVCD3DXException__ = { 0u, NULL, NULL, &_CTA2_AVCD3DXException__ }; // idb
@@ -4136,8 +4134,6 @@ __int16 word_5AD484 = 92; // weak
 char aFinal[] = "\\final\\"; // idb
 char asc_5AD4E8[2] = "€"; // weak
 char aGoodFluffers[14] = "Good Fluffers"; // weak
-CHAR aFurFight_5[] = "Fur Fight"; // idb
-CHAR aThisApplicatio[] = "This application requires DirectPlay 6 or later. The sample will now quit."; // idb
 CHAR aWaitingForConn[] = "Waiting for connection..."; // idb
 CHAR aFindingGame[] = "Finding Game..."; // idb
 int dword_5AD968 = 10; // weak
@@ -5774,17 +5770,8 @@ int dword_5BFFB0; // weak
 int dword_5BFFB4; // weak
 char dword_5BFFB8[]; // idb
 int dword_5BFFBC; // weak
-int(__cdecl* dword_5C606C)(_DWORD, _DWORD); // weak
 int dword_5C6070; // weak
 int dword_5C6074; // weak
-int dword_5C6078; // weak
-int dword_5C607C; // weak
-int dword_5C6080; // weak
-int dword_5C6084; // weak
-int dword_5C6088; // weak
-int dword_5C608C; // weak
-int dword_5C6090; // weak
-int dword_5C6094; // weak
 void* dword_5C6098; // idb
 int dword_5C609C; // weak
 int dword_5C6118; // weak
@@ -7040,10 +7027,7 @@ char byte_60FDC6[78]; // idb
 int dword_60FE14; // weak
 int dword_60FE64; // weak
 int dword_60FE68; // weak
-int dword_60FE6C; // weak
 int dword_60FE70; // weak
-int dword_60FE7C; // weak
-int dword_60FE80; // weak
 int dword_60FEF0; // weak
 _UNKNOWN unk_60FEF4; // weak
 int dword_610070; // weak
@@ -7055,23 +7039,7 @@ int dword_610134; // weak
 _UNKNOWN unk_61013C; // weak
 _UNKNOWN unk_610164; // weak
 __int16 word_610170[]; // weak
-int dword_610384[]; // weak
-int dword_610388; // weak
-int dword_61038C; // weak
-int dword_610390; // weak
-int dword_610394; // weak
-int dword_610398; // weak
-int dword_6103A0; // weak
-int dword_6103A4; // weak
-int dword_6103A8; // weak
-int dword_6103AC; // weak
-int dword_6103B0; // weak
-int dword_6103B4; // weak
-int dword_6103B8; // weak
-int dword_6103BC; // weak
 int dword_6103C0; // weak
-int dword_6103C4; // weak
-int dword_6103C8; // weak
 int dword_6103CC; // weak
 int dword_6103D0; // weak
 int dword_6103D4; // weak
@@ -7083,7 +7051,6 @@ int dword_6103EC; // weak
 int dword_6103F0; // weak
 int dword_6103F4; // weak
 int dword_6103F8; // weak
-HWND dword_6103FC; // idb
 int dword_610400; // weak
 struct tagRECT stru_610418; // idb
 int dword_610428; // weak
@@ -7096,7 +7063,6 @@ int dword_610444; // weak
 int dword_610448; // weak
 int dword_61044C; // weak
 BYTE Data; // idb
-char dword_610478[]; // idb
 _UNKNOWN unk_611680; // weak
 float flt_6135C0; // weak
 _UNKNOWN unk_6135E0; // weak
@@ -7479,10 +7445,6 @@ int dword_668724; // weak
 float flt_668728; // weak
 float flt_66872C; // weak
 int dword_668730; // weak
-__int16 word_668736; // weak
-__int16 word_668738; // weak
-__int16 word_66873A; // weak
-__int16 word_66873C; // weak
 __int16 word_66875E; // weak
 __int16 word_668760; // weak
 __int16 word_668762; // weak
@@ -7549,8 +7511,6 @@ char byte_6AE824; // weak
 int dword_6AE828; // weak
 char byte_6AE840; // weak
 int dword_6AE848; // weak
-int g_UselessVariable3; // weak
-int g_UselessVariable4; // weak
 int dword_6AEBA8; // weak
 int dword_6AEBAC; // weak
 void* dword_6AEBB0; // idb

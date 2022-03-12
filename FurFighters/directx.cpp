@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <dinput.h>
+#include <ddraw.h>
 #include "debug.h"
 #include "tempplace.h"
 #include "utils.h"
@@ -24,8 +25,57 @@ int dword_60FE74; // weak
 int g_uselessEventA; // weak
 HWND g_WindowHWnd; // idb
 int g_maybeDirectInput; // weak //todo maybe void** or LPVOID *
+int dword_610384[]; // weak
+__int16 word_668736; // weak
+__int16 word_668738; // weak
+__int16 word_66873A; // weak
+__int16 word_66873C; // weak
+int dword_597360 = 1864182625; // weak
+int dword_60FE6C; // weak
+int(__cdecl* dword_5C606C)(_DWORD, _DWORD); // weak
+HWND dword_6103FC; // idb
+_UNKNOWN unk_597258; // weak
+int dword_60FE7C; // weak
+int dword_60FE80; // weak
+char g_ZBufferBitDepth[]; // idb
+int dword_6103C8; // weak
+int dword_6103B4; // weak
+int dword_6103B0; // weak
+int dword_6103AC; // weak
+int dword_6103A8; // weak
+int dword_6103BC; // weak
+int dword_6103C4; // weak
+int dword_610388; // weak
+int dword_6103B8; // weak
+int dword_5C607C; // weak
+int dword_5C6094; // weak
+int dword_5C6078; // weak
+int dword_5C6090; // weak
+int dword_5C6080; // weak
+int dword_5C6084; // weak
+int dword_5C6088; // weak
+int dword_5C608C; // weak
+int dword_61038C; // weak
+int dword_610390; // weak
+int dword_610394; // weak
+int dword_610398; // weak
+int dword_6103A0; // weak
+int dword_6103A4; // weak
 
 int __cdecl sub_57808E(LONG* a1);
+int __stdcall sub_57DA57(_DWORD* a1, int a2);
+int __stdcall sub_578DB1(_DWORD* a1, int a2);
+int __stdcall sub_578A63(_DWORD* a1, void* a2);
+int sub_52CD67();
+int __thiscall sub_52DE94(_DWORD* this);
+int sub_52E136();
+int __thiscall sub_52DF09(_DWORD* this);
+int __thiscall sub_531887(_DWORD* this);
+int __thiscall sub_52DFA8(_DWORD* this);
+int __thiscall sub_52E01F(_DWORD* this);
+int sub_52DF04();
+int __thiscall sub_53220A(int this);
+void __thiscall sub_52F22F(_DWORD* this);
 
 //----- (0052CE31) --------------------------------------------------------
 void __stdcall getDirectXErrorName(int a1, size_t BufferCount, char* Buffer)
@@ -1073,7 +1123,7 @@ HRESULT __cdecl sub_52027C(_DWORD* a1)
     else
     {
         if (v3 == -2147467262)
-            MessageBoxA(0, aThisApplicatio, aFurFight_5, 0x10u);
+            MessageBoxA(0, "This application requires DirectPlay 6 or later. The sample will now quit.", "Fur Fight", 0x10u);
         result = v3;
     }
     return result;
@@ -1258,7 +1308,7 @@ int __cdecl sub_568E33(int a1)
     dword_60FE70 = 0;
     dword_6103CC = -1;
     dword_6103C8 = 0;
-    if (*(_DWORD*)dword_610478 == 16)
+    if (*(_DWORD*)g_ZBufferBitDepth == 16)
         dword_610434 = 1148846080;
     else
         dword_610434 = 1159479296;
@@ -1975,14 +2025,14 @@ int __cdecl sub_5786C9(int a1)
     (*(void(__thiscall**)(int, int, int*))(*(_DWORD*)dword_60FE6C + 88))(dword_60FE6C, dword_60FE6C, &v12);
     if (v12 == 124 && (v13 & 0x1000) != 0 && (v16[0] = 32, (v16[1] & 0x400) != 0))
     {
-        *(_DWORD*)dword_610478 = v16[3];
+        *(_DWORD*)g_ZBufferBitDepth = v16[3];
     }
     else
     {
         writeDebug("Z buffer direct draw surface surface descriptor has invalid z buffer bit depth");
-        *(_DWORD*)dword_610478 = 16;
+        *(_DWORD*)g_ZBufferBitDepth = 16;
     }
-    writeDebug("Z buffer bit depth %d", *(_DWORD*)dword_610478);
+    writeDebug("Z buffer bit depth %d", *(_DWORD*)g_ZBufferBitDepth);
     v11 = (*(int(__stdcall**)(int, int))(*(_DWORD*)dword_60FE68 + 12))(dword_60FE68, dword_60FE6C);
     if (v11 < 0)
         return v11;
@@ -2069,3 +2119,609 @@ int sub_577F03()
 // 60FEF0: using guessed type int dword_60FEF0;
 // 610070: using guessed type int dword_610070;
 // 622940: using guessed type int dword_622940[];
+
+//----- (0057D760) --------------------------------------------------------
+int sub_57D760()
+{
+    int result; // eax
+    int i; // [esp+8h] [ebp-4h]
+
+    dword_610444 = 0;
+    for (i = 0; i < 17; ++i)
+        dword_610384[i] = 0;
+    result = (*(int(__stdcall**)(int, int(__stdcall*)(_DWORD*, int), _DWORD))(*(_DWORD*)dword_610074 + 16))(
+        dword_610074,
+        sub_57DA57,
+        0);
+    if (!dword_610444)
+    {
+        qmemcpy(&unk_610284, &unk_6101A4, 0x20u);
+        qmemcpy(&unk_6102A4, &unk_6101A4, 0x20u);
+        qmemcpy(&unk_6102C4, &unk_6101A4, 0x20u);
+        qmemcpy(&unk_6102E4, &unk_6101A4, 0x20u);
+        qmemcpy(&unk_610304, &unk_6101A4, 0x20u);
+    }
+    return result;
+}
+// 610384: using guessed type int dword_610384[];
+// 610444: using guessed type int dword_610444;
+
+//----- (0057DA57) --------------------------------------------------------
+int __stdcall sub_57DA57(_DWORD* a1, int a2)
+{
+    unsigned int i; // [esp+8h] [ebp-14h]
+    unsigned int j; // [esp+8h] [ebp-14h]
+    unsigned int k; // [esp+8h] [ebp-14h]
+    unsigned int l; // [esp+8h] [ebp-14h]
+    int v7; // [esp+Ch] [ebp-10h]
+    int v8; // [esp+Ch] [ebp-10h]
+    int v9; // [esp+10h] [ebp-Ch]
+    int v10; // [esp+10h] [ebp-Ch]
+    int v11; // [esp+14h] [ebp-8h]
+    int v12; // [esp+14h] [ebp-8h]
+    int v13; // [esp+18h] [ebp-4h]
+    int v14; // [esp+18h] [ebp-4h]
+
+    if ((a1[1] & 8) != 0)
+    {
+        writeDebug("4 bit palette");
+        qmemcpy(&unk_610164, a1, 0x20u);
+        dword_610384 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if ((a1[1] & 0x20) != 0)
+    {
+        writeDebug("8 bit palette");
+        qmemcpy(&unk_610184, a1, 0x20u);
+        dword_610388 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if ((a1[1] & 0x40000) != 0 && (a1[1] & 0x80000) != 0)
+    {
+        writeDebug("bumpmap luminance dudv");
+        qmemcpy(&unk_610364, a1, 0x20u);
+        dword_6103C4 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if ((a1[1] & 0x40000) != 0)
+    {
+        writeDebug("bumpmap luminance");
+        qmemcpy(&unk_610324, a1, 0x20u);
+        dword_6103BC = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if ((a1[1] & 0x80000) != 0)
+    {
+        writeDebug("bumpmap dudv");
+        qmemcpy(&unk_610344, a1, 0x20u);
+        dword_6103C0 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    switch (a1[2])
+    {
+    case 0x31545844:
+        writeDebug("DXT1 Compressed Texture");
+        qmemcpy(&unk_610284, a1, 0x20u);
+        dword_6103A8 = 1;
+        dword_610444 = 1;
+        ++dword_6103C8;
+        return 1;
+    case 0x32545844:
+        writeDebug("DXT2 Compressed Texture");
+        qmemcpy(&unk_6102A4, a1, 0x20u);
+        dword_6103AC = 1;
+        dword_610444 = 1;
+        ++dword_6103C8;
+        return 1;
+    case 0x33545844:
+        writeDebug("DXT3 Compressed Texture");
+        qmemcpy(&unk_6102C4, a1, 0x20u);
+        dword_6103B0 = 1;
+        dword_610444 = 1;
+        ++dword_6103C8;
+        return 1;
+    case 0x34545844:
+        writeDebug("DXT4 Compressed Texture");
+        qmemcpy(&unk_6102E4, a1, 0x20u);
+        dword_6103B4 = 1;
+        dword_610444 = 1;
+        ++dword_6103C8;
+        return 1;
+    case 0x35545844:
+        writeDebug("DXT5 Compressed Texture");
+        qmemcpy(&unk_610304, a1, 0x20u);
+        dword_6103B8 = 1;
+        dword_610444 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if (!a1[3])
+        return 1;
+    if (a1[4])
+    {
+        v9 = 0;
+        for (i = a1[4]; (i & 1) == 0; i >>= 1)
+            ++v9;
+        dword_5C607C = v9;
+        v10 = 0;
+        while ((i & 1) != 0)
+        {
+            ++v10;
+            i >>= 1;
+        }
+        dword_5C6094 = v10;
+    }
+    else
+    {
+        dword_5C6094 = 0;
+    }
+    if (a1[5])
+    {
+        v7 = 0;
+        for (j = a1[5]; (j & 1) == 0; j >>= 1)
+            ++v7;
+        dword_5C6078 = v7;
+        v8 = 0;
+        while ((j & 1) != 0)
+        {
+            ++v8;
+            j >>= 1;
+        }
+        dword_5C6090 = v8;
+    }
+    else
+    {
+        dword_5C6090 = 0;
+    }
+    if (a1[6])
+    {
+        v11 = 0;
+        for (k = a1[6]; (k & 1) == 0; k >>= 1)
+            ++v11;
+        dword_5C6080 = v11;
+        v12 = 0;
+        while ((k & 1) != 0)
+        {
+            ++v12;
+            k >>= 1;
+        }
+        dword_5C6084 = v12;
+    }
+    else
+    {
+        dword_5C6084 = 0;
+    }
+    if (a1[7])
+    {
+        v13 = 0;
+        for (l = a1[7]; (l & 1) == 0; l >>= 1)
+            ++v13;
+        dword_5C6088 = v13;
+        v14 = 0;
+        while ((l & 1) != 0)
+        {
+            ++v14;
+            l >>= 1;
+        }
+        dword_5C608C = v14;
+    }
+    else
+    {
+        dword_5C608C = 0;
+    }
+    if (dword_5C6094 == 5 && dword_5C6090 == 5 && dword_5C6084 == 5 && dword_5C608C == 1)
+    {
+        writeDebug("5551 Format");
+        qmemcpy(&unk_6101A4, a1, 0x20u);
+        dword_61038C = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if (dword_5C6094 == 5 && dword_5C6090 == 5 && dword_5C6084 == 5 && !dword_5C608C)
+    {
+        writeDebug("555 Format");
+        qmemcpy(&unk_6101C4, a1, 0x20u);
+        dword_610390 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if (dword_5C6094 == 5 && dword_5C6090 == 6 && dword_5C6084 == 5 && !dword_5C608C)
+    {
+        writeDebug("565 Format");
+        qmemcpy(&unk_6101E4, a1, 0x20u);
+        dword_610394 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if (dword_5C6094 == 4 && dword_5C6090 == 4 && dword_5C6084 == 4 && dword_5C608C == 4)
+    {
+        writeDebug("4444 Format");
+        qmemcpy(&unk_610204, a1, 0x20u);
+        dword_610398 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if (dword_5C6094 == 8 && dword_5C6090 == 8 && dword_5C6084 == 8 && !dword_5C608C)
+    {
+        writeDebug("888 Format");
+        qmemcpy(&unk_610244, a1, 0x20u);
+        dword_6103A0 = 1;
+        ++dword_6103C8;
+        return 1;
+    }
+    if (dword_5C6094 != 8 || dword_5C6090 != 8 || dword_5C6084 != 8 || dword_5C608C != 8)
+        return 1;
+    writeDebug("8888 Format");
+    qmemcpy(&unk_610264, a1, 0x20u);
+    dword_6103A4 = 1;
+    ++dword_6103C8;
+    return 1;
+}
+// 5C6078: using guessed type int dword_5C6078;
+// 5C607C: using guessed type int dword_5C607C;
+// 5C6080: using guessed type int dword_5C6080;
+// 5C6084: using guessed type int dword_5C6084;
+// 5C6088: using guessed type int dword_5C6088;
+// 5C608C: using guessed type int dword_5C608C;
+// 5C6090: using guessed type int dword_5C6090;
+// 5C6094: using guessed type int dword_5C6094;
+// 610384: using guessed type int dword_610384;
+// 610388: using guessed type int dword_610388;
+// 61038C: using guessed type int dword_61038C;
+// 610390: using guessed type int dword_610390;
+// 610394: using guessed type int dword_610394;
+// 610398: using guessed type int dword_610398;
+// 6103A0: using guessed type int dword_6103A0;
+// 6103A4: using guessed type int dword_6103A4;
+// 6103A8: using guessed type int dword_6103A8;
+// 6103AC: using guessed type int dword_6103AC;
+// 6103B0: using guessed type int dword_6103B0;
+// 6103B4: using guessed type int dword_6103B4;
+// 6103B8: using guessed type int dword_6103B8;
+// 6103BC: using guessed type int dword_6103BC;
+// 6103C0: using guessed type int dword_6103C0;
+// 6103C4: using guessed type int dword_6103C4;
+// 6103C8: using guessed type int dword_6103C8;
+// 610444: using guessed type int dword_610444;
+
+//----- (00578DB1) --------------------------------------------------------
+int __stdcall sub_578DB1(_DWORD* a1, int a2)
+{
+    void* v3; // [esp+8h] [ebp-Ch]
+    int i; // [esp+10h] [ebp-4h]
+
+    for (i = 0; i < 10; ++i)
+    {
+        if (a1[3] == *(_DWORD*)(dword_610448 + 12 * i)
+            && a1[2] == *(_DWORD*)(dword_610448 + 12 * i + 4)
+            && a1[21] == *(_DWORD*)(dword_610448 + 12 * i + 8))
+        {
+            dword_61044C |= 1 << i;
+            *((_DWORD*)&Data + i) = *(_DWORD*)(a2 + 1216);
+            v3 = malloc(124 * (*(_DWORD*)(a2 + 1216) + 1));
+            qmemcpy(v3, *(const void**)(a2 + 1212), 124 * *(_DWORD*)(a2 + 1216));
+            sub_584E87(*(LPVOID*)(a2 + 1212));
+            *(_DWORD*)(a2 + 1212) = v3;
+            qmemcpy((void*)(124 * (*(_DWORD*)(a2 + 1216))++ + *(_DWORD*)(a2 + 1212)), a1, 0x7Cu);
+            return 1;
+        }
+    }
+    return 1;
+}
+// 610448: using guessed type int dword_610448;
+// 61044C: using guessed type int dword_61044C;
+
+//----- (00578A63) --------------------------------------------------------
+int __stdcall sub_578A63(_DWORD* a1, void* a2)
+{
+    int bitBuffer; // [esp+8h] [ebp-80h]
+    int v4[31]; // [esp+Ch] [ebp-7Ch] BYREF
+
+    if ((a1[1] & 0x400) != 0)
+    {
+        bitBuffer = 16;
+        if (g_dwHave32bitZBuffer)
+            bitBuffer = 32;
+        v4[0] = 124;
+        (*(void(__thiscall**)(LPVOID, LPVOID, int*))(*(_DWORD*)lpDD + 48))(lpDD, lpDD, v4);
+        if ((a1[1] & 0x4000) != 0)
+        {
+            if (a1[3] == bitBuffer)
+            {
+            LABEL_6:
+                qmemcpy(a2, a1, 0x20u);
+                return 0;
+            }
+        }
+        else if (a1[3] == bitBuffer)
+        {
+            goto LABEL_6;
+        }
+    }
+    return 1;
+}
+// 60FE44: using guessed type int g_dwHave32bitZBuffer;
+
+//----- (0052CD67) --------------------------------------------------------
+int sub_52CD67()
+{
+    void* v0; // esi
+    int v2; // [esp-Ch] [ebp-12Ch] BYREF
+    int pExceptionObject[38]; // [esp+88h] [ebp-98h] BYREF
+
+    pExceptionObject[37] = 0;
+    pExceptionObject[34] = (int)&v2;
+    if (!dword_5BE260)
+    {
+        pExceptionObject[32] = -931722297;
+        strcpy((char*)pExceptionObject, "D3DXUninitialize - Need to call D3DXInitialize first.");
+        pExceptionObject[33] = 39;
+        qmemcpy(pExceptionObject, pExceptionObject, 0x88u);
+        _CxxThrowException(pExceptionObject, (_ThrowInfo*)&_TI2_AVCD3DXException__);
+    }
+    v0 = dword_5BE260;
+    if (dword_5BE260)
+    {
+        sub_52DE94(dword_5BE260);
+        sub_585E40(v0);
+    }
+    dword_5BE260 = 0;
+    sub_52E136();
+    return 0;
+}
+
+//----- (0052DE94) --------------------------------------------------------
+int __thiscall sub_52DE94(_DWORD* this)
+{
+    void* v2; // edi
+    int result; // eax
+    void* v4; // edi
+    void* v5; // edi
+    void* v6; // edi
+    void* v7; // esi
+
+    v2 = (void*)this[4];
+    if (v2)
+    {
+        sub_52DF09((_DWORD*)this[4]);
+        result = sub_585E40(v2);
+    }
+    v4 = (void*)this[1];
+    if (v4)
+    {
+        sub_531887((_DWORD*)this[1]);
+        result = sub_585E40(v4);
+    }
+    v5 = (void*)this[2];
+    if (v5)
+    {
+        sub_52DFA8(this[2]);
+        result = sub_585E40(v5);
+    }
+    v6 = (void*)this[3];
+    if (v6)
+    {
+        sub_52E01F(this[3]);
+        result = sub_585E40(v6);
+    }
+    v7 = (void*)this[5];
+    if (v7)
+    {
+        sub_52DF04();
+        result = sub_585E40(v7);
+    }
+    return result;
+}
+// 52DFA8: using guessed type int __thiscall sub_52DFA8(_DWORD);
+// 52E01F: using guessed type int __thiscall sub_52E01F(_DWORD);
+
+//----- (0052E136) --------------------------------------------------------
+int sub_52E136()
+{
+    void* v0; // esi
+    void* v1; // esi
+    int* v2; // edi
+    LPVOID* v3; // esi
+    LPVOID* v4; // esi
+    LPVOID* v5; // esi
+    LPVOID* v6; // esi
+
+    if (dword_5BE270 == 1)
+    {
+        v0 = dword_5BE584;
+        if (dword_5BE584)
+        {
+            if (*(_DWORD*)dword_5BE584)
+                sub_584E87(*(LPVOID*)dword_5BE584);
+            sub_585E40(v0);
+        }
+        v1 = dword_5BE580;
+        if (dword_5BE580)
+        {
+            if (*(_DWORD*)dword_5BE580)
+                sub_584E87(*(LPVOID*)dword_5BE580);
+            sub_585E40(v1);
+        }
+        v2 = &dword_5BE418;
+        do
+        {
+            v3 = (LPVOID*)*(v2 - 2);
+            if (v3)
+            {
+                if (*v3)
+                    sub_584E87(*v3);
+                sub_585E40(v3);
+            }
+            v4 = (LPVOID*)*(v2 - 1);
+            if (v4)
+            {
+                if (*v4)
+                    sub_584E87(*v4);
+                sub_585E40(v4);
+            }
+            v5 = (LPVOID*)*v2;
+            if (*v2)
+            {
+                if (*v5)
+                    sub_584E87(*v5);
+                sub_585E40(v5);
+            }
+            v6 = (LPVOID*)v2[1];
+            if (v6)
+            {
+                if (*v6)
+                    sub_584E87(*v6);
+                sub_585E40(v6);
+            }
+            v2 += 4;
+        } while ((int)v2 < (int)&unk_5BE588);
+        memset(&dword_5BE410, 0, 0x170u);
+        sub_584E87(dword_5BE278);
+        dword_5BE278 = 0;
+        dword_5BE274 = 0;
+    }
+    --dword_5BE270;
+    return 0;
+}
+// 5BE270: using guessed type int dword_5BE270;
+// 5BE274: using guessed type int dword_5BE274;
+// 5BE410: using guessed type int dword_5BE410;
+// 5BE418: using guessed type int dword_5BE418;
+
+//----- (0052DF09) --------------------------------------------------------
+int __thiscall sub_52DF09(_DWORD* this)
+{
+    _DWORD* i; // esi
+    void* v3; // ebx
+    int result; // eax
+
+    *this = &off_5962C0;
+    for (i = (_DWORD*)this[3]; i; result = sub_585E40(v3))
+    {
+        v3 = i;
+        i = (_DWORD*)*i;
+        sub_52F07B(v3);
+    }
+    this[3] = 0;
+    this[2] = 0;
+    return result;
+}
+// 52DF26: conditional instruction was optimized away because of 'ebx.4!=0'
+// 52F07B: using guessed type int __thiscall sub_52F07B(_DWORD);
+// 5962C0: using guessed type void *off_5962C0;
+
+//----- (00531887) --------------------------------------------------------
+int __thiscall sub_531887(_DWORD* this)
+{
+    void* v2; // edi
+    int result; // eax
+    void* v4; // edi
+    void* v5; // esi
+
+    v2 = (void*)this[98];
+    if (v2)
+    {
+        sub_531B55(this[98]);
+        result = sub_585E40(v2);
+    }
+    v4 = (void*)this[99];
+    if (v4)
+    {
+        sub_531B55(this[99]);
+        result = sub_585E40(v4);
+    }
+    v5 = (void*)this[100];
+    if (v5)
+    {
+        sub_531B55(v5);
+        result = sub_585E40(v5);
+    }
+    return result;
+}
+// 531B55: using guessed type int __thiscall sub_531B55(_DWORD);
+
+//----- (0052DFA8) --------------------------------------------------------
+int __thiscall sub_52DFA8(_DWORD* this)
+{
+    _DWORD* i; // esi
+    void* v3; // ebx
+    int result; // eax
+
+    *this = &off_5962D8;
+    for (i = (_DWORD*)this[3]; i; result = sub_585E40(v3))
+    {
+        v3 = i;
+        i = (_DWORD*)*i;
+        sub_53220A((int)v3);
+    }
+    this[3] = 0;
+    this[2] = 0;
+    return result;
+}
+// 52DFC5: conditional instruction was optimized away because of 'ebx.4!=0'
+// 5962D8: using guessed type void *off_5962D8;
+
+//----- (0052E01F) --------------------------------------------------------
+int __thiscall sub_52E01F(_DWORD* this)
+{
+    _DWORD* i; // esi
+    _DWORD* v3; // ebx
+    int result; // eax
+
+    *this = &off_5962F0;
+    for (i = (_DWORD*)this[3]; i; result = sub_585E40(v3))
+    {
+        v3 = i;
+        i = (_DWORD*)*i;
+        sub_52F22F(v3);
+    }
+    this[3] = 0;
+    this[2] = 0;
+    return result;
+}
+// 52E03C: conditional instruction was optimized away because of 'ebx.4!=0'
+// 5962F0: using guessed type void *off_5962F0;
+
+//----- (0053220A) --------------------------------------------------------
+int __thiscall sub_53220A(int this)
+{
+    int v2; // eax
+    int v3; // eax
+
+    sub_585E40(*(LPVOID*)(this + 8));
+    sub_585E40(*(LPVOID*)(this + 72));
+    sub_585E40(*(LPVOID*)(this + 76));
+    sub_585E40(*(LPVOID*)(this + 80));
+    v2 = *(_DWORD*)(this + 36);
+    if (v2)
+        (*(void(__stdcall**)(_DWORD))(*(_DWORD*)v2 + 8))(*(_DWORD*)(this + 36));
+    sub_5324E7((_DWORD*)this);
+    v3 = *(_DWORD*)(this + 32);
+    if (v3)
+        (*(void(__stdcall**)(_DWORD))(*(_DWORD*)v3 + 8))(*(_DWORD*)(this + 32));
+    *(_DWORD*)(this + 92) = &off_596F30;
+    return sub_532DBD((_DWORD*)(this + 92));
+}
+// 596F30: using guessed type int (*off_596F30)();
+
+//----- (0052F22F) --------------------------------------------------------
+void __thiscall sub_52F22F(_DWORD* this)
+{
+    int v2; // eax
+    int v3; // eax
+
+    v2 = this[2];
+    if (v2)
+        (*(void(__stdcall**)(int))(*(_DWORD*)v2 + 8))(v2);
+    v3 = this[3];
+    if (v3)
+        (*(void(__stdcall**)(_DWORD))(*(_DWORD*)v3 + 8))(this[3]);
+    this[253] = &off_594BB0;
+    sub_52F208(this + 253);
+}
+// 594BB0: using guessed type int (*off_594BB0)();

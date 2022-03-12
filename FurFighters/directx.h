@@ -30,3 +30,5 @@ int __stdcall sub_578EFF(int, LPCSTR, int, int); // idb
 int __cdecl CompareFunction(const void*, const void*); // idb
 int __cdecl sub_5786C9(int a1);
 int sub_577F03();
+int startupDX3D();
+int sub_57D760();
