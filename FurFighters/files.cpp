@@ -15,7 +15,7 @@ __int16 word_5BFF98; // weak
 int dword_60FEC8; // weak
 
 //----- (0053F0B8) --------------------------------------------------------
-int __cdecl someLoadFile(char* FileName, int a2)
+int __cdecl someLoadFile(char* FileName, int fileSize)
 {
     char Buffer[256]; // [esp+0h] [ebp-104h] BYREF
     FILE* Stream; // [esp+100h] [ebp-4h]
@@ -23,7 +23,7 @@ int __cdecl someLoadFile(char* FileName, int a2)
     if (someLoopVarIndicator == 2)
         sub_53F42B(FileName);
     if (someLoopVarIndicator == 1)
-        return sub_53F4F6(FileName, a2);
+        return sub_53F4F6(FileName, fileSize);
     if (fileLoadingDebug)
         writeDebug("TRYING TO LOAD %s IN SECTION LOOP - FIX IT BEFORE IT KILLS US ALL!!!!", FileName);
     Stream = fopen(FileName, aRb_3);
@@ -33,10 +33,10 @@ int __cdecl someLoadFile(char* FileName, int a2)
         fatalError(Buffer);
     }
     fseek(Stream, 0, 2);
-    *(_DWORD*)a2 = ftell(Stream);
-    *(&dword_6687E0 + dword_5BE5A4) = (void*)sub_5625B6(*(_DWORD*)a2);
+    *(_DWORD*)fileSize = ftell(Stream);
+    *(&dword_6687E0 + dword_5BE5A4) = (void*)sub_5625B6(*(_DWORD*)fileSize);
     fseek(Stream, 0, 0);
-    readFromFile(*(&dword_6687E0 + dword_5BE5A4), 1u, *(_DWORD*)a2, Stream);
+    readFromFile(*(&dword_6687E0 + dword_5BE5A4), 1u, *(_DWORD*)fileSize, Stream);
     fclose(Stream);
     return (int)*(&dword_6687E0 + dword_5BE5A4++);
 }
@@ -453,48 +453,48 @@ int __cdecl sub_47B4F4(char* FileName)
 // 6687B4: using guessed type int dword_6687B4;
 
 //----- (00497C42) --------------------------------------------------------
-int __cdecl loadItemsInfo(char* FileName)
+void __cdecl loadItemsInfo(char* FileName)
 {
     __int16 v2; // [esp+4h] [ebp-120h] BYREF
     __int16 v3; // [esp+8h] [ebp-11Ch] BYREF
     char v4[260]; // [esp+Ch] [ebp-118h] BYREF
-    int v5; // [esp+110h] [ebp-14h] BYREF
+    int itemId; // [esp+110h] [ebp-14h] BYREF
     char* Buffer; // [esp+114h] [ebp-10h]
-    int v7; // [esp+118h] [ebp-Ch]
-    char* v8; // [esp+11Ch] [ebp-8h]
-    int v9; // [esp+120h] [ebp-4h] BYREF
+    int useless; // [esp+118h] [ebp-Ch]
+    char* buffer2; // [esp+11Ch] [ebp-8h]
+    int fileSize; // [esp+120h] [ebp-4h] BYREF
 
-    v7 = 0;
+    useless = 0;
     writeDebug("Loading Items Info. File...");
-    v8 = (char*)someLoadFile(FileName, (int)&v9);
-    Buffer = v8;
-    while (Buffer <= &v8[v9])
+    buffer2 = (char*)someLoadFile(FileName, (int)&fileSize);
+    Buffer = buffer2;
+    while (Buffer <= &buffer2[fileSize])
     {
         sscanf(Buffer, "%[^\n]", v4);
         Buffer += strlen(v4) + 1;
-        sscanf(v4, "%d,", &v5);
+        sscanf(v4, "%d,", &itemId);
         if (v4[0] >= 48 && v4[0] <= 57)
         {
-            dword_5CC2A4[27 * v5] = 0;
+            g_ItemVar1[27 * itemId] = 0;
             sscanf(
                 v4,
                 "%d,%[^,],\"%[^\"]\",%f,%d,%d,%d",
                 &v4[256],
-                (char*)&unk_5CC240 + 108 * v5,
-                (char*)&unk_5CC280 + 108 * v5,
-                &dword_5CC2A4[27 * v5],
-                &dword_5CC2A0[27 * v5],
+                &g_ItemName + 108 * itemId,
+                &g_ItemFile + 108 * itemId,
+                &g_ItemVar1[27 * itemId],
+                &g_ItemVar2[27 * itemId],
                 &v2,
                 &v3);
-            word_5CC2AA[54 * v5] = v2;
-            word_5CC2A8[54 * v5] = v3;
+            g_ItemVar3[54 * itemId] = v2;
+            g_ItemVar4[54 * itemId] = v3;
         }
     }
-    return sub_53F213();
+    sub_53F213();
 }
-// 5CC2A0: using guessed type int dword_5CC2A0[];
-// 5CC2A4: using guessed type int dword_5CC2A4[];
-// 5CC2A8: using guessed type __int16 word_5CC2A8[];
+// 5CC2A0: using guessed type int g_ItemVar2[];
+// 5CC2A4: using guessed type int g_ItemVar1[];
+// 5CC2A8: using guessed type __int16 g_ItemVar4[];
 
 //----- (00531BAF) --------------------------------------------------------
 unsigned int __thiscall sub_531BAF(int this, LPCSTR lpFileName)

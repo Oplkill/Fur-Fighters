@@ -26,7 +26,7 @@ int languageId; // weak
 int g_SomeLanguageVariable; // weak
 
 //----- (00466DE0) --------------------------------------------------------
-int loadLanguageDatas()
+void loadLanguageDatas()
 {
     int result; // eax
     size_t Size; // [esp+Ch] [ebp-28h] BYREF
@@ -40,34 +40,31 @@ int loadLanguageDatas()
     if (!g_LanguageStringsData)
         fatalError("Cannot syMalloc for language dependent strings.");
     qmemcpy((void*)g_LanguageStringsData, v2, Size);
-    result = sub_53F213();
+    sub_53F213();
     switch (languageId)
     {
     case language::English:
-        result = loadItemsInfo(aItemsEngTxt);
+        loadItemsInfo(aItemsEngTxt);
         break;
     case language::French:
-        result = loadItemsInfo(aItemsFrTxt);
+        loadItemsInfo(aItemsFrTxt);
         break;
     case language::German:
-        result = loadItemsInfo(aItemsGerTxt);
+        loadItemsInfo(aItemsGerTxt);
         break;
     case language::Unknown1:
-        result = loadItemsInfo(aItemsItlTxt);
+        loadItemsInfo(aItemsItlTxt);
         break;
     case language::Spanish:
-        result = loadItemsInfo(aItemsSpnTxt);
+        loadItemsInfo(aItemsSpnTxt);
         break;
     case language::Japan:
-        result = loadItemsInfo(aItemsJpnTxt);
+        loadItemsInfo(aItemsJpnTxt);
         break;
     case language::Unknown:
-        result = loadItemsInfo(aItemsBearTxt);
+        loadItemsInfo(aItemsBearTxt);
         break;
-    default:
-        return result;
     }
-    return result;
 }
 // 497C42: using guessed type int __cdecl loadItemsInfo(_DWORD);
 // 6045D0: using guessed type int g_LanguageStringsData;

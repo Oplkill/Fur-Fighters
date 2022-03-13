@@ -6088,12 +6088,16 @@ int dword_5CC1EC; // weak
 int dword_5CC1F0; // weak
 int dword_5CC200[10]; // idb
 int dword_5CC228; // weak
-_UNKNOWN unk_5CC240; // weak
-_UNKNOWN unk_5CC280; // weak
-int dword_5CC2A0[]; // weak
-int dword_5CC2A4[]; // weak
-__int16 word_5CC2A8[]; // weak
-__int16 word_5CC2AA[2625]; // idb
+
+//Thats seems structure with bad array sizes(except first two)
+char g_ItemName[64];
+char g_ItemFile[32];
+int g_ItemVar2[]; // weak
+float g_ItemVar1[]; // weak
+__int16 g_ItemVar4[]; // weak
+__int16 g_ItemVar3[2625]; // idb
+//--------------------------
+
 char byte_5CD72C[324]; // idb
 char byte_5CD870[108]; // idb
 char byte_5CD8DC[108]; // idb

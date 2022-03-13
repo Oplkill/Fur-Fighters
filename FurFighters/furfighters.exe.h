@@ -924,7 +924,7 @@ void sub_4867C0();
 int __cdecl sub_4867CF(const char* a1);
 int __cdecl sub_486860(const char* a1, int a2);
 int sub_486A33();
-int sub_486CFF();
+void sub_486CFF();
 int __cdecl sub_48720B(int a1, int a2, int a3, int a4);
 int __cdecl sub_487357(_BYTE* a1);
 int sub_487787();

@@ -17,7 +17,7 @@ __int16 __cdecl someReadFile(FILE* Stream);
 size_t __cdecl writeInFile(void* Buffer, size_t ElementSize, size_t ElementCount, FILE* Stream);
 size_t __cdecl readFromFile(void* Buffer, size_t ElementSize, size_t ElementCount, FILE* Stream);
 int __cdecl sub_47B4F4(char* FileName);
-int __cdecl loadItemsInfo(char* FileName);
+void __cdecl loadItemsInfo(char* FileName);
 unsigned int __thiscall sub_531BAF(int this, LPCSTR lpFileName);
 int __thiscall sub_531DA8(LPCSTR lpFileName); // idb
 int __thiscall sub_531DD2(LPCSTR lpFileName, int, int); // idb

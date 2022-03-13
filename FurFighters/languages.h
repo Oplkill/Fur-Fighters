@@ -5,7 +5,7 @@
 extern int languageId; // weak
 extern int g_SomeLanguageVariable; // weak
 
-int loadLanguageDatas();
+void loadLanguageDatas();
 int __cdecl loadLanguageString(int a1);
 int initLanguage();
 
