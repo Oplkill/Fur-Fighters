@@ -1,2 +1,4 @@
-
+/FurFighters/Content
 *.user
+*.log
+/FurFighters/Saved
