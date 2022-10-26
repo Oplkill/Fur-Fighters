@@ -1,37 +1,9 @@
 # Fur-Fighters
-Fully reverse engineered source code from game Fur Fighters.
+Fan made remake of old game Fur Fighters
 [Discord](https://discord.gg/zgSVGSs)
 
 # Current state
-* Not compilling, under reverse engineering
+* Very alpha
 
 # Goals
-* Reverse engineer all code right
-* Make game close to original(except bugs)
-* Replace old libraries by new one without regressions in game, if they dont works in new systems(new one shouldn't be worster than original and should be supporting in present time)
-
-# Mini goals
-* Add includes of standart functions to all files, where they using
-* Remove all char constant variables and move their values into uses, IF they using only single time 
-* Make launchable first game settings window
-* Move away all code to their files from furfighters.exe.c
-* Move repeatable magic numbers into enums
-
-# Future goals (when previous goals achieved)
-* Replace all old libraries by new one
-* Make game plays with newest DirectX and OpenGL
-* Make game works on Linux
-
-# Ideas to do after release
-* Better AI(as option in settings)
-* Make game menu better
-* Pause game when minimazed(with turning off sounds and music)
-
-# Info
-* Code will be C++ with C parts of code
-
-# Code refference used
-* FakeDP and other things - https://github.com/arves100/ffloader
-
-# Used 3-rd party libraries
-* Miles Sound System 6.0f
+* Remake fully game in Unreal Engine 5, generally close to original
