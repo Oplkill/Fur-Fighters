@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using StarterAssets;
 
 public class Character
 {
@@ -30,16 +33,22 @@ public class PlayerCharactersManager : MonoBehaviour
         SpawnCharacter(initalSpawn, EnumCharacters.Roofus);
     }
 
-    void SpawnCharacter(Transform spawnPos, EnumCharacters characterType)
+    async void SpawnCharacter(Transform spawnPos, EnumCharacters characterType)
     {
         Characters[characterType].CreateGameObject();
 
-        Object.Instantiate(Characters[characterType].CharacterObject, spawnPos);
+        Characters[characterType].CharacterObject = Object.Instantiate(Characters[characterType].CharacterObject, spawnPos);
+
+        var charController = Characters[characterType].CharacterObject.GetComponent<ThirdPersonController>();
+        
+        while (!charController.IsInitialized)
+        {
+            await Task.Delay(25);
+        }
+        
         var cameraAttachment = Characters[characterType].CharacterObject.transform.GetChild(0).gameObject;
         var playerCamera = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
- 
-        Characters[characterType].CharacterObject.SetActive(true);
-        
+
         playerCamera.Follow = cameraAttachment.transform;
     }
 }

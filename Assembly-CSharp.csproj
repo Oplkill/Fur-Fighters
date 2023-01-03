@@ -90,6 +90,7 @@
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexZoom.cs" />
+     <Compile Include="Assets/Scripts/CharacterBubbleLogic.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/TutorialInfo/Scripts" />
      <Folder Include="Assets/Characters/Tweek" />

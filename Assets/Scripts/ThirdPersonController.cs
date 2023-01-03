@@ -86,6 +86,8 @@ namespace StarterAssets
 
         [Tooltip("Character type")]
         public EnumCharacters _character = EnumCharacters.Roofus;
+        
+        public bool IsInitialized { get; private set;}
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -169,10 +171,8 @@ namespace StarterAssets
             _fallTimeoutDelta = FallTimeout;
 
             _canvasUI = GameObject.Find("Player UI canvas").transform; //TODO to constants or byType
-            
-            var cameraAttachment = gameObject.transform.GetChild(0).gameObject;
-            var playerCamera = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
-            playerCamera.Follow = cameraAttachment.transform;
+
+            IsInitialized = true;
         }
 
         private void Update()
