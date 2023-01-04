@@ -313,7 +313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038107730424502307}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -651,11 +651,11 @@ GameObject:
   - component: {fileID: 8964763204309032108}
   - component: {fileID: 4020803183560820684}
   - component: {fileID: 6569461992110381277}
+  - component: {fileID: 4913361234708226604}
   - component: {fileID: 5154770375999695300}
   - component: {fileID: 932012639695107061}
-  - component: {fileID: 4016828705217773741}
   m_Layer: 0
-  m_Name: Roofus
+  m_Name: Chang
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,8 +669,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2432718795825519724}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.479, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.74847, y: 0.5362, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5373795426697856204}
@@ -688,8 +688,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2432718795825519724}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4453b26144398c8e9bb21a848a9aaff5, type: 3}
-  m_Controller: {fileID: 9100000, guid: ff7ad09450e15492abc177ae3ee9c648, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 7dc3c847a8e14addabde1a7405c221eb, type: 3}
+  m_Controller: {fileID: 9100000, guid: faa560cf2b43f8362a818d815f0fef4a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -748,6 +748,43 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4913361234708226604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432718795825519724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 5.335
+  RotationSmoothTime: 0.12
+  SpeedChangeRate: 10
+  LandingAudioClip: {fileID: 0}
+  FootstepAudioClips: []
+  FootstepAudioVolume: 0.5
+  JumpHeight: 1.2
+  Gravity: -15
+  JumpTimeout: 0.15
+  FallTimeout: 0.15
+  Grounded: 0
+  GroundedOffset: 0.2
+  GroundedRadius: 0.28
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 513
+  CinemachineCameraTarget: {fileID: 1216633838822179825}
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
+  LockCameraPosition: 0
+  MinimumFallingSpeedForDamage: 7
+  MaximumFallingSpeedForDamage: 30
+  MaxHealth: 100
+  _character: 2
 --- !u!114 &5154770375999695300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,46 +821,6 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
---- !u!114 &4016828705217773741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2432718795825519724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 843025d86b7cb3db3a0aaad7f2742904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 5.335
-  RotationSmoothTime: 0.12
-  SpeedChangeRate: 10
-  LandingAudioClip: {fileID: 0}
-  FootstepAudioClips: []
-  FootstepAudioVolume: 0.5
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.15
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: 0.11
-  GroundedRadius: 0.28
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 513
-  CinemachineCameraTarget: {fileID: 1216633838822179825}
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
-  LockCameraPosition: 0
-  MinimumFallingSpeedForDamage: 7
-  MaximumFallingSpeedForDamage: 30
-  MaxHealth: 100
-  _character: 0
-  TimeDiggingIn: 15
-  TimeDiggingOut: 15
-  IsInDigZone: 0
 --- !u!1 &2596536285302826107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,7 +1165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4151959496013411041}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

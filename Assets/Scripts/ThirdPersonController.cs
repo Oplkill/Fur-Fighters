@@ -172,7 +172,14 @@ namespace StarterAssets
 
             _canvasUI = GameObject.Find("Player UI canvas").transform; //TODO to constants or byType
 
+            UpdateUI();
+            
             IsInitialized = true;
+            
+            var cameraAttachment = gameObject.transform.GetChild(0).gameObject;
+            var playerCamera = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+
+            playerCamera.Follow = cameraAttachment.transform;
         }
 
         private void Update()
@@ -435,10 +442,7 @@ namespace StarterAssets
             if (_health > MaxHealth)
                 _health = MaxHealth;
 
-            //TODO make GetChild(0) be constants
-            var healthUI = _canvasUI.GetChild(0).gameObject.GetComponent(typeof(TMP_Text)) as TMP_Text;
-
-            healthUI.text = ((int)_health).ToString();
+            UpdateUI();
 
             if (_health < 1.0f)
                 Death();
@@ -487,6 +491,14 @@ namespace StarterAssets
             }
 
             Grounded = false;
+        }
+
+        protected void UpdateUI()
+        {
+            //TODO make GetChild(0) be constants
+            var healthUI = _canvasUI.GetChild(0).gameObject.GetComponent(typeof(TMP_Text)) as TMP_Text;
+            
+            healthUI.text = ((int)_health).ToString();
         }
     }
 }
