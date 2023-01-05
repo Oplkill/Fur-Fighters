@@ -784,7 +784,13 @@ MonoBehaviour:
   MinimumFallingSpeedForDamage: 11
   MaximumFallingSpeedForDamage: 35
   MaxHealth: 100
+  ClimbSpeed: 2
   _character: 3
+  waterMask:
+    serializedVersion: 2
+    m_Bits: 16
+  waterDrag: 1
+  waterBuoyancy: 1
 --- !u!114 &5154770375999695300
 MonoBehaviour:
   m_ObjectHideFlags: 0

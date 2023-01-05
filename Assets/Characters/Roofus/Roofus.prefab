@@ -820,6 +820,7 @@ MonoBehaviour:
   MinimumFallingSpeedForDamage: 7
   MaximumFallingSpeedForDamage: 30
   MaxHealth: 100
+  ClimbSpeed: 2
   _character: 0
   waterMask:
     serializedVersion: 2

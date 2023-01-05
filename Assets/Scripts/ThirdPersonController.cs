@@ -83,6 +83,9 @@ namespace StarterAssets
 
         [Tooltip("Maximum health")]
         public int MaxHealth = 100;
+        
+        [Tooltip("Climb speed")]
+        public float ClimbSpeed = 2;
 
         [Tooltip("Character type")]
         public EnumCharacters _character = EnumCharacters.Roofus;
@@ -136,6 +139,7 @@ namespace StarterAssets
         protected StarterAssetsInputs _input;
         private GameObject _mainCamera;
         protected bool blockMovement = false;
+        protected bool IsClimbing = false;
 
         private const float _threshold = 0.01f;
 
@@ -257,69 +261,85 @@ namespace StarterAssets
 
         private void Move()
         {
-            // set target speed based on move speed
-            float targetSpeed = MoveSpeed;
-
-            // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
-
-            // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-            // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
-
-            // a reference to the players current horizontal velocity
-            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
-
-            float speedOffset = 0.1f;
-            float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
-
-            // accelerate or decelerate to target speed
-            if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-                currentHorizontalSpeed > targetSpeed + speedOffset)
+            if (IsClimbing)
             {
-                // creates curved result rather than a linear one giving a more organic speed change
-                // note T in Lerp is clamped, so we don't need to clamp our speed
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
-                    Time.deltaTime * SpeedChangeRate);
+                Vector3 move = transform.rotation * Vector3.forward * _input.move;
 
-                // round speed to 3 decimal places
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
+                Vector3 newMotion = move.normalized * (_speed * Time.deltaTime);
+                newMotion += new Vector3(0.0f, _input.move.y * ClimbSpeed, 0.0f) * Time.deltaTime;
+                //newMotion.x *= -1;
+                
+                _controller.Move(newMotion);
+                
+                if (!Grounded)
+                    return;
             }
-            else
+            //else
             {
-                _speed = targetSpeed;
-            }
+                // set target speed based on move speed
+                float targetSpeed = MoveSpeed;
 
-            _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
-            if (_animationBlend < 0.01f) _animationBlend = 0f;
+                // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
-            // normalise input direction
-            Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+                // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+                // if there is no input, set the target speed to 0
+                if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-            // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-            // if there is a move input rotate player when the player is moving
-            if (_input.move != Vector2.zero)
-            {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
-                    RotationSmoothTime);
+                // a reference to the players current horizontal velocity
+                float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
-                // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-            }
+                float speedOffset = 0.1f;
+                float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+
+                // accelerate or decelerate to target speed
+                if (currentHorizontalSpeed < targetSpeed - speedOffset ||
+                    currentHorizontalSpeed > targetSpeed + speedOffset)
+                {
+                    // creates curved result rather than a linear one giving a more organic speed change
+                    // note T in Lerp is clamped, so we don't need to clamp our speed
+                    _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+                        Time.deltaTime * SpeedChangeRate);
+
+                    // round speed to 3 decimal places
+                    _speed = Mathf.Round(_speed * 1000f) / 1000f;
+                }
+                else
+                {
+                    _speed = targetSpeed;
+                }
+
+                _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+                if (_animationBlend < 0.01f) _animationBlend = 0f;
+
+                // normalise input direction
+                Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+                // if there is a move input rotate player when the player is moving
+                if (_input.move != Vector2.zero)
+                {
+                    _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                                      _mainCamera.transform.eulerAngles.y;
+                    float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
+                        RotationSmoothTime);
+
+                    // rotate to face input direction relative to camera position
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
 
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+                Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
-            // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                // move the player
+                _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+                                 new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
-            // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                // update animator if using character
+                if (_hasAnimator)
+                {
+                    _animator.SetFloat(_animIDSpeed, _animationBlend);
+                    _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                } 
             }
         }
 
@@ -361,7 +381,14 @@ namespace StarterAssets
                     // Jump
                     if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                     {
-                        DoJump();
+                        if (IsClimbing)
+                        {
+                            _input.jump = false;
+                        }
+                        else
+                        {
+                            DoJump();
+                        }
                     }
 
                     // jump timeout
@@ -394,18 +421,14 @@ namespace StarterAssets
                     // if we are not grounded, do not jump
                     _input.jump = false;
                 }
-                
-                // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-                if (_verticalVelocity < _terminalVelocity)
+
+                if (!IsClimbing)
                 {
-                    if (InWater)
+                    // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+                    if (_verticalVelocity < _terminalVelocity)
                     {
-                        //_verticalVelocity *= 1f - waterDrag * Time.deltaTime;
-                        //_verticalVelocity -= Gravity * ((1f - waterBuoyancy) * Time.deltaTime);
-                        //_verticalVelocity -= Gravity * Time.deltaTime;
-                    }
-                    else
                         _verticalVelocity += Gravity * Time.deltaTime;
+                    }
                 }
             }
         }
@@ -540,6 +563,24 @@ namespace StarterAssets
             if ((waterMask & (1 << other.gameObject.layer)) != 0) {
                 InWater = true;
             }
+
+            if (other.CompareTag("Ladder"))
+            {
+                IsClimbing = true;
+                _verticalVelocity = 0;
+                //transform.LookAt(other.transform, new Vector3(0, 1, -1));
+                
+                var charPos = other.transform.position;
+
+                // Calculate a vector pointing to the target.
+                Vector3 toTarget = charPos - transform.position;
+        
+                //transform.rotation = Quaternion.LookRotation(-toTarget);
+                var fullRotare = Quaternion.LookRotation(-toTarget);
+                var newRotare = new Quaternion(transform.rotation.x, fullRotare.y, transform.rotation.z, transform.rotation.w);
+
+                transform.rotation = newRotare;
+            }
         }
 
         void OnTriggerStay (Collider other) {
@@ -551,6 +592,11 @@ namespace StarterAssets
         void OnTriggerExit (Collider other) {
             if ((waterMask & (1 << other.gameObject.layer)) != 0) {
                 InWater = false;
+            }
+            
+            if (other.CompareTag("Ladder"))
+            {
+                IsClimbing = false;
             }
         }
 
