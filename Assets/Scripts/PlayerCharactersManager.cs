@@ -53,8 +53,13 @@ public class PlayerCharactersManager : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
+        
+    }
+
+    private void Awake()
+    {
         var initalSpawn = GameObject.Find("InitialPlayerSpawn").transform;
-        SpawnCharacter(initalSpawn, EnumCharacters.Bungalow);
+        SpawnCharacter(initalSpawn, EnumCharacters.Roofus);
     }
 
     public async void SpawnCharacter(Transform spawnPos, EnumCharacters characterType)
@@ -67,7 +72,7 @@ public class PlayerCharactersManager : MonoBehaviour
 
         var charController = Characters[characterType].CharacterObject.GetComponent<ThirdPersonController>();
         
-        /*while (!charController.IsInitialized)
+        while (!charController.IsInitialized)
         {
             await Task.Delay(25);
         }
@@ -75,7 +80,9 @@ public class PlayerCharactersManager : MonoBehaviour
         var cameraAttachment = Characters[characterType].CharacterObject.transform.GetChild(0).gameObject;
         var playerCamera = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
 
-        playerCamera.Follow = cameraAttachment.transform;*/
+        playerCamera.Follow = cameraAttachment.transform;
+        
+        charController.TeleportCharacter(spawnPos.position);
     }
 
     public void ReplaceCharacter(GameObject currentChar, EnumCharacters replaceCharacter)
@@ -85,8 +92,8 @@ public class PlayerCharactersManager : MonoBehaviour
         //var currentTransform = currentChar.transform;
         var currentTransform = transform;
 
-        currentTransform.position.Set(99, 99,99 );
-        currentTransform.SetPositionAndRotation(Vector3.zero, new Quaternion());
+        //currentTransform.position.Set(99, 99,99 );
+        //currentTransform.SetPositionAndRotation(Vector3.zero, new Quaternion());
         
         //TODO save hp and game
         

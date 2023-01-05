@@ -821,9 +821,15 @@ MonoBehaviour:
   MaximumFallingSpeedForDamage: 30
   MaxHealth: 100
   _character: 0
-  TimeDiggingIn: 15
-  TimeDiggingOut: 15
+  waterMask:
+    serializedVersion: 2
+    m_Bits: 16
+  waterDrag: 1
+  waterBuoyancy: 1
+  TimeDiggingIn: 1
+  TimeDiggingOut: 1
   IsInDigZone: 0
+  LinkedDogHole: {fileID: 0}
 --- !u!1 &2596536285302826107
 GameObject:
   m_ObjectHideFlags: 0
