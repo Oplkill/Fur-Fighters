@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using System.Threading.Tasks;
 using StarterAssets;
+using Unity.VisualScripting;
 using Object = UnityEngine.Object;
 
 public class Character
@@ -59,38 +60,43 @@ public class PlayerCharactersManager : MonoBehaviour
     private void Awake()
     {
         var initalSpawn = GameObject.Find("InitialPlayerSpawn").transform;
-        SpawnCharacter(initalSpawn, EnumCharacters.Roofus);
+        SpawnCharacter(initalSpawn.position, EnumCharacters.Roofus);
     }
 
-    public async void SpawnCharacter(Transform spawnPos, EnumCharacters characterType)
+    public async void SpawnCharacter(Vector3 spawnPos, EnumCharacters characterType)
     {
         Characters[characterType].CreateGameObject();
 
-        Characters[characterType].CharacterObject = Object.Instantiate(Characters[characterType].CharacterObject, spawnPos);
+        Characters[characterType].CharacterObject = Object.Instantiate(Characters[characterType].CharacterObject, transform);
 
         CurrentCharacter = Characters[characterType].CharacterObject;
+        
+        CurrentCharacter.SetActive(false);
+        //charController.TeleportCharacter(spawnPos);
+        CurrentCharacter.transform.position = spawnPos;
+        CurrentCharacter.SetActive(true);
 
-        var charController = Characters[characterType].CharacterObject.GetComponent<ThirdPersonController>();
+        var charController = CurrentCharacter.GetComponent<ThirdPersonController>();
         
         while (!charController.IsInitialized)
         {
             await Task.Delay(25);
         }
         
-        var cameraAttachment = Characters[characterType].CharacterObject.transform.GetChild(0).gameObject;
+        var cameraAttachment = CurrentCharacter.transform.GetChild(0).gameObject;
         var playerCamera = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
 
         playerCamera.Follow = cameraAttachment.transform;
         
-        charController.TeleportCharacter(spawnPos.position);
+        
     }
 
     public void ReplaceCharacter(GameObject currentChar, EnumCharacters replaceCharacter)
     {
         Cursor.lockState = CursorLockMode.None;
         
-        //var currentTransform = currentChar.transform;
-        var currentTransform = transform;
+        var currentTransform = currentChar.transform;
+        //var currentTransform = transform;
 
         //currentTransform.position.Set(99, 99,99 );
         //currentTransform.SetPositionAndRotation(Vector3.zero, new Quaternion());
@@ -101,7 +107,7 @@ public class PlayerCharactersManager : MonoBehaviour
         
         currentChar.SetActive(false);
 
-        SpawnCharacter(currentTransform, replaceCharacter);
+        SpawnCharacter(currentTransform.position, replaceCharacter);
         
         Destroy(currentChar);
         

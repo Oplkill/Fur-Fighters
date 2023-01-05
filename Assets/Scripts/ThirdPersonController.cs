@@ -135,8 +135,6 @@ namespace StarterAssets
         protected CharacterController _controller;
         protected StarterAssetsInputs _input;
         private GameObject _mainCamera;
-        protected bool NeedToTele = false;
-        private Vector3 TelePos;
         protected bool blockMovement = false;
 
         private const float _threshold = 0.01f;
@@ -198,23 +196,12 @@ namespace StarterAssets
 
         protected virtual void Update()
         {
-            
-
             _hasAnimator = TryGetComponent(out _animator);
-
-            if (NeedToTele)
-            {
-                NeedToTele = false;
-                gameObject.transform.position = TelePos;
-                Debug.Log("Moving to" + TelePos);
-            }
-            else
-            {
-                GroundedCheck();
-                JumpAndGravity();
-                if (!blockMovement)
-                    Move();
-            }
+            
+            GroundedCheck();
+            JumpAndGravity();
+            if (!blockMovement)
+                Move();
             Attack();
         }
 
@@ -569,12 +556,9 @@ namespace StarterAssets
 
         public void TeleportCharacter(Vector3 newPos)
         {
-            TelePos = newPos;
-            NeedToTele = true;
-            //BlockMovementForOneFrame = 1000;
-            //gameObject.transform.position = newPos;
-
-            //Debug.Log("Moving to" + newPos);
+            gameObject.SetActive(false);
+            gameObject.transform.position = newPos;
+            gameObject.SetActive(true);
         }
     }
 }
