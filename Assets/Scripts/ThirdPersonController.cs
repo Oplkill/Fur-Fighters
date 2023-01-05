@@ -559,7 +559,7 @@ namespace StarterAssets
             healthUI.text = ((int)_health).ToString();
         }
         
-        void OnTriggerEnter (Collider other) {
+        protected virtual void OnTriggerEnter (Collider other) {
             if ((waterMask & (1 << other.gameObject.layer)) != 0) {
                 InWater = true;
             }
@@ -583,13 +583,13 @@ namespace StarterAssets
             }
         }
 
-        void OnTriggerStay (Collider other) {
+        protected virtual void OnTriggerStay (Collider other) {
             if ((waterMask & (1 << other.gameObject.layer)) != 0) {
                 InWater = true;
             }
         }
         
-        void OnTriggerExit (Collider other) {
+        protected virtual void OnTriggerExit (Collider other) {
             if ((waterMask & (1 << other.gameObject.layer)) != 0) {
                 InWater = false;
             }

@@ -21,6 +21,7 @@ public class Character
                 CharacterObject = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Characters/Roofus/Roofus.prefab", typeof(GameObject));
                 break;
             case EnumCharacters.Juliette:
+                CharacterObject = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Characters/Juliette/Juliette.prefab", typeof(GameObject));
                 break;
             case EnumCharacters.Chang:
                 CharacterObject = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Characters/Chang/Chang.prefab", typeof(GameObject));
@@ -29,8 +30,10 @@ public class Character
                 CharacterObject = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Characters/Bungalow/Bungalow.prefab", typeof(GameObject));
                 break;
             case EnumCharacters.Rico:
+                CharacterObject = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Characters/Rico/Rico.prefab", typeof(GameObject));
                 break;
             case EnumCharacters.Tweek:
+                CharacterObject = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Characters/Tweek/Tweek.prefab", typeof(GameObject));
                 break;
         }
     }
