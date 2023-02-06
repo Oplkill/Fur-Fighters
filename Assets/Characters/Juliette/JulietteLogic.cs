@@ -8,7 +8,8 @@ using StarterAssets;
 
 public class JulietteLogic : ThirdPersonController
 {
-    protected override void OnTriggerEnter (Collider other) {
+    protected override void OnTriggerEnter (Collider other) 
+    {
         if (other.CompareTag("Ladder cat"))
         {
             IsClimbing = true;

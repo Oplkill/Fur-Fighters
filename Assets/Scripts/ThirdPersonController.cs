@@ -3,6 +3,7 @@
 using UnityEngine.InputSystem;
 using TMPro;
 using Cinemachine;
+
 //using System;
 #endif
 
@@ -17,12 +18,10 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
-        [Header("Player")]
-        [Tooltip("Move speed of the character in m/s")]
+        [Header("Player")] [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 5.335f;
 
-        [Tooltip("How fast the character turns to face movement direction")]
-        [Range(0.0f, 0.3f)]
+        [Tooltip("How fast the character turns to face movement direction")] [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
 
         [Tooltip("Acceleration and deceleration")]
@@ -32,8 +31,7 @@ namespace StarterAssets
         public AudioClip[] FootstepAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
-        [Space(10)]
-        [Tooltip("The height the player can jump")]
+        [Space(10)] [Tooltip("The height the player can jump")]
         public float JumpHeight = 1.2f;
 
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
@@ -50,14 +48,13 @@ namespace StarterAssets
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
 
-        [Tooltip("Useful for rough ground")]
-        public float GroundedOffset = 0.11f;
+        [Tooltip("Useful for rough ground")] public float GroundedOffset = 0.11f;
 
         [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
         public float GroundedRadius = 0.28f;
 
         [Tooltip("What layers the character uses as ground")]
-        public LayerMask GroundLayers = 513; 
+        public LayerMask GroundLayers = 513;
 
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
@@ -81,69 +78,63 @@ namespace StarterAssets
         [Tooltip("Falling speed for damage full health")]
         public float MaximumFallingSpeedForDamage = 30.0f;
 
-        [Tooltip("Maximum health")]
-        public int MaxHealth = 100;
-        
-        [Tooltip("Climb speed")]
-        public float ClimbSpeed = 2;
+        [Tooltip("Maximum health")] public int MaxHealth = 100;
 
-        [Tooltip("Character type")]
-        public EnumCharacters _character = EnumCharacters.Roofus;
-        
-        public bool IsInitialized { get; private set;}
-        
-        bool InWater { get; set; }
-        
-        [SerializeField]
-        LayerMask waterMask = 4;
-        
-        [SerializeField, Range(0f, 10f)]
-        float waterDrag = 1f;
-        
-        [SerializeField, Min(0f)]
-        float waterBuoyancy = 1f;
+        [Tooltip("Climb speed")] public float ClimbSpeed = 2;
+
+        [Tooltip("Character type")] public EnumCharacters _character = EnumCharacters.Roofus;
+
+        public bool IsInitialized { get; private set; }
+
+        protected bool InWater { get; set; }
+
+        [SerializeField] private LayerMask waterMask = 4;
+
+        [SerializeField] [Range(0f, 10f)] protected float waterDrag = 1f;
+
+        [SerializeField] [Min(0f)] protected float waterBuoyancy = 0.8f;
 
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
 
         // player
-        private float _speed;
-        private float _animationBlend;
-        private float _targetRotation = 0.0f;
-        private float _rotationVelocity;
-        private float _verticalVelocity;
-        private float _terminalVelocity = 53.0f;
-        private bool _hitGroundFirstTimeAfterFall = true;
+        protected float _speed;
+        protected float _animationBlend;
+        protected float _targetRotation = 0.0f;
+        protected float _rotationVelocity;
+        protected float _verticalVelocity;
+        protected float _terminalVelocity = 53.0f;
+        protected bool _hitGroundFirstTimeAfterFall = true;
         private float _health = 100;
 
         // UI
         private Transform _canvasUI;
 
         // timeout deltatime
-        private float _jumpTimeoutDelta;
-        private float _fallTimeoutDelta;
+        protected float _jumpTimeoutDelta;
+        protected float _fallTimeoutDelta;
 
         // animation IDs
-        private int _animIDSpeed;
-        private int _animIDGrounded;
-        private int _animIDJump;
-        private int _animIDFreeFall;
-        private int _animIDMotionSpeed;
+        protected int _animIDSpeed;
+        protected int _animIDGrounded;
+        protected int _animIDJump;
+        protected int _animIDFreeFall;
+        protected int _animIDMotionSpeed;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-        private PlayerInput _playerInput;
+        protected PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        protected Animator _animator;
         protected CharacterController _controller;
         protected StarterAssetsInputs _input;
         private GameObject _mainCamera;
         protected bool blockMovement = false;
         protected bool IsClimbing = false;
 
-        private const float _threshold = 0.01f;
+        protected const float _threshold = 0.01f;
 
-        private bool _hasAnimator;
+        protected bool _hasAnimator;
 
         private bool IsCurrentDeviceMouse
         {
@@ -161,15 +152,12 @@ namespace StarterAssets
         private void Awake()
         {
             // get a reference to our main camera
-            if (_mainCamera == null)
-            {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            }
-            
+            if (_mainCamera == null) _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
             _canvasUI = GameObject.Find("Player UI canvas").transform; //TODO to constants or byType
 
             UpdateUI();
-            
+
             var cameraAttachment = gameObject.transform.GetChild(0).gameObject;
             var playerCamera = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
 
@@ -179,7 +167,7 @@ namespace StarterAssets
         protected virtual void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -194,14 +182,14 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
-            
+
             IsInitialized = true;
         }
 
         protected virtual void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
-            
+
             GroundedCheck();
             JumpAndGravity();
             if (!blockMovement)
@@ -227,15 +215,12 @@ namespace StarterAssets
         {
             // set sphere position, with offset
             var pos = transform.position;
-            Vector3 spherePosition = new Vector3(pos.x, pos.y - GroundedOffset, pos.z);
+            var spherePosition = new Vector3(pos.x, pos.y - GroundedOffset, pos.z);
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
 
             // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDGrounded, Grounded);
-            }
+            if (_hasAnimator) _animator.SetBool(_animIDGrounded, Grounded);
         }
 
         private void CameraRotation()
@@ -244,7 +229,7 @@ namespace StarterAssets
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
                 //Don't multiply mouse input by Time.deltaTime;
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+                var deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
                 _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
@@ -265,19 +250,20 @@ namespace StarterAssets
             {
                 Vector3 move = transform.rotation * Vector3.forward * _input.move;
 
-                Vector3 newMotion = move.normalized * (_speed * Time.deltaTime);
+                var newMotion = move.normalized * (_speed * Time.deltaTime);
                 newMotion += new Vector3(0.0f, _input.move.y * ClimbSpeed, 0.0f) * Time.deltaTime;
                 //newMotion.x *= -1;
-                
+
                 _controller.Move(newMotion);
-                
+
                 if (!Grounded)
                     return;
             }
+
             //else
             {
                 // set target speed based on move speed
-                float targetSpeed = MoveSpeed;
+                var targetSpeed = MoveSpeed;
 
                 // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -286,10 +272,11 @@ namespace StarterAssets
                 if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
                 // a reference to the players current horizontal velocity
-                float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+                var currentHorizontalSpeed =
+                    new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
-                float speedOffset = 0.1f;
-                float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+                var speedOffset = 0.1f;
+                var inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
                 // accelerate or decelerate to target speed
                 if (currentHorizontalSpeed < targetSpeed - speedOffset ||
@@ -312,7 +299,7 @@ namespace StarterAssets
                 if (_animationBlend < 0.01f) _animationBlend = 0f;
 
                 // normalise input direction
-                Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+                var inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
                 // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
                 // if there is a move input rotate player when the player is moving
@@ -320,7 +307,8 @@ namespace StarterAssets
                 {
                     _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                                       _mainCamera.transform.eulerAngles.y;
-                    float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
+                    var rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation,
+                        ref _rotationVelocity,
                         RotationSmoothTime);
 
                     // rotate to face input direction relative to camera position
@@ -328,7 +316,7 @@ namespace StarterAssets
                 }
 
 
-                Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+                var targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
                 // move the player
                 _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
@@ -339,11 +327,11 @@ namespace StarterAssets
                 {
                     _animator.SetFloat(_animIDSpeed, _animationBlend);
                     _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-                } 
+                }
             }
         }
 
-        private void JumpAndGravity()
+        protected virtual void JumpAndGravity()
         {
             if (InWater)
             {
@@ -373,29 +361,19 @@ namespace StarterAssets
                     }
 
                     // stop our velocity dropping infinitely when grounded
-                    if (_verticalVelocity < 0.0f)
-                    {
-                        _verticalVelocity = -2f;
-                    }
+                    if (_verticalVelocity < 0.0f) _verticalVelocity = -2f;
 
                     // Jump
                     if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                     {
                         if (IsClimbing)
-                        {
                             _input.jump = false;
-                        }
                         else
-                        {
                             DoJump();
-                        }
                     }
 
                     // jump timeout
-                    if (_jumpTimeoutDelta >= 0.0f)
-                    {
-                        _jumpTimeoutDelta -= Time.deltaTime;
-                    }
+                    if (_jumpTimeoutDelta >= 0.0f) _jumpTimeoutDelta -= Time.deltaTime;
                 }
                 else
                 {
@@ -412,10 +390,7 @@ namespace StarterAssets
                     else
                     {
                         // update animator if using character
-                        if (_hasAnimator)
-                        {
-                            _animator.SetBool(_animIDFreeFall, true);
-                        }
+                        if (_hasAnimator) _animator.SetBool(_animIDFreeFall, true);
                     }
 
                     // if we are not grounded, do not jump
@@ -423,13 +398,9 @@ namespace StarterAssets
                 }
 
                 if (!IsClimbing)
-                {
                     // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
                     if (_verticalVelocity < _terminalVelocity)
-                    {
                         _verticalVelocity += Gravity * Time.deltaTime;
-                    }
-                }
             }
         }
 
@@ -442,8 +413,8 @@ namespace StarterAssets
 
         private void OnDrawGizmosSelected()
         {
-            Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-            Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+            var transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+            var transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
             if (Grounded) Gizmos.color = transparentGreen;
             else Gizmos.color = transparentRed;
@@ -457,13 +428,11 @@ namespace StarterAssets
         private void OnFootstep(AnimationEvent animationEvent)
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
-            {
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
                     //AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
-            }
         }
 
         private void OnLand(AnimationEvent animationEvent)
@@ -519,13 +488,13 @@ namespace StarterAssets
             Debug.Log("DED");
         }
 
-        private void OnGroundedAfterFall(float fallingSpeed)
+        protected void OnGroundedAfterFall(float fallingSpeed)
         {
             if (fallingSpeed >= MinimumFallingSpeedForDamage)
             {
                 var extraSpeed = fallingSpeed - MinimumFallingSpeedForDamage;
 
-                float damagePercent = extraSpeed / (MaximumFallingSpeedForDamage - MinimumFallingSpeedForDamage);
+                var damagePercent = extraSpeed / (MaximumFallingSpeedForDamage - MinimumFallingSpeedForDamage);
 
                 AddHealth(-(damagePercent * MaxHealth));
             }
@@ -538,15 +507,12 @@ namespace StarterAssets
                 _input.jump = false;
                 return;
             }
-            
+
             // the square root of H * -2 * G = how much velocity needed to reach desired height
             _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
             // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDJump, true);
-            }
+            if (_hasAnimator) _animator.SetBool(_animIDJump, true);
 
             Grounded = false;
         }
@@ -555,49 +521,48 @@ namespace StarterAssets
         {
             //TODO make GetChild(0) be constants
             var healthUI = _canvasUI.GetChild(0).gameObject.GetComponent(typeof(TMP_Text)) as TMP_Text;
-            
+
             healthUI.text = ((int)_health).ToString();
         }
-        
-        protected virtual void OnTriggerEnter (Collider other) {
-            if ((waterMask & (1 << other.gameObject.layer)) != 0) {
-                InWater = true;
-            }
+
+        protected virtual void OnTriggerEnter(Collider other)
+        {
+            if ((waterMask & (1 << other.gameObject.layer)) != 0) InWater = true;
 
             if (other.CompareTag("Ladder"))
             {
                 IsClimbing = true;
                 _verticalVelocity = 0;
                 //transform.LookAt(other.transform, new Vector3(0, 1, -1));
-                
+
                 var charPos = other.transform.position;
 
                 // Calculate a vector pointing to the target.
-                Vector3 toTarget = charPos - transform.position;
-        
+                var toTarget = charPos - transform.position;
+
                 //transform.rotation = Quaternion.LookRotation(-toTarget);
                 var fullRotare = Quaternion.LookRotation(-toTarget);
-                var newRotare = new Quaternion(transform.rotation.x, fullRotare.y, transform.rotation.z, transform.rotation.w);
+                var newRotare = new Quaternion(transform.rotation.x, fullRotare.y, transform.rotation.z,
+                    transform.rotation.w);
 
                 transform.rotation = newRotare;
             }
         }
 
-        protected virtual void OnTriggerStay (Collider other) {
-            if ((waterMask & (1 << other.gameObject.layer)) != 0) {
-                InWater = true;
-            }
+        protected virtual void OnTriggerStay(Collider other)
+        {
+            if ((waterMask & (1 << other.gameObject.layer)) != 0) InWater = true;
         }
-        
-        protected virtual void OnTriggerExit (Collider other) {
-            if ((waterMask & (1 << other.gameObject.layer)) != 0) {
-                InWater = false;
-            }
-            
-            if (other.CompareTag("Ladder"))
+
+        protected virtual void OnTriggerExit(Collider other)
+        {
+            if ((waterMask & (1 << other.gameObject.layer)) != 0)
             {
-                IsClimbing = false;
+                InWater = false;
+                _verticalVelocity = 0;
             }
+
+            if (other.CompareTag("Ladder")) IsClimbing = false;
         }
 
         public void TeleportCharacter(Vector3 newPos)

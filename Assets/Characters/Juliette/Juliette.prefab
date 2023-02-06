@@ -826,7 +826,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   waterDrag: 1
-  waterBuoyancy: 1
+  waterBuoyancy: 0.8
 --- !u!1 &2596536285302826107
 GameObject:
   m_ObjectHideFlags: 0

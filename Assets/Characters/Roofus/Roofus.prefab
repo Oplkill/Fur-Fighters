@@ -826,7 +826,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   waterDrag: 1
-  waterBuoyancy: 1
+  waterBuoyancy: 0.8
   TimeDiggingIn: 1
   TimeDiggingOut: 1
   IsInDigZone: 0

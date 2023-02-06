@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Glide",
+                    "type": "Button",
+                    "id": "a1503a58-ccd6-4c9b-b26d-816cb17e432a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -205,6 +214,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87994190-42e7-4419-a1e3-e00b4e9ae8a6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Glide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
