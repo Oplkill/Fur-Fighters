@@ -9,3 +9,6 @@ Full game source code in discord channel
 
 # Goals
 * Remake fully game in Unity
+
+# Some dirty plans and state
+[Trello, but in Russian language](https://trello.com/b/Rjc2HRAV/fur-fighters)
