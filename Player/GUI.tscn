@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1cvh24habaej"]
+
+[ext_resource type="Script" path="res://scripts/GUI.cs" id="1_j5vgh"]
+
+[node name="GUI" type="Control" node_paths=PackedStringArray("HealthLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_j5vgh")
+HealthLabel = NodePath("HealthLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.76, 14.84)
+
+[node name="TopBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BottomBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 524.0
+offset_right = 83.0
+offset_bottom = 547.0
+scale = Vector2(2.99349, 3.77539)
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
