@@ -32,6 +32,7 @@ public partial class CameraController : Node3D
     private Vector3 _offset;
     private CharacterBody3D _anchor;
     private Vector3 _eulerRotation;
+    private bool _isCameraMovementEnabled = true;
 
     public override void _Ready()
     {
@@ -49,7 +50,8 @@ public partial class CameraController : Node3D
     public override void _UnhandledInput(InputEvent @event)
     {
         _mouseInput = @event is InputEventMouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured;
-        if (!_mouseInput) return;
+        if (!_mouseInput || !_isCameraMovementEnabled) 
+            return;
         
         var motion = (InputEventMouseMotion)@event;
         _rotationInput = -motion.Relative.X * MouseSensitivity;
@@ -121,5 +123,10 @@ public partial class CameraController : Node3D
     public GodotObject GetAimCollider()
     {
         return IsInstanceValid(_aimCollider) ? _aimCollider : null;
+    }
+
+    public void EnableCameraMovement(bool enable)
+    {
+        _isCameraMovementEnabled = enable;
     }
 }

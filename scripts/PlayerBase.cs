@@ -39,6 +39,17 @@ public partial class PlayerBase : CharacterBody3D
     private float _groundHeight = 0f;
     private Vector3 _startPosition;
     private bool _isOnFloorBuffer;
+    private bool _isJustJumping;
+    
+    /// <summary>
+    /// Is character touching ladder space. (that doesn't mean climbing)
+    /// </summary>
+    private bool _isTouchingLadder = false;
+    
+    /// <summary>
+    /// Is character climbing in ladder
+    /// </summary>
+    private bool _isClimbingLadder = false;
 
     public override void _Ready()
     {
@@ -68,7 +79,7 @@ public partial class PlayerBase : CharacterBody3D
                 _groundHeight = GlobalPosition.Y;
         
         // Get input and movement state
-        var isJustJumping = Input.IsActionJustPressed("jump") && IsOnFloor();
+        _isJustJumping = Input.IsActionJustPressed("jump") && IsOnFloor();
         var isAirBoosting = Input.IsActionPressed("jump") && !IsOnFloor() && Velocity.Y > 0.0f;
 
         _isOnFloorBuffer = IsOnFloor();
@@ -82,6 +93,9 @@ public partial class PlayerBase : CharacterBody3D
         _lastStrongDirection = (_cameraController.GlobalTransform.Basis * Vector3.Back).Normalized();
 
         OrientCharacterToDirection(_lastStrongDirection, delta);
+
+        if (_isTouchingLadder && !_isClimbingLadder)
+            _isClimbingLadder = CanClimbToLadder();
         
         // We separate out the y velocity to not interpolate on the gravity
         var yVelocity = Velocity.Y;
@@ -94,30 +108,29 @@ public partial class PlayerBase : CharacterBody3D
 
         newVelocity.Y += (float)(_gravity * delta);
 
-        if (isJustJumping)
+        if (_isJustJumping)
             newVelocity.Y += JumpInitialImpulse;
         else if (isAirBoosting)
             newVelocity.Y += (float)(JumpAdditionalForce * delta);
-        
-        Velocity = newVelocity;
-        
-        // Set character animation
-        if (isJustJumping)
-            _characterSkin.Jump();
-        else if (!IsOnFloor() && Velocity.Y < 0f)
-            _characterSkin.Fall();
-        else if (IsOnFloor())
+
+        if (_isClimbingLadder)
         {
-            var xzVelocity = new Vector3(Velocity.X, 0, Velocity.Z);
-            if (xzVelocity.Length() > StoppingSpeed)
+            newVelocity.X = 0;
+            newVelocity.Y = 0;
+            newVelocity.Z = 0;
+            
+            var rawInput = Input.GetVector("left", "right", "forward", "backward");
+
+            if (rawInput.Y != 0)
             {
-                _characterSkin.SetMoving(true);
-                _characterSkin.SetMovingSpeed(Mathf.InverseLerp(0.0f, MoveSpeed, xzVelocity.Length()));
+                newVelocity.Y = -rawInput.Y * 3;
             }
-            else
-                _characterSkin.SetMoving(false);
         }
         
+        Velocity = newVelocity;
+
+        PlayAnimations();
+
         var positionBefore = GlobalPosition;
         MoveAndSlide();
         var positionAfter = GlobalPosition;
@@ -148,6 +161,18 @@ public partial class PlayerBase : CharacterBody3D
 
         input = _cameraController.GlobalTransform.Basis * input;
         input.Y = 0.0f;
+
+        if (_isTouchingLadder)
+        {
+            var x = input.X;
+            var y = input.Y;
+            var z = input.Z;
+
+            //input.X = y;
+            //input.Y = x;
+            //input.Z = z;
+        }
+        
         return input;
     }
 
@@ -175,5 +200,46 @@ public partial class PlayerBase : CharacterBody3D
     public void Dead()
     {
         GD.Print("PLAYER DED!");
+    }
+
+    public void SetLadderState(bool onLadder)
+    {
+        _isTouchingLadder = onLadder;
+        _cameraController.EnableCameraMovement(!onLadder);
+        GD.Print(_isTouchingLadder);
+        if (!onLadder)
+            _isClimbingLadder = false;
+    }
+
+    /// <summary>
+    /// Can character climb to ladder. Using when character is not in climbing state
+    /// </summary>
+    /// <returns>False - ignore ladder. True - climb it</returns>
+    private bool CanClimbToLadder()
+    {
+        //TODO check player look angle. If character do not look at ladder = no climb
+        return true;
+    }
+
+    /// <summary>
+    /// Function to handle what animation should play now
+    /// </summary>
+    private void PlayAnimations()
+    {
+        if (_isJustJumping)
+            _characterSkin.Jump();
+        else if (!IsOnFloor() && Velocity.Y < 0f)
+            _characterSkin.Fall();
+        else if (IsOnFloor())
+        {
+            var xzVelocity = new Vector3(Velocity.X, 0, Velocity.Z);
+            if (xzVelocity.Length() > StoppingSpeed)
+            {
+                _characterSkin.SetMoving(true);
+                _characterSkin.SetMovingSpeed(Mathf.InverseLerp(0.0f, MoveSpeed, xzVelocity.Length()));
+            }
+            else
+                _characterSkin.SetMoving(false);
+        }
     }
 }
