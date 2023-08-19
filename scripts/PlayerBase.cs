@@ -16,7 +16,7 @@ public partial class PlayerBase : CharacterBody3D
     // Jump impulse when player keeps pressing jump
     [Export]
     public float JumpAdditionalForce = 4.5f;
-    // Player model rotaion speed
+    // Player model rotation speed
     [Export]
     public float RotationSpeed = 12.0f;
     // Minimum horizontal speed on the ground. This controls when the character's animation tree changes
@@ -31,7 +31,7 @@ public partial class PlayerBase : CharacterBody3D
 
     private Node3D _rotationRoot;
     private CameraController _cameraController;
-    private ShapeCast3D _groundShapecast;
+    private ShapeCast3D _groundShapeCast;
     private CharacterSkin _characterSkin;
     private Vector3 _moveDirection = Vector3.Zero;
     private Vector3 _lastStrongDirection = Vector3.Forward;
@@ -40,6 +40,17 @@ public partial class PlayerBase : CharacterBody3D
     private Vector3 _startPosition;
     private bool _isOnFloorBuffer;
     private bool _isJustJumping;
+    private Vector2 _movementVector;
+    
+    /// <summary>
+    /// Ladder object
+    /// </summary>
+    private Ladder _ladder;
+
+    /// <summary>
+    /// Minimum angle for being able to use ladder 
+    /// </summary>
+    private const float UseLadderAngle = 0.75f;
     
     /// <summary>
     /// Is character touching ladder space. (that doesn't mean climbing)
@@ -55,7 +66,7 @@ public partial class PlayerBase : CharacterBody3D
     {
         _rotationRoot = GetNode<Node3D>("CharacterRotationRoot");
         _cameraController = GetNode<CameraController>("CameraController");
-        _groundShapecast = GetNode<ShapeCast3D>("GroundShapeCast");
+        _groundShapeCast = GetNode<ShapeCast3D>("GroundShapeCast");
         _characterSkin = GetNode<CharacterSkin>("CharacterRotationRoot/CharacterSkin");
         _startPosition = GlobalTransform.Origin;
 
@@ -65,16 +76,18 @@ public partial class PlayerBase : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        _movementVector = Input.GetVector("left", "right", "forward", "backward");
+        
         // Calculate ground height for camera controller
-        if (_groundShapecast.GetCollisionCount() > 0)
+        if (_groundShapeCast.GetCollisionCount() > 0)
         {
             // foreach(var collision_result in _ground_shapecast.CollisionResult)
             //     _ground_height = Mathf.Max(_ground_height, collision_result.point.y);
 
-            _groundHeight = GlobalPosition.Y + _groundShapecast.TargetPosition.Y;
+            _groundHeight = GlobalPosition.Y + _groundShapeCast.TargetPosition.Y;
         }
         else
-            _groundHeight = GlobalPosition.Y + _groundShapecast.TargetPosition.Y;
+            _groundHeight = GlobalPosition.Y + _groundShapeCast.TargetPosition.Y;
         if (GlobalPosition.Y < _groundHeight)
                 _groundHeight = GlobalPosition.Y;
         
@@ -94,8 +107,17 @@ public partial class PlayerBase : CharacterBody3D
 
         OrientCharacterToDirection(_lastStrongDirection, delta);
 
-        if (_isTouchingLadder && !_isClimbingLadder)
-            _isClimbingLadder = CanClimbToLadder();
+        if (_isTouchingLadder)
+        {
+            bool canClimbToLadder = CanClimbToLadder();
+
+            _isClimbingLadder = canClimbToLadder;
+        }
+        
+        if (_isClimbingLadder)
+        {
+            _cameraController.EnableCameraMovement(IsOnFloor());
+        }
         
         // We separate out the y velocity to not interpolate on the gravity
         var yVelocity = Velocity.Y;
@@ -118,12 +140,10 @@ public partial class PlayerBase : CharacterBody3D
             newVelocity.X = 0;
             newVelocity.Y = 0;
             newVelocity.Z = 0;
-            
-            var rawInput = Input.GetVector("left", "right", "forward", "backward");
 
-            if (rawInput.Y != 0)
+            if (_movementVector.Y != 0)
             {
-                newVelocity.Y = -rawInput.Y * 3;
+                newVelocity.Y = -_movementVector.Y * 3;
             }
         }
         
@@ -152,27 +172,14 @@ public partial class PlayerBase : CharacterBody3D
 
     private Vector3 GetCameraOrientedInput()
     {
-        var rawInput = Input.GetVector("left", "right", "forward", "backward");
-        
         var input = Vector3.Zero;
         // This is to ensure that diagonal input isn't stronger than axis aligned input
-        input.X = -rawInput.X * (float)Mathf.Sqrt(1.0 - rawInput.Y * rawInput.Y / 2.0f);
-        input.Z = -rawInput.Y * (float)Mathf.Sqrt(1.0 - rawInput.X * rawInput.X / 2.0f);
+        input.X = -_movementVector.X * (float)Mathf.Sqrt(1.0 - _movementVector.Y * _movementVector.Y / 2.0f);
+        input.Z = -_movementVector.Y * (float)Mathf.Sqrt(1.0 - _movementVector.X * _movementVector.X / 2.0f);
 
         input = _cameraController.GlobalTransform.Basis * input;
         input.Y = 0.0f;
 
-        if (_isTouchingLadder)
-        {
-            var x = input.X;
-            var y = input.Y;
-            var z = input.Z;
-
-            //input.X = y;
-            //input.Y = x;
-            //input.Z = z;
-        }
-        
         return input;
     }
 
@@ -202,13 +209,16 @@ public partial class PlayerBase : CharacterBody3D
         GD.Print("PLAYER DED!");
     }
 
-    public void SetLadderState(bool onLadder)
+    public void SetLadderState(bool onLadder, Ladder ladder)
     {
+        _ladder = ladder;
         _isTouchingLadder = onLadder;
-        _cameraController.EnableCameraMovement(!onLadder);
-        GD.Print(_isTouchingLadder);
+        
         if (!onLadder)
+        {
             _isClimbingLadder = false;
+            _cameraController.EnableCameraMovement(true);
+        }
     }
 
     /// <summary>
@@ -217,8 +227,19 @@ public partial class PlayerBase : CharacterBody3D
     /// <returns>False - ignore ladder. True - climb it</returns>
     private bool CanClimbToLadder()
     {
-        //TODO check player look angle. If character do not look at ladder = no climb
-        return true;
+        if (_ladder == null)
+            return false;
+        
+        // If player on the floor and moving backward = player wants to leave ladder
+        if (IsOnFloor() && _movementVector.Y > 0)
+            return false;
+        
+        // Player should look at ladder for being able to climb it
+        var angle = GetAngleDegree(GlobalTransform.Origin, _ladder.GlobalTransform.Origin);
+        if (angle > UseLadderAngle)
+            return true;
+
+        return false;
     }
 
     /// <summary>
@@ -241,5 +262,20 @@ public partial class PlayerBase : CharacterBody3D
             else
                 _characterSkin.SetMoving(false);
         }
+    }
+
+    /// <summary>
+    /// Get XZ angle from one origin to other
+    /// </summary>
+    /// <param name="from">Origin vector of object 1</param>
+    /// <param name="to">Origin vector of object 2</param>
+    /// <returns></returns>
+    private float GetAngleDegree(Vector3 from, Vector3 to)
+    {
+        from.Y = 0;
+        to.Y = 0;
+        
+        Vector3 toObj2 = to - from;
+        return _lastStrongDirection.Dot(toObj2.Normalized());
     }
 }
