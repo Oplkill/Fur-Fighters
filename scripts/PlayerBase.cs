@@ -28,6 +28,8 @@ public partial class PlayerBase : CharacterBody3D
     public float MaxThrowbackForce = 15.0f;
     [Export] 
     public bool CanSwimDive = false;
+    [Export] 
+    public Damagable Damagable;
 
     private Node3D _rotationRoot;
     private CameraController _cameraController;

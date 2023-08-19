@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccckh7um3lf8y"]
+[gd_scene load_steps=11 format=3 uid="uid://ccckh7um3lf8y"]
 
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/textures/grids/Dark/texture_05.png" id="1_mg477"]
 [ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://assets/textures/grids/Orange/texture_09.png" id="2_kokpa"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://n1so75agdiqc" path="res://Player/PlayerBase.tscn" id="4_sp3tk"]
 [ext_resource type="PackedScene" uid="uid://vgat6keot0se" path="res://Ladder.tscn" id="5_g4f6y"]
 [ext_resource type="PackedScene" uid="uid://c6844nor5xtbu" path="res://Ladder_Model.tscn" id="6_acgub"]
+[ext_resource type="PackedScene" uid="uid://dekhvg4rwu0lb" path="res://collectable/pyramide/pyramide.tscn" id="7_23b7f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex5yt"]
 albedo_texture = ExtResource("1_mg477")
@@ -68,3 +69,12 @@ transform = Transform3D(1.1038, 0, 0, 0, 2.23072, 0, 0, 0, 0.672435, -8.24471, 2
 [node name="Ladder_Model2" parent="." instance=ExtResource("6_acgub")]
 transform = Transform3D(-5.32566e-08, 0, 0.452169, 0, 2.93675, 0, -1.21837, 0, -1.97649e-08, -9.28958, 1.55474, 0.082067)
 skeleton = NodePath("../Ladder_Model")
+
+[node name="pyramide" parent="." instance=ExtResource("7_23b7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3583, 0.765882, 10.482)
+
+[node name="pyramide2" parent="." instance=ExtResource("7_23b7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8996, 1.53176, 3.11953)
+
+[node name="pyramide3" parent="." instance=ExtResource("7_23b7f")]
+transform = Transform3D(0.10281, 0, 0.994701, 0, 1, 0, -0.994701, 0, 0.10281, 6.61889, 1.78181, 15.0364)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dekhvg4rwu0lb"]
+
+[ext_resource type="Script" path="res://scripts/Pyramide.cs" id="1_hfxhn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxelq"]
+size = Vector3(0.628283, 0.687524, 0.840948)
+
+[node name="Pyramide" type="Area3D"]
+script = ExtResource("1_hfxhn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.26616, 0, 0, 0, 0.304689, 0, 0, 0, 0.344062, 0, 0.00341853, 0)
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017641, 0.0118354, 0)
+shape = SubResource("BoxShape3D_dxelq")
+
+[connection signal="body_entered" from="." to="." method="BodyEntered"]
