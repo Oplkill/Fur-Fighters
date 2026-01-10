@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/textures/grids/Dark/texture_05.png" id="1_mg477"]
 [ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://assets/textures/grids/Orange/texture_09.png" id="2_kokpa"]
 [ext_resource type="Texture2D" uid="uid://c7ks4lubwjoy3" path="res://assets/textures/grids/Green/texture_04.png" id="3_5ps41"]
-[ext_resource type="PackedScene" uid="uid://n1so75agdiqc" path="res://Player/PlayerBase.tscn" id="4_sp3tk"]
-[ext_resource type="PackedScene" uid="uid://vgat6keot0se" path="res://Ladder.tscn" id="5_g4f6y"]
-[ext_resource type="PackedScene" uid="uid://c6844nor5xtbu" path="res://Ladder_Model.tscn" id="6_acgub"]
+[ext_resource type="PackedScene" uid="uid://n1so75agdiqc" path="res://assets/temp_things/Player/PlayerBase.tscn" id="4_sp3tk"]
+[ext_resource type="PackedScene" uid="uid://vgat6keot0se" path="res://scenes/Ladder.tscn" id="5_g4f6y"]
+[ext_resource type="PackedScene" uid="uid://c6844nor5xtbu" path="res://scenes/Ladder_Model.tscn" id="6_acgub"]
 [ext_resource type="PackedScene" uid="uid://dekhvg4rwu0lb" path="res://collectable/pyramide/pyramide.tscn" id="7_23b7f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex5yt"]

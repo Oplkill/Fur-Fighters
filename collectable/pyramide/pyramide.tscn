@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dekhvg4rwu0lb"]
 
-[ext_resource type="Script" path="res://scripts/Pyramide.cs" id="1_hfxhn"]
+[ext_resource type="Script" uid="uid://bsdaiwpjhhfsw" path="res://scripts/misc/Pyramide.cs" id="1_hfxhn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxelq"]
 size = Vector3(0.628283, 0.687524, 0.840948)
