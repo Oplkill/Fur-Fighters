@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://n1so75agdiqc" path="res://assets/temp_things/Player/PlayerBase.tscn" id="4_sp3tk"]
 [ext_resource type="PackedScene" uid="uid://vgat6keot0se" path="res://scenes/Ladder.tscn" id="5_g4f6y"]
 [ext_resource type="PackedScene" uid="uid://c6844nor5xtbu" path="res://scenes/Ladder_Model.tscn" id="6_acgub"]
-[ext_resource type="PackedScene" uid="uid://dekhvg4rwu0lb" path="res://collectable/pyramide/pyramide.tscn" id="7_23b7f"]
+[ext_resource type="PackedScene" uid="uid://dekhvg4rwu0lb" path="res://scenes/core/pyramid.tscn" id="7_23b7f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex5yt"]
 albedo_texture = ExtResource("1_mg477")
