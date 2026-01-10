@@ -20,10 +20,6 @@ albedo_texture = ExtResource("3_5ps41")
 
 [node name="World" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.26636, -0.83474, 0.481935, -1.49013e-08, 0.499998, 0.866027, -0.963874, 0.230675, -0.133179, 0, 7.91691, 0)
-shadow_enabled = true
-
 [node name="map" type="Node3D" parent="."]
 
 [node name="floor" type="CSGBox3D" parent="map"]
@@ -54,6 +50,10 @@ transform = Transform3D(1, 0, 0, 0, 2.3036, 0, 0, 0, 1, -8.23529, 2.256, 0.00663
 material_override = SubResource("StandardMaterial3D_nfwen")
 use_collision = true
 size = Vector3(2, 2, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="map"]
+transform = Transform3D(-0.26635993, -0.83474016, 0.48193496, -1.4901294e-08, 0.49999806, 0.8660265, -0.9638736, 0.23067476, -0.13317947, 0, 7.91691, 0)
+shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("4_sp3tk")]
 
