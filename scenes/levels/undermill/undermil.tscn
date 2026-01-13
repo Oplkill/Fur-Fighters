@@ -20,478 +20,661 @@ uv2_scale = Vector3(0.5, 0.5, 0.5)
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.768118, 0, -9.611977)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
-transform = Transform3D(-0.26635993, -0.83474016, 0.48193496, -1.4901294e-08, 0.49999806, 0.8660265, -0.9638736, 0.23067476, -0.13317947, 0, 7.91691, 0)
+[node name="Geometry(rought)" type="Node3D" parent="Map"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map/Geometry(rought)"]
+transform = Transform3D(-0.26635996, -0.83474016, 0.48193496, -1.4901296e-08, 0.49999806, 0.8660265, -0.9638737, 0.23067477, -0.13317947, 0, 7.91691, 0)
 shadow_enabled = true
 
-[node name="Start (rought)" type="Node3D" parent="Map"]
+[node name="Start (rought)" type="Node3D" parent="Map/Geometry(rought)"]
 
-[node name="Floor" type="CSGBox3D" parent="Map/Start (rought)"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Start (rought)"]
 transform = Transform3D(-0.99984056, 0, 0.017853789, 0, 11.631634, 0, -0.017853789, 0, -0.99984056, -4.7815223, 0.055097103, 15.521967)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(41.63437, 0.018585205, 22.172745)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Start (rought)"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Geometry(rought)/Start (rought)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -16.21909, 3.4157538, 5.9176617)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0097961, 18.117432)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Start (rought)"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Start (rought)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -22.126015, 3.2667363, 15.485349)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(20.416748, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Start (rought)"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Start (rought)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 12.001623, 3.2667363, 15.885928)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(21.218018, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Start (rought)"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry(rought)/Start (rought)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 7.23312, 3.5652013, 6.2179337)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 18.117432)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Start (rought)"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Start (rought)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 8.989497, 3.5652013, 26.513115)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 6.495117)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Start (rought)"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Geometry(rought)/Start (rought)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -19.631113, 3.5652013, 25.531368)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 6.495117)
 
-[node name="Select char course (rough)" type="Node3D" parent="Map"]
+[node name="Select char course (rough)" type="Node3D" parent="Map/Geometry(rought)"]
 transform = Transform3D(-0.9999929, 0, 0.0037700166, 0, 1, 0, -0.0037700166, 0, -0.9999929, -9.274544, 0, 52.633198)
 
-[node name="Floor" type="CSGBox3D" parent="Map/Select char course (rough)"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Select char course (rough)"]
 transform = Transform3D(-0.99984056, 0, 0.017853789, 0, 11.631634, 0, -0.017853789, 0, -0.99984056, -4.77813, 0.055097103, 15.332003)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(41.63437, 0.018585205, 21.792755)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Select char course (rough)"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Geometry(rought)/Select char course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -16.21909, 3.4157538, 5.9176617)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0097961, 18.117432)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Select char course (rough)"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Select char course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -3.674274, 0.856174, 16.490005)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 0.5088043, 7.013733)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Select char course (rough)"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Select char course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -20.740957, 3.2667363, 15.470207)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(20.416748, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Select char course (rough)"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Select char course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 12.777742, 3.2667363, 15.898064)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(21.218018, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Select char course (rough)"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry(rought)/Select char course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 7.23312, 3.5652013, 6.2179337)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 18.117432)
 
-[node name="Child course (rough)" type="Node3D" parent="Map"]
+[node name="Child course (rough)" type="Node3D" parent="Map/Geometry(rought)"]
 transform = Transform3D(-0.9999929, 0, 0.0037700166, 0, 1, 0, -0.0037700166, 0, -0.9999929, -9.274544, 0, 72.92737)
 
-[node name="Floor" type="CSGBox3D" parent="Map/Child course (rough)"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Child course (rough)"]
 transform = Transform3D(-0.99984056, 0, 0.017853789, 0, 11.631634, 0, -0.017853789, 0, -0.99984056, -4.77813, 0.055097103, 15.332003)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(41.63437, 0.018585205, 21.792755)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Child course (rough)"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Geometry(rought)/Child course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -12.169908, 3.4157538, 5.985016)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0097961, 26.216919)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Child course (rough)"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Child course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -3.674274, 0.856174, 16.490005)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 0.5088043, 7.013733)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Child course (rough)"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Child course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -20.740957, 3.2667363, 15.470207)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(20.416748, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Child course (rough)"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Child course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 12.777742, 3.2667363, 15.898064)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(21.218018, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Child course (rough)"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry(rought)/Child course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 11.31587, 3.5652013, 6.285843)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 9.950806)
 
-[node name="Pyramid course (rough)" type="Node3D" parent="Map"]
+[node name="Pyramid course (rough)" type="Node3D" parent="Map/Geometry(rought)"]
 transform = Transform3D(-0.9999929, 0, 0.0037700166, 0, 1, 0, -0.0037700166, 0, -0.9999929, -9.274544, 0, 93.034515)
 
-[node name="Floor" type="CSGBox3D" parent="Map/Pyramid course (rough)"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Pyramid course (rough)"]
 transform = Transform3D(-0.99984056, 0, 0.017853789, 0, 11.631634, 0, -0.017853789, 0, -0.99984056, -4.77813, 0.055097103, 15.332003)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(41.63437, 0.018585205, 21.792755)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Pyramid course (rough)"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Geometry(rought)/Pyramid course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -16.760065, 3.4157538, 5.908676)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0097961, 17.03534)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Pyramid course (rough)"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Pyramid course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 5.1084967, 0.856174, 16.456894)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 0.5088043, 7.013733)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Pyramid course (rough)"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Pyramid course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -20.740957, 3.2667363, 15.470207)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(20.416748, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Pyramid course (rough)"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Pyramid course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 12.777742, 3.2667363, 15.898064)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(21.218018, 2.0971832, 1.3614502)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Pyramid course (rough)"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry(rought)/Pyramid course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 7.656124, 3.5652013, 6.224968)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 17.271301)
 
-[node name="Intersect (rough)" type="Node3D" parent="Map"]
+[node name="Intersect (rough)" type="Node3D" parent="Map/Geometry(rought)"]
 transform = Transform3D(-0.9999929, 0, 0.0037700166, 0, 1, 0, -0.0037700166, 0, -0.9999929, -9.274544, 0, 114.17353)
 
-[node name="Floor" type="CSGBox3D" parent="Map/Intersect (rough)"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Intersect (rough)"]
 transform = Transform3D(-0.99985313, 0, 0.01785401, 0, 11.631634, 0, -0.01785401, 0, -0.99985313, -5.6259055, 0.055097103, 19.002037)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(14.339819, 0.018585205, 14.423653)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Intersect (rough)"]
-transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -12.081516, 3.2667363, 19.333366)
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Intersect (rough)"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -12.132872, 3.2667363, 22.4206)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
-size = Vector3(15.47345, 2.0971832, 1.3614502)
+size = Vector3(9.298126, 2.0971832, 1.3614502)
 
-[node name="Jumping course 1 (rough)" type="Node3D" parent="Map"]
+[node name="Jumping course 1 (rough)" type="Node3D" parent="Map/Geometry(rought)"]
 transform = Transform3D(-0.9999929, 0, 0.0037700166, 0, 1, 0, -0.0037700166, 0, -0.9999929, -23.742521, 0, 114.17353)
 
-[node name="Part 1" type="Node3D" parent="Map/Jumping course 1 (rough)"]
+[node name="Part 1" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)"]
 
-[node name="Floor" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 1"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 1"]
 transform = Transform3D(-0.9998532, 0, 0.017854013, 0, 11.631634, 0, -0.017854013, 0, -0.9998532, -5.625906, 0.055097103, 19.002037)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(14.339819, 0.018585205, 14.423653)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 1"]
-transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -5.529911, 3.2667363, 12.369667)
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 1"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -12.818752, 3.2667363, 12.248421)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
-size = Vector3(1.3300323, 2.0971832, 14.231232)
+size = Vector3(1.3300323, 2.0971832, 28.810928)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 1"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 1"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -5.688593, 0.856174, 19.35189)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 0.5088043, 7.013733)
 
-[node name="Part 2" type="Node3D" parent="Map/Jumping course 1 (rough)"]
+[node name="Label3D" type="Label3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.816797, 2.259537, 13.373852)
+pixel_size = 0.015
+text = "Arrow to the right--->
+Or something that would tell without words
+\"go to the right\""
 
-[node name="Floor" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 2"]
+[node name="Part 2" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)"]
+
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 2"]
 transform = Transform3D(-0.999868, 0, 0.017854268, 0, 11.631634, 0, -0.017854268, 0, -0.999868, 4.63389, 0.055097103, 20.934563)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.302667, 0.018585205, 21.69436)
 
-[node name="Floor2" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 2"]
+[node name="Floor2" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 2"]
 transform = Transform3D(-0.9998791, 0, 0.017854461, 0, 11.631634, 0, -0.017854461, 0, -0.9998791, 44.91313, -7.1715956, 21.293716)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(74.450836, 0.018585205, 22.14602)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 2"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 2"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 7.8093605, -5.100816, 20.78032)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(22.18872, 3.0866241, 0.40994263)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 2"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 2"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 4.8938923, 3.5652013, 10.187325)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 6.900589)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 2"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 2"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 44.921143, 0.18836641, 10.714874)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 9.873268, 73.413086)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 2"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 2"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 45.094177, 0.2922392, 31.725212)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 9.934181, 73.60078)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 2"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 2"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 4.9734917, 3.5652013, 31.300987)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 2.0101624, 6.900589)
 
-[node name="Part 3" type="Node3D" parent="Map/Jumping course 1 (rough)"]
+[node name="Part 3" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)"]
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 3"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 23.77523, -5.6964674, 20.119232)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 1.0540781, 7.013733)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 3"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 49.485847, -5.6964674, 20.0223)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 1.0540781, 7.013733)
 
-[node name="Ladder" type="Node3D" parent="Map/Jumping course 1 (rough)/Part 3"]
+[node name="Ladder" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3"]
 
-[node name="Ladder2" parent="Map/Jumping course 1 (rough)/Part 3/Ladder" instance=ExtResource("3_eu7we")]
+[node name="Ladder2" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3/Ladder" instance=ExtResource("3_eu7we")]
 transform = Transform3D(2.7474016e-07, 0, -1, 0, 3.8657064, 0, 2.1361475, 0, 1.3108365e-07, 8.013836, -3.710553, 24.5485)
 
-[node name="Ladder_Model2" parent="Map/Jumping course 1 (rough)/Part 3/Ladder" instance=ExtResource("4_wnckn")]
+[node name="Ladder_Model2" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3/Ladder" instance=ExtResource("4_wnckn")]
 transform = Transform3D(-5.6810677e-08, 0, 0.452169, 0, 4.4142823, 0, -1.2183723, 0, -1.7462298e-08, 7.9880676, -4.2786493, 24.583107)
 skeleton = NodePath("../Ladder_Model")
 
-[node name="Circle 1" type="Node3D" parent="Map/Jumping course 1 (rough)/Part 3"]
+[node name="Circle 1" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3"]
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 3/Circle 1"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3/Circle 1"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 22.201645, -2.168093, 20.570267)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(16.157593, 0.67221093, 17.830723)
 
-[node name="Circle 2" type="Node3D" parent="Map/Jumping course 1 (rough)/Part 3"]
+[node name="Circle 2" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.748795, 0, -0.089538574)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 3/Circle 2"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3/Circle 2"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 22.201645, -2.168093, 20.570267)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(16.157593, 0.67221093, 17.830723)
 
-[node name="Circle 3" type="Node3D" parent="Map/Jumping course 1 (rough)/Part 3"]
+[node name="Circle 3" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.06809, 0, -0.1661377)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 3/Circle 3"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3/Circle 3"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 21.746696, -2.168093, 20.765358)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(14.640717, 0.67221093, 13.574258)
 
-[node name="Circle 4" type="Node3D" parent="Map/Jumping course 1 (rough)/Part 3"]
+[node name="Circle 4" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.06809, 0, -0.1661377)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 3/Circle 4"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 3/Circle 4"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 21.821442, 0.36984706, 20.761772)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.2222595, 0.67221093, 6.3336573)
 
-[node name="Part 4" type="Node3D" parent="Map/Jumping course 1 (rough)"]
+[node name="Part 4" type="Node3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)"]
 
-[node name="Floor" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 4"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 4"]
 transform = Transform3D(-0.9998767, 0, 0.017854419, 0, 11.631634, 0, -0.017854419, 0, -0.9998767, 78.26422, 0.71455836, 20.900238)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.302667, 0.018585205, 11.632996)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Jumping course 1 (rough)/Part 4"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 1 (rough)/Part 4"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, 81.55461, -4.7685313, 20.50232)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(22.18872, 3.2814827, 0.40994263)
 
-[node name="Fighting course (rough)" type="Node3D" parent="Map"]
+[node name="Fighting course (rough)" type="Node3D" parent="Map/Geometry(rought)"]
 
-[node name="Floor" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(-0.9998767, 0, 0.017854419, 0, 11.631634, 0, -0.017854419, 0, -0.9998767, -125.34112, 0.71455836, 91.63217)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(40.44714, 0.018585205, 34.358044)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -140.94864, 5.35375, 101.24255)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(14.480774, 3.3210526, 1.3614502)
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -145.81142, 5.319612, 92.869965)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(14.480774, 3.301033, 1.3614502)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -140.94864, 5.3606195, 81.339584)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(14.480774, 3.3250809, 1.3614502)
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -142.87938, 7.634134, 91.28551)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(5.432266, 1.8151569, 5.1968384)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -122.985435, 5.710592, 74.283844)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 3.2682648, 36.483826)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -143.53687, 5.710592, 87.69998)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 3.2682648, 4.312851)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -143.53687, 5.710592, 94.29674)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 3.2682648, 4.312851)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Fighting course (rough)"]
-transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -115.67134, 5.710592, 108.62265)
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -117.45769, 5.710592, 108.59293)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
-size = Vector3(1, 3.2682648, 21.853622)
+size = Vector3(1, 3.2682648, 25.426811)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -140.87047, 5.710592, 108.716484)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 3.2682648, 10.569912)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -104.585045, 5.2971306, 77.95652)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(7.840393, 3.2878494, 1.3614502)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Fighting course (rough)"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Geometry(rought)/Fighting course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -104.57901, 5.2971306, 106.1147)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(7.1146393, 3.2878494, 1.3614502)
 
-[node name="Digging course (rough)" type="Node3D" parent="Map"]
+[node name="Digging course (rough)" type="Node3D" parent="Map/Geometry(rought)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.059784)
 
-[node name="Floor" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(-0.9998767, 0, 0.017854419, 0, 11.631634, 0, -0.017854419, 0, -0.9998767, -125.83784, 0.71455836, 119.44923)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(40.44714, 0.018585205, 21.926092)
 
-[node name="Floor2" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="Floor2" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(-0.9998767, 0, 0.017854419, 0, 11.631634, 0, -0.017854419, 0, -0.9998767, -130.94823, 0.71455836, 104.65313)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(10.779057, 0.018585205, 8.116522)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -126.01001, 5.710592, 119.36632)
 material_override = SubResource("StandardMaterial3D_b6dai")
 transparency = 0.51
 use_collision = true
+collision_layer = 0
 size = Vector3(1, 3.2682648, 39.583847)
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -134.71164, 5.710592, 129.6466)
 material_override = SubResource("StandardMaterial3D_b6dai")
 transparency = 0.5
 use_collision = true
 size = Vector3(1, 3.2682648, 22.524946)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -145.83981, 5.35375, 119.233765)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(21.45829, 3.3210526, 1.3614502)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -136.41887, 5.35375, 104.62914)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(8.488075, 3.3210526, 1.3614502)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Digging course (rough)"]
-transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -125.888985, 5.35375, 104.804306)
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -129.84422, 5.35375, 104.73851)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(8.488075, 3.3210526, 1.3614502)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -105.76177, 5.35375, 120.00178)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(21.660927, 3.3210526, 1.3614502)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Digging course (rough)"]
-transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -115.67134, 5.710592, 108.62265)
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -117.45256, 5.710592, 108.59302)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
-size = Vector3(1, 3.2682648, 21.853622)
+size = Vector3(1, 3.2682648, 25.416557)
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -110.47506, 5.710592, 130.22452)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 3.2682648, 10.743923)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -140.87047, 5.710592, 108.716484)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(1, 3.2682648, 10.569912)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -110.35177, 0.856174, 113.86054)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 0.5088043, 7.013733)
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="Map/Digging course (rough)"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="Map/Geometry(rought)/Digging course (rough)"]
 transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -138.79172, 0.856174, 123.90545)
 material_override = SubResource("StandardMaterial3D_b6dai")
 use_collision = true
 size = Vector3(6.727783, 0.5088043, 7.013733)
+
+[node name="Jumping course 2 (rough)2" type="Node3D" parent="Map/Geometry(rought)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.13742)
+
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(-0.9998767, 0, 0.017854419, 0, 11.631634, 0, -0.017854419, 0, -0.9998767, -138.92491, -8.2971, 104.958244)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(67.133606, 0.018585205, 22.674334)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -145.59384, -3.3579319, 104.446846)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(23.585764, 4.59433, 1.3614502)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -145.50096, 7.7222095, 98.8637)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(12.417925, 1.9009628, 1.3614502)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -145.73102, 7.6489363, 112.69361)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(7.0126843, 1.9439316, 1.3614502)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -105.4462, -2.2776523, 101.030846)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(10.467722, 7.7962685, 1.3614502)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -165.1037, -2.2776523, 103.19804)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(16.786003, 7.7962685, 1.3614502)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -105.57658, 2.9346397, 108.869)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(5.8304186, 4.7396703, 1.3614502)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -125.749176, -5.486383, 95.67891)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(1, 3.2682648, 42.437065)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -126.07006, -5.486383, 114.96879)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(10.359863, 3.2682648, 42.437065)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -115.97068, -7.044011, 109.99622)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(8.175293, 2.7700272, 7.013733)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -110.030334, -7.044011, 99.43249)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(4.9748535, 2.7700272, 7.013733)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -121.6393, -8.312596, 108.57726)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(5.104004, 1.4157753, 4.737335)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -129.33679, -5.7043033, 108.44922)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(5.104004, 1.4157753, 4.737335)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -136.25539, -5.7043033, 100.433754)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(8.027588, 1.4157753, 2.1391754)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -129.17, -5.7043033, 98.42246)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(5.104004, 1.4157753, 4.737335)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -138.00037, -6.486949, 112.99484)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(5.104004, 1.4157753, 4.737335)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, -2.3374596, 0.7280071, 0, 2.4832249, 0.68546265, -0.99986166, -0.038882542, 0.0121100545, -141.9388, -5.473241, 97.92257)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(3.135498, 1.6745915, 2.940445)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -148.73503, 3.6064749, 107.15466)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(6.727783, 0.5088043, 7.013733)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -161.04182, -0.50053453, 106.95808)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(6.727783, 0.5088043, 7.013733)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, -2.019512, 0.80566174, 4.656613e-10, 2.7481046, 0.59222424, -0.99986166, -0.033593632, 0.013401806, -154.65527, 1.4878929, 107.02236)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(6.727783, 0.5088043, 7.300308)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.9998114, -0.02626665, -0.017833551, -0.0028674337, 2.897162, -0.5276156, 0.019212723, 1.7992783, 0.849296, -161.85101, -4.162981, 115.96404)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(6.727783, 0.5088043, 14.992342)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -132.86845, 5.7180057, 110.569176)
+material_override = SubResource("StandardMaterial3D_b6dai")
+transparency = 0.5
+use_collision = true
+size = Vector3(1, 3.2682648, 25.486828)
+
+[node name="Ladder" type="Node3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.4634289, 0, -1, 0, -4.371139e-08, -145.41379, 0.83023643, 104.69034)
+
+[node name="Ladder2" parent="Map/Geometry(rought)/Jumping course 2 (rough)2/Ladder" instance=ExtResource("3_eu7we")]
+transform = Transform3D(2.7474016e-07, 0, -1, 0, 3.8657064, 0, 2.1361475, 0, 1.3108365e-07, 8.013836, -3.710553, 24.5485)
+
+[node name="Ladder_Model2" parent="Map/Geometry(rought)/Jumping course 2 (rough)2/Ladder" instance=ExtResource("4_wnckn")]
+transform = Transform3D(-5.6810677e-08, 0, 0.452169, 0, 4.4142823, 0, -1.2183723, 0, -1.7462298e-08, 7.9880676, -4.2786493, 24.583107)
+skeleton = NodePath("../Ladder_Model")
+
+[node name="Ladder2" type="Node3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 2.3611228, 0, 8.742278e-08, 0, -1, -136.85555, 4.6431074, 131.86026)
+
+[node name="Ladder2" parent="Map/Geometry(rought)/Jumping course 2 (rough)2/Ladder2" instance=ExtResource("3_eu7we")]
+transform = Transform3D(2.7474016e-07, 0, -1, 0, 3.8657064, 0, 2.1361475, 0, 1.3108365e-07, 8.013836, -3.710553, 24.5485)
+
+[node name="Ladder_Model2" parent="Map/Geometry(rought)/Jumping course 2 (rough)2/Ladder2" instance=ExtResource("4_wnckn")]
+transform = Transform3D(-5.6810677e-08, 0, 0.452169, 0, 4.4142823, 0, -1.2183723, 0, -1.7462298e-08, 7.9880676, -4.2786493, 24.583107)
+skeleton = NodePath("../Ladder_Model")
+
+[node name="Label3D" type="Label3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -144.53946, 0, 104.48674)
+pixel_size = 0.015
+text = "Cat ladder"
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -155.13223, 0.2515173, 103.56974)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(1, 6.4695816, 18.991707)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Map/Geometry(rought)/Jumping course 2 (rough)2"]
+transform = Transform3D(0.01663223, 0, 0.99986166, 0, 3.4105182, 0, -0.99986166, 0, 0.01663223, -152.08832, 0.2515173, 110.1666)
+material_override = SubResource("StandardMaterial3D_b6dai")
+use_collision = true
+size = Vector3(1, 6.4695816, 12.685307)

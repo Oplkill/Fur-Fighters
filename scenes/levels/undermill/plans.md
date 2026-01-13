@@ -65,7 +65,7 @@
  - [ ] Ghost
 
 ## Jumping course 2
- - [ ] Rough geometry
+ - [x] Rough geometry
  - [ ] Objects
  - [ ] Fine geometry
  - [ ] Textures
@@ -114,4 +114,4 @@
  - [ ] Ghost
 
 # Overall
-Progress: 7/88
+Progress: 8/88
