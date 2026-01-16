@@ -74,12 +74,12 @@
  - [ ] Goat
 
 ## Cat course
- - [ ] Rough geometry
+ - [x] Rough geometry
  - [ ] Objects
  - [ ] Fine geometry
  - [ ] Textures
  - [ ] 15 pyramids
- - [ ] Child: Cat (behind fence)
+ - [ ] Children: Cat (behind fence) and Chang (behind opposite fence)
  - [ ] Cat character
  - [ ] Ghost
 
@@ -99,7 +99,6 @@
  - [ ] Fine geometry
  - [ ] Textures
  - [ ] 14 pyramids
- - [ ] Child: Chang (near ladder to Flying course)
  - [ ] Ghost
 
 ## Water course
@@ -114,4 +113,4 @@
  - [ ] Ghost
 
 # Overall
-Progress: 8/88
+Progress: 9/88
