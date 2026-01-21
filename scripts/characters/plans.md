@@ -15,7 +15,7 @@
 - [ ] Swimming
 - [ ] Faster swimming
 - [ ] Can melee attack while swimming
-- [ ] Faster melee attack
+- [ ] Wrench melee attack (bigger damage)
 
 ## Tweek
 - [ ] Gliding
@@ -29,7 +29,8 @@
 
 ## Chang
 - [ ] Small
-- [ ] Wrench melee attack (bigger damage)
+- [ ] Faster melee attack
+- [ ] 35% chance to evade enemy damage(except exploding damage)
 
 ## Overall
-Progress: 0/19
+Progress: 0/20
